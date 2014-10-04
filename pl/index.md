@@ -107,6 +107,11 @@ Links:
 
 [Wikipedia: [Prolog](https://en.wikipedia.org/wiki/Prolog)]
 
+Books:
+
+* *The Art of Prolog: Advanced Programming Techniques* (by Leon Sterling)
+* *Prolog Programming for Artificial Intelligence* (by Ivan Bratko)
+
 ### Datalog
 
 [Wikipedia: [Datalog](https://en.wikipedia.org/wiki/Datalog)]
