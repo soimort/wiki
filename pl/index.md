@@ -107,6 +107,11 @@ Links:
 
 [Wikipedia: [Prolog](https://en.wikipedia.org/wiki/Prolog)]
 
+Online resources:
+
+* Wikibooks: *Prolog* [[HTML](https://en.wikibooks.org/wiki/Prolog)]
+* *Learn Prolog Now!* [[HTML](http://www.learnprolognow.org/)]
+
 Books:
 
 * *The Art of Prolog: Advanced Programming Techniques* (by Leon Sterling)
