@@ -79,6 +79,7 @@ Online resources:
 Books:
 
 * *Learn You a Haskell for Great Good!* (**LYAH**) (by Miran Lipovaca) [[Homepage](http://learnyouahaskell.com/)] [[HTML](http://learnyouahaskell.com/chapters)]
+* *Programming in Haskell* (by Graham Hutton) [[Homepage](http://www.cs.nott.ac.uk/~gmh/book.html)]
 * *Real World Haskell* (**RWH**) (by Don Stewart, Bryan O'Sullivan, John Goerzen) [[Homepage](http://book.realworldhaskell.org/)] [[HTML](http://book.realworldhaskell.org/read/)]
 * *Parallel and Concurrent Programming in Haskell* (by Simon Marlow) [[Homepage](http://chimera.labs.oreilly.com/books/1230000000929)] [[HTML](http://chimera.labs.oreilly.com/books/1230000000929/index.html)]
 
