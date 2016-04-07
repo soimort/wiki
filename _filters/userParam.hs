@@ -40,5 +40,3 @@ highlightUserParam x = return x
 
 main :: IO ()
 main = toJSONFilter highlightUserParam
-  --print $
-  --  subRegex userParamRegex "gpg --output [doc.gpg] --symmetric [doc]" userParamHighlighter
