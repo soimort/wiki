@@ -1,0 +1,10 @@
+---
+template:           __/academitheme.html
+source:             src.md
+source-metadata:    src.yaml
+target:             index.html
+canonical:          https://wiki.soimort.org/
+uri-prefix-raw:     https://github.com/soimort/wiki/raw/gh-pages
+uri-prefix-history: https://github.com/soimort/wiki/commits/gh-pages
+uri-prefix-edit:    https://github.com/soimort/wiki/edit/gh-pages
+---
