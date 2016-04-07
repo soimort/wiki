@@ -1,0 +1,4 @@
+---
+css: "/__/css/main.css"
+raw-options: [--section-divs, --mathjax]
+---

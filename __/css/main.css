@@ -1,0 +1,99 @@
+@font-face {
+  font-family: 'Latin Modern Roman';
+  font-style: normal;
+  font-weight: normal;
+  src: url('/__/fonts/lmroman10-regular-webfont.woff') format('woff');
+}
+
+body {
+  background-color: ivory;
+  color: #111;
+  font-family: 'Latin Modern Roman', 'HanaMinA', 'Adobe Song Std', serif;
+  cursor: default;
+}
+
+article {
+  position: absolute;
+  width: 50%;
+  left: 20%;
+  padding: 5%;
+  font-size: 1em;
+}
+
+header {
+  font-variant: small-caps;
+}
+
+header .title {
+  text-align: center;
+}
+
+header .subtitle {
+  text-align: center;
+  font-style: normal;
+}
+
+header address.author {
+  text-align: center;
+  font-style: normal;
+}
+
+header .date {
+  text-align: center;
+  font-weight: normal;
+  font-size: 1em;
+}
+
+nav#TOC {
+  border: 1px solid #888;
+}
+
+div#references {
+  font-size: .8em;
+}
+
+a {
+  color: #222;
+}
+
+code {
+  font-family: 'Inconsolata', 'Consolas', 'Ubuntu Mono', 'FreeMono', monospace;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+footer {
+  text-align: right;
+  font-size: .8em;
+}
+
+footer a {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+::selection {
+  background-color: gainsboro;
+}
+::-moz-selection {
+  background-color: gainsboro;
+}
+
+@media
+(max-width: 1023px),
+(max-height: 575px),
+(orientation: portrait) {
+  article {
+    position: absolute;
+    width: 80%;
+    left: 5%;
+    padding: 5%;
+    font-size: 1em;
+  }
+}
