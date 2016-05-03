@@ -4,11 +4,13 @@ css: [
   //cdn.soimort.org/fonts/api/Latin-Modern-Mono.css,
   //cdn.soimort.org/normalize/4.1.1/normalize.min.css,
   //cdn.soimort.org/mathsvg/latest/mathsvg.min.css,
+  //maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css,
   /__/css/style.css
   ]
 header-includes: [
-  <script src="//cdn.soimort.org/jk/20160421/jk.min.js"></script>,
+  <script src="//cdn.soimort.org/jk/latest/jk.min.js"></script>,
   <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>,
+  <script src="/__/js/jk-minibar.js"></script>,
   <link rel="icon" href="/__/favicon.ico"/>
   ]
 filters: [
@@ -17,7 +19,7 @@ filters: [
 raw-options: [
   #--number-sections,
   --section-divs,
-  #--toc,
+  --toc,
   --smart,  # produce typographically correct output
   ]
 output-format: html5
