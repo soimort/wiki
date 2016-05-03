@@ -2,7 +2,7 @@
 <!-- Academia (pandoc HTML5 template)
      designer:     soimort
      last updated: 2016-05-02
-     last adapted: 2016-05-03 -->
+     last adapted: 2016-05-04 -->
 <html$if(lang)$ lang="$lang$"$endif$$if(dir)$ dir="$dir$"$endif$>
   <head>
     <meta charset="utf-8">
@@ -70,13 +70,27 @@ $body$
       </div>
       <footer>
         <hr/>
-        <a href="javascript:window.print();">Print</a> |
-        <a href="$uri-prefix-raw$/$id$/$source$">View source</a> |
-        <a href="$uri-prefix-history$/$id$/$source$">History</a> |
-        <a href="$uri-prefix-edit$/$id$/$source$">Edit</a> |
-        <a href="..">..</a> |
-        <a href="https://www.soimort.org/">&crarr; Go back to soimort.org</a> |
-        <a href="$canonical$$id$">&#9875; Permalink</a> |
+        <a href=".."
+           title="Keyboard: [q]">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i> Parent</a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard: [R]"
+           href="$uri-prefix-raw$/$id$/$source$">
+          <i class="fa fa-code" aria-hidden="true"></i> Raw</a> |
+        <a class="history" accesskey="h"
+           title="Keyboard: [H]"
+           href="$uri-prefix-history$/$id$/$source$">
+          <i class="fa fa-history" aria-hidden="true"></i> History</a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard: [E]"
+           href="$uri-prefix-edit$/$id$/$source$">
+          <i class="fa fa-code-fork" aria-hidden="true"></i> Edit</a> |
+        <a title="Keyboard: [p]"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i> Print</a> |
+        <a title="Keyboard: [.]"
+           href="$canonical$$id$">
+          <i class="fa fa-anchor" aria-hidden="true"></i> Permalink</a> |
         Last updated: <span id="update-time">$date$</span>
       </footer>
     </article></main>
