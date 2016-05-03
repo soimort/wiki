@@ -1,6 +1,7 @@
 /* Academia (pandoc HTML5 template)
  * designer:     soimort
  * last updated: 2016-05-02
+ * last adapted: 2016-05-03
  */
 
 body {
@@ -12,11 +13,16 @@ body {
   cursor: default;
 }
 
-article {
+main {
   position: absolute;
   width: 50%;
   left: 20%;
   padding: 5%;
+}
+
+article {
+  position: relative;
+  width: 100%;
   font-size: 1em;
 }
 
