@@ -1,6 +1,6 @@
 /* jk minibar
  * (wiki.soimort.org)
- * last updated: 2016-05-03
+ * last updated: 2016-05-04
  */
 document.addEventListener('JKLoaded', function() {
   var main = document.getElementsByTagName('main')[0];
@@ -43,6 +43,7 @@ document.addEventListener('JKLoaded', function() {
     toc.style.left = '5%';
     toc.style.top = '35%';
     toc.style.borderWidth = '0';
+    toc.style.visibility = 'visible';
   });
 
   outd.addEventListener('mouseenter', function(event) {
@@ -62,6 +63,7 @@ document.addEventListener('JKLoaded', function() {
     toc.style.left = '0';
     toc.style.top = '0';
     toc.style.borderWidth = '1px';
+    toc.style.visibility = 'hidden';
   });
 
   // help & status
