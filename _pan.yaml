@@ -1,5 +1,5 @@
 ---
-template:           __/academitheme.html
+template:           __/template.html
 source:             src.md
 source-metadata:    src.yaml
 target:             index.html
