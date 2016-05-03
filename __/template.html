@@ -1,78 +1,85 @@
 <!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-02 -->
 <html$if(lang)$ lang="$lang$"$endif$$if(dir)$ dir="$dir$"$endif$>
   <head>
     <meta charset="utf-8">
     <meta name="generator" content="pandoc">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    $for(author-meta)$
+$for(author-meta)$
     <meta name="author" content="$author-meta$">
-    $endfor$
-    $if(date-meta)$
+$endfor$
+$if(date-meta)$
     <meta name="dcterms.date" content="$date-meta$">
-    $endif$
-    $if(keywords)$
+$endif$
+$if(keywords)$
     <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$">
-    $endif$
+$endif$
     <title>$if(title-prefix)$$title-prefix$ - $endif$$pagetitle$</title>
-    <style type="text/css">code{white-space: pre;}</style>
-    $if(quotes)$
+    <style type="text/css">code { white-space: pre; }</style>
+$if(quotes)$
     <style type="text/css">q { quotes: "“" "”" "‘" "’"; }</style>
-    $endif$
-    $if(highlighting-css)$
+$endif$
+$if(highlighting-css)$
     <style type="text/css">
-     $highlighting-css$
+$highlighting-css$
     </style>
-    $endif$
-    $for(css)$
+$endif$
+$for(css)$
     <link rel="stylesheet" href="$css$">
-    $endfor$
-    $if(math)$
+$endfor$
+$if(math)$
     $math$
-    $endif$
+$endif$
     <!--[if lt IE 9]>
       <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
     <![endif]-->
-    $for(header-includes)$
+$for(header-includes)$
     $header-includes$
-    $endfor$
+$endfor$
   </head>
   <body>
-    $for(include-before)$
-    $include-before$
-    $endfor$
+$for(include-before)$
+$include-before$
+$endfor$
     <article>
-      $if(title)$
+$if(title)$
       <header>
         <h1 class="title">$title$</h1>
-        $if(subtitle)$
+$if(subtitle)$
         <h1 class="subtitle">$subtitle$</h1>
-        $endif$
-        $for(author)$
+$endif$
+$for(author)$
         <address class="author">$author$</address>
-        $endfor$
+$endfor$
+$if(date)$
+        <!-- h3 class="date">$date$</h3 -->
+$endif$
       </header>
-      $endif$
-      $if(toc)$
+$endif$
+$if(toc)$
       <nav id="$idprefix$TOC">
-        $toc$
+$toc$
       </nav>
-      $endif$
+$endif$
       <div id="content">
 $body$
       </div>
       <footer>
         <hr/>
-        [<a href="javascript:window.print();">Print</a>]
-        [<a href="$canonical$$id$">Permalink</a>]
-        [<a href="$uri-prefix-raw$/$id$/$source$">View source</a>]
-        [<a href="$uri-prefix-history$/$id$/$source$">History</a>]
-        [<a href="$uri-prefix-edit$/$id$/$source$">Edit</a>]
-        [<a href="..">..</a>]
+        <a href="javascript:window.print();">Print</a> |
+        <a href="$uri-prefix-raw$/$id$/$source$">View source</a> |
+        <a href="$uri-prefix-history$/$id$/$source$">History</a> |
+        <a href="$uri-prefix-edit$/$id$/$source$">Edit</a> |
+        <a href="..">..</a> |
+        <a href="https://www.soimort.org/">&crarr; Go back to soimort.org</a> |
+        <a href="$canonical$$id$">&#9875; Permalink</a> |
         Last updated: <span id="update-time">$date$</span>
       </footer>
     </article>
-    $for(include-after)$
-    $include-after$
-    $endfor$
+$for(include-after)$
+$include-after$
+$endfor$
   </body>
 </html>

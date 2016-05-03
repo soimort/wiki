@@ -1,14 +1,14 @@
-@font-face {
-  font-family: 'Latin Modern Roman';
-  font-style: normal;
-  font-weight: normal;
-  src: url('/__/fonts/lmroman10-regular-webfont.woff') format('woff');
-}
+/* Academia (pandoc HTML5 template)
+ * designer:     soimort
+ * last updated: 2016-05-02
+ */
 
 body {
   background-color: ivory;
-  color: #111;
-  font-family: 'Latin Modern Roman', 'HanaMinA', 'Adobe Song Std', serif;
+  font-family: 'Latin Modern Roman', 'FreeSerif', serif,
+               'HanaMinA', 'Adobe Song Std', 'Source Han Sans',
+               'WenQuanYi Micro Hei', 'WenQuanYi Zen Hei',
+               'Meiryo', 'Microsoft JhengHei', 'Microsoft YaHei';
   cursor: default;
 }
 
@@ -48,7 +48,7 @@ nav#TOC {
   border: 1px solid #888;
 }
 
-div#references {
+section#references {
   font-size: .8em;
 }
 
@@ -57,10 +57,10 @@ a {
 }
 
 code {
-  font-family: 'Inconsolata', 'Consolas', 'Ubuntu Mono', 'FreeMono', monospace;
+  font-family: 'Latin Modern Mono', 'FreeMono', monospace;
 }
 
-img {
+figure img, div.figure img {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -74,8 +74,8 @@ footer {
 }
 
 footer a {
-  font-weight: bold;
   text-decoration: none;
+  font-weight: bold;
 }
 
 ::selection {

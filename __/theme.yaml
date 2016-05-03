@@ -1,0 +1,24 @@
+---
+css: [
+  //cdn.soimort.org/fonts/api/Latin-Modern-Roman.css,
+  //cdn.soimort.org/fonts/api/Latin-Modern-Mono.css,
+  //cdn.soimort.org/normalize/4.1.1/normalize.min.css,
+  //cdn.soimort.org/mathsvg/latest/mathsvg.min.css,
+  /__/css/style.css
+  ]
+header-includes: [
+  <script src="//cdn.soimort.org/jk/20160421/jk.min.js"></script>,
+  <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>,
+  <link rel="icon" href="/__/favicon.ico"/>
+  ]
+filters: [
+  mathsvg
+  ]
+raw-options: [
+  #--number-sections,
+  --section-divs,
+  #--toc,
+  --smart,  # produce typographically correct output
+  ]
+output-format: html5
+---
