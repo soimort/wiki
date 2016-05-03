@@ -18,6 +18,7 @@ $if(keywords)$
     <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$">
 $endif$
     <title>$if(title-prefix)$$title-prefix$ - $endif$$pagetitle$</title>
+    <link rel="canonical" href="$canonical$$id$">
     <style type="text/css">code { white-space: pre; }</style>
 $if(quotes)$
     <style type="text/css">q { quotes: "“" "”" "‘" "’"; }</style>
