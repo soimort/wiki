@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <!-- Academia (pandoc HTML5 template)
      designer:     soimort
-     last updated: 2016-05-02
-     last adapted: 2016-05-04 -->
+     last updated: 2016-05-07 -->
 <html$if(lang)$ lang="$lang$"$endif$$if(dir)$ dir="$dir$"$endif$>
   <head>
     <meta charset="utf-8">
@@ -69,28 +68,40 @@ $endif$
 $body$
       </div>
       <footer>
-        <hr/>
-        <a href=".."
-           title="Keyboard: [q]">
-          <i class="fa fa-angle-double-left" aria-hidden="true"></i> Parent</a> |
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
         <a class="raw" accesskey="r"
-           title="Keyboard: [R]"
+           title="Keyboard shortcut: R"
            href="$uri-prefix-raw$/$id$/$source$">
-          <i class="fa fa-code" aria-hidden="true"></i> Raw</a> |
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
         <a class="history" accesskey="h"
-           title="Keyboard: [H]"
+           title="Keyboard shortcut: H"
            href="$uri-prefix-history$/$id$/$source$">
-          <i class="fa fa-history" aria-hidden="true"></i> History</a> |
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
         <a class="edit" accesskey="e"
-           title="Keyboard: [E]"
+           title="Keyboard shortcut: E"
            href="$uri-prefix-edit$/$id$/$source$">
-          <i class="fa fa-code-fork" aria-hidden="true"></i> Edit</a> |
-        <a title="Keyboard: [p]"
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
            href="javascript:window.print();">
-          <i class="fa fa-print" aria-hidden="true"></i> Print</a> |
-        <a title="Keyboard: [.]"
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
            href="$canonical$$id$">
-          <i class="fa fa-anchor" aria-hidden="true"></i> Permalink</a> |
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
         Last updated: <span id="update-time">$date$</span>
       </footer>
     </article></main>

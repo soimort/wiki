@@ -1,17 +1,53 @@
 /* Academia (pandoc HTML5 template)
  * designer:     soimort
- * last updated: 2016-05-03
- * last adapted: 2016-05-04
+ * last updated: 2016-05-07
  */
 
+/* General */
+
 body {
-  background-color: ivory;
-  font-family: 'Latin Modern Roman', 'FreeSerif', serif,
-               'HanaMinA', 'Adobe Song Std', 'Source Han Sans',
-               'WenQuanYi Micro Hei', 'WenQuanYi Zen Hei',
-               'Meiryo', 'Microsoft JhengHei', 'Microsoft YaHei';
+  font-family: /* font stack (normal) */
+  'Latin Modern Roman', 'FreeSerif', serif,
+  'HanaMinA', 'Adobe Song Std', 'Source Han Sans',
+  'WenQuanYi Micro Hei', 'WenQuanYi Zen Hei',
+  'Meiryo', 'Microsoft JhengHei', 'Microsoft YaHei';
+
+  font-size: 16px;
   cursor: default;
+  color: black;
 }
+
+a {
+  color: black;
+}
+
+code, kbd {
+  font-family: /* font stack (monospaced) */
+  'Latin Modern Mono', 'FreeMono', monospace;
+}
+kbd {
+  margin: 1px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  box-shadow: 2px 2px 2px dimgray;
+  background-color: black;
+  color: white;
+}
+
+
+
+/* Pseudo element: selection */
+
+::selection {
+  background-color: gainsboro;
+}
+::-moz-selection {
+  background-color: gainsboro;
+}
+
+
+
+/* Contents */
 
 main {
   position: absolute;
@@ -27,27 +63,16 @@ article {
 }
 
 header {
+  text-align: center;
   font-variant: small-caps;
 }
 
-header .title {
-  text-align: center;
-}
-
 header .subtitle {
-  text-align: center;
   font-style: normal;
 }
 
 header address.author {
-  text-align: center;
   font-style: normal;
-}
-
-header .date {
-  text-align: center;
-  font-weight: normal;
-  font-size: 1em;
 }
 
 nav#TOC {
@@ -61,25 +86,22 @@ section#references {
   font-size: .8em;
 }
 
-a {
-  color: #222;
+figure {
+  margin: 1em 0;
+  text-align: center;
 }
 
-code {
-  font-family: 'Latin Modern Mono', 'FreeMono', monospace;
-}
 
-figure img, div.figure img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 1em;
-  padding-bottom: 1em;
-}
+
+/* Footer */
 
 footer {
+  padding: .5em;
   text-align: right;
   font-size: .8em;
+  border-style: solid;
+  border-width: 1px 0 0 0;
+  border-color: black;
 }
 
 footer a {
@@ -87,22 +109,26 @@ footer a {
   font-weight: bold;
 }
 
-::selection {
-  background-color: gainsboro;
-}
-::-moz-selection {
-  background-color: gainsboro;
-}
+
 
 @media
 (max-width: 1023px),
-(max-height: 575px),
 (orientation: portrait) {
-  article {
-    position: absolute;
+  main {
+    position: relative;
     width: 80%;
     left: 5%;
     padding: 5%;
-    font-size: 1em;
+  }
+
+  .jk-minibar {
+    visibility: hidden;
+  }
+}
+
+@media print {
+  /* nothing really works here. why?! */
+  .jk-minibar {
+    visibility: hidden;
   }
 }
