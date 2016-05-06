@@ -1,6 +1,6 @@
 /* jk minibar
  * (wiki.soimort.org)
- * last updated: 2016-05-04
+ * last updated: 2016-05-07
  */
 document.addEventListener('JKLoaded', function() {
   var main = document.getElementsByTagName('main')[0];
@@ -8,6 +8,7 @@ document.addEventListener('JKLoaded', function() {
 
   // layout switch
   var ind = document.createElement('div');
+  ind.className = 'jk-minibar';
   ind.style.display = 'block';
   ind.style.position = 'fixed';
   ind.style.bottom = '32px';
@@ -17,6 +18,7 @@ document.addEventListener('JKLoaded', function() {
   ind.innerHTML = '<i class="fa fa-indent fa-2x"></i>';
   document.body.appendChild(ind);
   var outd = document.createElement('div');
+  outd.className = 'jk-minibar';
   outd.style.display = 'block';
   outd.style.position = 'fixed';
   outd.style.bottom = '32px';
@@ -68,6 +70,7 @@ document.addEventListener('JKLoaded', function() {
 
   // help & status
   var help = document.createElement('div');
+  help.className = 'jk-minibar';
   help.style.display = 'block';
   help.style.position = 'fixed';
   help.style.bottom = '32px';
@@ -78,6 +81,7 @@ document.addEventListener('JKLoaded', function() {
   help.innerHTML = '<i class="fa fa-th fa-2x"></i>';
   document.body.appendChild(help);
   var stat = document.createElement('div');
+  stat.className = 'jk-minibar';
   stat.style.display = 'block';
   stat.style.position = 'fixed';
   stat.style.bottom = '8px';
