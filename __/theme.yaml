@@ -11,7 +11,8 @@ header-includes: [
   <script src="//cdn.soimort.org/jk/latest/jk.min.js"></script>,
   <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>,
   <script src="/__/js/jk-minibar.js"></script>,
-  <link rel="icon" href="//wiki.soimort.org/favicon.ico"/>
+  <link rel="icon" href="/favicon.png">,
+  <link rel="apple-touch-icon" href="/favicon.png">,
   ]
 filters: [
   mathsvg
