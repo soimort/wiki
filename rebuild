@@ -1,0 +1,7 @@
+#!/bin/bash
+for i in `ls -d ./*/`; do
+    if [ -d "$i" -a -n "${i%%*/_*}" ]; then # ignore underscored path
+        echo "pancake $i"; pancake $i
+    fi
+done
+pancake . server
