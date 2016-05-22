@@ -1,11 +1,12 @@
 ---
 css: [
-  //cdn.soimort.org/fonts/api/Latin-Modern-Roman.css,
-  //cdn.soimort.org/fonts/api/Latin-Modern-Mono.css,
+
   //cdn.soimort.org/normalize/4.1.1/normalize.min.css,
   //cdn.soimort.org/mathsvg/latest/mathsvg.min.css,
-  //maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css,
-  /__/css/style.css
+  //cdn.soimort.org/fonts/api/Latin-Modern-Roman.css,
+  //cdn.soimort.org/fonts/api/Latin-Modern-Mono.css,
+  //cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css,
+  /__/css/style.css,
   ]
 header-includes: [
   <script src="//cdn.soimort.org/jk/latest/jk.min.js"></script>,
