@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-07 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Mort Yao">
+    <meta name="dcterms.date" content="2016-05-25">
+    <title>Internet Privacy</title>
+    <link rel="canonical" href="https://wiki.soimort.org/unix/internet-privacy">
+    <style type="text/css">code { white-space: pre; }</style>
+    <link rel="stylesheet" href="//cdn.soimort.org/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/mathsvg/latest/mathsvg.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Roman.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Mono.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/__/css/style.css">
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.soimort.org/jk/latest/jk.min.js"></script>
+    <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>
+    <script src="/__/js/jk-minibar.js"></script>
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+  <body>
+    <main><article>
+      <header>
+        <h1 class="title">Internet Privacy</h1>
+        <address class="author">Mort Yao</address>
+        <!-- h3 class="date">2016-05-25</h3 -->
+      </header>
+      <nav id="TOC">
+<ul>
+<li><a href="#how-to-block-google-analytics-everywhere-from-tracking-me">How to block Google Analytics everywhere (from tracking me)</a><ul>
+<li><a href="#option-1.-the-official-but-questionably-working-way">Option 1. The official (but questionably working) way</a></li>
+<li><a href="#option-2.-the-brutal-and-the-only-correct-way">Option 2. The brutal (and the only correct) way</a></li>
+<li><a href="#notes">Notes</a></li>
+</ul></li>
+<li><a href="#references">References</a></li>
+</ul>
+      </nav>
+      <div id="content">
+<section id="how-to-block-google-analytics-everywhere-from-tracking-me" class="level2">
+<h2>How to block Google Analytics everywhere (from tracking me)</h2>
+<section id="option-1.-the-official-but-questionably-working-way" class="level3">
+<h3>Option 1. The official (but questionably working) way</h3>
+<p>Install the <a href="https://tools.google.com/dlpage/gaoptout">Google Analytics Opt-out Browser Add-on</a>.</p>
+<p>Note the following claims on their <a href="https://chrome.google.com/webstore/detail/google-analytics-opt-out/fllaojicojecljbmefodhfapmkghcbnh">description</a> page:</p>
+<blockquote>
+<p>Updates to your browser or operating system may affect the functionality of the opt-out extension.</p>
+</blockquote>
+<p>So even if it does work, it <em>may</em> stop working without you noticing it. See Option 2 for a more proper solution.</p>
+</section>
+<section id="option-2.-the-brutal-and-the-only-correct-way" class="level3">
+<h3>Option 2. The brutal (and the only correct) way</h3>
+<p>Add this one line to your <code>/etc/hosts</code>:</p>
+<pre><code>127.0.0.1   www.google-analytics.com</code></pre>
+<p>So your browser will not even have a chance to see the tracking code (<a href="https://www.google-analytics.com/analytics.js" class="uri">https://www.google-analytics.com/analytics.js</a> or <a href="https://www.google-analytics.com/ga.js" class="uri">https://www.google-analytics.com/ga.js</a>).</p>
+</section>
+<section id="notes" class="level3">
+<h3>Notes</h3>
+<p>Note that although this method effectively blocks Google Analytics’ tracking code, it is normally not possible to know whether there are other pieces of JavaScript engaged in traffic tracking activities on a Web page. Google Analytics is just the most commonly-used and the cheapest (free) one, used by many sites without visitors’ consent.</p>
+<p>Also, be aware that the method here does not prevent the server itself logging your activities; nor does it protect you from eavesdropping.</p>
+<hr />
+</section>
+</section>
+<section id="references" class="level2">
+<h2>References</h2>
+<ul>
+<li>City College of San Francisco. “Instructions: Block Google Analytics” Accessed May 24, 2016. <a href="http://www.ccsf.edu/Policy/Privacy/ga.html" class="uri">http://www.ccsf.edu/Policy/Privacy/ga.html</a></li>
+</ul>
+</section>
+      </div>
+      <footer>
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard shortcut: R"
+           href="https://wiki.soimort.org/unix/internet-privacy/src.md">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
+        <a class="history" accesskey="h"
+           title="Keyboard shortcut: H"
+           href="https://github.com/soimort/wiki/commits/gh-pages/unix/internet-privacy/src.md">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard shortcut: E"
+           href="https://github.com/soimort/wiki/edit/gh-pages/unix/internet-privacy/src.md">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
+           href="https://wiki.soimort.org/unix/internet-privacy">
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
+        Last updated: <span id="update-time">2016-05-25</span>
+      </footer>
+    </article></main>
+  </body>
+</html>
