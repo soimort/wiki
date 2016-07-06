@@ -4,6 +4,7 @@
 
 Tips and tricks about Unix-like systems and tools that run on them.
 
+* [Git Tricks](git)
 * [GnuPG by Example](gpg)
 * [Internet Privacy](internet-privacy)
     * How to block Google Analytics everywhere
