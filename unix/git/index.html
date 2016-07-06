@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-07 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Mort Yao">
+    <meta name="dcterms.date" content="2016-07-06">
+    <title>Git Tricks</title>
+    <link rel="canonical" href="https://wiki.soimort.org/unix/git">
+    <style type="text/css">code { white-space: pre; }</style>
+    <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    </style>
+    <link rel="stylesheet" href="//cdn.soimort.org/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/mathsvg/latest/mathsvg.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Roman.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Mono.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/__/css/style.css">
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.soimort.org/jk/latest/jk.min.js"></script>
+    <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>
+    <script src="/__/js/jk-minibar.js"></script>
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+  <body>
+    <main><article>
+      <header>
+        <h1 class="title">Git Tricks</h1>
+        <address class="author">Mort Yao</address>
+        <!-- h3 class="date">2016-07-06</h3 -->
+      </header>
+      <nav id="TOC">
+<ul>
+<li><a href="#working-with-branches">Working with Branches</a><ul>
+<li><a href="#clone-a-single-branch-from-a-remote-repository">Clone a single branch from a remote repository</a></li>
+<li><a href="#force-update-of-a-repository-brutally-and-throw-away-any-uncommitted-local-changes-commits">Force update of a repository brutally (and throw away any uncommitted local changes / commits)</a></li>
+<li><a href="#create-a-new-unrelated-branch-to-work-on-e.g.-gh-pages-for-github-pages">Create a new, unrelated branch to work on (e.g., <code>gh-pages</code> for GitHub Pages)</a></li>
+</ul></li>
+<li><a href="#staging">Staging</a><ul>
+<li><a href="#unstage-any-staged-changes-for-a-file">Unstage any staged changes for a file</a></li>
+<li><a href="#stage-the-removal-of-a-file-but-leave-it-untracked-in-the-working-tree">Stage the removal of a file (but leave it untracked in the working tree)</a></li>
+</ul></li>
+<li><a href="#miscellaneous">Miscellaneous</a><ul>
+<li><a href="#compare-two-arbitrary-files">Compare two arbitrary files</a></li>
+</ul></li>
+</ul>
+      </nav>
+      <div id="content">
+<section id="working-with-branches" class="level2">
+<h2>Working with Branches</h2>
+<section id="clone-a-single-branch-from-a-remote-repository" class="level3">
+<h3>Clone a single branch from a remote repository</h3>
+<pre><code>$ git clone -b <span class="do">develop</span> --single-branch <span class="do">git@github.com:soimort/example.git</span></code></pre>
+<p>Or: (if there’s already an existing remote, just <code>checkout</code> the branch)</p>
+<pre><code>$ git checkout -b <span class="do">develop</span> <span class="do">origin/develop</span></code></pre>
+<p>Source: <a href="http://stackoverflow.com/a/8142070/1114972" class="uri">http://stackoverflow.com/a/8142070/1114972</a></p>
+</section>
+<section id="force-update-of-a-repository-brutally-and-throw-away-any-uncommitted-local-changes-commits" class="level3">
+<h3>Force update of a repository brutally (and throw away any uncommitted local changes / commits)</h3>
+<p>This operation does not require configuration of git user name / email. (Thus could be useful on an app server.)</p>
+<pre><code>$ git fetch
+$ git reset --hard <span class="do">origin/master</span></code></pre>
+<p>Source: <a href="http://stackoverflow.com/a/17713604/1114972" class="uri">http://stackoverflow.com/a/17713604/1114972</a></p>
+</section>
+<section id="create-a-new-unrelated-branch-to-work-on-e.g.-gh-pages-for-github-pages" class="level3">
+<h3>Create a new, unrelated branch to work on (e.g., <code>gh-pages</code> for GitHub Pages)</h3>
+<p>Personally I would prefer to put an orphaned branch in a separated directory so that it can never mess up with the major codebase.</p>
+<pre><code>$ mkdir <span class="do">gh-pages</span> && cd <span class="do">gh-pages</span>
+$ git init
+$ git remote add origin <span class="do">git@github.com:soimort/example.git</span>
+$ git checkout -b <span class="do">gh-pages</span>
+...
+$ git push origin <span class="do">gh-pages</span></code></pre>
+</section>
+</section>
+<section id="staging" class="level2">
+<h2>Staging</h2>
+<section id="unstage-any-staged-changes-for-a-file" class="level3">
+<h3>Unstage any staged changes for a file</h3>
+<pre><code>$ git reset <span class="do">file</span></code></pre>
+</section>
+<section id="stage-the-removal-of-a-file-but-leave-it-untracked-in-the-working-tree" class="level3">
+<h3>Stage the removal of a file (but leave it untracked in the working tree)</h3>
+<pre><code>$ git rm --cached <span class="do">file</span></code></pre>
+</section>
+</section>
+<section id="miscellaneous" class="level2">
+<h2>Miscellaneous</h2>
+<section id="compare-two-arbitrary-files" class="level3">
+<h3>Compare two arbitrary files</h3>
+<pre><code>$ git diff --no-index <span class="do">file_a</span> <span class="do">file_b</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"></code></pre></div>
+</section>
+</section>
+      </div>
+      <footer>
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard shortcut: R"
+           href="https://wiki.soimort.org/unix/git/src.md">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
+        <a class="history" accesskey="h"
+           title="Keyboard shortcut: H"
+           href="https://github.com/soimort/wiki/commits/gh-pages/unix/git/src.md">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard shortcut: E"
+           href="https://github.com/soimort/wiki/edit/gh-pages/unix/git/src.md">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
+           href="https://wiki.soimort.org/unix/git">
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
+        Last updated: <span id="update-time">2016-07-06</span>
+      </footer>
+    </article></main>
+  </body>
+</html>
