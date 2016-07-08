@@ -22,6 +22,7 @@ raw-options: [
   #--number-sections,
   --section-divs,
   --toc,
+  --toc-depth=2,
   --smart,  # produce typographically correct output
   ]
 output-format: html5
