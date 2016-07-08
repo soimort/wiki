@@ -48,6 +48,20 @@ Personally I would prefer to put an orphaned branch in a separated directory so 
 
 
 
+## GitHub Tricks
+
+### Get a Pull Request (and create a feature branch for the PR)
+
+    $ git fetch origin [pull/123/head]
+    $ git checkout -b [feature-branch] FETCH_HEAD
+
+Or:
+
+    $ git fetch origin [pull/123/head:feature-branch]
+    $ git checkout [feature-branch]
+
+
+
 ## Miscellaneous
 
 ### Compare two arbitrary files

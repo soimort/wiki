@@ -73,18 +73,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       </header>
       <nav id="TOC">
 <ul>
-<li><a href="#working-with-branches">Working with Branches</a><ul>
-<li><a href="#clone-a-single-branch-from-a-remote-repository">Clone a single branch from a remote repository</a></li>
-<li><a href="#force-update-of-a-repository-brutally-and-throw-away-any-uncommitted-local-changes-commits">Force update of a repository brutally (and throw away any uncommitted local changes / commits)</a></li>
-<li><a href="#create-a-new-unrelated-branch-to-work-on-e.g.-gh-pages-for-github-pages">Create a new, unrelated branch to work on (e.g., <code>gh-pages</code> for GitHub Pages)</a></li>
-</ul></li>
-<li><a href="#staging">Staging</a><ul>
-<li><a href="#unstage-any-staged-changes-for-a-file">Unstage any staged changes for a file</a></li>
-<li><a href="#stage-the-removal-of-a-file-but-leave-it-untracked-in-the-working-tree">Stage the removal of a file (but leave it untracked in the working tree)</a></li>
-</ul></li>
-<li><a href="#miscellaneous">Miscellaneous</a><ul>
-<li><a href="#compare-two-arbitrary-files">Compare two arbitrary files</a></li>
-</ul></li>
+<li><a href="#working-with-branches">Working with Branches</a></li>
+<li><a href="#staging">Staging</a></li>
+<li><a href="#github-tricks">GitHub Tricks</a></li>
+<li><a href="#miscellaneous">Miscellaneous</a></li>
 </ul>
       </nav>
       <div id="content">
@@ -124,6 +116,17 @@ $ git push origin <span class="do">gh-pages</span></code></pre>
 <section id="stage-the-removal-of-a-file-but-leave-it-untracked-in-the-working-tree" class="level3">
 <h3>Stage the removal of a file (but leave it untracked in the working tree)</h3>
 <pre><code>$ git rm --cached <span class="do">file</span></code></pre>
+</section>
+</section>
+<section id="github-tricks" class="level2">
+<h2>GitHub Tricks</h2>
+<section id="get-a-pull-request-and-create-a-feature-branch-for-the-pr" class="level3">
+<h3>Get a Pull Request (and create a feature branch for the PR)</h3>
+<pre><code>$ git fetch origin <span class="do">pull/123/head</span>
+$ git checkout -b <span class="do">feature-branch</span> FETCH_HEAD</code></pre>
+<p>Or:</p>
+<pre><code>$ git fetch origin <span class="do">pull/123/head:feature-branch</span>
+$ git checkout <span class="do">feature-branch</span></code></pre>
 </section>
 </section>
 <section id="miscellaneous" class="level2">
