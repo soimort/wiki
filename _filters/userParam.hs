@@ -6,6 +6,8 @@
     $ tar xvf [FILENAME]
 
   Anything in brackets will be rendered in a different style/color.
+
+  Dependencies: regex-compat
 -}
 import Text.Pandoc.JSON
 import Text.Regex
