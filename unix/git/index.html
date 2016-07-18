@@ -106,6 +106,13 @@ $ git checkout -b <span class="do">gh-pages</span>
 ...
 $ git push origin <span class="do">gh-pages</span></code></pre>
 </section>
+<section id="clean-obsolete-references" class="level3">
+<h3>Clean obsolete references</h3>
+<p>Show all stale branches:</p>
+<pre><code>$ git branch -r</code></pre>
+<p>Update local references to the remote repository: (and delete obsolete references that are removed in the remote repository)</p>
+<pre><code>$ git fetch --prune</code></pre>
+</section>
 </section>
 <section id="staging" class="level2">
 <h2>Staging</h2>

@@ -34,6 +34,16 @@ Personally I would prefer to put an orphaned branch in a separated directory so 
     ...
     $ git push origin [gh-pages]
 
+### Clean obsolete references
+
+Show all stale branches:
+
+    $ git branch -r
+
+Update local references to the remote repository: (and delete obsolete references that are removed in the remote repository)
+
+    $ git fetch --prune
+
 
 
 ## Staging
