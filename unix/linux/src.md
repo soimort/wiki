@@ -1,6 +1,6 @@
 % Linux Tricks
 % Mort Yao
-% 2016-07-20
+% 2016-07-21
 
 (***Note:** This page contains tips and tricks which are specific to the Linux kernel or a certain Linux distribution. For cross-platform utilities that may run on Linux, e.g., GNU, see [CLI tricks](/unix/cli) instead.*)
 

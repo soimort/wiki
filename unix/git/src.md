@@ -1,6 +1,6 @@
 % Git Tricks
 % Mort Yao
-% 2016-07-06
+% 2016-07-21
 
 ## Working with branches
 
