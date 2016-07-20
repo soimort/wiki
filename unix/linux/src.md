@@ -40,6 +40,14 @@ To bring it back:
 
 (Wikipedia: <https://en.wikipedia.org/wiki/Util-linux>)
 
+### Display system shutdown entries and run level changes
+
+    $ last -x | less
+
+### Show bad login attempts
+
+    # lastb | less
+
 ### Force releasing the swap space
 
 Swapping generally downgrades the overall performance; it is sometimes good to manually release everything back into the RAM.

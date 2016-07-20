@@ -108,6 +108,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <section id="util-linux" class="level2">
 <h2>util-linux</h2>
 <p>(Wikipedia: <a href="https://en.wikipedia.org/wiki/Util-linux" class="uri">https://en.wikipedia.org/wiki/Util-linux</a>)</p>
+<section id="display-system-shutdown-entries-and-run-level-changes" class="level3">
+<h3>Display system shutdown entries and run level changes</h3>
+<pre><code>$ last -x | less</code></pre>
+</section>
+<section id="show-bad-login-attempts" class="level3">
+<h3>Show bad login attempts</h3>
+<pre><code># lastb | less</code></pre>
+</section>
 <section id="force-releasing-the-swap-space" class="level3">
 <h3>Force releasing the swap space</h3>
 <p>Swapping generally downgrades the overall performance; it is sometimes good to manually release everything back into the RAM.</p>
