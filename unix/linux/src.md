@@ -50,6 +50,8 @@ To bring it back:
 
 ### View kernel message buffer (and follow it)
 
+In human-readable timestamp: (may be inaccurate!)
+
     $ dmesg -Tw
 
 ### Force releasing the swap space
