@@ -116,6 +116,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h3>Show bad login attempts</h3>
 <pre><code># lastb | less</code></pre>
 </section>
+<section id="view-kernel-message-buffer-and-follow-it" class="level3">
+<h3>View kernel message buffer (and follow it)</h3>
+<pre><code>$ dmesg -Tw</code></pre>
+</section>
 <section id="force-releasing-the-swap-space" class="level3">
 <h3>Force releasing the swap space</h3>
 <p>Swapping generally downgrades the overall performance; it is sometimes good to manually release everything back into the RAM.</p>
@@ -143,6 +147,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <section id="view-systemd-journal-reverse-chronologically" class="level3">
 <h3>View systemd journal (reverse chronologically)</h3>
 <pre><code>$ journalctl -r</code></pre>
+</section>
+<section id="view-kernel-message-log-from-current-boot-and-follow-it" class="level3">
+<h3>View kernel message log from current boot (and follow it)</h3>
+<pre><code>$ journalctl -kf</code></pre>
 </section>
 <section id="write-a-simple-service" class="level3">
 <h3>Write a simple service</h3>

@@ -48,6 +48,10 @@ To bring it back:
 
     # lastb | less
 
+### View kernel message buffer (and follow it)
+
+    $ dmesg -Tw
+
 ### Force releasing the swap space
 
 Swapping generally downgrades the overall performance; it is sometimes good to manually release everything back into the RAM.
@@ -83,6 +87,10 @@ Or:
 ### View systemd journal (reverse chronologically)
 
     $ journalctl -r
+
+### View kernel message log from current boot (and follow it)
+
+    $ journalctl -kf
 
 ### Write a simple service
 
