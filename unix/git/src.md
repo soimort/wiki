@@ -34,6 +34,10 @@ Personally I would prefer to put an orphaned branch in a separated directory so 
     ...
     $ git push origin [gh-pages]
 
+### Delete a remote branch
+
+    $ git push origin :[branch-to-be-deleted]
+
 ### Clean obsolete references
 
 Show all stale branches:
