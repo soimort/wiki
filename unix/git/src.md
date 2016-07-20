@@ -2,7 +2,7 @@
 % Mort Yao
 % 2016-07-06
 
-## Working with Branches
+## Working with branches
 
 ### Clone a single branch from a remote repository
 
@@ -58,7 +58,7 @@ Update local references to the remote repository: (and delete obsolete reference
 
 
 
-## GitHub Tricks
+## GitHub tricks
 
 ### Get a Pull Request (and create a feature branch for the PR)
 

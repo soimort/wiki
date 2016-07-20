@@ -73,16 +73,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       </header>
       <nav id="TOC">
 <ul>
-<li><a href="#exchanging-keys">Exchanging Keys</a></li>
-<li><a href="#encrypting-and-decrypting-documents">Encrypting and Decrypting Documents</a></li>
-<li><a href="#making-and-verifying-signatures">Making and Verifying Signatures</a></li>
+<li><a href="#exchanging-keys">Exchanging keys</a></li>
+<li><a href="#encrypting-and-decrypting-documents">Encrypting and decrypting documents</a></li>
+<li><a href="#making-and-verifying-signatures">Making and verifying signatures</a></li>
 <li><a href="#gpg-agent">gpg-agent</a></li>
 <li><a href="#references">References</a></li>
 </ul>
       </nav>
       <div id="content">
 <section id="exchanging-keys" class="level2">
-<h2>Exchanging Keys</h2>
+<h2>Exchanging keys</h2>
 <p>Check for your own keys:</p>
 <pre><code>$ gpg --list-secret-keys</code></pre>
 <p>List all keys on your public keyring: (<code>~/.gnupg/pubring.kbx</code>)</p>
@@ -95,7 +95,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <pre><code>$ gpg --import <span class="do">bob.gpg</span></code></pre>
 </section>
 <section id="encrypting-and-decrypting-documents" class="level2">
-<h2>Encrypting and Decrypting Documents</h2>
+<h2>Encrypting and decrypting documents</h2>
 <p>Encrypt a document with a public key:</p>
 <pre><code>$ gpg --output <span class="do">doc.gpg</span> --encrypt --recipient <span class="do">bob@example.com</span> <span class="do">doc</span></code></pre>
 <p>Encrypt a document with a symmetric cipher:</p>
@@ -104,7 +104,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <pre><code>$ gpg --output <span class="do">doc</span> --decrypt <span class="do">doc.gpg</span></code></pre>
 </section>
 <section id="making-and-verifying-signatures" class="level2">
-<h2>Making and Verifying Signatures</h2>
+<h2>Making and verifying signatures</h2>
 <p>Sign a document:</p>
 <pre><code>$ gpg --output <span class="do">doc.sig</span> --sign <span class="do">doc</span></code></pre>
 <p>Verify a signature and recover the encrypted document:</p>

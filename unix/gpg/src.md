@@ -2,7 +2,7 @@
 % Mort Yao
 % 2016-04-07
 
-## Exchanging Keys
+## Exchanging keys
 
 Check for your own keys:
 
@@ -24,7 +24,9 @@ Import a public key:
 
     $ gpg --import [bob.gpg]
 
-## Encrypting and Decrypting Documents
+
+
+## Encrypting and decrypting documents
 
 Encrypt a document with a public key:
 
@@ -38,7 +40,9 @@ Decrypt a document:
 
     $ gpg --output [doc] --decrypt [doc.gpg]
 
-## Making and Verifying Signatures
+
+
+## Making and verifying signatures
 
 Sign a document:
 
@@ -59,6 +63,8 @@ Sign a document, but create a detached signature:
 Verify a detached signature with respect to the original document:
 
     $ gpg --verify [doc.sig] [doc]
+
+
 
 ## gpg-agent
 
