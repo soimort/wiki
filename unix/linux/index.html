@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-07 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Mort Yao">
+    <meta name="dcterms.date" content="2016-07-20">
+    <title>Linux Tricks</title>
+    <link rel="canonical" href="https://wiki.soimort.org/unix/linux">
+    <style type="text/css">code { white-space: pre; }</style>
+    <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    </style>
+    <link rel="stylesheet" href="//cdn.soimort.org/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/mathsvg/latest/mathsvg.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Roman.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Mono.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/__/css/style.css">
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.soimort.org/jk/latest/jk.min.js"></script>
+    <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>
+    <script src="/__/js/jk-minibar.js"></script>
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+  <body>
+    <main><article>
+      <header>
+        <h1 class="title">Linux Tricks</h1>
+        <address class="author">Mort Yao</address>
+        <!-- h3 class="date">2016-07-20</h3 -->
+      </header>
+      <nav id="TOC">
+<ul>
+<li><a href="#kernel">Kernel</a></li>
+<li><a href="#kernel-modules">Kernel modules</a></li>
+<li><a href="#util-linux">util-linux</a></li>
+<li><a href="#sysv-init">SysV init</a></li>
+<li><a href="#systemd">systemd</a></li>
+<li><a href="#distro-specific">Distro-specific</a></li>
+</ul>
+      </nav>
+      <div id="content">
+<p>(<em><strong>Note:</strong> This page contains tips and tricks which are specific to the Linux kernel or a certain Linux distribution. For cross-platform utilities that may run on Linux, e.g., GNU, see <a href="/unix/cli">CLI tricks</a> instead.</em>)</p>
+<section id="kernel" class="level2">
+<h2>Kernel</h2>
+<section id="useful-information" class="level3">
+<h3>Useful information</h3>
+<p>Show the parameters passed to the kernel at the time it was started:</p>
+<pre><code>$ cat /proc/cmdline</code></pre>
+<p>Show the config options of the current running kernel:</p>
+<pre><code>$ cat /proc/config.gz | gunzip</code></pre>
+<p>Or:</p>
+<pre><code>$ zcat /proc/config.gz</code></pre>
+</section>
+</section>
+<section id="kernel-modules" class="level2">
+<h2>Kernel modules</h2>
+<section id="disable-the-touchpad" class="level3">
+<h3>Disable the touchpad</h3>
+<p><code>psmouse</code> seems to be the module designated for the touchpad on many laptops. If it annoys when typing, simply remove the module with:</p>
+<pre><code># rmmod psmouse</code></pre>
+<p>To bring it back:</p>
+<pre><code># modprobe psmouse</code></pre>
+</section>
+</section>
+<section id="util-linux" class="level2">
+<h2>util-linux</h2>
+<p>(Wikipedia: <a href="https://en.wikipedia.org/wiki/Util-linux" class="uri">https://en.wikipedia.org/wiki/Util-linux</a>)</p>
+<section id="force-releasing-the-swap-space" class="level3">
+<h3>Force releasing the swap space</h3>
+<p>Swapping generally downgrades the overall performance; it is sometimes good to manually release everything back into the RAM.</p>
+<p>(<strong>Warning:</strong> To run this command safely, freely available RAM is assumed to be sufficient; otherwise, the system may kill some processes to make room.)</p>
+<pre><code># swapoff -a &amp;&amp; swapon -a</code></pre>
+</section>
+</section>
+<section id="sysv-init" class="level2">
+<h2>SysV init</h2>
+<p>(Wikipedia: <a href="https://en.wikipedia.org/wiki/Init" class="uri">https://en.wikipedia.org/wiki/Init</a>)</p>
+<section id="start-a-system-service-e.g.-httpd" class="level3">
+<h3>Start a system service (e.g., httpd)</h3>
+<pre><code># /etc/rc.d/httpd start</code></pre>
+<p>Or:</p>
+<pre><code># rc.d start httpd</code></pre>
+</section>
+</section>
+<section id="systemd" class="level2">
+<h2>systemd</h2>
+<p>(Wikipedia: <a href="https://en.wikipedia.org/wiki/Systemd" class="uri">https://en.wikipedia.org/wiki/Systemd</a>)</p>
+<section id="start-a-system-service-e.g.-httpd-1" class="level3">
+<h3>Start a system service (e.g., httpd)</h3>
+<pre><code># systemctl start httpd</code></pre>
+</section>
+<section id="view-systemd-journal-reverse-chronologically" class="level3">
+<h3>View systemd journal (reverse chronologically)</h3>
+<pre><code>$ journalctl -r</code></pre>
+</section>
+<section id="write-a-simple-service" class="level3">
+<h3>Write a simple service</h3>
+<p>Create a file <code>foobar.service</code>:</p>
+<div class="sourceCode"><pre class="sourceCode ini"><code class="sourceCode ini"><span class="kw">[Unit]</span>
+<span class="dt">Description</span><span class="ot">=</span><span class="st">My dumb daemon</span>
+
+<span class="kw">[Service]</span>
+<span class="dt">ExecStart</span><span class="ot">=</span><span class="st">/bin/sh -c &quot;foo bar&quot;</span>
+
+<span class="kw">[Install]</span>
+<span class="dt">WantedBy</span><span class="ot">=</span><span class="st">multi-user.target</span></code></pre></div>
+<p>Copy the file to systemd’s designated place and enable the service:</p>
+<pre><code># cp -v foobar.service /etc/systemd/system/
+# systemctl enable foobar</code></pre>
+</section>
+</section>
+<section id="distro-specific" class="level2">
+<h2>Distro-specific</h2>
+<section id="pacman-arch-linux" class="level3">
+<h3>pacman (Arch Linux)</h3>
+<p>Find out which package owns the program:</p>
+<pre><code>$ which <span class="do">cpp</span> | pacman -Qo -</code></pre>
+</section>
+</section>
+      </div>
+      <footer>
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard shortcut: R"
+           href="https://wiki.soimort.org/unix/linux/src.md">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
+        <a class="history" accesskey="h"
+           title="Keyboard shortcut: H"
+           href="https://github.com/soimort/wiki/commits/gh-pages/unix/linux/src.md">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard shortcut: E"
+           href="https://github.com/soimort/wiki/edit/gh-pages/unix/linux/src.md">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
+           href="https://wiki.soimort.org/unix/linux">
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
+        Last updated: <span id="update-time">2016-07-20</span>
+      </footer>
+    </article></main>
+  </body>
+</html>
