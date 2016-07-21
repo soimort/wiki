@@ -118,8 +118,12 @@ Copy the file to systemd's designated place and enable the service:
 
 ## Distro-specific
 
-### pacman (Arch Linux)
+### Arch Linux
 
 Find out which package owns the program:
 
     $ which [cpp] | pacman -Qo -
+
+List all installed packages, in descending order of size:
+
+    $ expac -s -H M "%-30n %m" | sort -rhk 2

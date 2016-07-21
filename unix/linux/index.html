@@ -171,10 +171,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </section>
 <section id="distro-specific" class="level2">
 <h2>Distro-specific</h2>
-<section id="pacman-arch-linux" class="level3">
-<h3>pacman (Arch Linux)</h3>
+<section id="arch-linux" class="level3">
+<h3>Arch Linux</h3>
 <p>Find out which package owns the program:</p>
 <pre><code>$ which <span class="do">cpp</span> | pacman -Qo -</code></pre>
+<p>List all installed packages, in descending order of size:</p>
+<pre><code>$ expac -s -H M "%-30n %m" | sort -rhk 2</code></pre>
 </section>
 </section>
       </div>
