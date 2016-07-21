@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-07 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Mort Yao">
+    <meta name="dcterms.date" content="2016-07-21">
+    <title>Command-line Tricks</title>
+    <link rel="canonical" href="https://wiki.soimort.org/unix/cli">
+    <style type="text/css">code { white-space: pre; }</style>
+    <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    </style>
+    <link rel="stylesheet" href="//cdn.soimort.org/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/mathsvg/latest/mathsvg.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Roman.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Mono.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/__/css/style.css">
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.soimort.org/jk/latest/jk.min.js"></script>
+    <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>
+    <script src="/__/js/jk-minibar.js"></script>
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+  <body>
+    <main><article>
+      <header>
+        <h1 class="title">Command-line Tricks</h1>
+        <address class="author">Mort Yao</address>
+        <!-- h3 class="date">2016-07-21</h3 -->
+      </header>
+      <nav id="TOC">
+<ul>
+<li><a href="#common-usage">Common usage</a></li>
+<li><a href="#system-maintenance">System maintenance</a></li>
+<li><a href="#networking">Networking</a></li>
+<li><a href="#web-scraping">Web scraping</a></li>
+</ul>
+      </nav>
+      <div id="content">
+<p>(<em><strong>Note:</strong> This page contains tips and tricks of most commonly used command-line utilities on Unix-like OSes. For usages related to the shell itself, see <a href="/unix/shell">Shell tricks</a> instead.</em>)</p>
+<section id="common-usage" class="level2">
+<h2>Common usage</h2>
+<section id="show-unix-epoch-time" class="level3">
+<h3>Show Unix epoch time</h3>
+<pre><code>$ date +%s</code></pre>
+</section>
+<section id="show-the-mime-type-of-a-file" class="level3">
+<h3>Show the MIME type of a file</h3>
+<pre><code>$ file -0 --mime-type '<span class="do">filename</span>' | cut -d $'\0' -f2 | cut -d' ' -f2</code></pre>
+</section>
+<section id="list-files-recursively-etc." class="level3">
+<h3>List files recursively, etc.</h3>
+<pre><code>$ find .</code></pre>
+<p>List files by extension:</p>
+<pre><code>$ find . -name "<span class="do">*.py</span>"</code></pre>
+<p>To calculate the total number of lines of code, use:</p>
+<pre><code>$ find . -name "<span class="do">*.py</span>" | xargs grep -v "^$" | wc -l</code></pre>
+<p>To delete all files with some extension, use:</p>
+<pre><code>$ find . -name "<span class="do">*.o</span>" -delete</code></pre>
+</section>
+<section id="list-sub-directories-in-descending-order-of-size" class="level3">
+<h3>List sub-directories in descending order of size</h3>
+<pre><code>$ du -hs * | sort -hr</code></pre>
+</section>
+<section id="archive-and-compress-a-directory" class="level3">
+<h3>Archive (and compress) a directory</h3>
+<p>As ZIP format:</p>
+<pre><code>$ zip -r <span class="do">src.zip</span> <span class="do">src</span></code></pre>
+<p>As gzip format:</p>
+<pre><code>$ tar -czf <span class="do">src.tar.gz</span> <span class="do">src</span></code></pre>
+<p>To archive some files under a certain directory without including the pathname in the resulting archive, change the directory with <code>-C</code>:</p>
+<pre><code>$ tar -czf <span class="do">files.tar.gz</span> -C <span class="do">src</span> <span class="do">files</span></code></pre>
+</section>
+<section id="login-to-a-remote-host" class="level3">
+<h3>Login to a remote host</h3>
+<p>e.g., login to <code>127.0.0.1</code> as user <code>root</code>, via port <code>22</code>:</p>
+<pre><code>$ ssh -p <span class="do">22</span> <span class="do">root</span>@<span class="do">127.0.0.1</span></code></pre>
+</section>
+<section id="copy-files-to-a-remote-host" class="level3">
+<h3>Copy files to a remote host</h3>
+<p>e.g., copy some <code>files</code> to <code>127.0.0.1</code> as user <code>root</code>, via port <code>22</code>:</p>
+<pre><code>$ scp -P <span class="do">22</span> <span class="do">files</span> <span class="do">root</span>@<span class="do">127.0.0.1</span>:<span class="do">/home/root/bak</span></code></pre>
+</section>
+</section>
+<section id="system-maintenance" class="level2">
+<h2>System maintenance</h2>
+<section id="view-acpi-information-battery-status-etc." class="level3">
+<h3>View ACPI information (battery status, etc.)</h3>
+<pre><code>$ acpi -i</code></pre>
+</section>
+<section id="view-smart-information" class="level3">
+<h3>View SMART information</h3>
+<pre><code># smartctl -a /dev/sda</code></pre>
+</section>
+<section id="wipe-out-a-disk" class="level3">
+<h3>Wipe out a disk</h3>
+<p>Data removed by <code>rm -rf</code> can be easily recovered by a software tool like <a href="http://www.cgsecurity.org/wiki/TestDisk">TestDisk</a>. To wipe out all data on a device (e.g., <code>/dev/sda</code>) reliably, use:</p>
+<pre><code># dd if=/dev/urandom of=/dev/sda bs=4k</code></pre>
+<p>(<strong>Warning:</strong> Do NOT try the above command until you need it!)</p>
+</section>
+</section>
+<section id="networking" class="level2">
+<h2>Networking</h2>
+<section id="show-all-active-internet-connections" class="level3">
+<h3>Show all active Internet connections</h3>
+<p>Show only TCP connections:</p>
+<pre><code>$ netstat -ntlp</code></pre>
+<p>To include UDP connections:</p>
+<pre><code>$ netstat -ntulp</code></pre>
+</section>
+<section id="port-scanning" class="level3">
+<h3>Port scanning</h3>
+<p>Check for a port number (e.g., <code>8000</code>):</p>
+<pre><code>$ netcat -v -w 3 -z <span class="do">scanme.nmap.org</span> <span class="do">8000</span></code></pre>
+<p>Check for a range of ports (e.g., <code>20</code> - <code>80</code>):</p>
+<pre><code>$ netcat -v -w 3 -z <span class="do">scanme.nmap.org</span> <span class="do">20-80</span></code></pre>
+<p>Scan all open ports with <a href="https://nmap.org/">Nmap</a>:</p>
+<pre><code>$ nmap -v -A <span class="do">scanme.nmap.org</span></code></pre>
+</section>
+<section id="query-a-specific-dns-server-e.g.-google-public-dns" class="level3">
+<h3>Query a specific DNS server (e.g., Google Public DNS)</h3>
+<pre><code>$ dig @<span class="do">8.8.8.8</span> <span class="do">www.example.com</span></code></pre>
+</section>
+<section id="find-out-your-ip-address-on-the-public-internet" class="level3">
+<h3>Find out your IP address on the public Internet</h3>
+<pre><code>$ dig +short myip.opendns.com @resolver1.opendns.com</code></pre>
+</section>
+<section id="look-for-the-geolocation-of-a-host" class="level3">
+<h3>Look for the geolocation of a host</h3>
+<pre><code>$ geoiplookup <span class="do">google.com</span></code></pre>
+<p>Or: (IPv6)</p>
+<pre><code>$ geoiplookup6 <span class="do">google.com</span></code></pre>
+</section>
+<section id="start-an-http-server-for-development" class="level3">
+<h3>Start an HTTP server for development</h3>
+<pre><code>$ python3 -m http.server <span class="do">4000</span></code></pre>
+</section>
+</section>
+<section id="web-scraping" class="level2">
+<h2>Web scraping</h2>
+<section id="check-unread-gmail" class="level3">
+<h3>Check unread Gmail</h3>
+<p>Replace “<code>abcdefghijklmnop</code>” with your <a href="https://security.google.com/settings/security/apppasswords">16-digit app password</a> (not your login password!):</p>
+<pre class="console"><code>$ curl -u foo.bar@gmail.com:abcdefghijklmnop \
+-s &quot;https://mail.google.com/mail/feed/atom&quot; | tr -d &#39;\n&#39; | \
+awk -F &#39;&lt;entry&gt;&#39; &#39;{for (i=2; i&lt;=NF; i++) {print $i}}&#39; | \
+sed -n &quot;s/&lt;title&gt;\(.*\)&lt;\/title.*name&gt;\(.*\)&lt;\/name&gt;.*/\2 - \1/p&quot;</code></pre>
+<p>Source: <a href="http://www.commandlinefu.com/commands/view/3386/check-your-unread-gmail-from-the-command-line" class="uri">http://www.commandlinefu.com/commands/view/3386/check-your-unread-gmail-from-the-command-line</a></p>
+</section>
+<section id="check-an-atom-feed-for-the-newest-entry" class="level3">
+<h3>Check an Atom feed for the newest entry</h3>
+<pre class="console"><code>$ curl -s https://github.com/blog.atom | sed -e &quot;s/xmlns/ignore/&quot; - | \
+xmllint --xpath &quot;/feed/entry[1]/title/text()&quot; -</code></pre>
+</section>
+<section id="harvest-email-addresses-from-a-web-page" class="level3">
+<h3>Harvest email addresses from a web page</h3>
+<pre class="console"><code>$ curl -s &#39;https://pgp.mit.edu/pks/lookup?search=0x07DA00CB78203251&#39; | \
+grep -o &#39;[[:alnum:].]*@[[:alnum:].]*&#39;</code></pre>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"></code></pre></div>
+</section>
+</section>
+      </div>
+      <footer>
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard shortcut: R"
+           href="https://wiki.soimort.org/unix/cli/src.md">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
+        <a class="history" accesskey="h"
+           title="Keyboard shortcut: H"
+           href="https://github.com/soimort/wiki/commits/gh-pages/unix/cli/src.md">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard shortcut: E"
+           href="https://github.com/soimort/wiki/edit/gh-pages/unix/cli/src.md">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
+           href="https://wiki.soimort.org/unix/cli">
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
+        Last updated: <span id="update-time">2016-07-21</span>
+      </footer>
+    </article></main>
+  </body>
+</html>
