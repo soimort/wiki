@@ -82,6 +82,10 @@ Or:
 
     $ git diff --no-index [file_a] [file_b]
 
+### Create the archive of a tag
+
+    $ git archive --format=tar.gz --prefix=[foobar-1.2.3/] [v1.2.3] > [v1.2.3.tar.gz]
+
 
 
 ```sh
