@@ -1,10 +1,10 @@
 % Internet Privacy
 % Mort Yao
-% 2016-05-25
+% 2016-07-22
 
-## How to block Google Analytics everywhere (from tracking me)
+## How to block Google Analytics (from tracking you)
 
-### Option 1. The official (but questionably working) way
+### Option 1. The official (questionably working) way
 
 Install the [Google Analytics Opt-out Browser Add-on](https://tools.google.com/dlpage/gaoptout).
 
