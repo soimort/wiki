@@ -101,6 +101,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>To delete all files with some extension, use:</p>
 <pre><code>$ find . -name "<span class="do">*.o</span>" -delete</code></pre>
 </section>
+<section id="get-the-size-of-a-directory" class="level3">
+<h3>Get the size of a directory</h3>
+<p>In terms of kilobytes:</p>
+<pre><code>$ du -hs <span class="do">foo/bar</span> | cut -f1</code></pre>
+<p>Or: (in human-readable format)</p>
+<pre><code>$ du -s <span class="do">foo/bar</span> | cut -f1</code></pre>
+</section>
 <section id="list-sub-directories-in-descending-order-of-size" class="level3">
 <h3>List sub-directories in descending order of size</h3>
 <pre><code>$ du -hs * | sort -hr</code></pre>

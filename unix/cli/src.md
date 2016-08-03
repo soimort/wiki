@@ -30,6 +30,16 @@ To delete all files with some extension, use:
 
     $ find . -name "[*.o]" -delete
 
+### Get the size of a directory
+
+In terms of kilobytes:
+
+    $ du -hs [foo/bar] | cut -f1
+
+Or: (in human-readable format)
+
+    $ du -s [foo/bar] | cut -f1
+
 ### List sub-directories in descending order of size
 
     $ du -hs * | sort -hr
