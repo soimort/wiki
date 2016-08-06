@@ -8,7 +8,7 @@
     <meta name="generator" content="pandoc">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="author" content="Mort Yao">
-    <meta name="dcterms.date" content="2016-07-21">
+    <meta name="dcterms.date" content="2016-08-07">
     <title>Command-line Tricks</title>
     <link rel="canonical" href="https://wiki.soimort.org/unix/cli">
     <style type="text/css">code { white-space: pre; }</style>
@@ -69,7 +69,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <header>
         <h1 class="title">Command-line Tricks</h1>
         <address class="author">Mort Yao</address>
-        <!-- h3 class="date">2016-07-21</h3 -->
+        <!-- h3 class="date">2016-08-07</h3 -->
       </header>
       <nav id="TOC">
 <ul>
@@ -83,6 +83,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>(<em><strong>Note:</strong> This page contains tips and tricks of most commonly used command-line utilities on Unix-like OSes. For usages related to the shell itself, see <a href="/unix/shell">Shell tricks</a> instead.</em>)</p>
 <section id="common-usage" class="level2">
 <h2>Common usage</h2>
+<section id="see-how-a-unicode-string-is-encoded-internally" class="level3">
+<h3>See how a Unicode string is encoded internally</h3>
+<pre><code>$ echo <span class="do">hello</span> | hexdump -C</code></pre>
+<p>See how it is encoded in UTF-16: (Assume UTF-8 is the default encoding)</p>
+<pre><code>$ echo <span class="do">hello</span> | iconv -f utf-8 -t utf-16 | hexdump -C</code></pre>
+</section>
 <section id="show-unix-epoch-time" class="level3">
 <h3>Show Unix epoch time</h3>
 <pre><code>$ date +%s</code></pre>
@@ -245,7 +251,7 @@ grep -o &#39;[[:alnum:].]*@[[:alnum:].]*&#39;</code></pre>
           <i class="fa fa-anchor" aria-hidden="true"></i>
           <code>Permalink</code>
         </a> |
-        Last updated: <span id="update-time">2016-07-21</span>
+        Last updated: <span id="update-time">2016-08-07</span>
       </footer>
     </article></main>
   </body>

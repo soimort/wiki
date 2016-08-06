@@ -1,10 +1,18 @@
 % Command-line Tricks
 % Mort Yao
-% 2016-07-21
+% 2016-08-07
 
 (***Note:** This page contains tips and tricks of most commonly used command-line utilities on Unix-like OSes. For usages related to the shell itself, see [Shell tricks](/unix/shell) instead.*)
 
 ## Common usage
+
+### See how a Unicode string is encoded internally
+
+    $ echo [hello] | hexdump -C
+
+See how it is encoded in UTF-16: (Assume UTF-8 is the default encoding)
+
+    $ echo [hello] | iconv -f utf-8 -t utf-16 | hexdump -C
 
 ### Show Unix epoch time
 
