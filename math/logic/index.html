@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-07 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Mort Yao">
+    <meta name="dcterms.date" content="2016-08-16">
+    <title>Mathematical Logic</title>
+    <link rel="canonical" href="https://wiki.soimort.org/math/logic">
+    <style type="text/css">code { white-space: pre; }</style>
+    <link rel="stylesheet" href="//cdn.soimort.org/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/mathsvg/latest/mathsvg.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Roman.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Mono.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/__/css/style.css">
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.soimort.org/jk/latest/jk.min.js"></script>
+    <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>
+    <script src="/__/js/jk-minibar.js"></script>
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+  <body>
+    <main><article>
+      <header>
+        <h1 class="title">Mathematical Logic</h1>
+        <address class="author">Mort Yao</address>
+        <!-- h3 class="date">2016-08-16</h3 -->
+      </header>
+      <nav id="TOC">
+<ul>
+<li><a href="#classical-logic"><span class="toc-section-number">1</span> Classical Logic</a><ul>
+<li><a href="#propositional-logic"><span class="toc-section-number">1.1</span> Propositional Logic</a></li>
+<li><a href="#first-order-logic"><span class="toc-section-number">1.2</span> First-Order Logic</a></li>
+<li><a href="#second-order-logic"><span class="toc-section-number">1.3</span> * Second-Order Logic</a></li>
+<li><a href="#modal-logic"><span class="toc-section-number">1.4</span> * Modal Logic</a></li>
+</ul></li>
+<li><a href="#axiomatic-set-theory-zfc"><span class="toc-section-number">2</span> Axiomatic Set Theory (ZFC)</a></li>
+<li><a href="#model-theory"><span class="toc-section-number">3</span> Model Theory</a></li>
+<li><a href="#computability-theory"><span class="toc-section-number">4</span> Computability Theory</a><ul>
+<li><a href="#peano-axioms"><span class="toc-section-number">4.1</span> Peano Axioms</a></li>
+<li><a href="#gödels-incompleteness-theorems"><span class="toc-section-number">4.2</span> Gödel’s Incompleteness Theorems</a></li>
+</ul></li>
+<li><a href="#non-classical-logic"><span class="toc-section-number">5</span> Non-Classical Logic</a><ul>
+<li><a href="#intuitionistic-logic"><span class="toc-section-number">5.1</span> Intuitionistic Logic</a></li>
+<li><a href="#linear-logic"><span class="toc-section-number">5.2</span> Linear Logic</a></li>
+</ul></li>
+</ul>
+      </nav>
+      <div id="content">
+<p><em>Prerequisites</em>: Most content on this topic assumes some mathematical proof techniques (incl. mathematical induction) and basic knowledge of <a href="/math/set">naive set theory</a>. The following books might be a good refresher:</p>
+<ul>
+<li>Daniel J. Velleman. <strong><em>How to Prove It: A Structured Approach.</em></strong></li>
+<li>Paul Halmos. <strong><em>Naive Set Theory.</em></strong></li>
+</ul>
+<p>The first book also provides a fair introduction to propositional (sentential) logic.</p>
+<section id="classical-logic" class="level1">
+<h1><span class="header-section-number">1</span> Classical Logic</h1>
+<p>Textbook:</p>
+<ul>
+<li>Herbert B. Enderton. <strong><em>A Mathematical Introduction to Logic, 2nd edition.</em></strong> (<strong>AMIL</strong>)
+<ul>
+<li><a href="http://web.archive.org/web/20150712180839/http://www.math.ucla.edu/~hbe/amil/">Author's commentary</a> (Internet Archive)</li>
+<li><a href="http://dbfin.com/logic/enderton/">Solutions</a></li>
+<li><a href="http://www.logicmatters.net/tyl/booknotes/enderton/">Book notes by Peter Smith</a></li>
+</ul></li>
+</ul>
+<p>Supplementary reading:</p>
+<ul>
+<li>Elliott Mendelson. <strong><em>Introduction to Mathematical Logic, 4th edition.</em></strong>
+<ul>
+<li><a href="http://www.logicmatters.net/tyl/booknotes/mendelson/">Book notes by Peter Smith</a></li>
+</ul></li>
+<li>Stephen Cole Kleene. <strong><em>Introduction to Metamathematics.</em></strong>
+<ul>
+<li><a href="http://www.logicmatters.net/tyl/booknotes/kleene-metamath/">Book notes by Peter Smith</a></li>
+</ul></li>
+<li>Stephen Cole Kleene. <strong><em>Mathematical Logic.</em></strong>
+<ul>
+<li><a href="http://www.logicmatters.net/tyl/booknotes/kleene_ml/">Book notes by Peter Smith</a></li>
+</ul></li>
+<li>Raymond M. Smullyan. <strong><em>First-Order Logic.</em></strong></li>
+<li>Robert S. Wolf. <strong><em>A Tour Through Mathematical Logic.</em></strong></li>
+</ul>
+<section id="propositional-logic" class="level2">
+<h2><span class="header-section-number">1.1</span> Propositional Logic</h2>
+</section>
+<section id="first-order-logic" class="level2">
+<h2><span class="header-section-number">1.2</span> First-Order Logic</h2>
+</section>
+<section id="second-order-logic" class="level2">
+<h2><span class="header-section-number">1.3</span> * Second-Order Logic</h2>
+</section>
+<section id="modal-logic" class="level2">
+<h2><span class="header-section-number">1.4</span> * Modal Logic</h2>
+</section>
+</section>
+<section id="axiomatic-set-theory-zfc" class="level1">
+<h1><span class="header-section-number">2</span> Axiomatic Set Theory (ZFC)</h1>
+<p>Reading:</p>
+<ul>
+<li>Herbert B. Enderton. <strong><em>The Elements of Set Theory.</em></strong></li>
+<li>Raymond M. Smullyan and Melvin Fitting. <strong><em>Set Theory and the Continuum Problem.</em></strong></li>
+<li>Thomas Jech. <strong><em>Set Theory, 3rd millennium edition.</em></strong></li>
+</ul>
+<p>See also Peter Smith's suggestions for readings on the set theory: <a href="http://www.logicmatters.net/tyl/set_theory/">Serious set theory</a> (also includes alternative set theories like NBG)</p>
+</section>
+<section id="model-theory" class="level1">
+<h1><span class="header-section-number">3</span> Model Theory</h1>
+<p>Reading:</p>
+<ul>
+<li>Maria Manzano. <strong><em>Model Theory.</em></strong></li>
+</ul>
+</section>
+<section id="computability-theory" class="level1">
+<h1><span class="header-section-number">4</span> Computability Theory</h1>
+<p>Reading:</p>
+<ul>
+<li>Peter Smith. <strong><em>An Introduction to Gödel's Theorems.</em></strong></li>
+<li>Richard Epstein and Walter Carnielli. <strong><em>Computability: Computable Functions, Logic, and the Foundations of Mathematics.</em></strong></li>
+<li>George Boolos, John P. Burgess and Richard Jeffrey. <strong><em>Computability and Logic.</em></strong></li>
+</ul>
+<section id="peano-axioms" class="level2">
+<h2><span class="header-section-number">4.1</span> Peano Axioms</h2>
+</section>
+<section id="gödels-incompleteness-theorems" class="level2">
+<h2><span class="header-section-number">4.2</span> Gödel’s Incompleteness Theorems</h2>
+</section>
+</section>
+<section id="non-classical-logic" class="level1">
+<h1><span class="header-section-number">5</span> Non-Classical Logic</h1>
+<p>Reading:</p>
+<ul>
+<li>Graham Priest. <strong><em>An Introduction to Non-Classical Logic: From If to Is, 2nd edition.</em></strong></li>
+<li>John L. Bell, David DeVidi and Graham Solomon. <strong><em>Logical Options: An Introduction to Classical and Alternative Logics.</em></strong></li>
+</ul>
+<section id="intuitionistic-logic" class="level2">
+<h2><span class="header-section-number">5.1</span> Intuitionistic Logic</h2>
+</section>
+<section id="linear-logic" class="level2">
+<h2><span class="header-section-number">5.2</span> Linear Logic</h2>
+</section>
+</section>
+      </div>
+      <footer>
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard shortcut: R"
+           href="https://wiki.soimort.org/math/logic/src.md">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
+        <a class="history" accesskey="h"
+           title="Keyboard shortcut: H"
+           href="https://github.com/soimort/wiki/commits/gh-pages/math/logic/src.md">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard shortcut: E"
+           href="https://github.com/soimort/wiki/edit/gh-pages/math/logic/src.md">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
+           href="https://wiki.soimort.org/math/logic">
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
+        Last updated: <span id="update-time">2016-08-16</span>
+      </footer>
+    </article></main>
+  </body>
+</html>
