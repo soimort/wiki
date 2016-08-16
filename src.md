@@ -1,6 +1,6 @@
 % Mort's small traces
 % Mort Yao
-% 2016-08-12
+% 2016-08-16
 
 <div style="text-align:center;font-style:italic">
 "Tiger got to hunt, bird got to fly;
@@ -12,8 +12,36 @@
 
 ## Contents
 
-* [Unix](unix)
-* [Programming Language Theory](plt)
+* Mathematics
+    * Naive set theory
+    * **[Mathematical logic](/math/logic)**
+    * General topology
+    * Calculus
+    * Linear algebra
+    * Abstract algebra
+        * Category theory and homological algebra
+    * Analysis
+        * Measure theory
+* Applied mathematics
+    * Probability theory and statistics
+    * **Algorithms**
+        * Computational geometry
+    * Cryptography
+    * **Computational complexity theory**
+    * **[Programming language theory](/plt)**
+        * Formal semantics
+        * Type theory and Curry-Howard correspondence
+    * **Machine learning**
+        * Artificial neural networks
+    * **Computer vision and image processing**
+    * Natural language processing
+* Software technology
+    * Computer systems and assembly
+    * [Unix](/unix) and system programming
+    * TCP/IP and socket programming
+    * Web and databases
+    * **Information security**
+    * Compilers
 
 
 
