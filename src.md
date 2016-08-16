@@ -31,6 +31,7 @@
     * **[Programming language theory](/plt)**
         * Formal semantics
         * Type theory and Curry-Howard correspondence
+        * Program analysis and transformation
     * **Machine learning**
         * Artificial neural networks
     * **Computer vision and image processing**
