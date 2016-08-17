@@ -1,6 +1,6 @@
 % Mort's small traces
 % Mort Yao
-% 2016-08-16
+% 2016-08-17
 
 <div style="text-align:center;font-style:italic">
 "Tiger got to hunt, bird got to fly;
@@ -12,7 +12,7 @@
 
 ## Contents
 
-* Mathematics
+1. Mathematics
     * Naive set theory
     * **[Mathematical logic](/math/logic)**
     * General topology
@@ -22,7 +22,7 @@
         * Category theory and homological algebra
     * Analysis
         * Measure theory
-* Applied mathematics
+2. Applied mathematics
     * Probability theory and statistics
     * **Algorithms**
         * Computational geometry
@@ -36,7 +36,7 @@
         * Artificial neural networks
     * **Computer vision and image processing**
     * Natural language processing
-* Software technology
+3. Software technology
     * Computer systems and assembly
     * [Unix](/unix) and system programming
     * TCP/IP and socket programming
@@ -44,6 +44,8 @@
     * Compilers
     * **Information security**
         * Proof-carrying code
+
+* [Cornerstone](/cornerstone)
 
 
 
