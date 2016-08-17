@@ -1,6 +1,6 @@
 % Command-line Tricks
 % Mort Yao
-% 2016-08-07
+% 2016-08-18
 
 (***Note:** This page contains tips and tricks of most commonly used command-line utilities on Unix-like OSes. For usages related to the shell itself, see [Shell tricks](/unix/shell) instead.*)
 
@@ -17,6 +17,10 @@ See how it is encoded in UTF-16: (Assume UTF-8 is the default encoding)
 ### Show Unix epoch time
 
     $ date +%s
+
+### Show timestamp in [RFC 3339](https://tools.ietf.org/html/rfc3339) format
+
+    $ date --iso-8601=seconds
 
 ### Show the MIME type of a file
 

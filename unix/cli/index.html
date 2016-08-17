@@ -8,7 +8,7 @@
     <meta name="generator" content="pandoc">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="author" content="Mort Yao">
-    <meta name="dcterms.date" content="2016-08-07">
+    <meta name="dcterms.date" content="2016-08-18">
     <title>Command-line Tricks</title>
     <link rel="canonical" href="https://wiki.soimort.org/unix/cli">
     <style type="text/css">code { white-space: pre; }</style>
@@ -69,7 +69,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <header>
         <h1 class="title">Command-line Tricks</h1>
         <address class="author">Mort Yao</address>
-        <!-- h3 class="date">2016-08-07</h3 -->
+        <!-- h3 class="date">2016-08-18</h3 -->
       </header>
       <nav id="TOC">
 <ul>
@@ -92,6 +92,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <section id="show-unix-epoch-time" class="level3">
 <h3>Show Unix epoch time</h3>
 <pre><code>$ date +%s</code></pre>
+</section>
+<section id="show-timestamp-in-rfc-3339-format" class="level3">
+<h3>Show timestamp in <a href="https://tools.ietf.org/html/rfc3339">RFC 3339</a> format</h3>
+<pre><code>$ date --iso-8601=seconds</code></pre>
 </section>
 <section id="show-the-mime-type-of-a-file" class="level3">
 <h3>Show the MIME type of a file</h3>
@@ -251,7 +255,7 @@ grep -o &#39;[[:alnum:].]*@[[:alnum:].]*&#39;</code></pre>
           <i class="fa fa-anchor" aria-hidden="true"></i>
           <code>Permalink</code>
         </a> |
-        Last updated: <span id="update-time">2016-08-07</span>
+        Last updated: <span id="update-time">2016-08-18</span>
       </footer>
     </article></main>
   </body>
