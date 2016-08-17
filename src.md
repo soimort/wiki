@@ -41,8 +41,9 @@
     * [Unix](/unix) and system programming
     * TCP/IP and socket programming
     * Web and databases
-    * **Information security**
     * Compilers
+    * **Information security**
+        * Proof-carrying code
 
 
 
