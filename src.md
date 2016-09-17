@@ -1,6 +1,6 @@
 % Mort's small traces
 % Mort Yao
-% 2016-08-17
+% 2016-09-17
 
 <div style="text-align:center;font-style:italic">
 "Tiger got to hunt, bird got to fly;
@@ -26,7 +26,7 @@
     * Probability theory and statistics
     * **Algorithms**
         * Computational geometry
-    * Cryptography
+    * **[Cryptography](/crypto)**
     * **Computational complexity theory**
     * **[Programming language theory](/plt)**
         * Formal semantics
