@@ -1,7 +1,6 @@
----
-title: Programming Languages
-subtitle: Reading List (Temporary)
----
+% Programming Language Theory (Temporary Page)
+% Mort Yao
+% 2016-08-16
 
 [Wikipedia: [Programming language theory](https://en.wikipedia.org/wiki/Programming_language_theory)]
 
@@ -99,7 +98,7 @@ Books:
 * *Advanced Topics in Types and Programming Languages* (**ATTAPL**) (by Benjamin C. Pierce) [[Homepage](http://www.cis.upenn.edu/~bcpierce/attapl/)]
 * *Practical Foundations for Programming Languages* (**PFPL**) (by Robert Harper) [[PDF](http://www.cs.cmu.edu/~rwh/plbook/book.pdf) (Online Preview)] [[PDF](http://www.cs.cmu.edu/~rwh/plbook/2nded.pdf) (Working Draft)] [[Course Homepage](http://www.cs.cmu.edu/~rwh/courses/typesys/) (CMU 15-814)] [[Course Videos](http://scs.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx#folderID=%2207756bb0-b872-4a4a-95b1-b77ad206dab3%22) (CMU 15-819)]
 * *Type Theory and Functional Programming* (**TTFP**) (by Simon Thompson) [[Homepage](http://www.cs.kent.ac.uk/people/staff/sjt/TTFP/)] [[PDF](http://www.cs.kent.ac.uk/people/staff/sjt/TTFP/ttfp.pdf)]
-* *How to Prove It: A Structured Approach* (by Daniel J. Velleman)
+
 * *Proofs and Types* (**ProT**) (by Jean-Yves Girard, Yves Lafont, Paul Taylor) [[Homepage](http://www.paultaylor.eu/stable/Proofs+Types.html)] [[PDF](http://www.paultaylor.eu/stable/prot.pdf)]
 * *Implementing Mathematics with The Nuprl Proof Development System* (**"NuPRL Book"**) (by Robert L. Constable, etc.) [[Homepage](http://www.nuprl.org/book/)] [[HTML](http://www.cs.cornell.edu/info/projects/nuprl/book/doc.html)] [[PS](ftp://ftp.cs.cornell.edu/pub/nuprl/doc/book.ps.gz)]
 * *Interactive Theorem Proving and Program Development: Coq'Art: The Calculus of Inductive Constructions* (**Coq'Art**) (by Yves Bertot, Pierre Castéran) [[Homepage](http://www.labri.fr/perso/casteran/CoqArt/index.html)]
