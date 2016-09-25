@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-07 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Mort Yao">
+    <meta name="dcterms.date" content="2016-09-24">
+    <title>Limit</title>
+    <link rel="canonical" href="https://wiki.soimort.org/math/calculus/limit">
+    <style type="text/css">code { white-space: pre; }</style>
+    <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    </style>
+    <link rel="stylesheet" href="//cdn.soimort.org/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/mathsvg/latest/mathsvg.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Roman.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Mono.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/__/css/style.css">
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.soimort.org/jk/latest/jk.min.js"></script>
+    <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>
+    <script src="/__/js/jk-minibar.js"></script>
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+  <body>
+    <main><article>
+      <header>
+        <h1 class="title">Limit</h1>
+        <address class="author">Mort Yao</address>
+        <!-- h3 class="date">2016-09-24</h3 -->
+      </header>
+      <nav id="TOC">
+<ul>
+<li><a href="#ε-δ-definition"><span class="toc-section-number">1</span> <span class="math inline">\((ε, δ)\)</span>-definition</a></li>
+<li><a href="#limit-rules"><span class="toc-section-number">2</span> Limit Rules</a></li>
+<li><a href="#computation-of-limits-using-maxima"><span class="toc-section-number">3</span> Computation of Limits (Using Maxima)</a></li>
+<li><a href="#limits-of-special-interest"><span class="toc-section-number">4</span> Limits of Special Interest</a></li>
+</ul>
+      </nav>
+      <div id="content">
+<section id="ε-δ-definition" class="level1">
+<h1><span class="header-section-number">1</span> <span class="math inline">\((ε, δ)\)</span>-definition</h1>
+<p><strong>Definition 1.1.</strong> Let <span class="math inline">\(f : D \to \mathbb{R}\)</span> be a function defined on a subset <span class="math inline">\(D \subseteq \mathbb{R}\)</span>, let <span class="math inline">\(a\)</span> be a limit point of <span class="math inline">\(D\)</span> and <span class="math inline">\(L \in \mathbb{R}\)</span>. We say <em>the limit of <span class="math inline">\(f(x)\)</span> as <span class="math inline">\(x\)</span> approaches <span class="math inline">\(a\)</span> is <span class="math inline">\(L\)</span></em>, denoted <span class="math display">\[\lim_{x \to a} f(x) = L\]</span> if for all <span class="math inline">\(\varepsilon &gt; 0\)</span> there exists a <span class="math inline">\(\delta &gt; 0\)</span> such that <span class="math display">\[|f(x) - L| &lt; \varepsilon\]</span> whenever <span class="math display">\[0 &lt; |x - a| &lt; \delta\]</span></p>
+<p><strong>Definition 1.2. (One-sided limits)</strong> Let <span class="math inline">\(f : D \to \mathbb{R}\)</span> be a function defined on a subset <span class="math inline">\(D \subseteq \mathbb{R}\)</span>, let <span class="math inline">\(a\)</span> be a limit point of <span class="math inline">\(D\)</span> and <span class="math inline">\(L \in \mathbb{R}\)</span>. We say <em>the left-hand limit of <span class="math inline">\(f(x)\)</span> as <span class="math inline">\(x\)</span> approaches <span class="math inline">\(a\)</span> is <span class="math inline">\(L\)</span></em>, denoted <span class="math display">\[\lim_{x \to a^-} f(x) = L\]</span> if for all <span class="math inline">\(\varepsilon &gt; 0\)</span> there exists a <span class="math inline">\(\delta &gt; 0\)</span> such that <span class="math display">\[|f(x) - L| &lt; \varepsilon\]</span> whenever <span class="math display">\[a - \delta &lt; x &lt; a\]</span></p>
+<p>We say <em>the right-hand limit of <span class="math inline">\(f(x)\)</span> as <span class="math inline">\(x\)</span> approaches <span class="math inline">\(a\)</span> is <span class="math inline">\(L\)</span></em>, denoted <span class="math display">\[\lim_{x \to a^+} f(x) = L\]</span> if for all <span class="math inline">\(\varepsilon &gt; 0\)</span> there exists a <span class="math inline">\(\delta &gt; 0\)</span> such that <span class="math display">\[|f(x) - L| &lt; \varepsilon\]</span> whenever <span class="math display">\[a &lt; x &lt; a + \delta\]</span></p>
+<p><strong>Definition 1.3. (Infinite limits)</strong> Let <span class="math inline">\(f : D \to \mathbb{R}\)</span> be a function defined on a subset <span class="math inline">\(D \subseteq \mathbb{R}\)</span>, let <span class="math inline">\(a\)</span> be a limit point of <span class="math inline">\(D\)</span>. We say <em>the limit of <span class="math inline">\(f(x)\)</span> as <span class="math inline">\(x\)</span> approaches <span class="math inline">\(a\)</span> is infinity</em>, denoted <span class="math display">\[\lim_{x \to a} f(x) = \infty\]</span> if for all <span class="math inline">\(\varepsilon &gt; 0\)</span> there exists a <span class="math inline">\(\delta &gt; 0\)</span> such that <span class="math display">\[f(x) &gt; \varepsilon\]</span> whenever <span class="math display">\[0 &lt; |x - a| &lt; \delta\]</span></p>
+<p>We say <em>the limit of <span class="math inline">\(f(x)\)</span> as <span class="math inline">\(x\)</span> approaches <span class="math inline">\(a\)</span> is negative infinity</em>, denoted <span class="math display">\[\lim_{x \to a} f(x) = -\infty\]</span> if for all <span class="math inline">\(\varepsilon &gt; 0\)</span> there exists a <span class="math inline">\(\delta &gt; 0\)</span> such that <span class="math display">\[f(x) &lt; -\varepsilon\]</span> whenever <span class="math display">\[0 &lt; |x - a| &lt; \delta\]</span></p>
+<p><strong>Definition 1.4. (Limits at infinity)</strong> Let <span class="math inline">\(f : D \to \mathbb{R}\)</span> be a function defined on a subset <span class="math inline">\(D \subseteq \mathbb{R}\)</span>, let <span class="math inline">\(L \in \mathbb{R}\)</span>. We say <em>the limit of <span class="math inline">\(f(x)\)</span> as <span class="math inline">\(x\)</span> approaches infinity is <span class="math inline">\(L\)</span></em>, denoted <span class="math display">\[\lim_{x \to \infty} f(x) = L\]</span> if for all <span class="math inline">\(\varepsilon &gt; 0\)</span> there exists a <span class="math inline">\(c\)</span> such that <span class="math display">\[|f(x) - L| &lt; \varepsilon\]</span> whenever <span class="math display">\[x &gt; c\]</span></p>
+<p>We say <em>the limit of <span class="math inline">\(f(x)\)</span> as <span class="math inline">\(x\)</span> approaches negative infinity is <span class="math inline">\(L\)</span></em>, denoted <span class="math display">\[\lim_{x \to -\infty} f(x) = L\]</span> if for all <span class="math inline">\(\varepsilon &gt; 0\)</span> there exists a <span class="math inline">\(c\)</span> such that <span class="math display">\[|f(x) - L| &lt; \varepsilon\]</span> whenever <span class="math display">\[x &lt; c\]</span></p>
+<p><strong>Limits and asymptotic analysis.</strong> Limits involving infinity are often connected with the concept of <a href="/algo/asymptotic-notation">asymptotes</a>.</p>
+<p>The above definitions can be combined in a natural way to produce definitions for different combinations, such as:</p>
+<p><strong>Example 1.5.</strong> <span class="math inline">\(\lim_{x \to \infty} x = \infty\)</span>.</p>
+<p><strong>Example 1.6.</strong> <span class="math inline">\(\lim_{x \to 0^+} \ln x = -\infty\)</span>.</p>
+</section>
+<section id="limit-rules" class="level1">
+<h1><span class="header-section-number">2</span> Limit Rules</h1>
+<p><strong>Theorem 2.1. (Constant rule)</strong> If <span class="math inline">\(a\)</span>, <span class="math inline">\(c\)</span> are constants then <span class="math inline">\(\lim_{x \to a} c = c\)</span>.</p>
+<p><strong>Theorem 2.2. (Identity rule)</strong> If <span class="math inline">\(a\)</span> is a constant then <span class="math inline">\(\lim_{x \to a} x = a\)</span>.</p>
+<p><strong>Theorem 2.3. (Scalar product rule)</strong> Suppose that <span class="math inline">\(\lim_{x \to a} f(x) = L\)</span> for finite <span class="math inline">\(L\)</span> and that <span class="math inline">\(k\)</span> is a constant, then <span class="math inline">\(\lim_{x \to a} k \cdot f(x) = k \cdot \lim_{x \to a} f(x) = k \cdot L\)</span>.</p>
+<p><strong>Theorem 2.4. (Algebraic limit theorem)</strong> <span class="math display">\[\lim_{x \to a} [f(x) + g(x)] = \lim_{x \to a} f(x) + \lim_{x \to a} g(x)\]</span> <span class="math display">\[\lim_{x \to a} [f(x) - g(x)] = \lim_{x \to a} f(x) - \lim_{x \to a} g(x)\]</span> <span class="math display">\[\lim_{x \to a} [f(x) \cdot g(x)] = \lim_{x \to a} f(x) \cdot \lim_{x \to a} g(x)\]</span> <span class="math display">\[\lim_{x \to a} \frac{f(x)}{g(x)} = \frac{\lim_{x \to a} f(x)}{\lim_{x \to a} g(x)}\]</span></p>
+<p><strong>Theorem 2.5. (Squeeze theorem)</strong> If <span class="math inline">\(g(x) \leq f(x) \leq h(x)\)</span> holds for all <span class="math inline">\(x\)</span> in an open interval containing <span class="math inline">\(a\)</span>, except possibly at <span class="math inline">\(x=a\)</span> itself, and <span class="math inline">\(\lim_{x \to a} g(x) = \lim_{x \to a} h(x) = L\)</span>, then <span class="math display">\[\lim_{x \to a} f(x) = L\]</span></p>
+<p><strong>Theorem 2.6. (Composition rule)</strong> If <span class="math inline">\(f(x)\)</span> is continuous at <span class="math inline">\(x=b\)</span> and <span class="math inline">\(\lim_{x \to a} g(x) = b\)</span>, then <span class="math display">\[\lim_{x \to a} f(g(x)) = f(b) = f\big(\lim_{x \to a} g(x)\big)\]</span></p>
+<p><strong>*Theorem 2.7. (L'Hôpital's rule)</strong> Let <span class="math inline">\(f(x)\)</span> and <span class="math inline">\(g(x)\)</span> be differentiable functions defined on an open interval except possibly at <span class="math inline">\(x=a\)</span> itself, if:</p>
+<ol type="1">
+<li><span class="math inline">\(\lim_{x \to a} f(x) = \lim_{x \to a} g(x) = 0 \textrm{ or } \pm\infty\)</span></li>
+<li><span class="math inline">\(g&#39;(x) \neq 0\)</span> for all <span class="math inline">\(x \neq a\)</span></li>
+<li><span class="math inline">\(\lim_{x \to a} \frac{f&#39;(x)}{g&#39;(x)} = L\)</span></li>
+</ol>
+<p>Then <span class="math display">\[\lim_{x \to a} \frac{f(x)}{g(x)} = \lim_{x \to a} \frac{f&#39;(x)}{g&#39;(x)} = L\]</span></p>
+<p><strong>*Example 2.8.</strong> <span class="math inline">\(\lim_{x \to 1} \frac{\ln x}{x - 1} = \lim_{x \to 1} \frac{(\ln x)&#39;}{(x - 1)&#39;} = \lim_{x \to 1} \frac{1/x}{1} = 1\)</span>.</p>
+<p><strong>*Example 2.9.</strong> <span class="math inline">\(\lim_{x \to \infty} \frac{e^x}{x} = \lim_{x \to \infty} \frac{(e^x)&#39;}{x&#39;} = \lim_{x \to \infty} \frac{e^x}{1} = \infty\)</span>.</p>
+</section>
+<section id="computation-of-limits-using-maxima" class="level1">
+<h1><span class="header-section-number">3</span> Computation of Limits (Using Maxima)</h1>
+<p><strong>Example 3.1.</strong> Compute <span class="math inline">\(\lim_{x \to 1} \frac{\ln x}{x - 1}\)</span>:</p>
+<div class="sourceCode"><pre class="sourceCode maxima"><code class="sourceCode maxima"> <span class="fu">limit</span>(<span class="fu">log</span>(x) / (x - <span class="dv">1</span>), x, <span class="dv">1</span>);</code></pre></div>
+<p><strong>Example 3.2.</strong> Compute <span class="math inline">\(\lim_{x \to \infty} \frac{e^x}{x}\)</span>:</p>
+<div class="sourceCode"><pre class="sourceCode maxima"><code class="sourceCode maxima"> <span class="fu">limit</span>(<span class="fu">exp</span>(x) / x, x, inf);</code></pre></div>
+<p><strong>Example 3.3.</strong> Compute one-sided limits <span class="math inline">\(\lim_{x \to \frac{\pi}{2}^+} \tan x\)</span> and <span class="math inline">\(\lim_{x \to \frac{\pi}{2}^-} \tan x\)</span>:</p>
+<div class="sourceCode"><pre class="sourceCode maxima"><code class="sourceCode maxima"> <span class="fu">limit</span>(<span class="fu">tan</span>(x), x, %pi / <span class="dv">2</span>, plus);
+ <span class="fu">limit</span>(<span class="fu">tan</span>(x), x, %pi / <span class="dv">2</span>, minus);</code></pre></div>
+</section>
+<section id="limits-of-special-interest" class="level1">
+<h1><span class="header-section-number">4</span> Limits of Special Interest</h1>
+<p><strong>Theorem 4.1. (Asymptotes for rational functions)</strong> Suppose that all <span class="math inline">\(a_i\)</span> and <span class="math inline">\(b_i\)</span> are constants, <span class="math inline">\(n \in \mathbb{N}\)</span>, then <span class="math display">\[\lim_{x \to \infty} \frac{a_1x^n + a_2x^{n-1} + \dots + a_n}{b_1x^n + b_2x^{n-1} + \dots + b_n} = \frac{a_1}{b_1}\]</span></p>
+<p><strong>Theorem 4.2. (Euler's number)</strong> <span class="math display">\[\lim_{x \to \infty} \left(1 + \frac{1}{x}\right)^x = e\]</span></p>
+<p>where <span class="math inline">\(e = \sum_{n=0}^\infty \frac{1}{n!} \approx 2.718 \dots\)</span> is a mathematical constant. See also <a href="/math/analysis/inequalities">some inequalities related to Euler's number</a>.</p>
+</section>
+      </div>
+      <footer>
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard shortcut: R"
+           href="https://wiki.soimort.org/math/calculus/limit/src.md">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
+        <a class="history" accesskey="h"
+           title="Keyboard shortcut: H"
+           href="https://github.com/soimort/wiki/commits/gh-pages/math/calculus/limit/src.md">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard shortcut: E"
+           href="https://github.com/soimort/wiki/edit/gh-pages/math/calculus/limit/src.md">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
+           href="https://wiki.soimort.org/math/calculus/limit">
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
+        Last updated: <span id="update-time">2016-09-24</span>
+      </footer>
+    </article></main>
+  </body>
+</html>
