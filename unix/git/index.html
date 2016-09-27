@@ -8,7 +8,7 @@
     <meta name="generator" content="pandoc">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="author" content="Mort Yao">
-    <meta name="dcterms.date" content="2016-07-21">
+    <meta name="dcterms.date" content="2016-09-27">
     <title>Git Tricks</title>
     <link rel="canonical" href="https://wiki.soimort.org/unix/git">
     <style type="text/css">code { white-space: pre; }</style>
@@ -69,7 +69,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <header>
         <h1 class="title">Git Tricks</h1>
         <address class="author">Mort Yao</address>
-        <!-- h3 class="date">2016-07-21</h3 -->
+        <!-- h3 class="date">2016-09-27</h3 -->
       </header>
       <nav id="TOC">
 <ul>
@@ -149,6 +149,12 @@ $ git checkout <span class="do">feature-branch</span></code></pre>
 <section id="create-the-archive-of-a-tag" class="level3">
 <h3>Create the archive of a tag</h3>
 <pre><code>$ git archive --format=tar.gz --prefix=<span class="do">foobar-1.2.3/</span> <span class="do">v1.2.3</span> > <span class="do">v1.2.3.tar.gz</span></code></pre>
+</section>
+<section id="remove-untracked-files-and-directories-from-the-working-tree" class="level3">
+<h3>Remove untracked files and directories from the working tree</h3>
+<pre><code>$ git clean -fd</code></pre>
+<p>To remove ignored files as well:</p>
+<pre><code>$ git clean -fdx</code></pre>
 <div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"></code></pre></div>
 </section>
 </section>
@@ -188,7 +194,7 @@ $ git checkout <span class="do">feature-branch</span></code></pre>
           <i class="fa fa-anchor" aria-hidden="true"></i>
           <code>Permalink</code>
         </a> |
-        Last updated: <span id="update-time">2016-07-21</span>
+        Last updated: <span id="update-time">2016-09-27</span>
       </footer>
     </article></main>
   </body>

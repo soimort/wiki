@@ -1,6 +1,6 @@
 % Git Tricks
 % Mort Yao
-% 2016-07-21
+% 2016-09-27
 
 ## Working with branches
 
@@ -85,6 +85,14 @@ Or:
 ### Create the archive of a tag
 
     $ git archive --format=tar.gz --prefix=[foobar-1.2.3/] [v1.2.3] > [v1.2.3.tar.gz]
+
+### Remove untracked files and directories from the working tree
+
+    $ git clean -fd
+
+To remove ignored files as well:
+
+    $ git clean -fdx
 
 
 
