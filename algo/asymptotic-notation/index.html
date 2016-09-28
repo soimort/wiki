@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-07 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Mort Yao">
+    <meta name="dcterms.date" content="2016-09-28">
+    <title>Asymptotic Notation</title>
+    <link rel="canonical" href="https://wiki.soimort.org/algo/asymptotic-notation">
+    <style type="text/css">code { white-space: pre; }</style>
+    <link rel="stylesheet" href="//cdn.soimort.org/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/mathsvg/latest/mathsvg.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Roman.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Mono.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/__/css/style.css">
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.soimort.org/jk/latest/jk.min.js"></script>
+    <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>
+    <script src="/__/js/jk-minibar.js"></script>
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+  <body>
+    <main><article>
+      <header>
+        <h1 class="title">Asymptotic Notation</h1>
+        <address class="author">Mort Yao</address>
+        <!-- h3 class="date">2016-09-28</h3 -->
+      </header>
+      <div id="content">
+<p><strong>Motivation.</strong> In the analysis of the performance of algorithms when applied to very big input datasets, it is often desirable to suppress two aspects of things:</p>
+<ul>
+<li><em>Constant factors</em>, as they are system-dependent and do not reflect the essence of the algorithms;</li>
+<li><em>Lower-order terms</em>, as they are irrelevant for large inputs.</li>
+</ul>
+<p>Asymptotic analysis has emerged for this purpose.</p>
+<p><strong>Definition 1. (Bachmann–Landau notations)</strong> Let <span class="math inline">\(f, g : \mathbb{N} \to \mathbb{R}\)</span>, then</p>
+<ul>
+<li><strong>(Big O notation)</strong> <span class="math inline">\(f(n) = \mathcal{O}(g(n))\)</span> means that there exist <span class="math inline">\(c, n&#39; \in \mathbb{Z}^+\)</span> such that for all <span class="math inline">\(n &gt; n&#39;\)</span> it holds that <span class="math inline">\(f(n) \leq c \cdot g(n)\)</span>.</li>
+<li><strong>(Big Omega notation)</strong> <span class="math inline">\(f(n) = \Omega(g(n))\)</span> means that there exist <span class="math inline">\(c, n&#39; \in \mathbb{Z}^+\)</span> such that for all <span class="math inline">\(n &gt; n&#39;\)</span> it holds that <span class="math inline">\(f(n) \geq c \cdot g(n)\)</span>.</li>
+<li><strong>(Big Theta notation)</strong> <span class="math inline">\(f(n) = \Theta(g(n))\)</span> means that there exist <span class="math inline">\(c_1, c_2, n&#39; \in \mathbb{Z}^+\)</span> such that for all <span class="math inline">\(n &gt; n&#39;\)</span> it holds that <span class="math inline">\(c_1 \cdot g(n) \leq f(n) \leq c_2 \cdot g(n)\)</span>, i.e., <span class="math inline">\(f(n) = \Theta(g(n))\)</span> iff <span class="math inline">\(f(n) = \mathcal{O}(g(n))\)</span> and <span class="math inline">\(f(n) = \Omega(g(n))\)</span>.</li>
+<li><strong>(Little o notation)</strong> <span class="math inline">\(f(n) = o(g(n))\)</span> means that <span class="math inline">\(\lim_{n \to \infty} \frac{f(n)}{g(n)} = 0\)</span>.</li>
+<li><strong>(Little omega notation)</strong> <span class="math inline">\(f(n) = \omega(g(n))\)</span> means that <span class="math inline">\(\lim_{n \to \infty} \frac{f(n)}{g(n)} = \infty\)</span>.</li>
+<li><span class="math inline">\(f(n) \sim g(n)\)</span> means that <span class="math inline">\(\lim_{n \to \infty} \frac{f(n)}{g(n)} = 1\)</span>.</li>
+</ul>
+<p>Intuitively,</p>
+<ul>
+<li><span class="math inline">\(f(n) = \mathcal{O}(g(n))\)</span> means that <span class="math inline">\(f\)</span> is bounded above by (a constant multiple of) <span class="math inline">\(g\)</span> asymptotically.</li>
+<li><span class="math inline">\(f(n) = \Omega(g(n))\)</span> means that <span class="math inline">\(f\)</span> is bounded below by (a constant multiple of) <span class="math inline">\(g\)</span> asymptotically.</li>
+<li><span class="math inline">\(f(n) = \Theta(g(n))\)</span> means that <span class="math inline">\(f\)</span> is bounded both above and below by (a constant multiple of) <span class="math inline">\(g\)</span> asymptotically.</li>
+<li><span class="math inline">\(f(n) = o(g(n))\)</span> means that <span class="math inline">\(f\)</span> is dominated by <span class="math inline">\(g\)</span> asymptotically.</li>
+<li><span class="math inline">\(f(n) = \omega(g(n))\)</span> means that <span class="math inline">\(f\)</span> dominates <span class="math inline">\(g\)</span> asymptotically.</li>
+<li><span class="math inline">\(f(n) \sim g(n)\)</span> means that <span class="math inline">\(f\)</span> is equal to <span class="math inline">\(g\)</span> asymptotically.</li>
+</ul>
+<p><strong>N.B.</strong> The use of equals sign in these notations is just customary; it does <em>not</em> suggest a symmetric relation in the mathematical sense.</p>
+<p><strong>Example 2.</strong> Let <span class="math inline">\(f(n) = n^4 + 2n^2\)</span>, then</p>
+<ul>
+<li><span class="math inline">\(f(n) = \mathcal{O}(n^4)\)</span>.</li>
+<li><span class="math inline">\(f(n) = \mathcal{O}(n^5)\)</span>; in fact, <span class="math inline">\(f(n) = o(n^5)\)</span>.</li>
+<li><span class="math inline">\(f(n) = \Omega(n^3 \log n)\)</span>; in fact, <span class="math inline">\(f(n) = \omega(n^3 \log n)\)</span>.</li>
+<li><span class="math inline">\(f(n) = \Theta(n^4)\)</span>.</li>
+</ul>
+<p>Intuitively,</p>
+<ul>
+<li><span class="math inline">\(f(n)\)</span> grows asymptotically no faster than <span class="math inline">\(n^4\)</span>.</li>
+<li><span class="math inline">\(f(n)\)</span> grows asymptotically no faster than <span class="math inline">\(n^5\)</span>; in fact, <span class="math inline">\(f(n)\)</span> grows asymptotically much slower than <span class="math inline">\(n^5\)</span>.</li>
+<li><span class="math inline">\(f(n)\)</span> grows asymptotically no slower than <span class="math inline">\(n^3 \log n\)</span>; in fact, <span class="math inline">\(f(n)\)</span> grows asymptotically much faster than <span class="math inline">\(n^3 \log n\)</span>.</li>
+<li><span class="math inline">\(f(n)\)</span> grows asymptotically as fast as <span class="math inline">\(n^4\)</span>.</li>
+</ul>
+<p><strong>N.B.</strong> The Big Theta notation provides the tightest asymptotic bounds; however, the Big O notation is much more commonly used in many texts (where it could be replaced by the Big Theta notation to represent an “exact bound”).</p>
+<p><strong>Theorem 3. (Master theorem)</strong> Let <span class="math inline">\(a \geq 1, b &gt; 1\)</span> be constants, and for <span class="math inline">\(n \in \mathbb{N}\)</span>, <span class="math display">\[T(n) = aT\left(\frac{n}{b}\right) + f(n)\]</span> where we interpret <span class="math inline">\(\frac{n}{b}\)</span> to mean either <span class="math inline">\(\lfloor\frac{n}{b}\rfloor\)</span> or <span class="math inline">\(\lceil\frac{n}{b}\rceil\)</span>, then</p>
+<ol type="1">
+<li>If <span class="math inline">\(f(n) = \mathcal{O}(n^{\log_b a-\varepsilon})\)</span> for some constant <span class="math inline">\(\varepsilon &gt; 0\)</span>, then <span class="math inline">\(T(n) = \Theta(n^{\log_b a})\)</span>.</li>
+<li>If <span class="math inline">\(f(n) = \Theta(n^{\log_b a} \log^k n)\)</span> for some constant <span class="math inline">\(k \geq 0\)</span>, then <span class="math inline">\(T(n) = \Theta(n^{\log_b a}\log^{k+1} n)\)</span>.
+<ul>
+<li>Specifically when <span class="math inline">\(k=0\)</span>, if <span class="math inline">\(f(n) = \Theta(n^{\log_b a})\)</span>, then <span class="math inline">\(T(n) = \Theta(n^{\log_b a}\log n)\)</span>.</li>
+</ul></li>
+<li>If <span class="math inline">\(f(n) = \Omega(n^{\log_b a + \varepsilon})\)</span> for some constant <span class="math inline">\(\varepsilon &gt; 0\)</span>, and if <span class="math inline">\(af\left(\frac{n}{b}\right) \leq cf(n)\)</span> for some constant <span class="math inline">\(c&lt;1\)</span> and all sufficiently large <span class="math inline">\(n\)</span> (“regularity condition”), then <span class="math inline">\(T(n) = \Theta(f(n))\)</span>.</li>
+</ol>
+<p>Intuitively, in each of the three cases, we compare the function <span class="math inline">\(f(n)\)</span> with <span class="math inline">\(n^{\log_b a}\)</span> and see if it is:</p>
+<ol type="1">
+<li>Polynomially smaller than <span class="math inline">\(n^{\log_b a}\)</span>.</li>
+<li>Equal to <span class="math inline">\(n^{\log_b a}\)</span>.</li>
+<li>Polynomially larger than <span class="math inline">\(n^{\log_b a}\)</span> and in addition satisfies the regularity condition.</li>
+</ol>
+<p><strong>Example 4.</strong> Given the recurrence <span class="math inline">\(T(n)=T\left(\frac{n}{2}\right)+\mathcal{O}(1)\)</span> (binary search), determine the asymptotic bound of <span class="math inline">\(T(n)\)</span>.</p>
+<p>Here <span class="math inline">\(a=1\)</span>, <span class="math inline">\(b=2\)</span> and <span class="math inline">\(f(n)=\mathcal{O}(1)\)</span>. <span class="math inline">\(n^{\log_b a} = n^{\log_2 1} = n^0 = 1\)</span>, therefore, <span class="math inline">\(f(n)=n^{\log_b a}\)</span>. Thus, we have <span class="math inline">\(T(n) = \Theta(\log n)\)</span>.</p>
+<p><strong>Example 5.</strong> Given the recurrence <span class="math inline">\(T(n)=2T\left(\frac{n}{2}\right)+\mathcal{O}(n)\)</span> (merge sort), determine the asymptotic bound of <span class="math inline">\(T(n)\)</span>.</p>
+<p>Here <span class="math inline">\(a=2\)</span>, <span class="math inline">\(b=2\)</span> and <span class="math inline">\(f(n)=\mathcal{O}(n)\)</span>. <span class="math inline">\(n^{\log_b a} = n^{\log_2 2} = n^1 = n\)</span>, therefore, <span class="math inline">\(f(n)=n^{\log_b a}\)</span>. Thus, we have <span class="math inline">\(T(n) = \Theta(n \log n)\)</span>.</p>
+<p><strong>Example 6.</strong> Given the recurrence <span class="math inline">\(T(n)=2T\left(\frac{n}{2}\right)+\mathcal{O}(1)\)</span> (binary tree traversal), determine the asymptotic bound of <span class="math inline">\(T(n)\)</span>.</p>
+<p>Here <span class="math inline">\(a=2\)</span>, <span class="math inline">\(b=2\)</span> and <span class="math inline">\(f(n)=\mathcal{O}(1)\)</span>. <span class="math inline">\(n^{\log_b a} = n^{\log_2 2} = n^1 = n\)</span>, therefore, <span class="math inline">\(f(n)=n^{\log_b a - \varepsilon}&lt;n^{\log_b a}\)</span> where <span class="math inline">\(\varepsilon=1\)</span>. Thus, we have <span class="math inline">\(T(n) = \Theta(n)\)</span>.</p>
+<p><strong>Common orders and time complexities.</strong> The following table summarizes some classes of commonly encountered time complexities.</p>
+<table style="width:76%;">
+<colgroup>
+<col style="width: 45%" />
+<col style="width: 26%" />
+<col style="width: 4%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Order of running time (Big O notation)</th>
+<th>Name</th>
+<th>Complexity class</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\mathcal{O}(1)\)</span></td>
+<td>Constant</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\mathcal{O}(\log \log n)\)</span></td>
+<td>Double logarithmic</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\mathcal{O}(\log n)\)</span></td>
+<td>Logarithmic</td>
+<td>DLOGTIME</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\mathcal{O}(\log^c n), c &gt; 1\)</span></td>
+<td>Polylogarithmic</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\mathcal{O}(n^c), 0 &lt; c &lt; 1\)</span></td>
+<td>Fractional power</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\mathcal{O}(n)\)</span></td>
+<td>Linear</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\mathcal{O}(n \log^* n)\)</span></td>
+<td>n log star n</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\mathcal{O}(n \log n)\)</span></td>
+<td>Linearithmic</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\mathcal{O}(n^2)\)</span></td>
+<td>Quadratic</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\mathcal{O}(n^3)\)</span></td>
+<td>Cubic</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\mathcal{O}(n^c), c &gt; 1\)</span></td>
+<td>Polynomial</td>
+<td>P</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\mathcal{O}(n^{\log n})\)</span></td>
+<td>Quasi-polynomial</td>
+<td>QP</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(L_n[\alpha, c] = e^{(c+o(1))(\ln n)^\alpha(\ln \ln n)^{1-\alpha}}, 0 &lt; \alpha &lt; 1\)</span></td>
+<td>Sub-exponential</td>
+<td>SUBEXP</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\mathcal{O}(c^n), c &gt; 1\)</span></td>
+<td>Exponential</td>
+<td>EXPTIME</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\mathcal{O}(n!)\)</span></td>
+<td>Factorial</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\mathcal{O}(2^{2^n})\)</span></td>
+<td>Double exponential</td>
+<td>2-EXPTIME</td>
+</tr>
+</tbody>
+</table>
+      </div>
+      <footer>
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard shortcut: R"
+           href="https://wiki.soimort.org/algo/asymptotic-notation/src.md">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
+        <a class="history" accesskey="h"
+           title="Keyboard shortcut: H"
+           href="https://github.com/soimort/wiki/commits/gh-pages/algo/asymptotic-notation/src.md">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard shortcut: E"
+           href="https://github.com/soimort/wiki/edit/gh-pages/algo/asymptotic-notation/src.md">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
+           href="https://wiki.soimort.org/algo/asymptotic-notation">
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
+        Last updated: <span id="update-time">2016-09-28</span>
+      </footer>
+    </article></main>
+  </body>
+</html>
