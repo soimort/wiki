@@ -1,6 +1,6 @@
 % Git Tricks
 % Mort Yao
-% 2016-09-27
+% 2016-10-01
 
 ## Working with branches
 
@@ -47,6 +47,14 @@ Show all stale branches:
 Update local references to the remote repository: (and delete obsolete references that are removed in the remote repository)
 
     $ git fetch --prune
+
+
+
+## Working with submodules
+
+### Update all submodules
+
+    $ git submodule update --recursive --remote
 
 
 

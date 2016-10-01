@@ -8,7 +8,7 @@
     <meta name="generator" content="pandoc">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="author" content="Mort Yao">
-    <meta name="dcterms.date" content="2016-09-27">
+    <meta name="dcterms.date" content="2016-10-01">
     <title>Git Tricks</title>
     <link rel="canonical" href="https://wiki.soimort.org/unix/git">
     <style type="text/css">code { white-space: pre; }</style>
@@ -69,11 +69,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <header>
         <h1 class="title">Git Tricks</h1>
         <address class="author">Mort Yao</address>
-        <!-- h3 class="date">2016-09-27</h3 -->
+        <!-- h3 class="date">2016-10-01</h3 -->
       </header>
       <nav id="TOC">
 <ul>
 <li><a href="#working-with-branches">Working with branches</a></li>
+<li><a href="#working-with-submodules">Working with submodules</a></li>
 <li><a href="#staging">Staging</a></li>
 <li><a href="#github-tricks">GitHub tricks</a></li>
 <li><a href="#miscellaneous">Miscellaneous</a></li>
@@ -116,6 +117,13 @@ $ git push origin <span class="do">gh-pages</span></code></pre>
 <pre><code>$ git branch -r</code></pre>
 <p>Update local references to the remote repository: (and delete obsolete references that are removed in the remote repository)</p>
 <pre><code>$ git fetch --prune</code></pre>
+</section>
+</section>
+<section id="working-with-submodules" class="level2">
+<h2>Working with submodules</h2>
+<section id="update-all-submodules" class="level3">
+<h3>Update all submodules</h3>
+<pre><code>$ git submodule update --recursive --remote</code></pre>
 </section>
 </section>
 <section id="staging" class="level2">
@@ -194,7 +202,7 @@ $ git checkout <span class="do">feature-branch</span></code></pre>
           <i class="fa fa-anchor" aria-hidden="true"></i>
           <code>Permalink</code>
         </a> |
-        Last updated: <span id="update-time">2016-09-27</span>
+        Last updated: <span id="update-time">2016-10-01</span>
       </footer>
     </article></main>
   </body>
