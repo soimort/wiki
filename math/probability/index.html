@@ -8,8 +8,8 @@
     <meta name="generator" content="pandoc">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="author" content="Mort Yao">
-    <meta name="dcterms.date" content="2016-04-15">
-    <title>Introduction to Probability Theory</title>
+    <meta name="dcterms.date" content="2016-10-07">
+    <title>Basic Probability Theory</title>
     <link rel="canonical" href="https://wiki.soimort.org/math/probability">
     <style type="text/css">code { white-space: pre; }</style>
     <link rel="stylesheet" href="//cdn.soimort.org/normalize/4.1.1/normalize.min.css">
@@ -31,88 +31,62 @@
   <body>
     <main><article>
       <header>
-        <h1 class="title">Introduction to Probability Theory</h1>
+        <h1 class="title">Basic Probability Theory</h1>
         <address class="author">Mort Yao</address>
-        <!-- h3 class="date">2016-04-15</h3 -->
+        <!-- h3 class="date">2016-10-07</h3 -->
       </header>
       <nav id="TOC">
 <ul>
-<li><a href="#definitions"><span class="toc-section-number">1</span> Definitions</a><ul>
-<li><a href="#experiment"><span class="toc-section-number">1.1</span> Experiment </a></li>
-<li><a href="#outcomes"><span class="toc-section-number">1.2</span> Outcomes </a><ul>
-<li><a href="#sample-space"><span class="toc-section-number">1.2.1</span> Sample space </a></li>
-<li><a href="#event"><span class="toc-section-number">1.2.2</span> Event </a></li>
-<li><a href="#probabilities-defined-on-events"><span class="toc-section-number">1.2.3</span> Probabilities defined on events</a></li>
-</ul></li>
-</ul></li>
+<li><a href="#concepts"><span class="toc-section-number">1</span> Concepts</a></li>
+<li><a href="#useful-probability-bounds"><span class="toc-section-number">2</span> Useful Probability Bounds</a></li>
 </ul>
       </nav>
       <div id="content">
-<section id="definitions" class="level1">
-<h1><span class="header-section-number">1</span> Definitions</h1>
-<section id="experiment" class="level2">
-<h2><span class="header-section-number">1.1</span> Experiment <a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></h2>
-<p>An <strong>experiment</strong> or <strong>trial</strong> is any procedure that can be infinitely repeated and has a well-defined <a href="/math/set">set</a> of possible <em>outcomes</em>, known as the <em>sample space</em>.</p>
+<section id="concepts" class="level1">
+<h1><span class="header-section-number">1</span> Concepts</h1>
+<p><strong>Definition 1.1. (Experiment)</strong> An <em>experiment</em> or <em>trial</em> is any procedure that can be infinitely repeated and has a well-defined <a href="/math/set">set</a> of possible <em>outcomes</em>, known as the <em>sample space</em>.</p>
 <p>An experiment is said to be <em>random</em> if it has more than one possible outcome, and <em>deterministic</em> if it has only one.</p>
-<p>A random experiment that has exactly two possible outcomes is known as a <strong>Bernoulli trial</strong> (or <strong>binomial trial</strong>).</p>
-</section>
-<section id="outcomes" class="level2">
-<h2><span class="header-section-number">1.2</span> Outcomes <a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></h2>
-<p>An <strong>outcome</strong> of an experiment is a possible result of that experiment. Each possible outcome of a particular experiment is unique, and different outcomes are mutually exclusive.</p>
-<section id="sample-space" class="level3">
-<h3><span class="header-section-number">1.2.1</span> Sample space <a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a></h3>
-<p>The <strong>sample space</strong> of an experiment is the set of all possible outcomes of that experiment. A sample space is usually denoted using set notation, e.g., <span class="math inline">\(S\)</span>, <span class="math inline">\(\Omega\)</span> or <span class="math inline">\(U\)</span>.</p>
+<p>A random experiment that has exactly two possible outcomes is known as a <em>Bernoulli trial</em> (or <em>binomial trial</em>).</p>
+<p><strong>Definition 1.2. (Outcome)</strong> An <em>outcome</em> of an experiment is a possible result of that experiment. Each possible outcome of a particular experiment is unique, and different outcomes are mutually exclusive.</p>
+<p><strong>Definition 1.3. (Sample space)</strong> The <em>sample space</em> of an experiment is the set of all possible outcomes of that experiment. A sample space is usually denoted using set notation, e.g., <span class="math inline">\(S\)</span>, <span class="math inline">\(\Omega\)</span> or <span class="math inline">\(U\)</span>.</p>
 <p>In some sample spaces, it is reasonable to assume that all outcomes in the space are equally likely (that they occur with equal <em>probability</em>).</p>
-</section>
-<section id="event" class="level3">
-<h3><span class="header-section-number">1.2.2</span> Event <a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a></h3>
-<p>Any measurable subset of the sample space, constituting a σ-algebra over the sample space itself, is known as an <strong>event</strong>.</p>
+<p><strong>Definition 1.4. (Event)</strong> Any <a href="/math/analysis/measure">measurable</a> subset of the sample space, constituting a σ-algebra over the sample space itself, is known as an <em>event</em>.</p>
 <p>Any subset of the sample space that is not an element of the σ-algebra is not an event, and does not have a probability. With a reasonable specification of the probability space, however, all events of interest are elements of the σ-algebra.</p>
 <p>We say that the event <span class="math inline">\(E\)</span> occurs when the outcome of the experiment lies in <span class="math inline">\(E\)</span>.</p>
 <p>Events are written as propositional formulas involving random variables, e.g., if <span class="math inline">\(X\)</span> is a real-valued random variable defined on the sample space <span class="math inline">\(S\)</span>, the event <span class="math display">\[\{s \in S | u &lt; X(s) \leq v \}\]</span></p>
 <p>can also be written as <span class="math display">\[u &lt; X \leq v\]</span></p>
-<section id="elementary-event" class="level4">
-<h4><span class="header-section-number">1.2.2.1</span> Elementary event <a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a></h4>
-<p>An <strong>elementary event</strong> (also called an <strong>atomic event</strong> or <strong>simple event</strong>) is an event which contains only a single outcome in the sample space. Using set theory terminology, an elementary event is a singleton.</p>
-</section>
-<section id="null-event" class="level4">
-<h4><span class="header-section-number">1.2.2.2</span> Null event</h4>
-<p>An <strong>null event</strong> is an event consisting of no outcome and hence could not occur, denoted by <span class="math inline">\(\varnothing\)</span>.</p>
-</section>
-<section id="unions-and-intersections-of-events" class="level4">
-<h4><span class="header-section-number">1.2.2.3</span> Unions and intersections of events</h4>
-<p>For any events <span class="math inline">\(E_1, E_2, \cdots\)</span> of a sample space <span class="math inline">\(S\)</span>, the union of these events, denoted by <span class="math inline">\(\bigcup_{n=1}^\infty E_n\)</span>, is defined to be the event that consists of all outcomes that are in <span class="math inline">\(E_n\)</span> for at least one value of <span class="math inline">\(n = 1, 2, \cdots\)</span>.</p>
-<p>Similarly, the intersection of the events <span class="math inline">\(E_1, E_2, \cdots\)</span>, denoted by <span class="math inline">\(\bigcap_{n=1}^\infty E_n\)</span>, is defined to be the event consisting of those outcomes that are in all of the events.</p>
-<p>if <span class="math inline">\(\bigcap_{n=1}^\infty E_n = \varnothing\)</span>, then events <span class="math inline">\(E_n\)</span> are said to be mutually exclusive.</p>
-</section>
-<section id="complementary-event" class="level4">
-<h4><span class="header-section-number">1.2.2.4</span> Complementary event <a href="#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a></h4>
-<p>For any event <span class="math inline">\(E\)</span> we define the new event <span class="math inline">\(E^c\)</span> (also denoted by <span class="math inline">\(E&#39;\)</span> or <span class="math inline">\(\overline{E}\)</span>), referred to as the complement of <span class="math inline">\(E\)</span>, to consist of all outcomes in the sample space <span class="math inline">\(S\)</span> that are not in <span class="math inline">\(E\)</span>, i.e., <span class="math inline">\(E^c\)</span> will occur if and only if <span class="math inline">\(E\)</span> does not occur.</p>
-<p>The event <span class="math inline">\(E\)</span> and its complement <span class="math inline">\(E^c\)</span> are mutually exclusive and exhaustive. Given an event, the event and its complementary event define a Bernoulli trial.</p>
-</section>
-</section>
-<section id="probabilities-defined-on-events" class="level3">
-<h3><span class="header-section-number">1.2.3</span> Probabilities defined on events</h3>
-<p>Consider an experiment whose sample space is <span class="math inline">\(S\)</span>. For each event <span class="math inline">\(E\)</span>, we assume that a number <span class="math inline">\(P(E)\)</span> is defined and satisfies the following conditions:</p>
+<p><strong>Definition 1.5. (Elementary event)</strong> An <em>elementary event</em> (also called an <em>atomic event</em> or <em>simple event</em>) is an event which contains only a single outcome in the sample space. Using set theory terminology, an elementary event is a singleton.</p>
+<p><strong>Definition 1.6. (Null event)</strong> An <em>null event</em> is an event consisting of no outcome and hence could not occur, denoted by <span class="math inline">\(\varnothing\)</span>.</p>
+<p><strong>Definition 1.7. (Union and intersection of events)</strong> For any events <span class="math inline">\(E_1, E_2, \dots\)</span> of a sample space <span class="math inline">\(S\)</span>, the <em>union (or disjunction) of these events</em>, denoted by <span class="math inline">\(\bigcup_{n=1}^\infty E_n\)</span>, is defined to be the event that consists of all outcomes that are in <span class="math inline">\(E_n\)</span> for at least one value of <span class="math inline">\(n = 1, 2, \dots\)</span>.</p>
+<p>Similarly, the <em>intersection (or conjunction) of the events</em> <span class="math inline">\(E_1, E_2, \dots\)</span>, denoted by <span class="math inline">\(\bigcap_{n=1}^\infty E_n\)</span>, is defined to be the event consisting of those outcomes that are in all of the events.</p>
+<p>If <span class="math inline">\(\bigcap_{n=1}^\infty E_n = \varnothing\)</span>, then events <span class="math inline">\(E_n\)</span> are said to be <em>mutually exclusive</em>.</p>
+<p><strong>Definition 1.8. (Complementary event)</strong> For any event <span class="math inline">\(E\)</span> we define the new event <span class="math inline">\(\overline{E}\)</span> (also denoted by <span class="math inline">\(E&#39;\)</span> or <span class="math inline">\(E^c\)</span>), referred to as the <em>complement of <span class="math inline">\(E\)</span></em>, to consist of all outcomes in the sample space <span class="math inline">\(S\)</span> that are not in <span class="math inline">\(E\)</span>, i.e., <span class="math inline">\(\overline{E}\)</span> will occur if and only if <span class="math inline">\(E\)</span> does not occur.</p>
+<p>The event <span class="math inline">\(E\)</span> and its complement <span class="math inline">\(\overline{E}\)</span> are mutually exclusive and exhaustive. Given an event, the event and its complementary event define a Bernoulli trial.</p>
+<p><strong>Definition 1.9. (Probability defined on events)</strong> Consider an experiment whose sample space is <span class="math inline">\(S\)</span>. For each event <span class="math inline">\(E\)</span>, we assume that a number <span class="math inline">\(\Pr[E]\)</span> is defined and satisfies the following conditions (<em>Kolmogorov's axioms</em>):</p>
 <ol type="1">
-<li><span class="math inline">\(0 \leq P(E) \leq 1\)</span></li>
-<li><span class="math inline">\(P(S) = 1\)</span></li>
-<li>For any sequence of events <span class="math inline">\(E_1, E_2, \cdots\)</span> that are mutually exclusive, i.e., events for which <span class="math inline">\(E_nE_m = \varnothing\)</span> when <span class="math inline">\(n \neq m\)</span>, then <span class="math display">\[P\bigg(\bigcup_{n=1}^\infty E_n\bigg) = \sum_{n=1}^\infty P(E_n)\]</span></li>
+<li><span class="math inline">\(\Pr[E] \in \mathbb{R}\)</span>, <span class="math inline">\(\Pr[E] \geq 0\)</span></li>
+<li>(Assumption of unit measure) <span class="math inline">\(\Pr[S] = 1\)</span></li>
+<li>(Assumption of σ-additivity) For any sequence of events <span class="math inline">\(E_1, E_2, \dots\)</span> that are mutually exclusive, i.e., events for which <span class="math inline">\(E_nE_m = \varnothing\)</span> when <span class="math inline">\(n \neq m\)</span>, then <span class="math display">\[\Pr\left[\bigcup_{n=1}^\infty E_n\right] = \sum_{n=1}^\infty \Pr[E_n]\]</span></li>
 </ol>
-<p>We refer to <span class="math inline">\(P(E)\)</span> as the probability of the event <span class="math inline">\(E\)</span>.</p>
+<p>We refer to <span class="math inline">\(\Pr[E]\)</span> as the <em>probability of the event <span class="math inline">\(E\)</span></em>.</p>
+<p>By definition, <span class="math inline">\(S = E \cup \overline{E}\)</span>, therefore <span class="math inline">\(\Pr[E \cup \overline{E}]=1\)</span>. Since <span class="math inline">\(E\)</span> and <span class="math inline">\(\overline{E}\)</span> are mutually exclusive events, <span class="math inline">\(\Pr[E \cup \overline{E}]=\Pr[E]+\Pr[\overline{E}]\)</span>. Thus, we have <span class="math inline">\(\Pr[\overline{E}] = 1 - \Pr[E]\)</span>.</p>
+<p>If <span class="math inline">\(\Pr\left[\bigcap_{n=1}^\infty E_n\right] = \prod_{n=1}^\infty \Pr[E_n]\)</span>, then events <span class="math inline">\(E_n\)</span> are said to be <em>independent</em>.</p>
+<p><strong>The probability of the empty set.</strong> <span class="math inline">\(\Pr[\varnothing] = 0\)</span>.</p>
+<p><strong>Monotonicity.</strong> If <span class="math inline">\(E_1 \subseteq E_2\)</span> then <span class="math inline">\(\Pr[E_1] \leq \Pr[E_2]\)</span>.</p>
+<p><strong>The numeric bound.</strong> It immediately follows from the monotonicity property that <span class="math inline">\(0 \leq \Pr[E] \leq 1\)</span>.</p>
+<p><strong>Theorem 1.10. (Addition law of probability)</strong> <span class="math display">\[\Pr[E_1 \cup E_2] = \Pr[E_1] + \Pr[E_2] - \Pr[E_1 \cap E_2]\]</span></p>
+<p><strong>Theorem 1.11. (Inclusion-exclusion principle)</strong> <span class="math display">\[\Pr\left[\bigcup_{i=1}^n E_i\right] = \sum_{i=1}^n\left((-1)^{i-1} \sum_{I \subset \{1,\dots,n\}, |I|=i} \Pr\left[\bigcap_{i \in I} E_i\right]\right)
+\]</span></p>
+<p><strong>Theorem 1.12. (Union bound; Boole's inequality)</strong> <span class="math display">\[\Pr\left[\bigcup_{i=1}^n E_i\right] \leq \sum_{i=1}^n \Pr[E_i]\]</span></p>
+<p>Boole's inequality follows from the fact that a probability measure is σ-sub-additive.</p>
+<p><strong>Theorem 1.13. (Bonferroni inequalities)</strong> For all odd <span class="math inline">\(k\)</span>, <span class="math display">\[\Pr\left[\bigcup_{i=1}^n E_i\right] \leq \sum_{i=1}^k \left((-1)^{i-1} \sum_{I \subset \{1,\dots,n\}, |I|=i} \Pr\left[\bigcap_{i \in I} E_i\right]\right)\]</span> For all even <span class="math inline">\(k\)</span>, <span class="math display">\[\Pr\left[\bigcup_{i=1}^n E_i\right] \geq \sum_{i=1}^k \left((-1)^{i-1} \sum_{I \subset \{1,\dots,n\}, |I|=i} \Pr\left[\bigcap_{i \in I} E_i\right]\right)\]</span> When <span class="math inline">\(k=n\)</span>, the equality holds and the resulting identity is the inclusion–exclusion principle. When <span class="math inline">\(k=1\)</span>, we get Boole's inequality.</p>
+<p><strong>Definition 1.14. (Conditional probability)</strong> The <em>conditional probability of <span class="math inline">\(E_1\)</span> given <span class="math inline">\(E_2\)</span></em>, denoted <span class="math inline">\(\Pr[E_1 | E_2]\)</span>, is defined as <span class="math display">\[\Pr[E_1 | E_2] = \frac{\Pr[E_1 \cap E_2]}{\Pr[E_2]}\]</span> when <span class="math inline">\(\Pr[E_2] \neq 0\)</span>.</p>
+<p>It follows immediately from the definition that <span class="math display">\[\Pr[E_1 \cap E_2] = \Pr[E_1 | E_2] \cdot \Pr[E_2]\]</span></p>
+<p><strong>Theorem 1.15. (Bayes' theorem)</strong> If <span class="math inline">\(\Pr[E_2] \neq 0\)</span> then <span class="math display">\[\Pr[E_1 | E_2] = \frac{\Pr[E_2 | E_1] \cdot \Pr[E_1]}{\Pr[E_2]}\]</span></p>
+<p><strong>Theorem 1.16.</strong> <span class="math display">\[\Pr\left[\bigcup_{i=1}^k E_i\right] \leq \Pr[E_1] + \sum_{i=2}^k \Pr[E_i | \overline{E}_1 \cap \dots \cap \overline{E}_{i-1}]\]</span></p>
 </section>
-</section>
-</section>
-<section class="footnotes">
-<hr />
-<ol>
-<li id="fn1"><p><a href="https://en.wikipedia.org/wiki/Experiment_(probability_theory)" class="uri">https://en.wikipedia.org/wiki/Experiment_(probability_theory)</a><a href="#fnref1">↩</a></p></li>
-<li id="fn2"><p><a href="https://en.wikipedia.org/wiki/Outcome_(probability)" class="uri">https://en.wikipedia.org/wiki/Outcome_(probability)</a><a href="#fnref2">↩</a></p></li>
-<li id="fn3"><p><a href="https://en.wikipedia.org/wiki/Sample_space" class="uri">https://en.wikipedia.org/wiki/Sample_space</a><a href="#fnref3">↩</a></p></li>
-<li id="fn4"><p><a href="https://en.wikipedia.org/wiki/Event_(probability_theory)" class="uri">https://en.wikipedia.org/wiki/Event_(probability_theory)</a><a href="#fnref4">↩</a></p></li>
-<li id="fn5"><p><a href="https://en.wikipedia.org/wiki/Elementary_event" class="uri">https://en.wikipedia.org/wiki/Elementary_event</a><a href="#fnref5">↩</a></p></li>
-<li id="fn6"><p><a href="https://en.wikipedia.org/wiki/Complementary_event" class="uri">https://en.wikipedia.org/wiki/Complementary_event</a><a href="#fnref6">↩</a></p></li>
-</ol>
+<section id="useful-probability-bounds" class="level1">
+<h1><span class="header-section-number">2</span> Useful Probability Bounds</h1>
 </section>
       </div>
       <footer>
@@ -150,7 +124,7 @@
           <i class="fa fa-anchor" aria-hidden="true"></i>
           <code>Permalink</code>
         </a> |
-        Last updated: <span id="update-time">2016-04-15</span>
+        Last updated: <span id="update-time">2016-10-07</span>
       </footer>
     </article></main>
   </body>
