@@ -1,6 +1,6 @@
 % Mort's small traces
 % Mort Yao
-% 2016-09-17
+% 2016-10-10
 
 <div style="text-align:center;font-style:italic">
 "Tiger got to hunt, bird got to fly;
@@ -15,19 +15,31 @@
 1. Mathematics
     * Naive set theory
     * **[Mathematical logic](/math/logic)**
+        * Classical logic
+            * Propositional logic
+            * First-order logic
+        * Axiomatic set theory (ZFC)
+        * Model theory
+        * Computability theory
+        * Non-classical logic
+            * Intuitionistic logic
+            * Linear logic
     * General topology
     * Calculus
+        * [Limit](/math/calculus/limit)
     * Linear algebra
     * Abstract algebra
+        * Group theory
         * Category theory and homological algebra
     * Analysis
         * Measure theory
 2. Applied mathematics
-    * Probability theory and statistics
-    * **Algorithms**
+    * [Probability theory](/math/probability) and statistics
+    * **[Algorithms](/algo)**
         * Computational geometry
     * **[Cryptography](/crypto)**
-    * **Computational complexity theory**
+        * Algorithmic number theory
+    * **[Computational complexity theory](/comp)**
     * **[Programming language theory](/plt)**
         * Formal semantics
         * Type theory and Curry-Howard correspondence
@@ -37,7 +49,7 @@
     * **Computer vision and image processing**
     * Natural language processing
 3. Software technology
-    * Computer systems and assembly
+    * Computer systems and architectures
     * [Unix](/unix) and system programming
     * TCP/IP and socket programming
     * Web and databases
