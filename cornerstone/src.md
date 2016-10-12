@@ -1,6 +1,6 @@
 % The Cornerstone
 %
-% 2016-08-17
+% 2016-10-12
 
 *People who made significant contributions to the upgrowth of modern logic, foundations of mathematics and computation.*
 
@@ -21,6 +21,8 @@ L. E. J. Brouwer (1881-1966)
 Thoralf Skolem (1887-1963)
 
 Abraham Fraenkel (1891-1965)
+
+Emil Leon Post (1897-1954)
 
 Arend Heyting (1898-1980)
 
