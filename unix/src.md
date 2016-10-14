@@ -1,6 +1,6 @@
 % Unix from User Space
 %
-% 2016-07-22
+% 2016-10-14
 
 Tips and tricks about Unix-like systems and tools that run on them.
 
@@ -17,7 +17,8 @@ Tips and tricks about Unix-like systems and tools that run on them.
 * Documenting
     * [PDF (How to edit a PDF document)](pdf)
     * LaTeX  `[TBD]`
-* Encryption & Privacy
+* Security & Privacy
     * [GnuPG](gpg)
+    * [SSH](ssh)
     * [Internet Privacy (How to block Google Analytics)](internet-privacy)
     * Anonymity  `[TBD]`
