@@ -97,7 +97,7 @@
 <p>Here <span class="math inline">\(a=2\)</span>, <span class="math inline">\(b=2\)</span> and <span class="math inline">\(f(n)=\mathcal{O}(n)\)</span>. <span class="math inline">\(n^{\log_b a} = n^{\log_2 2} = n^1 = n\)</span>, therefore, <span class="math inline">\(f(n)=n^{\log_b a}\)</span>. Thus, we have <span class="math inline">\(T(n) = \Theta(n \log n)\)</span>.</p>
 <p><strong>Example 6.</strong> Given the recurrence <span class="math inline">\(T(n)=2T\left(\frac{n}{2}\right)+\mathcal{O}(1)\)</span> (binary tree traversal), determine the asymptotic bound of <span class="math inline">\(T(n)\)</span>.</p>
 <p>Here <span class="math inline">\(a=2\)</span>, <span class="math inline">\(b=2\)</span> and <span class="math inline">\(f(n)=\mathcal{O}(1)\)</span>. <span class="math inline">\(n^{\log_b a} = n^{\log_2 2} = n^1 = n\)</span>, therefore, <span class="math inline">\(f(n)=n^{\log_b a - \varepsilon}&lt;n^{\log_b a}\)</span> where <span class="math inline">\(\varepsilon=1\)</span>. Thus, we have <span class="math inline">\(T(n) = \Theta(n)\)</span>.</p>
-<p><strong>Common orders and time complexities.</strong> The following table summarizes some classes of commonly encountered time complexities.</p>
+<p><strong>Common orders and <a href="/comp/complexity/time">time complexities</a>.</strong> The following table summarizes some classes of commonly encountered time complexities.</p>
 <table style="width:76%;">
 <colgroup>
 <col style="width: 45%" />
@@ -163,7 +163,7 @@
 <td></td>
 </tr>
 <tr class="odd">
-<td><span class="math inline">\(\mathcal{O}(n^c), c &gt; 1\)</span></td>
+<td><span class="math inline">\(\mathcal{O}(n^c)\)</span></td>
 <td>Polynomial</td>
 <td>P</td>
 </tr>

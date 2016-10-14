@@ -81,7 +81,7 @@ Here $a=2$, $b=2$ and $f(n)=\mathcal{O}(1)$. $n^{\log_b a} = n^{\log_2 2} = n^1 
 
 
 
-**Common orders and time complexities.**
+**Common orders and [time complexities](/comp/complexity/time).**
 The following table summarizes some classes of commonly encountered time complexities.
 
 | Order of running time (Big O notation) | Name | Complexity class |
@@ -96,7 +96,7 @@ The following table summarizes some classes of commonly encountered time complex
 | $\mathcal{O}(n \log n)$          | Linearithmic       |    |
 | $\mathcal{O}(n^2)$               | Quadratic          |    |
 | $\mathcal{O}(n^3)$               | Cubic              |    |
-| $\mathcal{O}(n^c), c > 1$        | Polynomial         | P  |
+| $\mathcal{O}(n^c)$               | Polynomial         | P  |
 | $\mathcal{O}(n^{\log n})$        | Quasi-polynomial   | QP |
 | $L_n[\alpha, c] = e^{(c+o(1))(\ln n)^\alpha(\ln \ln n)^{1-\alpha}}, 0 < \alpha < 1$ | Sub-exponential    | SUBEXP  |
 | $\mathcal{O}(c^n), c > 1$        | Exponential        | EXPTIME |
