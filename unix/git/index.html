@@ -8,7 +8,7 @@
     <meta name="generator" content="pandoc">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="author" content="Mort Yao">
-    <meta name="dcterms.date" content="2016-10-01">
+    <meta name="dcterms.date" content="2016-10-19">
     <title>Git Tricks</title>
     <link rel="canonical" href="https://wiki.soimort.org/unix/git">
     <style type="text/css">code { white-space: pre; }</style>
@@ -69,7 +69,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <header>
         <h1 class="title">Git Tricks</h1>
         <address class="author">Mort Yao</address>
-        <!-- h3 class="date">2016-10-01</h3 -->
+        <!-- h3 class="date">2016-10-19</h3 -->
       </header>
       <nav id="TOC">
 <ul>
@@ -128,6 +128,12 @@ $ git push origin <span class="do">gh-pages</span></code></pre>
 </section>
 <section id="staging" class="level2">
 <h2>Staging</h2>
+<section id="revert-uncommitted-change-of-a-single-file" class="level3">
+<h3>Revert (uncommitted change of) a single file</h3>
+<pre><code>$ git checkout <span class="do">file</span></code></pre>
+<p>To avoid confusion with a branch name, use:</p>
+<pre><code>$ git checkout -- <span class="do">file</span></code></pre>
+</section>
 <section id="unstage-any-staged-changes-for-a-file" class="level3">
 <h3>Unstage any staged changes for a file</h3>
 <pre><code>$ git reset <span class="do">file</span></code></pre>
@@ -202,7 +208,7 @@ $ git checkout <span class="do">feature-branch</span></code></pre>
           <i class="fa fa-anchor" aria-hidden="true"></i>
           <code>Permalink</code>
         </a> |
-        Last updated: <span id="update-time">2016-10-01</span>
+        Last updated: <span id="update-time">2016-10-19</span>
       </footer>
     </article></main>
   </body>

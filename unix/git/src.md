@@ -1,6 +1,6 @@
 % Git Tricks
 % Mort Yao
-% 2016-10-01
+% 2016-10-19
 
 ## Working with branches
 
@@ -59,6 +59,14 @@ Update local references to the remote repository: (and delete obsolete reference
 
 
 ## Staging
+
+### Revert (uncommitted change of) a single file
+
+    $ git checkout [file]
+
+To avoid confusion with a branch name, use:
+
+    $ git checkout -- [file]
 
 ### Unstage any staged changes for a file
 
