@@ -1,6 +1,6 @@
 % Mort's small traces
 % Mort Yao
-% 2016-10-12
+% 2016-10-23
 
 <div style="text-align:center;font-style:italic">
 "Tiger got to hunt, bird got to fly;
@@ -31,25 +31,59 @@ A lifelong project to do my study notes on Math / Computer Science systematicall
     * Linear algebra
     * Abstract algebra
         * Group theory
+        * Representation theory
         * Category theory and homological algebra
-    * General topology
+    * Topology and geometry
+        * General topology
+        * Geometric topology
+        * Algebraic topology and geometry
+        * Differential topology and geometry
+        * Lie groups
     * Calculus
         * [Limit](/math/calculus/limit)
         * Differentiation
         * Integral
+        * Series
+    * Differential equations and dynamical systems
+        * Control theory
+        * Chaos and fractals
     * Analysis
         * Measure theory
         * Complex analysis
         * Real analysis
+        * Functional analysis
+    * Number theory
+        * Algebraic number theory
+        * Analytic number theory
+    * Graph theory
+    * Combinatorics
 2. Applied mathematics
     * [Probability theory](/math/probability) and statistics
+    * Information theory
+        * Coding theory
     * **[Theory of Computation](/comp)**
+        * Formal language and automaton
+        * Computability
+        * Complexity
     * **[Algorithms](/algo)**
+        * Data structures
+        * Sorting
+        * Searching
         * Computational geometry
+        * Computational number theory
+        * Numerical analysis
     * **[Cryptography](/crypto)**
-        * Algorithmic number theory
+        * Classical cryptography
+        * Information-theoretic security
+        * Private-key cryptography
+        * Public-key cryptography
+        * Quantum resistance
+    * Game theory and operations research
+        * Mathematical optimization
+        * Evolutionary computation
     * **Machine learning**
         * Artificial neural networks
+        * Deep learning
     * **Computer vision and image processing**
     * Natural language processing
     * **[Programming language theory](/plt)**
@@ -58,10 +92,23 @@ A lifelong project to do my study notes on Math / Computer Science systematicall
         * Program analysis and transformation
 3. Software technology
     * Computer systems and architectures
-    * [Unix](/unix) and system programming
-    * TCP/IP and socket programming
+    * Operating systems
+        * [Unix-like](/unix)
+        * System programming
+        * Linux kernel
+    * TCP/IP
+        * Internet protocol suite
+        * Socket programming
     * Web and databases
-    * Compilers
+        * Relational database and normalization
+        * NoSQL
+        * Knowledge representation and Semantic Web
+    * Programming paradigms
+        * Functional programming
+        * Logic programming
+        * Dataflow programming
+        * Concurrency
+    * Compiler design
     * **Information security**
         * Proof-carrying code
 
