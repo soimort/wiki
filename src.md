@@ -69,6 +69,8 @@ A lifelong project to do my study notes on Math / Computer Science systematicall
         * Data structures
         * Sorting
         * Searching
+        * [Randomization](/algo/randomization)
+        * [Approximation](/algo/approximation)
         * Computational geometry
         * Computational number theory
         * Numerical analysis
@@ -79,7 +81,7 @@ A lifelong project to do my study notes on Math / Computer Science systematicall
         * Public-key cryptography
         * Quantum resistance
     * Game theory and operations research
-        * Mathematical optimization
+        * Linear programming and mathematical optimization
         * Evolutionary computation
     * **Machine learning**
         * Artificial neural networks
