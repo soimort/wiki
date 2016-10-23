@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-07 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Mort Yao">
+    <meta name="dcterms.date" content="2016-10-17">
+    <title>Time Complexity</title>
+    <link rel="canonical" href="https://wiki.soimort.org/comp/complexity/time">
+    <style type="text/css">code { white-space: pre; }</style>
+    <link rel="stylesheet" href="//cdn.soimort.org/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/mathsvg/latest/mathsvg.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Roman.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Mono.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/__/css/style.css">
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.soimort.org/jk/latest/jk.min.js"></script>
+    <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>
+    <script src="/__/js/jk-minibar.js"></script>
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+  <body>
+    <main><article>
+      <header>
+        <h1 class="title">Time Complexity</h1>
+        <address class="author">Mort Yao</address>
+        <!-- h3 class="date">2016-10-17</h3 -->
+      </header>
+      <div id="content">
+<p><strong>Concrete problems.</strong> An <a href="/comp/decidability">abstract problem</a> whose instance set <span class="math inline">\(I\)</span> is the set of binary strings (<span class="math inline">\(I \subseteq \{0,1\}^*\)</span>) is called a <em>concrete problem</em>, in the sense that the problem instance is concretely encoded as a binary string (as in all modern computers). We say that an algorithm <em>solves</em> a concrete problem in time <span class="math inline">\(\mathcal{O}(T(n))\)</span>, if it produces the solution in <span class="math inline">\(\mathcal{O}(T(n))\)</span> time, when given a problem instance <span class="math inline">\(i\)</span> of length <span class="math inline">\(n=|i|\)</span>. We say that an algorithm <em>verifies</em> a solution to a concrete problem in time <span class="math inline">\(\mathcal{O}(T(n))\)</span>, if it decides whether a certain solution is correct in <span class="math inline">\(\mathcal{O}(T(n))\)</span> time, when given a problem instance <span class="math inline">\(i\)</span> of length <span class="math inline">\(n=|i|\)</span> and a solution in question.</p>
+<p>A concrete problem with solution set <span class="math inline">\(S=\{0,1\}\)</span> is a <em>concrete decision problem</em>.</p>
+<p><strong>Tractability and efficiency under polynomial time.</strong> To approach a certain problem, if we have an algorithm that runs in polynomial time, i.e., <span class="math inline">\(\mathcal{O}(n^c)\)</span> for some constant <span class="math inline">\(c\)</span> where <span class="math inline">\(n\)</span> is the size of the input, this problem is <em>polynomial-time solvable</em> and we call it <em>tractable</em>; otherwise, we call it <em>intractable</em>. Polynomial-time algorithms are considered to be <em>efficient</em>, and superpolynomial-time algorithms are considered to be <em>inefficient</em>. In the following text, we are most interested in whether a problem can be approached in polynomial-time.</p>
+<p><strong>Definition 1. (Complexity class <span class="math inline">\(\mathrm{P}\)</span>)</strong> The complexity class <span class="math inline">\(\mathrm{P}\)</span> is the set of concrete decision problems that are <em>polynomial-time solvable</em>.</p>
+<p><strong>Encodings of abstract problems.</strong> Without loss of generality, any abstract problem can be mapped to a concrete problem by encoding of problem instances.</p>
+<p>A function <span class="math inline">\(f: \{0,1\}^* \to \{0,1\}^*\)</span> is said to be <em>polynomial-time computable</em> if there exists a polynomial-time algorithm <span class="math inline">\(\mathcal{A}\)</span> that, when given input <span class="math inline">\(x \in \{0,1\}^*\)</span>, outputs <span class="math inline">\(f(x)\)</span>. For an instance set <span class="math inline">\(I\)</span>, two encodings <span class="math inline">\(e_1\)</span> and <span class="math inline">\(e_2\)</span> are said to be <em>polynomially related</em> if there exists two polynomial-time computable functions <span class="math inline">\(f_{12}\)</span> and <span class="math inline">\(f_{21}\)</span> such that for any <span class="math inline">\(i \in I\)</span>, we have <span class="math inline">\(f_{12}(e_1(i))=e_2(i)\)</span> and <span class="math inline">\(f_{21}(e_2(i))=e_1(i)\)</span> (that is, problem instances in two encodings can be encoded/decoded into each other in polynomial-time). If two encodings <span class="math inline">\(e_1\)</span> and <span class="math inline">\(e_2\)</span> of an abstract problem are polynomially related, whether the problem is polynomial-time solvable or not is independent of the encoding that is used.</p>
+<p><strong>Theorem 2.</strong> Let <span class="math inline">\(Q\)</span> be an abstract decision problem on instance set <span class="math inline">\(I\)</span>, and let <span class="math inline">\(e_1\)</span> and <span class="math inline">\(e_2\)</span> be polynomially related encodings on <span class="math inline">\(I\)</span>. Then <span class="math inline">\(e_1(Q) \in \mathrm{P} \iff e_2(Q) \in \mathrm{P}\)</span>.</p>
+<p><strong>Proof.</strong> Suppose that <span class="math inline">\(e_1(Q)\)</span> can be solved in time <span class="math inline">\(\mathcal{O}(n^k)\)</span> for some constant <span class="math inline">\(k\)</span>. Moreover, suppose that for any problem instance <span class="math inline">\(i\)</span>, the encoding <span class="math inline">\(e_1(i)\)</span> can be computed from the encoding <span class="math inline">\(e_2(i)\)</span> in time <span class="math inline">\(\mathcal{O}(n^c)\)</span> for some constant <span class="math inline">\(c\)</span>, where <span class="math inline">\(n=|e_2(i)|\)</span>. To solve problem <span class="math inline">\(e_2(Q)\)</span> on <span class="math inline">\(e_2(i)\)</span>, we first compute <span class="math inline">\(e_1(i)\)</span>, which takes time <span class="math inline">\(\mathcal{O}(n^c)\)</span>; clearly, <span class="math inline">\(|e_1(i)| = \mathcal{O}(n^c)\)</span> since the output of an algorithm can be no longer than its running time. Then solving the problem on <span class="math inline">\(e_1(i)\)</span> takes time <span class="math inline">\(\mathcal{O}(|e_1(i)|^k) = \mathcal{O}(n^{ck})\)</span>, which is polynomial to <span class="math inline">\(n\)</span>. Similarly, we can prove that the other direction holds as well. <p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
+<p>As is shown above, the encoding of a problem instance does not affect its polynomial-time solvability so long as it is polynomially related to some “standard” encoding using binary strings. In the future, we can assume that all problem instances are encoded as binary strings, thus we can also neglect the distinction between abstract and concrete problems.</p>
+<p>Using the terminology of <a href="/comp/language/">formal languages</a>, the complexity class <span class="math inline">\(\mathrm{P}\)</span> can also be defined equivalently as:</p>
+<p><strong>Definition 3. (Complexity class <span class="math inline">\(\mathrm{P}\)</span>)</strong> <span class="math display">\[\mathrm{P} = \{L : \textrm{there exists an algorithm }\mathcal{A}\textrm{ that decides }L\textrm{ in polynomial time}\}\]</span></p>
+<p><strong>Theorem 4.</strong> <span class="math display">\[\mathrm{P} = \{L : \textrm{there exists an algorithm }\mathcal{A}\textrm{ that accepts }L\textrm{ in polynomial time}\}\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math inline">\(L\)</span> be the language accepted by some polynomial-time algorithm <span class="math inline">\(\mathcal{A}\)</span> in time <span class="math inline">\(\mathcal{O}(n^k)\)</span> for some constant <span class="math inline">\(k\)</span>, there also exists a constant <span class="math inline">\(c\)</span> such that <span class="math inline">\(\mathcal{A}\)</span> accepts <span class="math inline">\(L\)</span> in at most <span class="math inline">\(cn^k\)</span> steps. For any input string <span class="math inline">\(x\)</span>, the algorithm <span class="math inline">\(\mathcal{A}&#39;\)</span> <em>simulates</em> <span class="math inline">\(cn^k\)</span> steps of <span class="math inline">\(\mathcal{A}\)</span>. If <span class="math inline">\(\mathcal{A}\)</span> accepted <span class="math inline">\(x\)</span>, then <span class="math inline">\(\mathcal{A}&#39;\)</span> accepts <span class="math inline">\(x\)</span> by outputting <span class="math inline">\(1\)</span>; if <span class="math inline">\(\mathcal{A}\)</span> did not accept <span class="math inline">\(x\)</span>, then <span class="math inline">\(\mathcal{A}&#39;\)</span> rejects <span class="math inline">\(x\)</span> by outputting <span class="math inline">\(0\)</span>. The time of <span class="math inline">\(\mathcal{A}&#39;\)</span> simulating <span class="math inline">\(\mathcal{A}\)</span> is polynomial to the running time of <span class="math inline">\(\mathcal{A}\)</span>, thus, <span class="math inline">\(\mathcal{A}&#39;\)</span> is a polynomial-time algorithm that decides <span class="math inline">\(L\)</span>. <p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
+<p><strong>Verification algorithms.</strong> A two-argument algorithm <span class="math inline">\(\mathcal{A}\)</span> <em>verifies</em> an input string <span class="math inline">\(x\)</span> if there exists a certificate <span class="math inline">\(y\)</span> such that <span class="math inline">\(\mathcal{A}(x,y)=1\)</span>. The language verified by a verification algorithm <span class="math inline">\(\mathcal{A}\)</span> is <span class="math display">\[L = \{x \in \{0,1\}^* : \textrm{there exists } y \in \{0,1\}^* \textrm{ such that } \mathcal{A}(x,y) = 1\}\]</span></p>
+<p>Intuitively, an algorithm <span class="math inline">\(\mathcal{A}\)</span> verifies a language <span class="math inline">\(L\)</span> if for any string <span class="math inline">\(x \in L\)</span>, there exists a certificate <span class="math inline">\(y\)</span> that <span class="math inline">\(\mathcal{A}\)</span> can use to prove that <span class="math inline">\(x \in L\)</span>. Moreover, for any string <span class="math inline">\(x \not\in L\)</span> there must be no certificate showing that <span class="math inline">\(x \in L\)</span>.</p>
+<p><strong>Definition 5. (Complexity class <span class="math inline">\(\mathrm{NP}\)</span>)</strong> The complexity class <span class="math inline">\(\mathrm{NP}\)</span> is the set of concrete decision problems that are <em>polynomial-time verifiable</em> (i.e., for any given solution, we can verify it in polynomial time).</p>
+<p>A language <span class="math inline">\(L\)</span> belongs to <span class="math inline">\(\mathrm{NP}\)</span> if and only if there exists a two-argument polynomial-time algorithm <span class="math inline">\(\mathcal{A}\)</span> and a constant <span class="math inline">\(c\)</span> such that <span class="math display">\[L = \{x \in \{0,1\}^* : \textrm{there exists a certificate } y \textrm{ with } |y| = \mathcal{O}(|x|^c) \textrm{ such that } \mathcal{A}(x,y) = 1\}\]</span></p>
+<p>Notice that, to verify the correctness of a solution to a problem, we can always try to fully solve the problem and see if the given solution holds present, thus, if a problem is polynomial-time solvable, it is also polynomial-time verifiable, i.e., <span class="math inline">\(L \in \mathrm{P} \implies L \in \mathrm{NP}\)</span>. Therefore, <span class="math inline">\(\mathrm{P} \subseteq \mathrm{NP}\)</span>.</p>
+<p><strong><span class="math inline">\(\mathrm{P}=\mathrm{NP}\)</span> problem</strong>. It is an open question whether <span class="math inline">\(\mathrm{P}=\mathrm{NP}\)</span> or <span class="math inline">\(\mathrm{P} \subset \mathrm{NP}\)</span>.</p>
+<p><strong>Definition 6. (Complexity class <span class="math inline">\(\textrm{co-NP}\)</span>)</strong> The complexity class <span class="math inline">\(\textrm{co-NP}\)</span> is the set of languages <span class="math inline">\(L\)</span> such that <span class="math inline">\(\overline{L} \in \mathrm{NP}\)</span>.</p>
+<p>Intuitively, <span class="math inline">\(\textrm{co-NP}\)</span> is the class of problems for which efficiently verifiable proofs of “no”-instances exist. For example, for the SUBSET-SUM problem (which in the <span class="math inline">\(\mathrm{NP}\)</span> class): given a finite set of integers, is there a non-empty subset that sums to zero? The complementary problem (which is in the <span class="math inline">\(\textrm{co-NP}\)</span> class) asks: given a finite set of integers, does every non-empty subset have a non-zero sum?</p>
+<p>Clearly, <span class="math inline">\(\mathrm{P} \subseteq \textrm{co-NP}\)</span>, since if a problem is polynomial-time solvable, “no”-instances are easily verified in polynomial time. It follows from above that <span class="math inline">\(\mathrm{P} \subseteq \mathrm{NP} \cap \textrm{co-NP}\)</span>.</p>
+<p><strong><span class="math inline">\(\mathrm{NP}=\textrm{co-NP}\)</span> problem.</strong> It is an open question whether <span class="math inline">\(\mathrm{NP}=\textrm{co-NP}\)</span>. That is, it is unknown whether <span class="math inline">\(\mathrm{NP}\)</span> is closed under complement.</p>
+<p><strong>Further topics.</strong></p>
+<ul>
+<li><a href="npc">NP-completeness</a>: The class of <span class="math inline">\(\mathrm{NP}\)</span> problems to which every <span class="math inline">\(\mathrm{NP}\)</span> problem is reducible. Intuitively, the class of NP problems which are considered to be “the hardest”.</li>
+</ul>
+<p><strong>More complexity classes.</strong></p>
+<ul>
+<li><span class="math inline">\(\mathrm{ZPP}\)</span>: The class of decision problems that can be solved with zero error on a probabilistic Turing machine in polynomial time.</li>
+<li><span class="math inline">\(\mathrm{RP}\)</span>: The class of decision problems that can be solved with 1-sided error on a probabilistic Turing machine in polynomial time.</li>
+<li><span class="math inline">\(\mathrm{BPP}\)</span>: The class of decision problems that can be solved with 2-sided error on a probabilistic Turing machine in polynomial time.</li>
+<li><span class="math inline">\(\mathrm{BQP}\)</span>: The class of decision problems that can be solved with 2-sided error on a quantum Turing machine in polynomial time.</li>
+</ul>
+      </div>
+      <footer>
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard shortcut: R"
+           href="https://wiki.soimort.org/comp/complexity/time/src.md">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
+        <a class="history" accesskey="h"
+           title="Keyboard shortcut: H"
+           href="https://github.com/soimort/wiki/commits/gh-pages/comp/complexity/time/src.md">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard shortcut: E"
+           href="https://github.com/soimort/wiki/edit/gh-pages/comp/complexity/time/src.md">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
+           href="https://wiki.soimort.org/comp/complexity/time">
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
+        Last updated: <span id="update-time">2016-10-17</span>
+      </footer>
+    </article></main>
+  </body>
+</html>

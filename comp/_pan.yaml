@@ -1,0 +1,4 @@
+---
+filters: ['_filters/qed.hs']
+raw-options: [--mathjax, --number-sections, --section-divs, --toc, --smart]
+---

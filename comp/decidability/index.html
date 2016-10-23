@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-07 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Mort Yao">
+    <meta name="dcterms.date" content="2016-10-15">
+    <title>Decidability</title>
+    <link rel="canonical" href="https://wiki.soimort.org/comp/decidability">
+    <style type="text/css">code { white-space: pre; }</style>
+    <link rel="stylesheet" href="//cdn.soimort.org/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/mathsvg/latest/mathsvg.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Roman.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Mono.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/__/css/style.css">
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.soimort.org/jk/latest/jk.min.js"></script>
+    <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>
+    <script src="/__/js/jk-minibar.js"></script>
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+  <body>
+    <main><article>
+      <header>
+        <h1 class="title">Decidability</h1>
+        <address class="author">Mort Yao</address>
+        <!-- h3 class="date">2016-10-15</h3 -->
+      </header>
+      <div id="content">
+<p><strong>Abstract problems and decision problems.</strong> In computability theory and computational complexity theory, a <em>decision problem</em> is a question in some formal system with a yes-or-no answer (which is encoded as a bit <span class="math inline">\(1\)</span> or <span class="math inline">\(0\)</span>). If we define an <em>abstract problem</em> as a binary relation between a set <span class="math inline">\(I\)</span> of problem instances and a set <span class="math inline">\(S\)</span> of problem solutions, decision problems are those with solution set <span class="math inline">\(S=\{0,1\}\)</span>.</p>
+<p><strong>Motivation.</strong> Unsurprisingly, many abstract problems are not decision problems but rather <em>optimization problems</em>, in which the solution set <span class="math inline">\(S\)</span> has more than 2 elements or is infinitely large. Still, we are interested in decision problems for the following reasons:</p>
+<ol type="1">
+<li>Every optimization problem can be reduced into a decision problem (does an optimal solution exist?) that is no harder than the original optimization problem. If we can prove that the decision problem is unsolvable, we then know that the optimization problem is also unsolvable.</li>
+<li>If we know that the decision problem is hard (intractable), the optimization problem must be no easier than that. Consequently, we should try to approach the problem using alternative methods (e.g., approximations) rather than to look for a general solution.</li>
+</ol>
+<p>From the point of view of <a href="../language">formal language theory</a>, the set of instances for any decision problem <span class="math inline">\(Q\)</span> is the set <span class="math inline">\(\Sigma^*\)</span>, where <span class="math inline">\(\Sigma=\{0,1\}\)</span>. Since <span class="math inline">\(Q\)</span> can be fully characterized by the problem instances that produce a <span class="math inline">\(1\)</span> (“yes”) answer, <span class="math inline">\(Q\)</span> can be viewed as a language <span class="math inline">\(L\)</span> over <span class="math inline">\(\Sigma=\{0,1\}\)</span>, denoted by using a propositional formula as: <span class="math display">\[L = \{x \in \{0,1\}^*: Q(x) = 1\}\]</span></p>
+<p>Intuitively, the language <span class="math inline">\(L\)</span> of a decision problem <span class="math inline">\(Q\)</span> is the set of binary strings that encode the yes-instances of that problem.</p>
+<p>For a decision problem, an <a href="../algorithm">algorithm</a> <span class="math inline">\(\mathcal{A}\)</span> <em>accepts</em> a string <span class="math inline">\(x \in \{0,1\}^*\)</span> if <span class="math inline">\(\mathcal{A}(x)=1\)</span>. <span class="math inline">\(\mathcal{A}\)</span> <em>rejects</em> a string <span class="math inline">\(x\)</span> if <span class="math inline">\(\mathcal{A}(x)=0\)</span>. The language accepted by an algorithm <span class="math inline">\(\mathcal{A}\)</span> is the set of binary strings <span class="math display">\[L_\mathcal{A} = \{x \in \{0,1\}^*: \mathcal{A}(x) = 1\}\]</span></p>
+<p>N.B. If a given string <span class="math inline">\(x\)</span> is not accepted by the algorithm <span class="math inline">\(\mathcal{A}\)</span>, i.e., <span class="math inline">\(x \not\in L_\mathcal{A}\)</span>, it is not necessarily rejected; <span class="math inline">\(\mathcal{A}(x)\)</span> could never halt thus fail to give an output.</p>
+<p><strong>Definition 1. (Decidability)</strong> A language <span class="math inline">\(L\)</span> is <em>decided</em> by an algorithm <span class="math inline">\(\mathcal{A}\)</span> if every binary string in <span class="math inline">\(L\)</span> is accepted by <span class="math inline">\(\mathcal{A}\)</span> and every binary string not in <span class="math inline">\(L\)</span> is rejected by <span class="math inline">\(\mathcal{A}\)</span>, that is, <span class="math display">\[\forall x \in L . \mathcal{A}(x)=1\]</span> <span class="math display">\[\forall x \in \{0,1\}^* \setminus L . \mathcal{A}(x)=0\]</span></p>
+<p>Clearly, the decidability of a language is a stronger property than its acceptability. For an algorithm <span class="math inline">\(\mathcal{A}\)</span> to accept a language <span class="math inline">\(L\)</span>, it only needs to accept every string in <span class="math inline">\(L\)</span>; to decide a language, however, <span class="math inline">\(\mathcal{A}\)</span> must explicitly accept or reject every string in <span class="math inline">\(\Sigma^*\)</span>. In fact, there are languages that cannot be decided by any algorithm; that is, the corresponding decision problems are <em>undecidable</em>, such as Turing’s halting problem.</p>
+<p><strong>Further topics.</strong></p>
+<ul>
+<li><a href="undecidability">Undecidability</a></li>
+</ul>
+      </div>
+      <footer>
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard shortcut: R"
+           href="https://wiki.soimort.org/comp/decidability/src.md">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
+        <a class="history" accesskey="h"
+           title="Keyboard shortcut: H"
+           href="https://github.com/soimort/wiki/commits/gh-pages/comp/decidability/src.md">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard shortcut: E"
+           href="https://github.com/soimort/wiki/edit/gh-pages/comp/decidability/src.md">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
+           href="https://wiki.soimort.org/comp/decidability">
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
+        Last updated: <span id="update-time">2016-10-15</span>
+      </footer>
+    </article></main>
+  </body>
+</html>

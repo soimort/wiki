@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-07 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Mort Yao">
+    <meta name="dcterms.date" content="2016-10-17">
+    <title>Reducibility</title>
+    <link rel="canonical" href="https://wiki.soimort.org/comp/reducibility">
+    <style type="text/css">code { white-space: pre; }</style>
+    <link rel="stylesheet" href="//cdn.soimort.org/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/mathsvg/latest/mathsvg.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Roman.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Mono.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/__/css/style.css">
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.soimort.org/jk/latest/jk.min.js"></script>
+    <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>
+    <script src="/__/js/jk-minibar.js"></script>
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+  <body>
+    <main><article>
+      <header>
+        <h1 class="title">Reducibility</h1>
+        <address class="author">Mort Yao</address>
+        <!-- h3 class="date">2016-10-17</h3 -->
+      </header>
+      <div id="content">
+<p>In computability theory and computational complexity theory, a <em>reduction</em> is an algorithm for transforming one problem into another problem.</p>
+<p>Intuitively, a problem <span class="math inline">\(A\)</span> is <em>reducible</em> to another problem <span class="math inline">\(B\)</span> if an algorithm for solving problem <span class="math inline">\(B\)</span> efficiently (if it existed) could also be used as a subroutine to solve problem <span class="math inline">\(A\)</span> efficiently, so that solving problem <span class="math inline">\(A\)</span> would not be “harder” than solving problem <span class="math inline">\(B\)</span>, written as <span class="math inline">\(A \leq B\)</span>.</p>
+<p>As suggested by the notation, a reduction is a preorder (which is reflexive and transitive).</p>
+<p><strong>Motivation.</strong> The necessity of reductions arises in two situations:</p>
+<ol type="1">
+<li>We are trying to solve problem <span class="math inline">\(A\)</span> that is similar to problem <span class="math inline">\(B\)</span> we solved already. If solving <span class="math inline">\(A\)</span> can be transformed into solving <span class="math inline">\(B\)</span>, then <span class="math inline">\(A\)</span> can be solved easily (via a subroutine of solving <span class="math inline">\(B\)</span>) as well. (i.e., <span class="math inline">\(A\)</span> is no harder than <span class="math inline">\(B\)</span>)</li>
+<li>We already know that problem <span class="math inline">\(B\)</span> is hard to solve, and we have another seemingly hard problem <span class="math inline">\(A\)</span>. Suppose <span class="math inline">\(A\)</span> is easier (than <span class="math inline">\(B\)</span>) to solve, if we can show that every instance of <span class="math inline">\(B\)</span> is solved easily by transforming them into solving <span class="math inline">\(A\)</span>, we know that <span class="math inline">\(B\)</span> would not be so hard at all; otherwise, we know that <span class="math inline">\(A\)</span> is at least as hard as <span class="math inline">\(B\)</span>.</li>
+</ol>
+<p><strong>Proof by reduction.</strong> Assume that some existing problem is hard, using contradiction (as discussed above) we can prove that another problem is also hard. As a practical example: In cryptography, under the unproven assumption that <span class="math inline">\(\mathrm{P} \neq \mathrm{NP}\)</span>, if we know that a mathematical problem is very hard, we can prove that some construction is secure (because solving the corresponding computational problem to “break” the scheme would be hard too).</p>
+<p><strong>Definition 1. (Mapping reduction)</strong> Language <span class="math inline">\(L_1\)</span> is <em>mapping reducible</em> to language <span class="math inline">\(L_2\)</span>, written as <span class="math inline">\(L_1 \leq_\mathrm{m} L_2\)</span>, if there is a computable function <span class="math inline">\(f : \Sigma^* \to \Sigma^*\)</span>, where for every <span class="math inline">\(w\)</span>, <span class="math display">\[w \in L_1 \iff f(w) \in L_2\]</span> The function <span class="math inline">\(f\)</span> is called the <em>reduction</em> from <span class="math inline">\(L_1\)</span> to <span class="math inline">\(L_2\)</span>.</p>
+<p><strong>Definition 2. (Polynomial-time reduction)</strong> Language <span class="math inline">\(L_1\)</span> is <em>polynomial-time reducible</em> to language <span class="math inline">\(L_2\)</span>, written as <span class="math inline">\(L_1 \leq_\mathrm{p} L_2\)</span>, if there is a polynomial-time computable function <span class="math inline">\(f : \Sigma^* \to \Sigma^*\)</span>, where for every <span class="math inline">\(w\)</span>, <span class="math display">\[w \in L_1 \iff f(w) \in L_2\]</span> The function <span class="math inline">\(f\)</span> is called the <em>polynomial-time reduction</em> from <span class="math inline">\(L_1\)</span> to <span class="math inline">\(L_2\)</span>.</p>
+<p>The most commonly used polynomial-time reductions are <a href="many-one">many-one reductions</a> therefore in many cases the phrase “polynomial-time reduction” is used to mean a polynomial-time many-one reduction (also called a <em>Karp reduction</em>).</p>
+<p><strong>Definition 3. (Closure under reducibility)</strong> A class <span class="math inline">\(C\)</span> of languages is said to be <em>closed</em> under reducibility <span class="math inline">\(\leq\)</span> if there exists no reduction from a language in <span class="math inline">\(C\)</span> to a language outside <span class="math inline">\(C\)</span>, that is, for every <span class="math inline">\(L\)</span>, <span class="math display">\[\forall L&#39; \in C. L \leq L&#39; \implies L \in C\]</span></p>
+<p>If a class is closed under many-one reducibility, then many-one reduction may be used to show that a problem is in <span class="math inline">\(C\)</span> by reducing a problem in <span class="math inline">\(C\)</span> to it. Notably, most well-studied <a href="../complexity">complexity classes</a> are closed under polynomial-time and/or log-space many-one reductions.</p>
+<p><strong>Definition 4. (Hardness)</strong> Given a class <span class="math inline">\(C\)</span> of languages, a language <span class="math inline">\(L\)</span> is said to be <em>hard</em> for <span class="math inline">\(C\)</span> if every language in <span class="math inline">\(C\)</span> is reducible to <span class="math inline">\(L\)</span>, that is, <span class="math display">\[\forall L&#39; \in C. L&#39; \leq L\]</span></p>
+<p>N.B. <span class="math inline">\(L\)</span> itself does not have to be in <span class="math inline">\(C\)</span>.</p>
+<p><strong>Definition 5. (Completeness)</strong> Given a class <span class="math inline">\(C\)</span> of languages, a language <span class="math inline">\(L\)</span> is said to be <em>complete</em> for <span class="math inline">\(C\)</span> if it is hard for <span class="math inline">\(C\)</span> and <span class="math inline">\(L \in C\)</span>.</p>
+<p><strong>Further topics.</strong></p>
+<ul>
+<li><a href="many-one">Many-one reduction</a></li>
+<li><a href="turing">Turing reduction, Turing equivalence and Turing degree</a></li>
+</ul>
+      </div>
+      <footer>
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard shortcut: R"
+           href="https://wiki.soimort.org/comp/reducibility/src.md">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
+        <a class="history" accesskey="h"
+           title="Keyboard shortcut: H"
+           href="https://github.com/soimort/wiki/commits/gh-pages/comp/reducibility/src.md">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard shortcut: E"
+           href="https://github.com/soimort/wiki/edit/gh-pages/comp/reducibility/src.md">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
+           href="https://wiki.soimort.org/comp/reducibility">
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
+        Last updated: <span id="update-time">2016-10-17</span>
+      </footer>
+    </article></main>
+  </body>
+</html>

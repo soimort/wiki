@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-07 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Mort Yao">
+    <meta name="dcterms.date" content="2016-10-22">
+    <title>NP-Completeness</title>
+    <link rel="canonical" href="https://wiki.soimort.org/comp/complexity/time/npc">
+    <style type="text/css">code { white-space: pre; }</style>
+    <link rel="stylesheet" href="//cdn.soimort.org/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/mathsvg/latest/mathsvg.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Roman.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Mono.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/__/css/style.css">
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.soimort.org/jk/latest/jk.min.js"></script>
+    <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>
+    <script src="/__/js/jk-minibar.js"></script>
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+  <body>
+    <main><article>
+      <header>
+        <h1 class="title">NP-Completeness</h1>
+        <address class="author">Mort Yao</address>
+        <!-- h3 class="date">2016-10-22</h3 -->
+      </header>
+      <nav id="TOC">
+<ul>
+<li><a href="#concepts"><span class="toc-section-number">1</span> Concepts</a></li>
+<li><a href="#np-complete-problems"><span class="toc-section-number">2</span> NP-Complete Problems</a><ul>
+<li><a href="#the-circuit-satisfiability-problem-circuit-sat"><span class="toc-section-number">2.1</span> The Circuit Satisfiability Problem (CIRCUIT-SAT)</a></li>
+<li><a href="#the-formula-satisfiability-problem-sat"><span class="toc-section-number">2.2</span> The Formula Satisfiability Problem (SAT)</a></li>
+<li><a href="#the-3-cnf-satisfiability-problem-3-cnf-sat"><span class="toc-section-number">2.3</span> The 3-CNF Satisfiability Problem (3-CNF-SAT)</a></li>
+<li><a href="#the-clique-problem-clique"><span class="toc-section-number">2.4</span> The Clique Problem (CLIQUE)</a></li>
+<li><a href="#the-vertex-cover-problem-vertex-cover"><span class="toc-section-number">2.5</span> The Vertex-Cover Problem (VERTEX-COVER)</a></li>
+<li><a href="#the-hamiltonian-cycle-problem-ham-cycle"><span class="toc-section-number">2.6</span> * The Hamiltonian-Cycle Problem (HAM-CYCLE)</a></li>
+<li><a href="#the-traveling-salesman-problem-tsp"><span class="toc-section-number">2.7</span> The Traveling-Salesman Problem (TSP)</a></li>
+<li><a href="#the-subset-sum-problem-subset-sum"><span class="toc-section-number">2.8</span> The Subset-Sum Problem (SUBSET-SUM)</a></li>
+</ul></li>
+</ul>
+      </nav>
+      <div id="content">
+<section id="concepts" class="level1">
+<h1><span class="header-section-number">1</span> Concepts</h1>
+<p><strong>Lemma 1.1.</strong> The complexity class <span class="math inline">\(\mathrm{P}\)</span> is closed under polynomial-time reduction, i.e., <span class="math inline">\(\forall L&#39; \in \mathrm{P} . L \leq_\mathrm{p} L&#39; \implies L \in \mathrm{P}\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math inline">\(\mathcal{A}&#39;\)</span> be a polynomial-time algorithm that decides <span class="math inline">\(L&#39;\)</span>, and let <span class="math inline">\(F\)</span> be a polynomial-time reduction algorithm that computes the reduction function <span class="math inline">\(f\)</span>. We construct a polynomial-time algorithm <span class="math inline">\(\mathcal{A}\)</span> that decides <span class="math inline">\(L\)</span>:</p>
+<p>For a given input <span class="math inline">\(x \in \{0,1\}^*\)</span>, <span class="math inline">\(\mathcal{A}\)</span> uses <span class="math inline">\(F\)</span> to transform <span class="math inline">\(x\)</span> into <span class="math inline">\(f(x)\)</span>, and then it uses <span class="math inline">\(\mathcal{A}&#39;\)</span> to test whether <span class="math inline">\(f(x) \in L&#39;\)</span>. <span class="math inline">\(\mathcal{A}\)</span> then outputs whatever <span class="math inline">\(\mathcal{A}&#39;\)</span> outputs. Since both <span class="math inline">\(F\)</span> and <span class="math inline">\(\mathcal{A}&#39;\)</span> run in polynomial time, <span class="math inline">\(\mathcal{A}\)</span> runs in polynomial time. <p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
+<p><strong>Lemma 1.2.</strong> The complexity class <span class="math inline">\(\mathrm{NP}\)</span> is closed under polynomial-time reduction.</p>
+<p>Polynomial-time reductions provide a formal means for showing that one problem is at least as hard as another to within a polynomial-time factor, that is, if <span class="math inline">\(L&#39; \leq_\mathrm{p} L\)</span>, then <span class="math inline">\(L&#39;\)</span> is not more than a polynomial factor harder than <span class="math inline">\(L\)</span>.</p>
+<p><strong>Definition 1.3. (NP-hard)</strong> A language <span class="math inline">\(L\)</span> is said to be <em>NP-hard</em> (i.e., “hard for <span class="math inline">\(\mathrm{NP}\)</span>”) if every language in the complexity class <span class="math inline">\(\mathrm{NP}\)</span> is polynomial-time reducible to <span class="math inline">\(L\)</span>, that is, <span class="math display">\[\forall L&#39; \in \mathrm{NP} . L&#39; \leq_\mathrm{p} L\]</span></p>
+<p><strong>Definition 1.4. (NP-complete)</strong> A language <span class="math inline">\(L\)</span> is said to be <em>NP-complete</em> (i.e., “complete for <span class="math inline">\(\mathrm{NP}\)</span> if it is NP-hard and <span class="math inline">\(L \in \mathrm{NP}\)</span>.</p>
+<p>We also define the complexity class <span class="math inline">\(\mathrm{NPC}\)</span> to be the class of NP-complete languages.</p>
+<p><strong>Theorem 1.5.</strong> If any language of <span class="math inline">\(\mathrm{NPC}\)</span> belongs to <span class="math inline">\(\mathrm{P}\)</span>, then <span class="math inline">\(\mathrm{P}=\mathrm{NP}\)</span>.</p>
+<p><strong>Proof.</strong> Suppose that there exists a language <span class="math inline">\(L&#39;\)</span> such that <span class="math inline">\(L&#39; \in \mathrm{P}\)</span> and <span class="math inline">\(L&#39; \in \mathrm{NPC}\)</span>. Since <span class="math inline">\(L&#39; \in \mathrm{NPC}\)</span>, for any <span class="math inline">\(L \in \mathrm{NP}\)</span>, we have <span class="math inline">\(L \leq_\mathrm{p} L&#39;\)</span>; since <span class="math inline">\(L&#39; \in \mathrm{P}\)</span>, it follows from Lemma 1.1 that <span class="math inline">\(L \in \mathrm{P}\)</span>. Therefore <span class="math inline">\(\mathrm{NP} \subseteq \mathrm{P}\)</span>. It is also known that <span class="math inline">\(\mathrm{P} \subseteq \mathrm{NP}\)</span>, thus it holds that <span class="math inline">\(\mathrm{P} = \mathrm{NP}\)</span>. <p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
+<p><strong>Remark 1.6.</strong> It is an open question whether any language of <span class="math inline">\(\mathrm{NPC}\)</span> actually belongs to <span class="math inline">\(\mathrm{P}\)</span>, although the common belief is that <span class="math inline">\(\mathrm{P} \cap \mathrm{NPC} = \varnothing\)</span>, since no polynomial-time algorithm for any NP-complete problem has been found yet; otherwise we shall have <span class="math inline">\(\mathrm{P} = \mathrm{NP}\)</span>.</p>
+</section>
+<section id="np-complete-problems" class="level1">
+<h1><span class="header-section-number">2</span> NP-Complete Problems</h1>
+<section id="the-circuit-satisfiability-problem-circuit-sat" class="level2">
+<h2><span class="header-section-number">2.1</span> The Circuit Satisfiability Problem (CIRCUIT-SAT)</h2>
+<p><strong>Problem description.</strong> <span class="math display">\[\textrm{CIRCUIT-SAT} = \{\langle C \rangle : C \textrm{ is a satisfiable boolean combinational circuit}\}\]</span></p>
+<p><strong>Lemma 2.1.</strong> <span class="math inline">\(\textrm{CIRCUIT-SAT} \in \mathrm{NP}\)</span>.</p>
+<p><strong>Proof sketch.</strong> Construct a two-input, polynomial-time algorithm <span class="math inline">\(\mathcal{A}\)</span> such that for each logic gate in the circuit, it checks that the value provided by the certificate on the output wire is correctly computed as a function of the values on the input wires. If the output of the entire circuit is 1, <span class="math inline">\(\mathcal{A}\)</span> outputs 1; otherwise <span class="math inline">\(\mathcal{A}\)</span> outputs 0. Thus, we can verify CIRCUIT-SAT using the algorithm <span class="math inline">\(\mathcal{A}\)</span> in polynomial time, therefore <span class="math inline">\(\textrm{CIRCUIT-SAT} \in \mathrm{NP}\)</span>. <p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
+<p><strong>Lemma 2.2.</strong> <span class="math inline">\(\textrm{CIRCUIT-SAT}\)</span> is NP-hard.</p>
+<p><strong>Proof sketch.</strong> To show that any language <span class="math inline">\(L \in \mathrm{NP}\)</span> is polynomial-time reducible to CIRCUIT-SAT, we must construct a polynomial-time algorithm computing some function <span class="math inline">\(f\)</span> such that <span class="math display">\[x \in L \iff f(x) \in \textrm{CIRCUIT-SAT}\]</span></p>
+<p>Since <span class="math inline">\(L \in \mathrm{NP}\)</span>, there is a polynomial-time algorithm <span class="math inline">\(\mathcal{A}\)</span> such that <span class="math display">\[L = \{x \in \{0,1\}^* : \textrm{there exists } y \in \{0,1\}^* \textrm{ with } |y|=\mathcal{O}(|x|^c) \textrm{ such that } \mathcal{A}(x,y)=1\}\]</span></p>
+<p>Given string <span class="math inline">\(x\)</span>, we build a circuit <span class="math inline">\(C(x)\)</span> such that it consists of all the configuration steps of computing <span class="math inline">\(\mathcal{A}(x,y)\)</span>; we assign a set of input wires (which corresponds to string <span class="math inline">\(y\)</span>) to <span class="math inline">\(C(x)\)</span>, which must satisfy each configuration step in order for the whole circuit to output 1. Since <span class="math inline">\(\mathcal{A}\)</span> runs in polynomial time, we have <span class="math inline">\(\mathcal{O}(|x|^k)\)</span> configuration steps, thus the whole circuit <span class="math inline">\(C(x)\)</span> can also be computed in polynomial time; as long as it holds that <span class="math inline">\(\mathcal{A}(x,y)=1\)</span> for some <span class="math inline">\(y\)</span>, the circuit is satisfied and outputs 1. Thus, we can ensure that <span class="math inline">\(C(x)\)</span> has a satisfying assignment of input wires if and only if <span class="math inline">\(\mathcal{A}(x,y)=1\)</span> for some <span class="math inline">\(y\)</span> with <span class="math inline">\(|y|=\mathcal{O}(|x|^c)\)</span>.</p>
+<p>Now that <span class="math inline">\(C(x)\)</span> can be computed from <span class="math inline">\(x\)</span> in polynomial time, <span class="math inline">\(L \leq_\mathrm{p} \textrm{CIRCUIT-SAT}\)</span>. Thus, CIRCUIT-SAT is NP-hard. <p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
+<p><strong>Theorem 2.3.</strong> <span class="math inline">\(\textrm{CIRCUIT-SAT} \in \mathrm{NPC}\)</span>.</p>
+<p><strong>Proof.</strong> It follows directly from Lemma 2.1 and Lemma 2.2 that <span class="math inline">\(\textrm{CIRCUIT-SAT} \in \mathrm{NPC}\)</span>. <p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
+<p><strong>Lemma 2.4.</strong> If <span class="math inline">\(L\)</span> is a language such that <span class="math inline">\(L&#39; \leq_\mathrm{p} L\)</span> for some <span class="math inline">\(L&#39; \in \mathrm{NPC}\)</span>, then <span class="math inline">\(L\)</span> is NP-hard. If in addition <span class="math inline">\(L \in \mathrm{NP}\)</span>, then <span class="math inline">\(L \in \mathrm{NPC}\)</span>.</p>
+<p><strong>Proof.</strong> Since <span class="math inline">\(L&#39;\)</span> is NP-complete, for all <span class="math inline">\(L&#39;&#39; \in \mathrm{NP}\)</span>, we have <span class="math inline">\(L&#39;&#39; \leq_\mathrm{p} L&#39;\)</span>. As <span class="math inline">\(L&#39; \leq_\mathrm{p} L\)</span> and by transitivity, we have <span class="math inline">\(L&#39;&#39; \leq_\mathrm{p} L\)</span>, which shows that <span class="math inline">\(L\)</span> is NP-hard. If <span class="math inline">\(L \in \mathrm{NP}\)</span>, we have <span class="math inline">\(L \in \mathrm{NPC}\)</span>. <p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
+<p>Lemma 2.4 provides with an important methodology for proving the NP-completeness of a language. Intuitively, if we can reduce a known NP-complete language <span class="math inline">\(L&#39;\)</span> to <span class="math inline">\(L\)</span>, we implicitly reduce every language in <span class="math inline">\(\mathrm{NP}\)</span> to <span class="math inline">\(L\)</span> (i.e., <span class="math inline">\(L\)</span> is NP-hard). Therefore, to prove that <span class="math inline">\(L\)</span> is NP-complete, we only need to:</p>
+<ol type="1">
+<li>Prove that <span class="math inline">\(L \in \mathrm{NP}\)</span>.</li>
+<li>Prove that <span class="math inline">\(L\)</span> is NP-hard by reducing a known NP-complete language <span class="math inline">\(L&#39;\)</span> to <span class="math inline">\(L\)</span>.
+<ol type="1">
+<li>Choose a known NP-complete language <span class="math inline">\(L&#39;\)</span>.</li>
+<li>Construct an algorithm <span class="math inline">\(\mathcal{A}\)</span> that computes a function <span class="math inline">\(f\)</span> mapping every instance <span class="math inline">\(x\)</span> of <span class="math inline">\(L&#39;\)</span> to an instance <span class="math inline">\(f(x)\)</span> of <span class="math inline">\(L\)</span>.</li>
+<li>Prove that the function <span class="math inline">\(f\)</span> satisfies <span class="math inline">\(x \in L&#39;\)</span> if and only if <span class="math inline">\(f(x) \in L\)</span> for all <span class="math inline">\(x\)</span>.</li>
+<li>Prove that the algorithm <span class="math inline">\(\mathcal{A}\)</span> runs in polynomial time.</li>
+</ol></li>
+</ol>
+</section>
+<section id="the-formula-satisfiability-problem-sat" class="level2">
+<h2><span class="header-section-number">2.2</span> The Formula Satisfiability Problem (SAT)</h2>
+<p><strong>Problem description.</strong> <span class="math display">\[\textrm{SAT} = \{\langle \phi \rangle : \phi \textrm{ is a satisfiable boolean formula}\}\]</span></p>
+<p><strong>Lemma 2.5.</strong> <span class="math inline">\(\textrm{CIRCUIT-SAT} \leq_\mathrm{p} \textrm{SAT}\)</span>.</p>
+<p><strong>Proof sketch.</strong> For each gate in the circuit <span class="math inline">\(C\)</span>, we construct a sub-formula <span class="math inline">\(\phi_i\)</span> which is a logical equivalence of the operation on input wires and the output wire, e.g., for a certain gate, given the operation on input wires <span class="math inline">\(x_1 \lor x_2\)</span> and the output wire <span class="math inline">\(x_5\)</span>, we construct the sub-formula <span class="math inline">\(\phi_i = x_5 \leftrightarrow (x_1 \lor x_2)\)</span>. We define the formula <span class="math inline">\(\phi = x_m \land \phi_1 \land \phi_2 \dots \land \phi_k\)</span> (where <span class="math inline">\(x_m\)</span> is the final output wire), which can be computed in polynomial time. If the circuit <span class="math inline">\(C\)</span> has a satisfying assignment, then each wire of the circuit has a well-defined value (which is guaranteed by the sub-formula <span class="math inline">\(\phi_i\)</span>), and the output of the circuit is 1. Thus, the circuit <span class="math inline">\(C\)</span> is satisfiable exactly when the formula <span class="math inline">\(\phi\)</span> is satisfiable. Therefore, <span class="math inline">\(\textrm{CIRCUIT-SAT} \leq_\mathrm{p} \textrm{SAT}\)</span>. <p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
+<p><strong>Theorem 2.6.</strong> <span class="math inline">\(\textrm{SAT} \in \mathrm{NPC}\)</span>.</p>
+<p><strong>Proof sketch.</strong> <span class="math inline">\(\textrm{SAT} \in \mathrm{NP}\)</span> is trivially proved by constructing a verification algorithm that replaces each variable in the formula with its corresponding value and then evaluates the expression. If the expression evaluates to 1, then the algorithm has verified that the formula is satisfiable. Clearly, the verification algorithm runs in polynomial time.</p>
+<p>To prove that <span class="math inline">\(\mathrm{SAT}\)</span> is NP-hard, we show that <span class="math inline">\(\textrm{CIRCUIT-SAT} \leq_\mathrm{p} \textrm{SAT}\)</span>, as proved in Lemma 2.5. By the conclusion of Lemma 2.4, we have that <span class="math inline">\(\textrm{SAT} \in \mathrm{NPC}\)</span>. <p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
+</section>
+<section id="the-3-cnf-satisfiability-problem-3-cnf-sat" class="level2">
+<h2><span class="header-section-number">2.3</span> The 3-CNF Satisfiability Problem (3-CNF-SAT)</h2>
+<p><strong>Lemma 2.7.</strong> <span class="math inline">\(\textrm{SAT} \leq_\mathrm{p} \textrm{3-CNF-SAT}\)</span>.</p>
+<p>[TBD]</p>
+</section>
+<section id="the-clique-problem-clique" class="level2">
+<h2><span class="header-section-number">2.4</span> The Clique Problem (CLIQUE)</h2>
+<p><strong>Lemma 2.8.</strong> <span class="math inline">\(\textrm{3-CNF-SAT} \leq_\mathrm{p} \textrm{CLIQUE}\)</span>.</p>
+<p>[TBD]</p>
+</section>
+<section id="the-vertex-cover-problem-vertex-cover" class="level2">
+<h2><span class="header-section-number">2.5</span> The Vertex-Cover Problem (VERTEX-COVER)</h2>
+<p><strong>Lemma 2.9.</strong> <span class="math inline">\(\textrm{CLIQUE} \leq_\mathrm{p} \textrm{VERTEX-COVER}\)</span>.</p>
+<p>[TBD]</p>
+</section>
+<section id="the-hamiltonian-cycle-problem-ham-cycle" class="level2">
+<h2><span class="header-section-number">2.6</span> * The Hamiltonian-Cycle Problem (HAM-CYCLE)</h2>
+<p>[TBD]</p>
+</section>
+<section id="the-traveling-salesman-problem-tsp" class="level2">
+<h2><span class="header-section-number">2.7</span> The Traveling-Salesman Problem (TSP)</h2>
+<p><strong>Lemma 2.10.</strong> <span class="math inline">\(\textrm{HAM-CYCLE} \leq_\mathrm{p} \textrm{TSP}\)</span>.</p>
+<p>[TBD]</p>
+</section>
+<section id="the-subset-sum-problem-subset-sum" class="level2">
+<h2><span class="header-section-number">2.8</span> The Subset-Sum Problem (SUBSET-SUM)</h2>
+<p><strong>Lemma 2.11.</strong> <span class="math inline">\(\textrm{3-CNF-SAT} \leq_\mathrm{p} \textrm{SUBSET-SUM}\)</span>.</p>
+<p>[TBD]</p>
+</section>
+</section>
+      </div>
+      <footer>
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard shortcut: R"
+           href="https://wiki.soimort.org/comp/complexity/time/npc/src.md">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
+        <a class="history" accesskey="h"
+           title="Keyboard shortcut: H"
+           href="https://github.com/soimort/wiki/commits/gh-pages/comp/complexity/time/npc/src.md">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard shortcut: E"
+           href="https://github.com/soimort/wiki/edit/gh-pages/comp/complexity/time/npc/src.md">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
+           href="https://wiki.soimort.org/comp/complexity/time/npc">
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
+        Last updated: <span id="update-time">2016-10-22</span>
+      </footer>
+    </article></main>
+  </body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-07 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Mort Yao">
+    <meta name="dcterms.date" content="2016-10-14">
+    <title>Basic Formal Language Theory</title>
+    <link rel="canonical" href="https://wiki.soimort.org/comp/language">
+    <style type="text/css">code { white-space: pre; }</style>
+    <link rel="stylesheet" href="//cdn.soimort.org/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/mathsvg/latest/mathsvg.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Roman.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Mono.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/__/css/style.css">
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.soimort.org/jk/latest/jk.min.js"></script>
+    <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>
+    <script src="/__/js/jk-minibar.js"></script>
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+  <body>
+    <main><article>
+      <header>
+        <h1 class="title">Basic Formal Language Theory</h1>
+        <address class="author">Mort Yao</address>
+        <!-- h3 class="date">2016-10-14</h3 -->
+      </header>
+      <nav id="TOC">
+<ul>
+<li><a href="#concepts"><span class="toc-section-number">1</span> Concepts</a></li>
+</ul>
+      </nav>
+      <div id="content">
+<section id="concepts" class="level1">
+<h1><span class="header-section-number">1</span> Concepts</h1>
+<p><strong>Definition 1.1. (Alphabet)</strong> An <em>alphabet</em> <span class="math inline">\(\Sigma\)</span> is a well-defined <a href="/math/set">set</a> of symbols.</p>
+<p><strong>Definition 1.2. (Language)</strong> A <em>language</em> <span class="math inline">\(L\)</span> over <span class="math inline">\(\Sigma\)</span> is any set of strings made up of symbols from <span class="math inline">\(\Sigma\)</span>.</p>
+<p>An <em>empty string</em> is denoted by <span class="math inline">\(\varepsilon\)</span>. An <em>empty language</em> is denoted by <span class="math inline">\(\varnothing\)</span>. <span class="math inline">\(\varepsilon\)</span> is contained in every language but <span class="math inline">\(\varnothing.\)</span></p>
+<p>The <em>language of all strings over <span class="math inline">\(\Sigma\)</span></em> (including the empty string <span class="math inline">\(\varepsilon\)</span>) is denoted by <span class="math inline">\(\Sigma^*\)</span>, e.g., <span class="math inline">\(\{0,1\}^* = \{\varepsilon,0,1,00,01,10,11,000,\dots\}\)</span> is the set of all binary strings.</p>
+<p>Every language <span class="math inline">\(L\)</span> over <span class="math inline">\(\Sigma\)</span> (including the empty language <span class="math inline">\(\varnothing\)</span>) is a subset of <span class="math inline">\(\Sigma^*\)</span>. If a finite language over <span class="math inline">\(\Sigma\)</span> has a fixed length <span class="math inline">\(k\)</span>, we denote it by <span class="math inline">\(\Sigma^k\)</span>, e.g., <span class="math inline">\(\{0,1\}^8\)</span> is the set of all 8-bit binary strings.</p>
+<p><strong>Definition 1.3. (Union and intersection of languages)</strong> The <em>union</em> of <span class="math inline">\(L_1\)</span> and <span class="math inline">\(L_2\)</span> is the language <span class="math inline">\(L_1 \cup L_2 = \{x: x \in L_1 \textrm{ or } x \in L_2\}\)</span>. The <em>intersection</em> of <span class="math inline">\(L_1\)</span> and <span class="math inline">\(L_2\)</span> is the language <span class="math inline">\(L_1 \cap L_2 = \{x: x \in L_1 \textrm{ and } x \in L_2\}\)</span>.</p>
+<p><strong>Definition 1.4. (Complementary language)</strong> The <em>complement</em> of a language <span class="math inline">\(L\)</span> over <span class="math inline">\(\Sigma\)</span> is the language <span class="math inline">\(\overline{L}=\Sigma^* - L\)</span>.</p>
+<p><strong>Definition 1.5. (Concatenation of languages)</strong> The <em>concatenation</em> of two languages <span class="math inline">\(L_1\)</span> and <span class="math inline">\(L_2\)</span> is the language <span class="math inline">\(L_1L_2 = \{x_1x_2: x_1 \in L_1 \textrm{ and } x_2 \in L_2\}\)</span>.</p>
+<p>We use <span class="math inline">\(L^k\)</span> to denote the language obtained by concatenating <span class="math inline">\(L\)</span> to itself <span class="math inline">\(k\)</span> times.</p>
+<p><strong>Definition 1.6. (Closure; Kleene star)</strong> The <em>closure</em> or <em>Kleene star</em> of a language <span class="math inline">\(L\)</span> is the language <span class="math display">\[L^* = \{\varepsilon\} \cup L \cup L^2 \cup L^3 \cup \dots\]</span></p>
+</section>
+      </div>
+      <footer>
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard shortcut: R"
+           href="https://wiki.soimort.org/comp/language/src.md">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
+        <a class="history" accesskey="h"
+           title="Keyboard shortcut: H"
+           href="https://github.com/soimort/wiki/commits/gh-pages/comp/language/src.md">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard shortcut: E"
+           href="https://github.com/soimort/wiki/edit/gh-pages/comp/language/src.md">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
+           href="https://wiki.soimort.org/comp/language">
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
+        Last updated: <span id="update-time">2016-10-14</span>
+      </footer>
+    </article></main>
+  </body>
+</html>
