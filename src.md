@@ -61,6 +61,7 @@ A lifelong project to do my study notes on Math / Computer Science systematicall
     * [Probability theory](/math/probability) and statistics
     * Information theory
         * Coding theory
+        * Quantum information theory
     * **[Theory of Computation](/comp)**
         * Formal language and automaton
         * Computability
@@ -71,9 +72,10 @@ A lifelong project to do my study notes on Math / Computer Science systematicall
         * Searching
         * [Randomization](/algo/randomization)
         * [Approximation](/algo/approximation)
-        * Computational geometry
-        * Computational number theory
         * Numerical analysis
+        * Computational number theory
+        * Computational geometry
+        * Computer graphics and visualization
     * **[Cryptography](/crypto)**
         * Classical cryptography
         * Information-theoretic security
