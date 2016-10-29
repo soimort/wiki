@@ -1,6 +1,6 @@
 % Mort's small traces
 % Mort Yao
-% 2016-10-23
+% 2016-10-29
 
 <div style="text-align:center;font-style:italic">
 "Tiger got to hunt, bird got to fly;
@@ -10,7 +10,7 @@
 <br> --- Kurt Vonnegut
 </div>
 
-A lifelong project to do my study notes on Math / Computer Science systematically and spirally.
+A lifelong project to do my study notes on Math / Computer Science systematically and spirally. It is still woefully incomplete, but it shouldn't always be. I keep learning things.
 
 ## Contents
 
@@ -74,7 +74,7 @@ A lifelong project to do my study notes on Math / Computer Science systematicall
         * [Approximation](/algo/approximation)
         * Numerical analysis
         * Computational number theory
-        * Computational geometry
+        * [Computational geometry](/algo/computational-geometry)
         * Computer graphics and visualization
     * **[Cryptography](/crypto)**
         * Classical cryptography
@@ -85,6 +85,7 @@ A lifelong project to do my study notes on Math / Computer Science systematicall
     * Game theory and operations research
         * Linear programming and mathematical optimization
         * Evolutionary computation
+        * Algorithmic game theory
     * **Machine learning**
         * Artificial neural networks
         * Deep learning
@@ -112,7 +113,7 @@ A lifelong project to do my study notes on Math / Computer Science systematicall
         * Logic programming
         * Dataflow programming
         * Concurrency
-    * Compiler design
+    * Compilers
     * **Information security**
         * Proof-carrying code
 
