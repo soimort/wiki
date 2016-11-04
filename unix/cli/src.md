@@ -154,36 +154,5 @@ Or: (IPv6)
 
 
 
-## Web scraping
-
-### Check unread Gmail
-
-Replace "`abcdefghijklmnop`" with your [16-digit app password](https://security.google.com/settings/security/apppasswords) (not your login password!):
-
-```console
-$ curl -u foo.bar@gmail.com:abcdefghijklmnop \
--s "https://mail.google.com/mail/feed/atom" | tr -d '\n' | \
-awk -F '<entry>' '{for (i=2; i<=NF; i++) {print $i}}' | \
-sed -n "s/<title>\(.*\)<\/title.*name>\(.*\)<\/name>.*/\2 - \1/p"
-```
-
-Source: <http://www.commandlinefu.com/commands/view/3386/check-your-unread-gmail-from-the-command-line>
-
-### Check an Atom feed for the newest entry
-
-```console
-$ curl -s https://github.com/blog.atom | sed -e "s/xmlns/ignore/" - | \
-xmllint --xpath "/feed/entry[1]/title/text()" -
-```
-
-### Harvest email addresses from a web page
-
-```console
-$ curl -s 'https://pgp.mit.edu/pks/lookup?search=0x07DA00CB78203251' | \
-grep -o '[[:alnum:].]*@[[:alnum:].]*'
-```
-
-
-
 ```sh
 ```

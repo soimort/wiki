@@ -1,6 +1,6 @@
 % Unix from User Space
 %
-% 2016-10-14
+% 2016-11-04
 
 Tips and tricks about Unix-like systems and tools that run on them.
 
@@ -8,7 +8,7 @@ Tips and tricks about Unix-like systems and tools that run on them.
 * OS-specific
     * [Linux](linux)
 * Shell  `[TBD]`
-* Text Processing  `[TBD]`
+* [Text Processing](text-processing)
 * Text Editors
     * GNU Emacs  `[TBD]`
     * [Vim](vim)

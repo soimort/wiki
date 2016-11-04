@@ -76,7 +76,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="#common-usage">Common usage</a></li>
 <li><a href="#system-maintenance">System maintenance</a></li>
 <li><a href="#networking">Networking</a></li>
-<li><a href="#web-scraping">Web scraping</a></li>
 </ul>
       </nav>
       <div id="content">
@@ -194,28 +193,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <section id="start-an-http-server-for-development" class="level3">
 <h3>Start an HTTP server for development</h3>
 <pre><code>$ python3 -m http.server <span class="do">4000</span></code></pre>
-</section>
-</section>
-<section id="web-scraping" class="level2">
-<h2>Web scraping</h2>
-<section id="check-unread-gmail" class="level3">
-<h3>Check unread Gmail</h3>
-<p>Replace “<code>abcdefghijklmnop</code>” with your <a href="https://security.google.com/settings/security/apppasswords">16-digit app password</a> (not your login password!):</p>
-<pre class="console"><code>$ curl -u foo.bar@gmail.com:abcdefghijklmnop \
--s &quot;https://mail.google.com/mail/feed/atom&quot; | tr -d &#39;\n&#39; | \
-awk -F &#39;&lt;entry&gt;&#39; &#39;{for (i=2; i&lt;=NF; i++) {print $i}}&#39; | \
-sed -n &quot;s/&lt;title&gt;\(.*\)&lt;\/title.*name&gt;\(.*\)&lt;\/name&gt;.*/\2 - \1/p&quot;</code></pre>
-<p>Source: <a href="http://www.commandlinefu.com/commands/view/3386/check-your-unread-gmail-from-the-command-line" class="uri">http://www.commandlinefu.com/commands/view/3386/check-your-unread-gmail-from-the-command-line</a></p>
-</section>
-<section id="check-an-atom-feed-for-the-newest-entry" class="level3">
-<h3>Check an Atom feed for the newest entry</h3>
-<pre class="console"><code>$ curl -s https://github.com/blog.atom | sed -e &quot;s/xmlns/ignore/&quot; - | \
-xmllint --xpath &quot;/feed/entry[1]/title/text()&quot; -</code></pre>
-</section>
-<section id="harvest-email-addresses-from-a-web-page" class="level3">
-<h3>Harvest email addresses from a web page</h3>
-<pre class="console"><code>$ curl -s &#39;https://pgp.mit.edu/pks/lookup?search=0x07DA00CB78203251&#39; | \
-grep -o &#39;[[:alnum:].]*@[[:alnum:].]*&#39;</code></pre>
 <div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"></code></pre></div>
 </section>
 </section>
