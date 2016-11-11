@@ -8,7 +8,7 @@
     <meta name="generator" content="pandoc">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="author" content="Mort Yao">
-    <meta name="dcterms.date" content="2016-08-18">
+    <meta name="dcterms.date" content="2016-11-11">
     <title>Command-line Tricks</title>
     <link rel="canonical" href="https://wiki.soimort.org/unix/cli">
     <style type="text/css">code { white-space: pre; }</style>
@@ -69,13 +69,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <header>
         <h1 class="title">Command-line Tricks</h1>
         <address class="author">Mort Yao</address>
-        <!-- h3 class="date">2016-08-18</h3 -->
+        <!-- h3 class="date">2016-11-11</h3 -->
       </header>
       <nav id="TOC">
 <ul>
 <li><a href="#common-usage">Common usage</a></li>
 <li><a href="#system-maintenance">System maintenance</a></li>
 <li><a href="#networking">Networking</a></li>
+<li><a href="#multimedia">Multimedia</a></li>
 </ul>
       </nav>
       <div id="content">
@@ -193,6 +194,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <section id="start-an-http-server-for-development" class="level3">
 <h3>Start an HTTP server for development</h3>
 <pre><code>$ python3 -m http.server <span class="do">4000</span></code></pre>
+</section>
+</section>
+<section id="multimedia" class="level2">
+<h2>Multimedia</h2>
+<section id="record-an-m3u-stream" class="level3">
+<h3>Record an M3U stream</h3>
+<pre><code>$ ffmpeg -i <span class="do">http://foo.bar/hls.m3u8</span> -c copy -bsf:a aac_adtstoasc <span class="do">output.mp4</span></code></pre>
 <div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"></code></pre></div>
 </section>
 </section>
@@ -232,7 +240,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <i class="fa fa-anchor" aria-hidden="true"></i>
           <code>Permalink</code>
         </a> |
-        Last updated: <span id="update-time">2016-08-18</span>
+        Last updated: <span id="update-time">2016-11-11</span>
       </footer>
     </article></main>
   </body>

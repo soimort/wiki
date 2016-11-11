@@ -1,6 +1,6 @@
 % Command-line Tricks
 % Mort Yao
-% 2016-08-18
+% 2016-11-11
 
 (***Note:** This page contains tips and tricks of most commonly used command-line utilities on Unix-like OSes. For usages related to the shell itself, see [Shell tricks](/unix/shell) instead.*)
 
@@ -151,6 +151,14 @@ Or: (IPv6)
 ### Start an HTTP server for development
 
     $ python3 -m http.server [4000]
+
+
+
+## Multimedia
+
+### Record an M3U stream
+
+    $ ffmpeg -i [http://foo.bar/hls.m3u8] -c copy -bsf:a aac_adtstoasc [output.mp4]
 
 
 
