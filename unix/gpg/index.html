@@ -119,7 +119,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <section id="gpg-agent" class="level2">
 <h2>gpg-agent</h2>
 <p>The following line should be added to your <code>.bashrc</code> or <code>.zshrc, etc.</code>:</p>
-<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="kw">export</span> <span class="ot">GPG_TTY=$(</span><span class="kw">tty</span><span class="ot">)</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="bu">export</span> <span class="va">GPG_TTY=$(</span><span class="ex">tty</span><span class="va">)</span></code></pre></div>
 <p>Reload <code>gpg-agent</code>:</p>
 <pre><code>$ gpg-connect-agent reloadagent /bye</code></pre>
 <hr />
