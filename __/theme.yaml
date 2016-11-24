@@ -1,13 +1,15 @@
 ---
 css: [
 
-  //cdn.soimort.org/normalize/4.1.1/normalize.min.css,
+  //cdn.soimort.org/normalize/5.0.0/normalize.min.css,
   //cdn.soimort.org/mathsvg/latest/mathsvg.min.css,
   //cdn.soimort.org/fonts/api/Latin-Modern-Roman.css,
   //cdn.soimort.org/fonts/api/Latin-Modern-Mono.css,
-  //cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css,
+  //cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css,
   /__/css/style.css,
+  /__/css/pygments.css,
   ]
+highlighting-css: # no longer needed
 header-includes: [
   <script src="//cdn.soimort.org/jk/latest/jk.min.js"></script>,
   <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>,
