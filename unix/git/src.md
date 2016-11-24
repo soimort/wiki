@@ -109,8 +109,3 @@ Or:
 To remove ignored files as well:
 
     $ git clean -fdx
-
-
-
-```sh
-```

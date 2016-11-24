@@ -36,7 +36,3 @@ With Inkscape. Whatever you like.
 ### Step 5. Join single-page PDFs into one PDF document
 
     $ pdfunite [foo1.pdf] [foo2.pdf] [...] [bar.pdf]
-
-
-```sh
-```

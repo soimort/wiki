@@ -159,8 +159,3 @@ Or: (IPv6)
 ### Record an M3U stream
 
     $ ffmpeg -i [http://foo.bar/hls.m3u8] -c copy -bsf:a aac_adtstoasc [output.mp4]
-
-
-
-```sh
-```

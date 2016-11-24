@@ -46,8 +46,3 @@ xmllint --xpath "/feed/entry[1]/title/text()" -
 $ curl -s 'https://pgp.mit.edu/pks/lookup?search=0x07DA00CB78203251' | \
 grep -o '[[:alnum:].]*@[[:alnum:].]*'
 ```
-
-
-
-```sh
-```
