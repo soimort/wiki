@@ -8,7 +8,7 @@
     <meta name="generator" content="pandoc">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="author" content="Mort Yao">
-    <meta name="dcterms.date" content="2016-10-07">
+    <meta name="dcterms.date" content="2016-11-30">
     <title>Basic Probability Theory</title>
     <link rel="canonical" href="https://wiki.soimort.org/math/probability">
     <style type="text/css">code { white-space: pre; }</style>
@@ -34,60 +34,134 @@
       <header>
         <h1 class="title">Basic Probability Theory</h1>
         <address class="author">Mort Yao</address>
-        <!-- h3 class="date">2016-10-07</h3 -->
+        <!-- h3 class="date">2016-11-30</h3 -->
       </header>
       <nav id="TOC">
 <ul>
-<li><a href="#concepts"><span class="toc-section-number">1</span> Concepts</a></li>
-<li><a href="#useful-probability-bounds"><span class="toc-section-number">2</span> Useful Probability Bounds</a></li>
+<li><a href="#events-and-probabilities"><span class="toc-section-number">1</span> Events and Probabilities</a></li>
+<li><a href="#random-variables-and-expectations"><span class="toc-section-number">2</span> Random Variables and Expectations</a></li>
+<li><a href="#useful-probability-bounds"><span class="toc-section-number">3</span> Useful Probability Bounds</a></li>
 </ul>
       </nav>
       <div id="content">
-<section id="concepts" class="level1">
-<h1><span class="header-section-number">1</span> Concepts</h1>
+<section id="events-and-probabilities" class="level1">
+<h1><span class="header-section-number">1</span> Events and Probabilities</h1>
 <p><strong>Definition 1.1. (Experiment)</strong> An <em>experiment</em> or <em>trial</em> is any procedure that can be infinitely repeated and has a well-defined <a href="/math/set">set</a> of possible <em>outcomes</em>, known as the <em>sample space</em>.</p>
 <p>An experiment is said to be <em>random</em> if it has more than one possible outcome, and <em>deterministic</em> if it has only one.</p>
 <p>A random experiment that has exactly two possible outcomes is known as a <em>Bernoulli trial</em> (or <em>binomial trial</em>).</p>
 <p><strong>Definition 1.2. (Outcome)</strong> An <em>outcome</em> of an experiment is a possible result of that experiment. Each possible outcome of a particular experiment is unique, and different outcomes are mutually exclusive.</p>
-<p><strong>Definition 1.3. (Sample space)</strong> The <em>sample space</em> of an experiment is the set of all possible outcomes of that experiment. A sample space is usually denoted using set notation, e.g., <span class="math inline">\(S\)</span>, <span class="math inline">\(\Omega\)</span> or <span class="math inline">\(U\)</span>.</p>
+<p><strong>Definition 1.3. (Sample space)</strong> The <em>sample space</em> of an experiment is the set of all possible outcomes of that experiment. A sample space is usually denoted using set notation, e.g., <span class="math inline">\(\Omega\)</span>, <span class="math inline">\(S\)</span> or <span class="math inline">\(U\)</span>.</p>
 <p>In some sample spaces, it is reasonable to assume that all outcomes in the space are equally likely (that they occur with equal <em>probability</em>).</p>
 <p><strong>Definition 1.4. (Event)</strong> Any <a href="/math/analysis/measure">measurable</a> subset of the sample space, constituting a σ-algebra over the sample space itself, is known as an <em>event</em>.</p>
 <p>Any subset of the sample space that is not an element of the σ-algebra is not an event, and does not have a probability. With a reasonable specification of the probability space, however, all events of interest are elements of the σ-algebra.</p>
-<p>We say that the event <span class="math inline">\(E\)</span> occurs when the outcome of the experiment lies in <span class="math inline">\(E\)</span>.</p>
-<p>Events are written as propositional formulas involving random variables, e.g., if <span class="math inline">\(X\)</span> is a real-valued random variable defined on the sample space <span class="math inline">\(S\)</span>, the event <span class="math display">\[\{s \in S | u &lt; X(s) \leq v \}\]</span></p>
+<p>We say that the event <span class="math inline">\(A\)</span> occurs when the outcome of the experiment lies in <span class="math inline">\(A\)</span>.</p>
+<p>Events are written as propositional formulas involving random variables, e.g., if <span class="math inline">\(X\)</span> is a real-valued random variable defined on the sample space <span class="math inline">\(\Omega\)</span>, the event <span class="math display">\[\{a \in \Omega | u &lt; X(a) \leq v \}\]</span></p>
 <p>can also be written as <span class="math display">\[u &lt; X \leq v\]</span></p>
 <p><strong>Definition 1.5. (Elementary event)</strong> An <em>elementary event</em> (also called an <em>atomic event</em> or <em>simple event</em>) is an event which contains only a single outcome in the sample space. Using set theory terminology, an elementary event is a singleton.</p>
 <p><strong>Definition 1.6. (Null event)</strong> An <em>null event</em> is an event consisting of no outcome and hence could not occur, denoted by <span class="math inline">\(\varnothing\)</span>.</p>
-<p><strong>Definition 1.7. (Union and intersection of events)</strong> For any events <span class="math inline">\(E_1, E_2, \dots\)</span> of a sample space <span class="math inline">\(S\)</span>, the <em>union (or disjunction) of these events</em>, denoted by <span class="math inline">\(\bigcup_{n=1}^\infty E_n\)</span>, is defined to be the event that consists of all outcomes that are in <span class="math inline">\(E_n\)</span> for at least one value of <span class="math inline">\(n = 1, 2, \dots\)</span>.</p>
-<p>Similarly, the <em>intersection (or conjunction) of the events</em> <span class="math inline">\(E_1, E_2, \dots\)</span>, denoted by <span class="math inline">\(\bigcap_{n=1}^\infty E_n\)</span>, is defined to be the event consisting of those outcomes that are in all of the events.</p>
-<p>If <span class="math inline">\(\bigcap_{n=1}^\infty E_n = \varnothing\)</span>, then events <span class="math inline">\(E_n\)</span> are said to be <em>mutually exclusive</em>.</p>
-<p><strong>Definition 1.8. (Complementary event)</strong> For any event <span class="math inline">\(E\)</span> we define the new event <span class="math inline">\(\overline{E}\)</span> (also denoted by <span class="math inline">\(E&#39;\)</span> or <span class="math inline">\(E^c\)</span>), referred to as the <em>complement of <span class="math inline">\(E\)</span></em>, to consist of all outcomes in the sample space <span class="math inline">\(S\)</span> that are not in <span class="math inline">\(E\)</span>, i.e., <span class="math inline">\(\overline{E}\)</span> will occur if and only if <span class="math inline">\(E\)</span> does not occur.</p>
-<p>The event <span class="math inline">\(E\)</span> and its complement <span class="math inline">\(\overline{E}\)</span> are mutually exclusive and exhaustive. Given an event, the event and its complementary event define a Bernoulli trial.</p>
-<p><strong>Definition 1.9. (Probability defined on events)</strong> Consider an experiment whose sample space is <span class="math inline">\(S\)</span>. For each event <span class="math inline">\(E\)</span>, we assume that a number <span class="math inline">\(\Pr[E]\)</span> is defined and satisfies the following conditions (<em>Kolmogorov's axioms</em>):</p>
+<p><strong>Definition 1.7. (Union and intersection of events)</strong> For any events <span class="math inline">\(A_1, A_2, \dots\)</span> of a sample space <span class="math inline">\(\Omega\)</span>, the <em>union (or disjunction) of these events</em>, denoted by <span class="math inline">\(\bigcup_{n=1}^\infty A_n\)</span>, is defined to be the event that consists of all outcomes that are in <span class="math inline">\(A_n\)</span> for at least one value of <span class="math inline">\(n = 1, 2, \dots\)</span>.</p>
+<p>Similarly, the <em>intersection (or conjunction) of the events</em> <span class="math inline">\(A_1, A_2, \dots\)</span>, denoted by <span class="math inline">\(\bigcap_{n=1}^\infty A_n\)</span>, is defined to be the event consisting of those outcomes that are in all of the events.</p>
+<p>If <span class="math inline">\(\bigcap_{n=1}^\infty A_n = \varnothing\)</span>, then events <span class="math inline">\(A_n\)</span> are said to be <em>mutually exclusive</em> or <em>mutually disjoint</em>.</p>
+<p><strong>Definition 1.8. (Complementary event)</strong> For any event <span class="math inline">\(A\)</span> we define the new event <span class="math inline">\(\bar{A}\)</span> (also denoted by <span class="math inline">\(A&#39;\)</span> or <span class="math inline">\(A^c\)</span>), referred to as the <em>complement of <span class="math inline">\(A\)</span></em>, to consist of all outcomes in the sample space <span class="math inline">\(\Omega\)</span> that are not in <span class="math inline">\(A\)</span>, i.e., <span class="math inline">\(\bar{A}\)</span> will occur if and only if <span class="math inline">\(A\)</span> does not occur. <span class="math inline">\(\bar{A} = \Omega \backslash A\)</span>.</p>
+<p>The event <span class="math inline">\(A\)</span> and its complement <span class="math inline">\(\bar{A}\)</span> are mutually exclusive and exhaustive. Given an event, the event and its complementary event define a Bernoulli trial.</p>
+<p><strong>Definition 1.9. (Probability defined on events)</strong> Consider an experiment whose sample space is <span class="math inline">\(\Omega\)</span>. For each event <span class="math inline">\(A\)</span>, we assume that a number <span class="math inline">\(\Pr[A]\)</span> is defined and satisfies the following conditions (<em>Kolmogorov’s axioms</em>):</p>
 <ol type="1">
-<li><span class="math inline">\(\Pr[E] \in \mathbb{R}\)</span>, <span class="math inline">\(\Pr[E] \geq 0\)</span></li>
-<li>(Assumption of unit measure) <span class="math inline">\(\Pr[S] = 1\)</span></li>
-<li>(Assumption of σ-additivity) For any sequence of events <span class="math inline">\(E_1, E_2, \dots\)</span> that are mutually exclusive, i.e., events for which <span class="math inline">\(E_nE_m = \varnothing\)</span> when <span class="math inline">\(n \neq m\)</span>, then <span class="math display">\[\Pr\left[\bigcup_{n=1}^\infty E_n\right] = \sum_{n=1}^\infty \Pr[E_n]\]</span></li>
+<li><span class="math inline">\(\Pr[A] \in \mathbb{R}\)</span>, <span class="math inline">\(\Pr[A] \geq 0\)</span>.</li>
+<li><em>(Assumption of unit measure)</em> <span class="math inline">\(\Pr[\Omega] = 1\)</span>.</li>
+<li><em>(Assumption of σ-additivity)</em> For any finite or countably infinite sequence of events <span class="math inline">\(A_1, A_2, \dots\)</span> that are mutually exclusive, i.e., events for which <span class="math inline">\(A_nA_m = \varnothing\)</span> when <span class="math inline">\(n \neq m\)</span>, then <span class="math display">\[\Pr\left[\bigcup_{n=1}^\infty A_n\right] = \sum_{n=1}^\infty \Pr[A_n]\]</span></li>
 </ol>
-<p>We refer to <span class="math inline">\(\Pr[E]\)</span> as the <em>probability of the event <span class="math inline">\(E\)</span></em>.</p>
-<p>By definition, <span class="math inline">\(S = E \cup \overline{E}\)</span>, therefore <span class="math inline">\(\Pr[E \cup \overline{E}]=1\)</span>. Since <span class="math inline">\(E\)</span> and <span class="math inline">\(\overline{E}\)</span> are mutually exclusive events, <span class="math inline">\(\Pr[E \cup \overline{E}]=\Pr[E]+\Pr[\overline{E}]\)</span>. Thus, we have <span class="math inline">\(\Pr[\overline{E}] = 1 - \Pr[E]\)</span>.</p>
-<p>If <span class="math inline">\(\Pr\left[\bigcap_{n=1}^\infty E_n\right] = \prod_{n=1}^\infty \Pr[E_n]\)</span>, then events <span class="math inline">\(E_n\)</span> are said to be <em>independent</em>.</p>
-<p><strong>The probability of the empty set.</strong> <span class="math inline">\(\Pr[\varnothing] = 0\)</span>.</p>
-<p><strong>Monotonicity.</strong> If <span class="math inline">\(E_1 \subseteq E_2\)</span> then <span class="math inline">\(\Pr[E_1] \leq \Pr[E_2]\)</span>.</p>
-<p><strong>The numeric bound.</strong> It immediately follows from the monotonicity property that <span class="math inline">\(0 \leq \Pr[E] \leq 1\)</span>.</p>
-<p><strong>Theorem 1.10. (Addition law of probability)</strong> <span class="math display">\[\Pr[E_1 \cup E_2] = \Pr[E_1] + \Pr[E_2] - \Pr[E_1 \cap E_2]\]</span></p>
-<p><strong>Theorem 1.11. (Inclusion-exclusion principle)</strong> <span class="math display">\[\Pr\left[\bigcup_{i=1}^n E_i\right] = \sum_{i=1}^n\left((-1)^{i-1} \sum_{I \subset \{1,\dots,n\}, |I|=i} \Pr\left[\bigcap_{i \in I} E_i\right]\right)
+<p>We refer to <span class="math inline">\(\Pr[A]\)</span> as the <em>probability of the event <span class="math inline">\(A\)</span></em>.</p>
+<p>A function <span class="math inline">\(\Pr : \mathcal{F} \to \mathbb{R}\)</span> is also called a <em>probability function</em>, if for any given event <span class="math inline">\(A \in \mathcal{F} \subseteq \mathcal{P}(\Omega)\)</span>, the above conditions hold.</p>
+<p><strong>Definition 1.10. (Probability space)</strong> A <em>probability space</em> is a tuple <span class="math inline">\((\Omega, \mathcal{F}, \Pr)\)</span>, where</p>
+<ul>
+<li><span class="math inline">\(\Omega\)</span> is a sample space, which is the set of all probable outcomes.</li>
+<li><span class="math inline">\(\mathcal{F}\)</span> is a family of sets representing all possible events. <span class="math inline">\(\mathcal{F} \subseteq \mathcal{P}(\Omega)\)</span>.</li>
+<li><span class="math inline">\(\Pr\)</span> is a probability function <span class="math inline">\(\Pr : \mathcal{F} \to \mathbb{R}\)</span> satisfying Kolmogorov’s axioms.</li>
+</ul>
+<p><strong>Lemma 1.11.</strong> <span class="math inline">\(\Pr[\bar{A}] = 1 - \Pr[A]\)</span>.</p>
+<p><strong>Proof.</strong> By definition, <span class="math inline">\(\Omega = A \cup \bar{A}\)</span>, therefore <span class="math inline">\(\Pr[A \cup \bar{A}]=1\)</span>. Since <span class="math inline">\(A\)</span> and <span class="math inline">\(\bar{A}\)</span> are mutually exclusive events, <span class="math inline">\(\Pr[A \cup \bar{A}]=\Pr[A]+\Pr[\bar{A}]\)</span>. Thus, we have <span class="math inline">\(\Pr[\bar{A}] = 1 - \Pr[A]\)</span>. <p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
+<p><strong>Lemma 1.12.</strong> <span class="math inline">\(\Pr[\varnothing] = 0\)</span>.</p>
+<p><strong>Proof.</strong> From Lemma 1.11 and <span class="math inline">\(\Pr[\Omega] = 1\)</span>, we have <span class="math inline">\(\Pr[\bar{\Omega}] = 0\)</span>. Since <span class="math inline">\(\bar{\Omega} = \Omega \backslash \Omega = \varnothing\)</span>, <span class="math inline">\(\Pr[\varnothing] = 0\)</span>. <p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
+<p><strong>Lemma 1.13. (Monotonicity)</strong> If <span class="math inline">\(A_1 \subseteq A_2\)</span> then <span class="math inline">\(\Pr[A_1] \leq \Pr[A_2]\)</span>.</p>
+<p><strong>Proof.</strong> Since <span class="math inline">\(A_2 = A_1 \cup (A_2 \backslash A_1)\)</span>, <span class="math inline">\(A_1\)</span> and <span class="math inline">\(A_2 \backslash A_1\)</span> are mutually exclusive events, and <span class="math inline">\(\Pr[A_2 \backslash A_1] \geq 0\)</span>, we have <span class="math display">\[\Pr[A_2] = \Pr[A_1] + \Pr[A_2 \backslash A_1] \geq \Pr[A_1]\]</span> <p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
+<p><strong>Lemma 1.14.</strong> <span class="math inline">\(0 \leq \Pr[A] \leq 1\)</span>.</p>
+<p><strong>Proof.</strong> Since <span class="math inline">\(\varnothing \subseteq A \subseteq \Omega\)</span>, <span class="math inline">\(\Pr[\varnothing] = 0\)</span> and <span class="math inline">\(\Pr[\Omega] = 1\)</span>, by Lemma 1.13 it holds that <span class="math inline">\(0 \leq \Pr[A] \leq 1\)</span>. <p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
+<p><strong>Theorem 1.15. (Addition law of probability)</strong> <span class="math display">\[\Pr[A_1 \cup A_2] = \Pr[A_1] + \Pr[A_2] - \Pr[A_1 \cap A_2]\]</span></p>
+<p><strong>Theorem 1.16. (Inclusion-exclusion principle)</strong> <span class="math display">\[\Pr\left[\bigcup_{i=1}^n A_i\right] = \sum_{i=1}^n\left((-1)^{i-1} \sum_{I \subset \{1,\dots,n\}, |I|=i} \Pr\left[\bigcap_{i \in I} A_i\right]\right)
 \]</span></p>
-<p><strong>Theorem 1.12. (Union bound; Boole's inequality)</strong> <span class="math display">\[\Pr\left[\bigcup_{i=1}^n E_i\right] \leq \sum_{i=1}^n \Pr[E_i]\]</span></p>
-<p>Boole's inequality follows from the fact that a probability measure is σ-sub-additive.</p>
-<p><strong>Theorem 1.13. (Bonferroni inequalities)</strong> For all odd <span class="math inline">\(k\)</span>, <span class="math display">\[\Pr\left[\bigcup_{i=1}^n E_i\right] \leq \sum_{i=1}^k \left((-1)^{i-1} \sum_{I \subset \{1,\dots,n\}, |I|=i} \Pr\left[\bigcap_{i \in I} E_i\right]\right)\]</span> For all even <span class="math inline">\(k\)</span>, <span class="math display">\[\Pr\left[\bigcup_{i=1}^n E_i\right] \geq \sum_{i=1}^k \left((-1)^{i-1} \sum_{I \subset \{1,\dots,n\}, |I|=i} \Pr\left[\bigcap_{i \in I} E_i\right]\right)\]</span> When <span class="math inline">\(k=n\)</span>, the equality holds and the resulting identity is the inclusion–exclusion principle. When <span class="math inline">\(k=1\)</span>, we get Boole's inequality.</p>
-<p><strong>Definition 1.14. (Conditional probability)</strong> The <em>conditional probability of <span class="math inline">\(E_1\)</span> given <span class="math inline">\(E_2\)</span></em>, denoted <span class="math inline">\(\Pr[E_1 | E_2]\)</span>, is defined as <span class="math display">\[\Pr[E_1 | E_2] = \frac{\Pr[E_1 \cap E_2]}{\Pr[E_2]}\]</span> when <span class="math inline">\(\Pr[E_2] \neq 0\)</span>.</p>
-<p>It follows immediately from the definition that <span class="math display">\[\Pr[E_1 \cap E_2] = \Pr[E_1 | E_2] \cdot \Pr[E_2]\]</span></p>
-<p><strong>Theorem 1.15. (Bayes' theorem)</strong> If <span class="math inline">\(\Pr[E_2] \neq 0\)</span> then <span class="math display">\[\Pr[E_1 | E_2] = \frac{\Pr[E_2 | E_1] \cdot \Pr[E_1]}{\Pr[E_2]}\]</span></p>
-<p><strong>Theorem 1.16.</strong> <span class="math display">\[\Pr\left[\bigcup_{i=1}^k E_i\right] \leq \Pr[E_1] + \sum_{i=2}^k \Pr[E_i | \overline{E}_1 \cap \dots \cap \overline{E}_{i-1}]\]</span></p>
+<p><strong>Theorem 1.17. (Union bound; Boole’s inequality)</strong> <span class="math display">\[\Pr\left[\bigcup_{i=1}^n A_i\right] \leq \sum_{i=1}^n \Pr[A_i]\]</span></p>
+<p>Boole’s inequality follows from the fact that a probability measure is σ-sub-additive.</p>
+<p><strong>Theorem 1.18. (Bonferroni inequalities)</strong> For all odd <span class="math inline">\(k\)</span>, <span class="math display">\[\Pr\left[\bigcup_{i=1}^n A_i\right] \leq \sum_{j=1}^k \left((-1)^{j-1} \sum_{I \subseteq \{1,\dots,n\}, |I|=j} \Pr\left[\bigcap_{i \in I} A_i\right]\right)\]</span> For all even <span class="math inline">\(k\)</span>, <span class="math display">\[\Pr\left[\bigcup_{i=1}^n A_i\right] \geq \sum_{j=1}^k \left((-1)^{j-1} \sum_{I \subseteq \{1,\dots,n\}, |I|=j} \Pr\left[\bigcap_{i \in I} A_i\right]\right)\]</span> When <span class="math inline">\(k=n\)</span>, the equality holds and the resulting identity is the inclusion–exclusion principle. When <span class="math inline">\(k=1\)</span>, we get Boole’s inequality.</p>
+<p><strong>Definition 1.19. (Independent events)</strong> If <span class="math inline">\(\Pr\left[\bigcap_{n=1}^\infty A_n\right] = \prod_{n=1}^\infty \Pr[A_n]\)</span>, then events <span class="math inline">\(A_n\)</span> are said to be <em>mutually independent</em>.</p>
+<p><strong>Definition 1.20. (Conditional probability)</strong> The <em>conditional probability of <span class="math inline">\(A_1\)</span> given <span class="math inline">\(A_2\)</span></em>, denoted <span class="math inline">\(\Pr[A_1 | A_2]\)</span>, is defined as <span class="math display">\[\Pr[A_1 | A_2] = \frac{\Pr[A_1 \cap A_2]}{\Pr[A_2]}\]</span> when <span class="math inline">\(\Pr[A_2] \neq 0\)</span>.</p>
+<p>It follows immediately from the definition that <span class="math display">\[\Pr[A_1 \cap A_2] = \Pr[A_1 | A_2] \cdot \Pr[A_2]\]</span></p>
+<p><strong>Lemma 1.21.</strong> If <span class="math inline">\(A_1\)</span> and <span class="math inline">\(A_2\)</span> are mutually exclusive events, then <span class="math inline">\(\Pr[A_1|A_2] = \Pr[A_1]\)</span>.</p>
+<p><strong>Proof.</strong> By definition <span class="math inline">\(\Pr[A_1 \cap A_2] = \Pr[A_1] \cdot \Pr[A_2]\)</span>, <span class="math inline">\(\Pr[A_1 \cap A_2] = \Pr[A_1 | A_2] \cdot \Pr[A_2]\)</span> (note that <span class="math inline">\(\Pr[A_2] \neq 0\)</span>). Thus, <span class="math inline">\(\Pr[A_1] = \Pr[A_1 | A_2]\)</span>. <p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
+<p><strong>Theorem 1.22. (Bayes’ theorem)</strong> If <span class="math inline">\(\Pr[A_2] \neq 0\)</span> then <span class="math display">\[\Pr[A_1 | A_2] = \frac{\Pr[A_2 | A_1] \cdot \Pr[A_1]}{\Pr[A_2]}\]</span></p>
+<p><strong>Theorem 1.23. (Law of total probability)</strong> Let <span class="math inline">\(A_1,A_2,\dots,A_n\)</span> be mutually exclusive events such that <span class="math inline">\(\bigcup_{i=1}^n A_i = \Omega\)</span>. Then <span class="math display">\[\Pr[A] = \sum_{i=1}^n \Pr[A \cap A_i] = \sum_{i=1}^n \Pr[A|A_i] \Pr[A_i]\]</span>.</p>
+<p><strong>Lemma 1.24.</strong> <span class="math display">\[\Pr\left[\bigcup_{i=1}^n A_i\right] \leq \Pr[A_1] + \sum_{i=2}^n \Pr[A_i | \bar{A}_1 \cap \dots \cap \bar{A}_{i-1}]\]</span></p>
+</section>
+<section id="random-variables-and-expectations" class="level1">
+<h1><span class="header-section-number">2</span> Random Variables and Expectations</h1>
+<p><strong>Definition 2.1. (Random variable)</strong> A <em>random variable</em> <span class="math inline">\(X\)</span> on sample space <span class="math inline">\(\Omega\)</span> is a real-valued function <span class="math inline">\(X : \Omega \to \mathbb{R}\)</span>. A <em>discrete random variable</em> is a random variable that takes on a finite or countably infinite number of values.</p>
+<p><strong>Definition 2.2. (Independent random variables)</strong> Random variables <span class="math inline">\(X_1,\dots,X_n\)</span> are said to be <em>independent</em> if and only if for any subset of indices <span class="math inline">\(I \subseteq \{1,\dots,n\}\)</span> and any <span class="math inline">\(x_i (i \in I)\)</span>, <span class="math display">\[\Pr\left[\bigcap_{i \in I} (X=x_i)\right] = \prod_{i \in I} \Pr[X_i=x_i]\]</span></p>
+<p><strong>Definition 2.3. (Expectation)</strong> Let <span class="math inline">\(X\)</span> be a discrete random variable and let <span class="math inline">\(\mathcal{X}\)</span> be the set of all possible values it can take. The <em>expectation</em> of <span class="math inline">\(X\)</span>, denoted by <span class="math inline">\(\operatorname{E}[X]\)</span>, is given by <span class="math display">\[\operatorname{E}[X] = \sum_{x \in \mathcal{X}} x\Pr[X=x]\]</span> The expectation is a finite number if and only if <span class="math inline">\(\sum_{x \in \mathcal{X}} x\Pr[X=x]\)</span> converges.</p>
+<p><strong>Lemma 2.4.</strong> For any constant <span class="math inline">\(c\)</span>, <span class="math inline">\(\operatorname{E}[cX] = c\operatorname{E}[X]\)</span>.</p>
+<strong>Proof.</strong>
+<span class="math display">\[\begin{align*}
+\operatorname{E}[cX] &amp;= \sum_{x \in \mathcal{X}} cx \Pr[cX=cx] \\
+&amp;= c \sum_{x \in \mathcal{X}} x \Pr[X=x] \\
+&amp;= c \operatorname{E}[X]
+\end{align*}\]</span>
+<p><p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
+<p><strong>Lemma 2.5. (Linearity)</strong> For any pair of random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, <span class="math inline">\(\operatorname{E}[X+Y] = \operatorname{E}[X] + \operatorname{E}[Y]\)</span>.</p>
+<strong>Proof.</strong>
+<span class="math display">\[\begin{align*}
+\operatorname{E}[X+Y]
+&amp;= \sum_{x \in \mathcal{X}} \sum_{y \in \mathcal{Y}} (x+y) \Pr[X=x \cap Y=y] \\
+&amp;= \sum_{x \in \mathcal{X}} x \sum_{y \in \mathcal{Y}} \Pr[X=x \cap Y=y] +
+\sum_{y \in \mathcal{Y}} y \sum_{x \in \mathcal{X}} \Pr[X=x \cap Y=y] \\
+&amp;= \sum_{x \in \mathcal{X}} x \Pr[X=x] + \sum_{y \in \mathcal{Y}} y \Pr[Y=y] \\
+&amp;= \operatorname{E}[X] + \operatorname{E}[Y]
+\end{align*}\]</span>
+<p><p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
+<p><strong>Lemma 2.6. (Iterated expectation)</strong> <span class="math inline">\(\operatorname{E}[X] = \operatorname{E}[\operatorname{E}[X|Y]]\)</span>.</p>
+<strong>Proof.</strong>
+<span class="math display">\[\begin{align*}
+\operatorname{E}[\operatorname{E}[X|Y]]
+&amp;= \sum_{y \in \mathcal{Y}} \operatorname{E}[X|Y=y] \cdot \Pr[Y=y] \\
+&amp;= \sum_{y \in \mathcal{Y}} \left(\sum_{x \in \mathcal{X}} x \cdot \Pr[X=x|Y=y]\right) \cdot \Pr[Y=y] \\
+&amp;= \sum_{y \in \mathcal{Y}} \sum_{x \in \mathcal{X}} x \cdot \Pr[X=x|Y=y] \cdot \Pr[Y=y] \\
+&amp;= \sum_{y \in \mathcal{Y}} \sum_{x \in \mathcal{X}} x \cdot \Pr[Y=y|X=x] \cdot \Pr[X=x] \\
+&amp;= \sum_{x \in \mathcal{X}} x \cdot \Pr[X=x] \cdot \left(\sum_{y \in \mathcal{Y}}[Y=y|X=x]\right) \\
+&amp;= \sum_{x \in \mathcal{X}} x \cdot \Pr[X=x] \\
+&amp;= \operatorname{E}[X]
+\end{align*}\]</span>
+<p><p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
+<p><strong>Lemma 2.7.</strong> For <em>independent random variables</em> <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, <span class="math inline">\(\operatorname{E}[XY] = \operatorname{E}[X] \operatorname{E}[Y]\)</span>.</p>
+<strong>Proof.</strong>
+<span class="math display">\[\begin{align*}
+\operatorname{E}[XY]
+&amp;= \sum_{x \in \mathcal{X}} \sum_{y \in \mathcal{Y}} xy\Pr[X=x \cap Y=y] \\
+&amp;= \sum_{x \in \mathcal{X}} \sum_{y \in \mathcal{Y}} xy\Pr[X=x]\Pr[Y=y] \\
+&amp;= \sum_{x \in \mathcal{X}} x \Pr[X=x] \sum_{y \in \mathcal{Y}} y \Pr[Y=y] \\
+&amp;= \operatorname{E}[X] \operatorname{E}[Y]
+\end{align*}\]</span>
+<p><p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
+<p><strong>Definition 2.8. (Covariance)</strong> <span class="math inline">\(\operatorname{Cov}(X,Y) = \operatorname{E}[(X - \operatorname{E}[X])(Y - \operatorname{E}[Y])]\)</span>.</p>
+<p><strong>Lemma 2.9.</strong> <span class="math inline">\(\operatorname{Cov}(X,Y) = \operatorname{E}[XY] - \operatorname{E}[X] \operatorname{E}[Y]\)</span>.</p>
+<p>Intuitively, covariance is a measure of how much two random variables change together.</p>
+<p>When <span class="math inline">\(\operatorname{Cov}(X,Y) = 0\)</span>, <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are said to be <em>uncorrelated</em>. Independent random variables are a notable case of uncorrelated variables. Note that the uncorrelatedness of two variables does not necessarily imply that they are independent.</p>
+<p><strong>Definition 2.10. (Variance)</strong> <span class="math inline">\(\operatorname{Var}(X) = \sigma^2 = \operatorname{E}[(X-\mu)^2]\)</span>, where <span class="math inline">\(\mu = \operatorname{E}[X]\)</span>.</p>
+<p><strong>Lemma 2.11.</strong> <span class="math inline">\(\operatorname{Var}(X) = \operatorname{E}[X^2] - (\operatorname{E}[X])^2\)</span>.</p>
+<p>Intuitively, variance is a measure of how far a set of numbers are spread out from their mean. Variance is a special case of the covariance when the two variables are identical, that is, <span class="math inline">\(\operatorname{Var}(X) = \operatorname{Cov}(X,X)\)</span>.</p>
+<p><strong>Bernoulli random variable.</strong> A discrete random variable <span class="math inline">\(X\)</span> taking values from <span class="math inline">\(\{0,1\}\)</span> is called a <em>Bernoulli random variable</em>. The parameter <span class="math inline">\(p = \Pr[X=1]\)</span> is called the <em>bias</em> of <span class="math inline">\(X\)</span>.</p>
+<p>For Bernoulli random variable <span class="math inline">\(X\)</span>, we have <span class="math inline">\(\operatorname{E}[X] = 0 \cdot (1-p) + 1 \cdot p = p = \Pr[X=1]\)</span>.</p>
+<p><strong>Binomial random variable.</strong> A discrete random variable <span class="math inline">\(X\)</span> taking value <span class="math inline">\(k \in \{0,1,\dots,n\}\)</span> is called a <em>binomial random variable</em> with parameters <span class="math inline">\(n\)</span> and <span class="math inline">\(p\)</span> if it satisfies the following probability distribution: <span class="math display">\[\Pr[X=k] = \binom{n}{k} p^k (1-p)^{n-k}\]</span></p>
+<p>A binomial random variable can be represented as a sum of independent, identically distributed Bernoulli random variables.</p>
 </section>
 <section id="useful-probability-bounds" class="level1">
-<h1><span class="header-section-number">2</span> Useful Probability Bounds</h1>
+<h1><span class="header-section-number">3</span> Useful Probability Bounds</h1>
 </section>
       </div>
       <footer>
@@ -125,7 +199,7 @@
           <i class="fa fa-anchor" aria-hidden="true"></i>
           <code>Permalink</code>
         </a> |
-        Last updated: <span id="update-time">2016-10-07</span>
+        Last updated: <span id="update-time">2016-11-30</span>
       </footer>
     </article></main>
   </body>

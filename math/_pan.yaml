@@ -1,4 +1,4 @@
 ---
-filters: []
-raw-options: [--mathjax, --number-sections, --section-divs, --toc]
+filters: [qed.hs]
+raw-options: [--mathjax, --number-sections, --section-divs, --toc, --smart]
 ---
