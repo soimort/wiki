@@ -1,8 +1,8 @@
 % Basic Probability Theory
 % Mort Yao
-% 2016-11-30
+% 2016-12-10
 
-# Events and Probabilities
+# Events and Probability
 
 **Definition 1.1. (Experiment)**
 An *experiment* or *trial* is any procedure that can be infinitely repeated and has a well-defined [set](/math/set) of possible *outcomes*, known as the *sample space*.
@@ -81,13 +81,15 @@ By definition, $\Omega = A \cup \bar{A}$, therefore $\Pr[A \cup \bar{A}]=1$. Sin
 From Lemma 1.11 and $\Pr[\Omega] = 1$, we have $\Pr[\bar{\Omega}] = 0$. Since $\bar{\Omega} = \Omega \backslash \Omega = \varnothing$, $\Pr[\varnothing] = 0$.
 [QED]
 
-**Lemma 1.13. (Monotonicity)**
+**Lemma 1.13. (Monotonicity of probability)**
 If $A_1 \subseteq A_2$ then $\Pr[A_1] \leq \Pr[A_2]$.
 
 **Proof.**
 Since $A_2 = A_1 \cup (A_2 \backslash A_1)$, $A_1$ and $A_2 \backslash A_1$ are mutually exclusive events, and $\Pr[A_2 \backslash A_1] \geq 0$, we have
 $$\Pr[A_2] = \Pr[A_1] + \Pr[A_2 \backslash A_1] \geq \Pr[A_1]$$
 [QED]
+
+The monotonicity of probability follows from the fact that a measure is monotone.
 
 **Lemma 1.14.**
 $0 \leq \Pr[A] \leq 1$.
@@ -115,49 +117,58 @@ $$\Pr\left[\bigcup_{i=1}^n A_i\right] \geq \sum_{j=1}^k \left((-1)^{j-1} \sum_{I
 When $k=n$, the equality holds and the resulting identity is the inclusion–exclusion principle.
 When $k=1$, we get Boole's inequality.
 
-**Definition 1.19. (Independent events)**
-If $\Pr\left[\bigcap_{n=1}^\infty A_n\right] = \prod_{n=1}^\infty \Pr[A_n]$, then events $A_n$ are said to be *mutually independent*.
+**Definition 1.19. (Pairwise independence of events)**
+Events $A_i, \dots, A_n$ are said to be *pairwise independent*, if and only if for any pair $i,j$ $(i \neq j)$, $\Pr[A_i \cap A_j] = \Pr[A_i] \cdot \Pr[A_j]$.
 
-**Definition 1.20. (Conditional probability)** The *conditional probability of $A_1$ given $A_2$*, denoted $\Pr[A_1 | A_2]$, is defined as
+**Definition 1.20. (Mutual independence of events)**
+Events $A_i, \dots, A_n$ are said to be *mutually independent*, if and only if for any subset of indices $I \subseteq \{1,\dots,n\}$,
+$$\Pr\left[\bigcap_{i \in I} A_i\right] = \prod_{i \in I} \Pr[A_i]$$
+
+Mutual independence is a stronger notion of statistical independence, and it implies pairwise independence. However, pairwise independence does not necessarily imply mutual independence.
+
+**Definition 1.21. (Conditional probability)** The *conditional probability of $A_1$ given $A_2$*, denoted $\Pr[A_1 | A_2]$, is defined as
 $$\Pr[A_1 | A_2] = \frac{\Pr[A_1 \cap A_2]}{\Pr[A_2]}$$
 when $\Pr[A_2] \neq 0$.
 
 It follows immediately from the definition that
 $$\Pr[A_1 \cap A_2] = \Pr[A_1 | A_2] \cdot \Pr[A_2]$$
 
-**Lemma 1.21.** If $A_1$ and $A_2$ are mutually exclusive events, then $\Pr[A_1|A_2] = \Pr[A_1]$.
+**Lemma 1.22.** If $A_1$ and $A_2$ are independent events, then $\Pr[A_1|A_2] = \Pr[A_1]$.
 
 **Proof.**
 By definition $\Pr[A_1 \cap A_2] = \Pr[A_1] \cdot \Pr[A_2]$, $\Pr[A_1 \cap A_2] = \Pr[A_1 | A_2] \cdot \Pr[A_2]$ (note that $\Pr[A_2] \neq 0$). Thus, $\Pr[A_1] = \Pr[A_1 | A_2]$.
 [QED]
 
-**Theorem 1.22. (Bayes' theorem)**
+**Theorem 1.23. (Bayes' theorem)**
 If $\Pr[A_2] \neq 0$ then
 $$\Pr[A_1 | A_2] = \frac{\Pr[A_2 | A_1] \cdot \Pr[A_1]}{\Pr[A_2]}$$
 
-**Theorem 1.23. (Law of total probability)** Let $A_1,A_2,\dots,A_n$ be mutually exclusive events such that $\bigcup_{i=1}^n A_i = \Omega$. Then
+**Theorem 1.24. (Law of total probability)** Let $A_1,A_2,\dots,A_n$ be mutually exclusive events such that $\bigcup_{i=1}^n A_i = A$. Then
 $$\Pr[A] = \sum_{i=1}^n \Pr[A \cap A_i] = \sum_{i=1}^n \Pr[A|A_i] \Pr[A_i]$$.
 
-**Lemma 1.24.**
+**Lemma 1.25.**
 $$\Pr\left[\bigcup_{i=1}^n A_i\right] \leq \Pr[A_1] + \sum_{i=2}^n \Pr[A_i | \bar{A}_1 \cap \dots \cap \bar{A}_{i-1}]$$
 
 
 
-# Random Variables and Expectations
+# Random Variables and Expectation
 
 **Definition 2.1. (Random variable)**
 A *random variable* $X$ on sample space $\Omega$ is a real-valued function $X : \Omega \to \mathbb{R}$. A *discrete random variable* is a random variable that takes on a finite or countably infinite number of values.
 
-**Definition 2.2. (Independent random variables)**
-Random variables $X_1,\dots,X_n$ are said to be *independent* if and only if for any subset of indices $I \subseteq \{1,\dots,n\}$ and any $x_i (i \in I)$,
-$$\Pr\left[\bigcap_{i \in I} (X=x_i)\right] = \prod_{i \in I} \Pr[X_i=x_i]$$
+**Definition 2.2. (Pairwise independence of random variables)**
+Random variables $X_1,\dots,X_n$ are said to be *pairwise independent*, if and only if for any pair $i,j$ $(i \neq j)$ and any $x_i,x_j$, $\Pr[(X_i=x_i)\cap(X_j=x_j)] = \Pr[X_i=x_i] \cdot \Pr[X_j=x_j]$.
 
-**Definition 2.3. (Expectation)**
+**Definition 2.3. (Mutual independence of random variables)**
+Random variables $X_1,\dots,X_n$ are said to be *mutually independent*, if and only if for any subset of indices $I \subseteq \{1,\dots,n\}$ and any $x_i (i \in I)$,
+$$\Pr\left[\bigcap_{i \in I} (X_i=x_i)\right] = \prod_{i \in I} \Pr[X_i=x_i]$$
+
+**Definition 2.4. (Expectation)**
 Let $X$ be a discrete random variable and let $\mathcal{X}$ be the set of all possible values it can take. The *expectation* of $X$, denoted by $\operatorname{E}[X]$, is given by
 $$\operatorname{E}[X] = \sum_{x \in \mathcal{X}} x\Pr[X=x]$$
 The expectation is a finite number if and only if $\sum_{x \in \mathcal{X}} x\Pr[X=x]$ converges.
 
-**Lemma 2.4.** For any constant $c$, $\operatorname{E}[cX] = c\operatorname{E}[X]$.
+**Lemma 2.5.** For any constant $c$, $\operatorname{E}[cX] = c\operatorname{E}[X]$.
 
 **Proof.**
 \begin{align*}
@@ -167,7 +178,7 @@ The expectation is a finite number if and only if $\sum_{x \in \mathcal{X}} x\Pr
 \end{align*}
 [QED]
 
-**Lemma 2.5. (Linearity)**
+**Lemma 2.6. (Linearity of expectation)**
 For any pair of random variables $X$ and $Y$, $\operatorname{E}[X+Y] = \operatorname{E}[X] + \operatorname{E}[Y]$.
 
 **Proof.**
@@ -181,7 +192,7 @@ For any pair of random variables $X$ and $Y$, $\operatorname{E}[X+Y] = \operator
 \end{align*}
 [QED]
 
-**Lemma 2.6. (Iterated expectation)**
+**Lemma 2.7. (Iterated expectation)**
 $\operatorname{E}[X] = \operatorname{E}[\operatorname{E}[X|Y]]$.
 
 **Proof.**
@@ -197,7 +208,7 @@ $\operatorname{E}[X] = \operatorname{E}[\operatorname{E}[X|Y]]$.
 \end{align*}
 [QED]
 
-**Lemma 2.7.**
+**Lemma 2.8.**
 For *independent random variables* $X$ and $Y$, $\operatorname{E}[XY] = \operatorname{E}[X] \operatorname{E}[Y]$.
 
 **Proof.**
@@ -210,27 +221,45 @@ For *independent random variables* $X$ and $Y$, $\operatorname{E}[XY] = \operato
 \end{align*}
 [QED]
 
-**Definition 2.8. (Covariance)**
+**Definition 2.9. (Covariance)**
 $\operatorname{Cov}(X,Y) = \operatorname{E}[(X - \operatorname{E}[X])(Y - \operatorname{E}[Y])]$.
 
-**Lemma 2.9.**
+**Lemma 2.10.**
 $\operatorname{Cov}(X,Y) = \operatorname{E}[XY] - \operatorname{E}[X] \operatorname{E}[Y]$.
 
 Intuitively, covariance is a measure of how much two random variables change together.
 
-When $\operatorname{Cov}(X,Y) = 0$, $X$ and $Y$ are said to be *uncorrelated*. Independent random variables are a notable case of uncorrelated variables. Note that the uncorrelatedness of two variables does not necessarily imply that they are independent.
+When $\operatorname{Cov}(X,Y) = 0$, $X$ and $Y$ are said to be *uncorrelated*. Independent random variables are a notable case of uncorrelated variables (follows from Lemma 2.8). Note that the uncorrelatedness of two variables does not necessarily imply that they are independent.
 
-**Definition 2.10. (Variance)**
+**Definition 2.11. (Variance)**
 $\operatorname{Var}(X) = \sigma^2 = \operatorname{E}[(X-\mu)^2]$, where $\mu = \operatorname{E}[X]$.
 
-**Lemma 2.11.**
+$\sigma = \sqrt{\operatorname{Var}(X)}$ is also called the *standard deviation* of $X$.
+
+**Lemma 2.12.**
 $\operatorname{Var}(X) = \operatorname{E}[X^2] - (\operatorname{E}[X])^2$.
 
-Intuitively, variance is a measure of how far a set of numbers are spread out from their mean. Variance is a special case of the covariance when the two variables are identical, that is, $\operatorname{Var}(X)  = \operatorname{Cov}(X,X)$.
+**Proof.**
+\begin{align*}
+\operatorname{Var}(X) = \operatorname{E}[(X-\operatorname{E}[X])^2]
+&= \sum_{x \in \mathcal{X}}(x - \operatorname{E}[X])^2 \Pr[X=x] \\
+&= \sum_{x \in \mathcal{X}} x^2 \Pr[X=x] - 2\operatorname{E}[X] \sum_{x \in \mathcal{X}} x \Pr[X=x] + (\operatorname{E}[X])^2 \sum_{x \in \mathcal{X}} \Pr[X=x] \\
+&= \sum_{x \in \mathcal{X}} x^2 \Pr[X=x]- 2\operatorname{E}[X] \cdot \operatorname{E}[X] + (\operatorname{E}[X])^2 \cdot 1 \\
+&= \sum_{x \in \mathcal{X}} x^2 \Pr[X=x] - (\operatorname{E}[X])^2 = \operatorname{E}[X^2] - (\operatorname{E}[X])^2
+\end{align*}
+[QED]
+
+Intuitively, variance is a measure of how far a set of numbers are spread out from their mean. Variance is a special case of the covariance when the two variables are identical, that is, the covariance of the random variable with itself. $\operatorname{Var}(X) = \operatorname{Cov}(X,X)$.
+
+**Lemma 2.13.** $\operatorname{Var}(aX+b) = a^2 \operatorname{Var}(X)$.
+
+**Lemma 2.14.** $\operatorname{Var}(X+Y) = \operatorname{Var}(X) + \operatorname{Var}(Y) + 2 \operatorname{Cov}(X,Y)$.
+
+**Lemma 2.15.** If $X_1,\dots,X_n$ are pairwise independent, then $\operatorname{Var}(\sum_{i=1}^n X_i) = \sum_{i=1}^n \operatorname{Var}(X_i)$.
 
 **Bernoulli random variable.** A discrete random variable $X$ taking values from $\{0,1\}$ is called a *Bernoulli random variable*. The parameter $p = \Pr[X=1]$ is called the *bias* of $X$.
 
-For Bernoulli random variable $X$, we have $\operatorname{E}[X] = 0 \cdot (1-p) + 1 \cdot p = p = \Pr[X=1]$.
+For Bernoulli random variable $X$, we have $\operatorname{E}[X] = 0 \cdot (1-p) + 1 \cdot p = p = \Pr[X=1]$. Furthermore, we have $\operatorname{Var}(X) \leq \frac{1}{4}$, since $\operatorname{E}[X] = \operatorname{E}[X^2]$, thus $\operatorname{Var}(X) = \operatorname{E}[X] \cdot (1-\operatorname{E}[X]) \leq \frac{1}{4}$.
 
 **Binomial random variable.** A discrete random variable $X$ taking value $k \in \{0,1,\dots,n\}$ is called a *binomial random variable* with parameters $n$ and $p$ if it satisfies the following probability distribution:
 $$\Pr[X=k] = \binom{n}{k} p^k (1-p)^{n-k}$$
@@ -239,4 +268,49 @@ A binomial random variable can be represented as a sum of independent, identical
 
 
 
-# Useful Probability Bounds
+# Moments and Deviations
+
+**Theorem 3.1. (Markov's inequality)**
+Let $X$ be a non-negative random variable and $\varepsilon > 0$. Then
+$$\Pr[X \geq \varepsilon] \leq \frac{\operatorname{E}[X]}{\varepsilon}$$
+
+**Proof.**
+Let $X$ takes values from the set $\mathcal{X}$. We have
+\begin{align*}
+\operatorname{E}[X]
+&= \sum_{x \in \mathcal{X}} x \Pr[X=x] \\
+&\geq \sum_{x \in \mathcal{X}, x<\varepsilon} 0 \cdot \Pr[X=x] + \sum_{x \in \mathcal{X} ,x \geq \varepsilon} \varepsilon \cdot \Pr[X=x] \\
+&= \varepsilon \cdot \Pr[X \geq \varepsilon]
+\end{align*}
+[QED]
+
+**Theorem 3.2. (Chebyshev's inequality)**
+Let $X$ be a random variable and $\delta > 0$. Then
+$$\Pr[|X - \operatorname{E}[X]| \geq \delta] \leq \frac{\operatorname{Var}(X)}{\delta^2}$$
+
+**Proof.**
+Let $Y=(X-\operatorname{E}[X])^2$ be a non-negative random variable. Using Markov's inequality, we have
+\begin{align*}
+\Pr[|X - \operatorname{E}[X]| \geq \delta]
+&= \Pr[(X - \operatorname{E}[X])^2 \geq \delta^2] \\
+&\leq \frac{\operatorname{E}[(X - \operatorname{E}[X])^2]}{\delta^2}
+= \frac{\operatorname{Var}(X)}{\delta^2}
+\end{align*}
+[QED]
+
+**Corollary 3.3.**
+Let $X_1,\dots,X_n$ be pairwise-independent random variables with the same expectation $\mu$ and variance $\sigma^2$. Then for every $\delta > 0$,
+$$\Pr\left[\left|\frac{\sum_{i=1}^n X_i}{n} - \mu\right| \geq \delta\right] \leq \frac{\sigma^2}{\delta^2 n}$$
+
+**Proof.**
+By linearity of expectation, we have $\operatorname{E}\left[\frac{\sum_{i=1}^n X_i}{n}\right] = \mu$. Applying Chebyshev's inequality to the random variable $\frac{\sum_{i=1}^n X_i}{n}$, we have
+$$\Pr\left[\left|\frac{\sum_{i=1}^n X_i}{n} - \mu\right| \geq \delta\right] \leq \frac{\operatorname{Var}\left(\frac{\sum_{i=1}^n X_i}{n}\right)}{\delta^2}$$
+
+Using pairwise independence (Lemma 2.15), it follows that
+$$\operatorname{Var}\left(\frac{\sum_{i=1}^n X_i}{n}\right)
+= \frac{1}{n^2} \sum_{i=1}^n \operatorname{Var}(X_i) = \frac{1}{n^2} \sum_{i=1}^n \sigma^2 = \frac{\sigma^2}{n}$$
+[QED]
+
+
+
+# Chernoff Bounds

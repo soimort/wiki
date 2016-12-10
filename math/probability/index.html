@@ -8,7 +8,7 @@
     <meta name="generator" content="pandoc">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="author" content="Mort Yao">
-    <meta name="dcterms.date" content="2016-11-30">
+    <meta name="dcterms.date" content="2016-12-10">
     <title>Basic Probability Theory</title>
     <link rel="canonical" href="https://wiki.soimort.org/math/probability">
     <style type="text/css">code { white-space: pre; }</style>
@@ -34,18 +34,19 @@
       <header>
         <h1 class="title">Basic Probability Theory</h1>
         <address class="author">Mort Yao</address>
-        <!-- h3 class="date">2016-11-30</h3 -->
+        <!-- h3 class="date">2016-12-10</h3 -->
       </header>
       <nav id="TOC">
 <ul>
-<li><a href="#events-and-probabilities"><span class="toc-section-number">1</span> Events and Probabilities</a></li>
-<li><a href="#random-variables-and-expectations"><span class="toc-section-number">2</span> Random Variables and Expectations</a></li>
-<li><a href="#useful-probability-bounds"><span class="toc-section-number">3</span> Useful Probability Bounds</a></li>
+<li><a href="#events-and-probability"><span class="toc-section-number">1</span> Events and Probability</a></li>
+<li><a href="#random-variables-and-expectation"><span class="toc-section-number">2</span> Random Variables and Expectation</a></li>
+<li><a href="#moments-and-deviations"><span class="toc-section-number">3</span> Moments and Deviations</a></li>
+<li><a href="#chernoff-bounds"><span class="toc-section-number">4</span> Chernoff Bounds</a></li>
 </ul>
       </nav>
       <div id="content">
-<section id="events-and-probabilities" class="level1">
-<h1><span class="header-section-number">1</span> Events and Probabilities</h1>
+<section id="events-and-probability" class="level1">
+<h1><span class="header-section-number">1</span> Events and Probability</h1>
 <p><strong>Definition 1.1. (Experiment)</strong> An <em>experiment</em> or <em>trial</em> is any procedure that can be infinitely repeated and has a well-defined <a href="/math/set">set</a> of possible <em>outcomes</em>, known as the <em>sample space</em>.</p>
 <p>An experiment is said to be <em>random</em> if it has more than one possible outcome, and <em>deterministic</em> if it has only one.</p>
 <p>A random experiment that has exactly two possible outcomes is known as a <em>Bernoulli trial</em> (or <em>binomial trial</em>).</p>
@@ -82,8 +83,9 @@
 <p><strong>Proof.</strong> By definition, <span class="math inline">\(\Omega = A \cup \bar{A}\)</span>, therefore <span class="math inline">\(\Pr[A \cup \bar{A}]=1\)</span>. Since <span class="math inline">\(A\)</span> and <span class="math inline">\(\bar{A}\)</span> are mutually exclusive events, <span class="math inline">\(\Pr[A \cup \bar{A}]=\Pr[A]+\Pr[\bar{A}]\)</span>. Thus, we have <span class="math inline">\(\Pr[\bar{A}] = 1 - \Pr[A]\)</span>. <p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
 <p><strong>Lemma 1.12.</strong> <span class="math inline">\(\Pr[\varnothing] = 0\)</span>.</p>
 <p><strong>Proof.</strong> From Lemma 1.11 and <span class="math inline">\(\Pr[\Omega] = 1\)</span>, we have <span class="math inline">\(\Pr[\bar{\Omega}] = 0\)</span>. Since <span class="math inline">\(\bar{\Omega} = \Omega \backslash \Omega = \varnothing\)</span>, <span class="math inline">\(\Pr[\varnothing] = 0\)</span>. <p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
-<p><strong>Lemma 1.13. (Monotonicity)</strong> If <span class="math inline">\(A_1 \subseteq A_2\)</span> then <span class="math inline">\(\Pr[A_1] \leq \Pr[A_2]\)</span>.</p>
+<p><strong>Lemma 1.13. (Monotonicity of probability)</strong> If <span class="math inline">\(A_1 \subseteq A_2\)</span> then <span class="math inline">\(\Pr[A_1] \leq \Pr[A_2]\)</span>.</p>
 <p><strong>Proof.</strong> Since <span class="math inline">\(A_2 = A_1 \cup (A_2 \backslash A_1)\)</span>, <span class="math inline">\(A_1\)</span> and <span class="math inline">\(A_2 \backslash A_1\)</span> are mutually exclusive events, and <span class="math inline">\(\Pr[A_2 \backslash A_1] \geq 0\)</span>, we have <span class="math display">\[\Pr[A_2] = \Pr[A_1] + \Pr[A_2 \backslash A_1] \geq \Pr[A_1]\]</span> <p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
+<p>The monotonicity of probability follows from the fact that a measure is monotone.</p>
 <p><strong>Lemma 1.14.</strong> <span class="math inline">\(0 \leq \Pr[A] \leq 1\)</span>.</p>
 <p><strong>Proof.</strong> Since <span class="math inline">\(\varnothing \subseteq A \subseteq \Omega\)</span>, <span class="math inline">\(\Pr[\varnothing] = 0\)</span> and <span class="math inline">\(\Pr[\Omega] = 1\)</span>, by Lemma 1.13 it holds that <span class="math inline">\(0 \leq \Pr[A] \leq 1\)</span>. <p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
 <p><strong>Theorem 1.15. (Addition law of probability)</strong> <span class="math display">\[\Pr[A_1 \cup A_2] = \Pr[A_1] + \Pr[A_2] - \Pr[A_1 \cap A_2]\]</span></p>
@@ -92,21 +94,24 @@
 <p><strong>Theorem 1.17. (Union bound; Boole’s inequality)</strong> <span class="math display">\[\Pr\left[\bigcup_{i=1}^n A_i\right] \leq \sum_{i=1}^n \Pr[A_i]\]</span></p>
 <p>Boole’s inequality follows from the fact that a probability measure is σ-sub-additive.</p>
 <p><strong>Theorem 1.18. (Bonferroni inequalities)</strong> For all odd <span class="math inline">\(k\)</span>, <span class="math display">\[\Pr\left[\bigcup_{i=1}^n A_i\right] \leq \sum_{j=1}^k \left((-1)^{j-1} \sum_{I \subseteq \{1,\dots,n\}, |I|=j} \Pr\left[\bigcap_{i \in I} A_i\right]\right)\]</span> For all even <span class="math inline">\(k\)</span>, <span class="math display">\[\Pr\left[\bigcup_{i=1}^n A_i\right] \geq \sum_{j=1}^k \left((-1)^{j-1} \sum_{I \subseteq \{1,\dots,n\}, |I|=j} \Pr\left[\bigcap_{i \in I} A_i\right]\right)\]</span> When <span class="math inline">\(k=n\)</span>, the equality holds and the resulting identity is the inclusion–exclusion principle. When <span class="math inline">\(k=1\)</span>, we get Boole’s inequality.</p>
-<p><strong>Definition 1.19. (Independent events)</strong> If <span class="math inline">\(\Pr\left[\bigcap_{n=1}^\infty A_n\right] = \prod_{n=1}^\infty \Pr[A_n]\)</span>, then events <span class="math inline">\(A_n\)</span> are said to be <em>mutually independent</em>.</p>
-<p><strong>Definition 1.20. (Conditional probability)</strong> The <em>conditional probability of <span class="math inline">\(A_1\)</span> given <span class="math inline">\(A_2\)</span></em>, denoted <span class="math inline">\(\Pr[A_1 | A_2]\)</span>, is defined as <span class="math display">\[\Pr[A_1 | A_2] = \frac{\Pr[A_1 \cap A_2]}{\Pr[A_2]}\]</span> when <span class="math inline">\(\Pr[A_2] \neq 0\)</span>.</p>
+<p><strong>Definition 1.19. (Pairwise independence of events)</strong> Events <span class="math inline">\(A_i, \dots, A_n\)</span> are said to be <em>pairwise independent</em>, if and only if for any pair <span class="math inline">\(i,j\)</span> <span class="math inline">\((i \neq j)\)</span>, <span class="math inline">\(\Pr[A_i \cap A_j] = \Pr[A_i] \cdot \Pr[A_j]\)</span>.</p>
+<p><strong>Definition 1.20. (Mutual independence of events)</strong> Events <span class="math inline">\(A_i, \dots, A_n\)</span> are said to be <em>mutually independent</em>, if and only if for any subset of indices <span class="math inline">\(I \subseteq \{1,\dots,n\}\)</span>, <span class="math display">\[\Pr\left[\bigcap_{i \in I} A_i\right] = \prod_{i \in I} \Pr[A_i]\]</span></p>
+<p>Mutual independence is a stronger notion of statistical independence, and it implies pairwise independence. However, pairwise independence does not necessarily imply mutual independence.</p>
+<p><strong>Definition 1.21. (Conditional probability)</strong> The <em>conditional probability of <span class="math inline">\(A_1\)</span> given <span class="math inline">\(A_2\)</span></em>, denoted <span class="math inline">\(\Pr[A_1 | A_2]\)</span>, is defined as <span class="math display">\[\Pr[A_1 | A_2] = \frac{\Pr[A_1 \cap A_2]}{\Pr[A_2]}\]</span> when <span class="math inline">\(\Pr[A_2] \neq 0\)</span>.</p>
 <p>It follows immediately from the definition that <span class="math display">\[\Pr[A_1 \cap A_2] = \Pr[A_1 | A_2] \cdot \Pr[A_2]\]</span></p>
-<p><strong>Lemma 1.21.</strong> If <span class="math inline">\(A_1\)</span> and <span class="math inline">\(A_2\)</span> are mutually exclusive events, then <span class="math inline">\(\Pr[A_1|A_2] = \Pr[A_1]\)</span>.</p>
+<p><strong>Lemma 1.22.</strong> If <span class="math inline">\(A_1\)</span> and <span class="math inline">\(A_2\)</span> are independent events, then <span class="math inline">\(\Pr[A_1|A_2] = \Pr[A_1]\)</span>.</p>
 <p><strong>Proof.</strong> By definition <span class="math inline">\(\Pr[A_1 \cap A_2] = \Pr[A_1] \cdot \Pr[A_2]\)</span>, <span class="math inline">\(\Pr[A_1 \cap A_2] = \Pr[A_1 | A_2] \cdot \Pr[A_2]\)</span> (note that <span class="math inline">\(\Pr[A_2] \neq 0\)</span>). Thus, <span class="math inline">\(\Pr[A_1] = \Pr[A_1 | A_2]\)</span>. <p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
-<p><strong>Theorem 1.22. (Bayes’ theorem)</strong> If <span class="math inline">\(\Pr[A_2] \neq 0\)</span> then <span class="math display">\[\Pr[A_1 | A_2] = \frac{\Pr[A_2 | A_1] \cdot \Pr[A_1]}{\Pr[A_2]}\]</span></p>
-<p><strong>Theorem 1.23. (Law of total probability)</strong> Let <span class="math inline">\(A_1,A_2,\dots,A_n\)</span> be mutually exclusive events such that <span class="math inline">\(\bigcup_{i=1}^n A_i = \Omega\)</span>. Then <span class="math display">\[\Pr[A] = \sum_{i=1}^n \Pr[A \cap A_i] = \sum_{i=1}^n \Pr[A|A_i] \Pr[A_i]\]</span>.</p>
-<p><strong>Lemma 1.24.</strong> <span class="math display">\[\Pr\left[\bigcup_{i=1}^n A_i\right] \leq \Pr[A_1] + \sum_{i=2}^n \Pr[A_i | \bar{A}_1 \cap \dots \cap \bar{A}_{i-1}]\]</span></p>
+<p><strong>Theorem 1.23. (Bayes’ theorem)</strong> If <span class="math inline">\(\Pr[A_2] \neq 0\)</span> then <span class="math display">\[\Pr[A_1 | A_2] = \frac{\Pr[A_2 | A_1] \cdot \Pr[A_1]}{\Pr[A_2]}\]</span></p>
+<p><strong>Theorem 1.24. (Law of total probability)</strong> Let <span class="math inline">\(A_1,A_2,\dots,A_n\)</span> be mutually exclusive events such that <span class="math inline">\(\bigcup_{i=1}^n A_i = A\)</span>. Then <span class="math display">\[\Pr[A] = \sum_{i=1}^n \Pr[A \cap A_i] = \sum_{i=1}^n \Pr[A|A_i] \Pr[A_i]\]</span>.</p>
+<p><strong>Lemma 1.25.</strong> <span class="math display">\[\Pr\left[\bigcup_{i=1}^n A_i\right] \leq \Pr[A_1] + \sum_{i=2}^n \Pr[A_i | \bar{A}_1 \cap \dots \cap \bar{A}_{i-1}]\]</span></p>
 </section>
-<section id="random-variables-and-expectations" class="level1">
-<h1><span class="header-section-number">2</span> Random Variables and Expectations</h1>
+<section id="random-variables-and-expectation" class="level1">
+<h1><span class="header-section-number">2</span> Random Variables and Expectation</h1>
 <p><strong>Definition 2.1. (Random variable)</strong> A <em>random variable</em> <span class="math inline">\(X\)</span> on sample space <span class="math inline">\(\Omega\)</span> is a real-valued function <span class="math inline">\(X : \Omega \to \mathbb{R}\)</span>. A <em>discrete random variable</em> is a random variable that takes on a finite or countably infinite number of values.</p>
-<p><strong>Definition 2.2. (Independent random variables)</strong> Random variables <span class="math inline">\(X_1,\dots,X_n\)</span> are said to be <em>independent</em> if and only if for any subset of indices <span class="math inline">\(I \subseteq \{1,\dots,n\}\)</span> and any <span class="math inline">\(x_i (i \in I)\)</span>, <span class="math display">\[\Pr\left[\bigcap_{i \in I} (X=x_i)\right] = \prod_{i \in I} \Pr[X_i=x_i]\]</span></p>
-<p><strong>Definition 2.3. (Expectation)</strong> Let <span class="math inline">\(X\)</span> be a discrete random variable and let <span class="math inline">\(\mathcal{X}\)</span> be the set of all possible values it can take. The <em>expectation</em> of <span class="math inline">\(X\)</span>, denoted by <span class="math inline">\(\operatorname{E}[X]\)</span>, is given by <span class="math display">\[\operatorname{E}[X] = \sum_{x \in \mathcal{X}} x\Pr[X=x]\]</span> The expectation is a finite number if and only if <span class="math inline">\(\sum_{x \in \mathcal{X}} x\Pr[X=x]\)</span> converges.</p>
-<p><strong>Lemma 2.4.</strong> For any constant <span class="math inline">\(c\)</span>, <span class="math inline">\(\operatorname{E}[cX] = c\operatorname{E}[X]\)</span>.</p>
+<p><strong>Definition 2.2. (Pairwise independence of random variables)</strong> Random variables <span class="math inline">\(X_1,\dots,X_n\)</span> are said to be <em>pairwise independent</em>, if and only if for any pair <span class="math inline">\(i,j\)</span> <span class="math inline">\((i \neq j)\)</span> and any <span class="math inline">\(x_i,x_j\)</span>, <span class="math inline">\(\Pr[(X_i=x_i)\cap(X_j=x_j)] = \Pr[X_i=x_i] \cdot \Pr[X_j=x_j]\)</span>.</p>
+<p><strong>Definition 2.3. (Mutual independence of random variables)</strong> Random variables <span class="math inline">\(X_1,\dots,X_n\)</span> are said to be <em>mutually independent</em>, if and only if for any subset of indices <span class="math inline">\(I \subseteq \{1,\dots,n\}\)</span> and any <span class="math inline">\(x_i (i \in I)\)</span>, <span class="math display">\[\Pr\left[\bigcap_{i \in I} (X_i=x_i)\right] = \prod_{i \in I} \Pr[X_i=x_i]\]</span></p>
+<p><strong>Definition 2.4. (Expectation)</strong> Let <span class="math inline">\(X\)</span> be a discrete random variable and let <span class="math inline">\(\mathcal{X}\)</span> be the set of all possible values it can take. The <em>expectation</em> of <span class="math inline">\(X\)</span>, denoted by <span class="math inline">\(\operatorname{E}[X]\)</span>, is given by <span class="math display">\[\operatorname{E}[X] = \sum_{x \in \mathcal{X}} x\Pr[X=x]\]</span> The expectation is a finite number if and only if <span class="math inline">\(\sum_{x \in \mathcal{X}} x\Pr[X=x]\)</span> converges.</p>
+<p><strong>Lemma 2.5.</strong> For any constant <span class="math inline">\(c\)</span>, <span class="math inline">\(\operatorname{E}[cX] = c\operatorname{E}[X]\)</span>.</p>
 <strong>Proof.</strong>
 <span class="math display">\[\begin{align*}
 \operatorname{E}[cX] &amp;= \sum_{x \in \mathcal{X}} cx \Pr[cX=cx] \\
@@ -114,7 +119,7 @@
 &amp;= c \operatorname{E}[X]
 \end{align*}\]</span>
 <p><p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
-<p><strong>Lemma 2.5. (Linearity)</strong> For any pair of random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, <span class="math inline">\(\operatorname{E}[X+Y] = \operatorname{E}[X] + \operatorname{E}[Y]\)</span>.</p>
+<p><strong>Lemma 2.6. (Linearity of expectation)</strong> For any pair of random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, <span class="math inline">\(\operatorname{E}[X+Y] = \operatorname{E}[X] + \operatorname{E}[Y]\)</span>.</p>
 <strong>Proof.</strong>
 <span class="math display">\[\begin{align*}
 \operatorname{E}[X+Y]
@@ -125,7 +130,7 @@
 &amp;= \operatorname{E}[X] + \operatorname{E}[Y]
 \end{align*}\]</span>
 <p><p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
-<p><strong>Lemma 2.6. (Iterated expectation)</strong> <span class="math inline">\(\operatorname{E}[X] = \operatorname{E}[\operatorname{E}[X|Y]]\)</span>.</p>
+<p><strong>Lemma 2.7. (Iterated expectation)</strong> <span class="math inline">\(\operatorname{E}[X] = \operatorname{E}[\operatorname{E}[X|Y]]\)</span>.</p>
 <strong>Proof.</strong>
 <span class="math display">\[\begin{align*}
 \operatorname{E}[\operatorname{E}[X|Y]]
@@ -138,7 +143,7 @@
 &amp;= \operatorname{E}[X]
 \end{align*}\]</span>
 <p><p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
-<p><strong>Lemma 2.7.</strong> For <em>independent random variables</em> <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, <span class="math inline">\(\operatorname{E}[XY] = \operatorname{E}[X] \operatorname{E}[Y]\)</span>.</p>
+<p><strong>Lemma 2.8.</strong> For <em>independent random variables</em> <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, <span class="math inline">\(\operatorname{E}[XY] = \operatorname{E}[X] \operatorname{E}[Y]\)</span>.</p>
 <strong>Proof.</strong>
 <span class="math display">\[\begin{align*}
 \operatorname{E}[XY]
@@ -148,20 +153,58 @@
 &amp;= \operatorname{E}[X] \operatorname{E}[Y]
 \end{align*}\]</span>
 <p><p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
-<p><strong>Definition 2.8. (Covariance)</strong> <span class="math inline">\(\operatorname{Cov}(X,Y) = \operatorname{E}[(X - \operatorname{E}[X])(Y - \operatorname{E}[Y])]\)</span>.</p>
-<p><strong>Lemma 2.9.</strong> <span class="math inline">\(\operatorname{Cov}(X,Y) = \operatorname{E}[XY] - \operatorname{E}[X] \operatorname{E}[Y]\)</span>.</p>
+<p><strong>Definition 2.9. (Covariance)</strong> <span class="math inline">\(\operatorname{Cov}(X,Y) = \operatorname{E}[(X - \operatorname{E}[X])(Y - \operatorname{E}[Y])]\)</span>.</p>
+<p><strong>Lemma 2.10.</strong> <span class="math inline">\(\operatorname{Cov}(X,Y) = \operatorname{E}[XY] - \operatorname{E}[X] \operatorname{E}[Y]\)</span>.</p>
 <p>Intuitively, covariance is a measure of how much two random variables change together.</p>
-<p>When <span class="math inline">\(\operatorname{Cov}(X,Y) = 0\)</span>, <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are said to be <em>uncorrelated</em>. Independent random variables are a notable case of uncorrelated variables. Note that the uncorrelatedness of two variables does not necessarily imply that they are independent.</p>
-<p><strong>Definition 2.10. (Variance)</strong> <span class="math inline">\(\operatorname{Var}(X) = \sigma^2 = \operatorname{E}[(X-\mu)^2]\)</span>, where <span class="math inline">\(\mu = \operatorname{E}[X]\)</span>.</p>
-<p><strong>Lemma 2.11.</strong> <span class="math inline">\(\operatorname{Var}(X) = \operatorname{E}[X^2] - (\operatorname{E}[X])^2\)</span>.</p>
-<p>Intuitively, variance is a measure of how far a set of numbers are spread out from their mean. Variance is a special case of the covariance when the two variables are identical, that is, <span class="math inline">\(\operatorname{Var}(X) = \operatorname{Cov}(X,X)\)</span>.</p>
+<p>When <span class="math inline">\(\operatorname{Cov}(X,Y) = 0\)</span>, <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are said to be <em>uncorrelated</em>. Independent random variables are a notable case of uncorrelated variables (follows from Lemma 2.8). Note that the uncorrelatedness of two variables does not necessarily imply that they are independent.</p>
+<p><strong>Definition 2.11. (Variance)</strong> <span class="math inline">\(\operatorname{Var}(X) = \sigma^2 = \operatorname{E}[(X-\mu)^2]\)</span>, where <span class="math inline">\(\mu = \operatorname{E}[X]\)</span>.</p>
+<p><span class="math inline">\(\sigma = \sqrt{\operatorname{Var}(X)}\)</span> is also called the <em>standard deviation</em> of <span class="math inline">\(X\)</span>.</p>
+<p><strong>Lemma 2.12.</strong> <span class="math inline">\(\operatorname{Var}(X) = \operatorname{E}[X^2] - (\operatorname{E}[X])^2\)</span>.</p>
+<strong>Proof.</strong>
+<span class="math display">\[\begin{align*}
+\operatorname{Var}(X) = \operatorname{E}[(X-\operatorname{E}[X])^2]
+&amp;= \sum_{x \in \mathcal{X}}(x - \operatorname{E}[X])^2 \Pr[X=x] \\
+&amp;= \sum_{x \in \mathcal{X}} x^2 \Pr[X=x] - 2\operatorname{E}[X] \sum_{x \in \mathcal{X}} x \Pr[X=x] + (\operatorname{E}[X])^2 \sum_{x \in \mathcal{X}} \Pr[X=x] \\
+&amp;= \sum_{x \in \mathcal{X}} x^2 \Pr[X=x]- 2\operatorname{E}[X] \cdot \operatorname{E}[X] + (\operatorname{E}[X])^2 \cdot 1 \\
+&amp;= \sum_{x \in \mathcal{X}} x^2 \Pr[X=x] - (\operatorname{E}[X])^2 = \operatorname{E}[X^2] - (\operatorname{E}[X])^2
+\end{align*}\]</span>
+<p><p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
+<p>Intuitively, variance is a measure of how far a set of numbers are spread out from their mean. Variance is a special case of the covariance when the two variables are identical, that is, the covariance of the random variable with itself. <span class="math inline">\(\operatorname{Var}(X) = \operatorname{Cov}(X,X)\)</span>.</p>
+<p><strong>Lemma 2.13.</strong> <span class="math inline">\(\operatorname{Var}(aX+b) = a^2 \operatorname{Var}(X)\)</span>.</p>
+<p><strong>Lemma 2.14.</strong> <span class="math inline">\(\operatorname{Var}(X+Y) = \operatorname{Var}(X) + \operatorname{Var}(Y) + 2 \operatorname{Cov}(X,Y)\)</span>.</p>
+<p><strong>Lemma 2.15.</strong> If <span class="math inline">\(X_1,\dots,X_n\)</span> are pairwise independent, then <span class="math inline">\(\operatorname{Var}(\sum_{i=1}^n X_i) = \sum_{i=1}^n \operatorname{Var}(X_i)\)</span>.</p>
 <p><strong>Bernoulli random variable.</strong> A discrete random variable <span class="math inline">\(X\)</span> taking values from <span class="math inline">\(\{0,1\}\)</span> is called a <em>Bernoulli random variable</em>. The parameter <span class="math inline">\(p = \Pr[X=1]\)</span> is called the <em>bias</em> of <span class="math inline">\(X\)</span>.</p>
-<p>For Bernoulli random variable <span class="math inline">\(X\)</span>, we have <span class="math inline">\(\operatorname{E}[X] = 0 \cdot (1-p) + 1 \cdot p = p = \Pr[X=1]\)</span>.</p>
+<p>For Bernoulli random variable <span class="math inline">\(X\)</span>, we have <span class="math inline">\(\operatorname{E}[X] = 0 \cdot (1-p) + 1 \cdot p = p = \Pr[X=1]\)</span>. Furthermore, we have <span class="math inline">\(\operatorname{Var}(X) \leq \frac{1}{4}\)</span>, since <span class="math inline">\(\operatorname{E}[X] = \operatorname{E}[X^2]\)</span>, thus <span class="math inline">\(\operatorname{Var}(X) = \operatorname{E}[X] \cdot (1-\operatorname{E}[X]) \leq \frac{1}{4}\)</span>.</p>
 <p><strong>Binomial random variable.</strong> A discrete random variable <span class="math inline">\(X\)</span> taking value <span class="math inline">\(k \in \{0,1,\dots,n\}\)</span> is called a <em>binomial random variable</em> with parameters <span class="math inline">\(n\)</span> and <span class="math inline">\(p\)</span> if it satisfies the following probability distribution: <span class="math display">\[\Pr[X=k] = \binom{n}{k} p^k (1-p)^{n-k}\]</span></p>
 <p>A binomial random variable can be represented as a sum of independent, identically distributed Bernoulli random variables.</p>
 </section>
-<section id="useful-probability-bounds" class="level1">
-<h1><span class="header-section-number">3</span> Useful Probability Bounds</h1>
+<section id="moments-and-deviations" class="level1">
+<h1><span class="header-section-number">3</span> Moments and Deviations</h1>
+<p><strong>Theorem 3.1. (Markov’s inequality)</strong> Let <span class="math inline">\(X\)</span> be a non-negative random variable and <span class="math inline">\(\varepsilon &gt; 0\)</span>. Then <span class="math display">\[\Pr[X \geq \varepsilon] \leq \frac{\operatorname{E}[X]}{\varepsilon}\]</span></p>
+<strong>Proof.</strong> Let <span class="math inline">\(X\)</span> takes values from the set <span class="math inline">\(\mathcal{X}\)</span>. We have
+<span class="math display">\[\begin{align*}
+\operatorname{E}[X]
+&amp;= \sum_{x \in \mathcal{X}} x \Pr[X=x] \\
+&amp;\geq \sum_{x \in \mathcal{X}, x&lt;\varepsilon} 0 \cdot \Pr[X=x] + \sum_{x \in \mathcal{X} ,x \geq \varepsilon} \varepsilon \cdot \Pr[X=x] \\
+&amp;= \varepsilon \cdot \Pr[X \geq \varepsilon]
+\end{align*}\]</span>
+<p><p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
+<p><strong>Theorem 3.2. (Chebyshev’s inequality)</strong> Let <span class="math inline">\(X\)</span> be a random variable and <span class="math inline">\(\delta &gt; 0\)</span>. Then <span class="math display">\[\Pr[|X - \operatorname{E}[X]| \geq \delta] \leq \frac{\operatorname{Var}(X)}{\delta^2}\]</span></p>
+<strong>Proof.</strong> Let <span class="math inline">\(Y=(X-\operatorname{E}[X])^2\)</span> be a non-negative random variable. Using Markov’s inequality, we have
+<span class="math display">\[\begin{align*}
+\Pr[|X - \operatorname{E}[X]| \geq \delta]
+&amp;= \Pr[(X - \operatorname{E}[X])^2 \geq \delta^2] \\
+&amp;\leq \frac{\operatorname{E}[(X - \operatorname{E}[X])^2]}{\delta^2}
+= \frac{\operatorname{Var}(X)}{\delta^2}
+\end{align*}\]</span>
+<p><p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
+<p><strong>Corollary 3.3.</strong> Let <span class="math inline">\(X_1,\dots,X_n\)</span> be pairwise-independent random variables with the same expectation <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>. Then for every <span class="math inline">\(\delta &gt; 0\)</span>, <span class="math display">\[\Pr\left[\left|\frac{\sum_{i=1}^n X_i}{n} - \mu\right| \geq \delta\right] \leq \frac{\sigma^2}{\delta^2 n}\]</span></p>
+<p><strong>Proof.</strong> By linearity of expectation, we have <span class="math inline">\(\operatorname{E}\left[\frac{\sum_{i=1}^n X_i}{n}\right] = \mu\)</span>. Applying Chebyshev’s inequality to the random variable <span class="math inline">\(\frac{\sum_{i=1}^n X_i}{n}\)</span>, we have <span class="math display">\[\Pr\left[\left|\frac{\sum_{i=1}^n X_i}{n} - \mu\right| \geq \delta\right] \leq \frac{\operatorname{Var}\left(\frac{\sum_{i=1}^n X_i}{n}\right)}{\delta^2}\]</span></p>
+<p>Using pairwise independence (Lemma 2.15), it follows that <span class="math display">\[\operatorname{Var}\left(\frac{\sum_{i=1}^n X_i}{n}\right)
+= \frac{1}{n^2} \sum_{i=1}^n \operatorname{Var}(X_i) = \frac{1}{n^2} \sum_{i=1}^n \sigma^2 = \frac{\sigma^2}{n}\]</span> <p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
+</section>
+<section id="chernoff-bounds" class="level1">
+<h1><span class="header-section-number">4</span> Chernoff Bounds</h1>
 </section>
       </div>
       <footer>
@@ -199,7 +242,7 @@
           <i class="fa fa-anchor" aria-hidden="true"></i>
           <code>Permalink</code>
         </a> |
-        Last updated: <span id="update-time">2016-11-30</span>
+        Last updated: <span id="update-time">2016-12-10</span>
       </footer>
     </article></main>
   </body>
