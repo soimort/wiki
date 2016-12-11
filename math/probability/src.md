@@ -2,6 +2,22 @@
 % Mort Yao
 % 2016-12-10
 
+Textbook:
+
+* Michael Mitzenmacher and Eli Upfal. ***Probability and Computing: Randomized Algorithms and Probabilistic Analysis***.
+
+Supplementary reading:
+
+* Michael Baron. ***Probability and Statistics for Computer Scientists, 2nd edition***.
+
+Reading on advanced probability:
+
+* Alexander Sokol and Anders Rønn-Nielsen. [***Advanced Probability***](http://www.math.ku.dk/noter/filer/vidsand12.pdf).
+* Grégory Miermont. [***Advanced Probability***](http://perso.ens-lyon.fr/gregory.miermont/AdPr2006.pdf).
+* Perla Sousi. [***Advanced Probability***](http://www.statslab.cam.ac.uk/~ps422/mynotes.pdf).
+
+---
+
 # Events and Probability
 
 **Definition 1.1. (Experiment)**
