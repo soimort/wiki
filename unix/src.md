@@ -1,13 +1,14 @@
 % Unix from User Space
 %
-% 2016-11-04
+% 2016-12-13
 
 Tips and tricks about Unix-like systems and tools that run on them.
 
 * [Command-line](cli)
 * OS-specific
     * [Linux](linux)
-* Shell  `[TBD]`
+* Shell
+    * [Bash](bash)
 * [Text Processing](text-processing)
 * Text Editors
     * GNU Emacs  `[TBD]`
@@ -16,7 +17,7 @@ Tips and tricks about Unix-like systems and tools that run on them.
     * [Git](git)
 * Documenting
     * [PDF (How to edit a PDF document)](pdf)
-    * LaTeX  `[TBD]`
+    * [LaTeX](latex)
 * Security & Privacy
     * [GnuPG](gpg)
     * [SSH](ssh)
