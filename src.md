@@ -1,6 +1,6 @@
 % Mort's small traces
 % Mort Yao
-% 2016-12-15
+% 2016-12-16
 
 ![<small>
 A lifelong project to do my study notes on Math / Computer Science systematically and spirally. \
@@ -18,6 +18,8 @@ It is still woefully incomplete, but it shouldn't always be. I keep learning thi
 </div>
 
 # Contents
+
+* [List of common notations](/rosetta/)
 
 1. Mathematics
     * [Naive set theory](/math/set/)
