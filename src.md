@@ -1,6 +1,13 @@
 % Mort's small traces
 % Mort Yao
-% 2016-10-29
+% 2016-12-15
+
+![<small>
+A lifelong project to do my study notes on Math / Computer Science systematically and spirally. \
+It is still woefully incomplete, but it shouldn't always be. I keep learning things.
+</small>](https://i0.wp.com/dl.dropboxusercontent.com/s/1tzl7x5iduxgr9m/perky-lambda_96.png)
+
+---
 
 <div style="text-align:center;font-style:italic">
 "Tiger got to hunt, bird got to fly;
@@ -10,13 +17,11 @@
 <br> --- Kurt Vonnegut
 </div>
 
-A lifelong project to do my study notes on Math / Computer Science systematically and spirally. It is still woefully incomplete, but it shouldn't always be. I keep learning things.
-
-## Contents
+# Contents
 
 1. Mathematics
-    * Naive set theory
-    * **[Mathematical logic](/math/logic)**
+    * [Naive set theory](/math/set/)
+    * **[Mathematical logic](/math/logic/)**
         * Classical logic
             * Propositional logic
             * First-order logic
@@ -28,7 +33,7 @@ A lifelong project to do my study notes on Math / Computer Science systematicall
         * Non-classical logic
             * Intuitionistic logic
             * Linear logic
-    * Linear algebra
+    * [Linear algebra](/math/linear-algebra)
     * Abstract algebra
         * Group theory
         * Representation theory
@@ -40,10 +45,11 @@ A lifelong project to do my study notes on Math / Computer Science systematicall
         * Differential topology and geometry
         * Lie groups
     * Calculus
-        * [Limit](/math/calculus/limit)
-        * Differentiation
-        * Integral
+        * [Limit](/math/calculus/limit/) and continuity
+        * Differential calculus
+        * Integral calculus
         * Series
+        * Vector calculus
     * Differential equations and dynamical systems
         * Control theory
         * Chaos and fractals
@@ -58,25 +64,25 @@ A lifelong project to do my study notes on Math / Computer Science systematicall
     * Graph theory
     * Combinatorics
 2. Applied mathematics
-    * [Probability theory](/math/probability) and statistics
+    * [Probability theory](/math/probability/) and [statistics](/math/statistics/)
     * Information theory
         * Coding theory
         * Quantum information theory
-    * **[Theory of Computation](/comp)**
+    * **[Theory of Computation](/comp/)**
         * Formal language and automaton
         * Computability
         * Complexity
-    * **[Algorithms](/algo)**
+    * **[Algorithms](/algo/)**
         * Data structures
         * Sorting
         * Searching
-        * [Randomization](/algo/randomization)
-        * [Approximation](/algo/approximation)
+        * [Randomization](/algo/randomization/)
+        * [Approximation](/algo/approximation/)
         * Numerical analysis
         * Computational number theory
-        * [Computational geometry](/algo/computational-geometry)
+        * [Computational geometry](/algo/computational-geometry/)
         * Computer graphics and visualization
-    * **[Cryptography](/crypto)**
+    * **[Cryptography](/crypto/)**
         * Classical cryptography
         * Information-theoretic security
         * Private-key cryptography
@@ -91,15 +97,15 @@ A lifelong project to do my study notes on Math / Computer Science systematicall
         * Deep learning
     * **Computer vision and image processing**
     * Natural language processing
-    * **[Programming language theory](/plt)**
+    * **[Programming language theory](/plt/)**
         * Formal semantics
         * Type theory and Curry-Howard correspondence
         * Program analysis and transformation
 3. Software technology
     * Computer systems and architectures
     * Operating systems
-        * [Unix-like](/unix)
-        * System programming
+        * [Unix from user space](/unix/)
+        * Unix system programming
         * Linux kernel
     * TCP/IP
         * Internet protocol suite
@@ -111,17 +117,14 @@ A lifelong project to do my study notes on Math / Computer Science systematicall
     * Programming paradigms
         * Functional programming
         * Logic programming
-        * Dataflow programming
-        * Concurrency
+        * Dataflow programming and concurrency
     * Compilers
     * **Information security**
         * Proof-carrying code
 
-* [Cornerstone](/cornerstone)
+* [Cornerstone](/cornerstone/)
 
 
-
-## Licensing
 
 ![<small>
 All content on this wiki, unless otherwise noted, is dedicated to the
