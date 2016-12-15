@@ -1,16 +1,13 @@
 % Basic Probability Theory
 % Mort Yao
-% 2016-12-10
+% 2016-12-14
 
-Textbook:
+Basic probability theory and statistics:
 
 * Michael Mitzenmacher and Eli Upfal. ***Probability and Computing: Randomized Algorithms and Probabilistic Analysis***.
-
-Supplementary reading:
-
 * Michael Baron. ***Probability and Statistics for Computer Scientists, 2nd edition***.
 
-Reading on advanced probability:
+Advanced probability:
 
 * Alexander Sokol and Anders Rønn-Nielsen. [***Advanced Probability***](http://www.math.ku.dk/noter/filer/vidsand12.pdf).
 * Grégory Miermont. [***Advanced Probability***](http://perso.ens-lyon.fr/gregory.miermont/AdPr2006.pdf).
@@ -21,7 +18,7 @@ Reading on advanced probability:
 # Events and Probability
 
 **Definition 1.1. (Experiment)**
-An *experiment* or *trial* is any procedure that can be infinitely repeated and has a well-defined [set](/math/set) of possible *outcomes*, known as the *sample space*.
+An *experiment* or *trial* is any procedure that can be infinitely repeated and has a well-defined [set](/math/set/) of possible *outcomes*, known as the *sample space*.
 
 An experiment is said to be *random* if it has more than one possible outcome, and *deterministic* if it has only one.
 
@@ -36,7 +33,7 @@ The *sample space* of an experiment is the set of all possible outcomes of that 
 In some sample spaces, it is reasonable to assume that all outcomes in the space are equally likely (that they occur with equal *probability*).
 
 **Definition 1.4. (Event)**
-Any [measurable](/math/analysis/measure) subset of the sample space, constituting a σ-algebra over the sample space itself, is known as an *event*.
+Any [measurable](/math/analysis/measure/) subset of the sample space, constituting a σ-algebra over the sample space itself, is known as an *event*.
 
 Any subset of the sample space that is not an element of the σ-algebra is not an event, and does not have a probability. With a reasonable specification of the probability space, however, all events of interest are elements of the σ-algebra.
 
@@ -55,11 +52,11 @@ An *elementary event* (also called an *atomic event* or *simple event*) is an ev
 An *null event* is an event consisting of no outcome and hence could not occur, denoted by $\varnothing$.
 
 **Definition 1.7. (Union and intersection of events)**
-For any events $A_1, A_2, \dots$ of a sample space $\Omega$, the *union (or disjunction) of these events*, denoted by $\bigcup_{n=1}^\infty A_n$, is defined to be the event that consists of all outcomes that are in $A_n$ for at least one value of $n = 1, 2, \dots$.
+For any events $A_1, A_2, \dots$ of a sample space $\Omega$, the *union (or disjunction) of these events*, denoted by $\bigcup_n A_n$, is defined to be the event that consists of all outcomes that are in $A_n$ for at least one value of $n = 1, 2, \dots$.
 
-Similarly, the *intersection (or conjunction) of the events* $A_1, A_2, \dots$, denoted by $\bigcap_{n=1}^\infty A_n$, is defined to be the event consisting of those outcomes that are in all of the events.
+Similarly, the *intersection (or conjunction) of the events* $A_1, A_2, \dots$, denoted by $\bigcap_n A_n$, is defined to be the event consisting of those outcomes that are in all of the events.
 
-If $\bigcap_{n=1}^\infty A_n = \varnothing$, then events $A_n$ are said to be *mutually exclusive* or *mutually disjoint*.
+If $\bigcap_n A_n = \varnothing$, then events $A_n$ are said to be *mutually exclusive* or *mutually disjoint*.
 
 **Definition 1.8. (Complementary event)**
 For any event $A$ we define the new event $\bar{A}$ (also denoted by $A'$ or $A^c$), referred to as the *complement of $A$*, to consist of all outcomes in the sample space $\Omega$ that are not in $A$, i.e., $\bar{A}$ will occur if and only if $A$ does not occur. $\bar{A} = \Omega \backslash A$.
@@ -72,7 +69,7 @@ Consider an experiment whose sample space is $\Omega$. For each event $A$, we as
 1. $\Pr[A] \in \mathbb{R}$, $\Pr[A] \geq 0$.
 2. *(Assumption of unit measure)* $\Pr[\Omega] = 1$.
 3. *(Assumption of σ-additivity)* For any finite or countably infinite sequence of events $A_1, A_2, \dots$ that are mutually exclusive, i.e., events for which $A_nA_m = \varnothing$ when $n \neq m$, then
-$$\Pr\left[\bigcup_{n=1}^\infty A_n\right] = \sum_{n=1}^\infty \Pr[A_n]$$
+$$\Pr\left[\bigcup_n A_n\right] = \sum_n \Pr[A_n]$$
 
 We refer to $\Pr[A]$ as the *probability of the event $A$*.
 
@@ -114,7 +111,7 @@ $0 \leq \Pr[A] \leq 1$.
 Since $\varnothing \subseteq A \subseteq \Omega$, $\Pr[\varnothing] = 0$ and $\Pr[\Omega] = 1$, by Lemma 1.13 it holds that $0 \leq \Pr[A] \leq 1$.
 [QED]
 
-**Theorem 1.15. (Addition law of probability)**
+**Lemma 1.15. (Addition law of probability)**
 $$\Pr[A_1 \cup A_2] = \Pr[A_1] + \Pr[A_2] - \Pr[A_1 \cap A_2]$$
 
 **Theorem 1.16. (Inclusion-exclusion principle)**
@@ -167,24 +164,41 @@ $$\Pr\left[\bigcup_{i=1}^n A_i\right] \leq \Pr[A_1] + \sum_{i=2}^n \Pr[A_i | \ba
 
 
 
-# Random Variables and Expectation
+# Random Variables and Probability Distribution
 
 **Definition 2.1. (Random variable)**
-A *random variable* $X$ on sample space $\Omega$ is a real-valued function $X : \Omega \to \mathbb{R}$. A *discrete random variable* is a random variable that takes on a finite or countably infinite number of values.
+A *random variable* $X$ is a real-valued function $X : \mathcal{X} \to A$ ($A \subseteq \mathbb{R}$). A *discrete random variable* is a random variable that takes on a finite or countably infinite number of values.
 
-**Definition 2.2. (Pairwise independence of random variables)**
+**Definition 2.2. (Probability mass function)**
+Suppose that the random variable $X$ is a function $X : \mathcal{X} \to A$ ($A \subseteq \mathbb{R}$). The *probability mass function* (*pmf*) $f_X : A \to [0,1]$ for $X$ is defined as
+$$f_X(x) = \Pr[X=x] = \Pr[\{s \in \mathcal{X} : X(s) = x\}]$$
+
+Intuitively, a probability mass function is a function that gives the probability that a discrete random variable is exactly equal to some value.
+
+**Definition 2.3. (Probability distribution)**
+The *probability distribution* of a random variable $X$ is a function $f_X(x)$ that describes the probabilities $\Pr[X=x]$ of all events in the sample space of an experiment. Typically, a probability distribution determines a unique probability function $\Pr$ for a given experiment.
+A *discrete probability distribution* is a probability distribution characterized by a probability mass function.
+
+Thus, by the assumption of unit measure, the distribution of a random variable $X$ is discrete, and $X$ is called a discrete random variable, if and only if
+$$\sum_{x \in \mathcal{X}} \Pr[X=x]=1$$
+
+In the following text, "random variables" refer to discrete random variables, and "probability distributions" refer to discrete probability distributions, unless otherwise stated.
+
+**Definition 2.4. (Pairwise independence of random variables)**
 Random variables $X_1,\dots,X_n$ are said to be *pairwise independent*, if and only if for any pair $i,j$ $(i \neq j)$ and any $x_i,x_j$, $\Pr[(X_i=x_i)\cap(X_j=x_j)] = \Pr[X_i=x_i] \cdot \Pr[X_j=x_j]$.
 
-**Definition 2.3. (Mutual independence of random variables)**
+**Definition 2.5. (Mutual independence of random variables)**
 Random variables $X_1,\dots,X_n$ are said to be *mutually independent*, if and only if for any subset of indices $I \subseteq \{1,\dots,n\}$ and any $x_i (i \in I)$,
 $$\Pr\left[\bigcap_{i \in I} (X_i=x_i)\right] = \prod_{i \in I} \Pr[X_i=x_i]$$
 
-**Definition 2.4. (Expectation)**
-Let $X$ be a discrete random variable and let $\mathcal{X}$ be the set of all possible values it can take. The *expectation* of $X$, denoted by $\operatorname{E}[X]$, is given by
+As mentioned before, mutual independence is a stronger notion of statistical independence, and it implies pairwise independence; by contrast, pairwise independence does not imply mutual independence.
+
+**Definition 2.6. (Expectation)**
+Let $X$ be a random variable and let $\mathcal{X}$ be the set of all possible values it can take. The *expectation* (alternatively *expected value*, *mean*, *average* or *first raw moment*) of $X$, denoted by $\operatorname{E}[X]$, is given by
 $$\operatorname{E}[X] = \sum_{x \in \mathcal{X}} x\Pr[X=x]$$
 The expectation is a finite number if and only if $\sum_{x \in \mathcal{X}} x\Pr[X=x]$ converges.
 
-**Lemma 2.5.** For any constant $c$, $\operatorname{E}[cX] = c\operatorname{E}[X]$.
+**Lemma 2.7.** For any constant $c$ and random variable $X$, $\operatorname{E}[cX] = c\operatorname{E}[X]$.
 
 **Proof.**
 \begin{align*}
@@ -194,7 +208,7 @@ The expectation is a finite number if and only if $\sum_{x \in \mathcal{X}} x\Pr
 \end{align*}
 [QED]
 
-**Lemma 2.6. (Linearity of expectation)**
+**Lemma 2.8. (Linearity of expectation)**
 For any pair of random variables $X$ and $Y$, $\operatorname{E}[X+Y] = \operatorname{E}[X] + \operatorname{E}[Y]$.
 
 **Proof.**
@@ -208,7 +222,15 @@ For any pair of random variables $X$ and $Y$, $\operatorname{E}[X+Y] = \operator
 \end{align*}
 [QED]
 
-**Lemma 2.7. (Iterated expectation)**
+**Corollary 2.9.**
+For any finite or countably infinite number of random variables $X_1, X_2, \dots$, $\operatorname{E}[\sum_i X_i] = \sum_i \operatorname{E}[X_i]$.
+
+**Definition 2.10. (Conditional expectation)**
+$$\operatorname{E}[X|Y=y] = \sum_{x \in \mathcal{X}} x\Pr[X=x|Y=y]$$
+
+$\operatorname{E}[X|Y]$ is a random variable that takes on the value $\operatorname{E}[X|Y=y]$ when $Y=y$.
+
+**Lemma 2.11. (Iterated expectation)**
 $\operatorname{E}[X] = \operatorname{E}[\operatorname{E}[X|Y]]$.
 
 **Proof.**
@@ -224,7 +246,7 @@ $\operatorname{E}[X] = \operatorname{E}[\operatorname{E}[X|Y]]$.
 \end{align*}
 [QED]
 
-**Lemma 2.8.**
+**Lemma 2.12.**
 For *independent random variables* $X$ and $Y$, $\operatorname{E}[XY] = \operatorname{E}[X] \operatorname{E}[Y]$.
 
 **Proof.**
@@ -237,22 +259,22 @@ For *independent random variables* $X$ and $Y$, $\operatorname{E}[XY] = \operato
 \end{align*}
 [QED]
 
-**Definition 2.9. (Covariance)**
+**Definition 2.13. (Covariance)**
 $\operatorname{Cov}(X,Y) = \operatorname{E}[(X - \operatorname{E}[X])(Y - \operatorname{E}[Y])]$.
 
-**Lemma 2.10.**
+**Lemma 2.14.**
 $\operatorname{Cov}(X,Y) = \operatorname{E}[XY] - \operatorname{E}[X] \operatorname{E}[Y]$.
 
-Intuitively, covariance is a measure of how much two random variables change together.
+Intuitively, covariance is a measure of how much two random variables change together. In [statistics](/math/statistics/), correlation coefficients are often defined in terms of covariance.
 
-When $\operatorname{Cov}(X,Y) = 0$, $X$ and $Y$ are said to be *uncorrelated*. Independent random variables are a notable case of uncorrelated variables (follows from Lemma 2.8). Note that the uncorrelatedness of two variables does not necessarily imply that they are independent.
+When $\operatorname{Cov}(X,Y) = 0$, $X$ and $Y$ are said to be *uncorrelated*. Independent random variables are a notable case of uncorrelated variables (implied by Lemma 2.12). Note that the uncorrelatedness of two variables does not necessarily imply that they are independent.
 
-**Definition 2.11. (Variance)**
+**Definition 2.15. (Variance)**
 $\operatorname{Var}(X) = \sigma^2 = \operatorname{E}[(X-\mu)^2]$, where $\mu = \operatorname{E}[X]$.
 
 $\sigma = \sqrt{\operatorname{Var}(X)}$ is also called the *standard deviation* of $X$.
 
-**Lemma 2.12.**
+**Lemma 2.16.**
 $\operatorname{Var}(X) = \operatorname{E}[X^2] - (\operatorname{E}[X])^2$.
 
 **Proof.**
@@ -265,26 +287,37 @@ $\operatorname{Var}(X) = \operatorname{E}[X^2] - (\operatorname{E}[X])^2$.
 \end{align*}
 [QED]
 
+**Jensen's inequality.** If $X$ is a random variable and $\varphi$ is a convex function, then $\varphi(\operatorname{E}[X]) \leq \operatorname{E}[\varphi(X)]$.
+
+By Jensen's inequality, we have that $\operatorname{Var}(X) = \operatorname{E}[X^2] - (\operatorname{E}[X])^2 \geq 0$. Thus, the standard deviation $\sigma = \sqrt{\operatorname{Var}(X)}$ is a unique non-negative real number.
+
 Intuitively, variance is a measure of how far a set of numbers are spread out from their mean. Variance is a special case of the covariance when the two variables are identical, that is, the covariance of the random variable with itself. $\operatorname{Var}(X) = \operatorname{Cov}(X,X)$.
 
-**Lemma 2.13.** $\operatorname{Var}(aX+b) = a^2 \operatorname{Var}(X)$.
+**Lemma 2.17.** $\operatorname{Var}(aX+b) = a^2 \operatorname{Var}(X)$.
 
-**Lemma 2.14.** $\operatorname{Var}(X+Y) = \operatorname{Var}(X) + \operatorname{Var}(Y) + 2 \operatorname{Cov}(X,Y)$.
+**Lemma 2.18.** $\operatorname{Var}(X+Y) = \operatorname{Var}(X) + \operatorname{Var}(Y) + 2 \operatorname{Cov}(X,Y)$.
 
-**Lemma 2.15.** If $X_1,\dots,X_n$ are pairwise independent, then $\operatorname{Var}(\sum_{i=1}^n X_i) = \sum_{i=1}^n \operatorname{Var}(X_i)$.
+**Lemma 2.19.** If $X_1,\dots,X_n$ are pairwise independent, then $\operatorname{Var}(\sum_{i=1}^n X_i) = \sum_{i=1}^n \operatorname{Var}(X_i)$.
 
-**Bernoulli random variable.** A discrete random variable $X$ taking values from $\{0,1\}$ is called a *Bernoulli random variable*. The parameter $p = \Pr[X=1]$ is called the *bias* of $X$.
+Compared to Corollary 2.9 (linearity of expectation), the linearity of variance holds if and only if random variables are uncorrelated.
 
-For Bernoulli random variable $X$, we have $\operatorname{E}[X] = 0 \cdot (1-p) + 1 \cdot p = p = \Pr[X=1]$. Furthermore, we have $\operatorname{Var}(X) \leq \frac{1}{4}$, since $\operatorname{E}[X] = \operatorname{E}[X^2]$, thus $\operatorname{Var}(X) = \operatorname{E}[X] \cdot (1-\operatorname{E}[X]) \leq \frac{1}{4}$.
+The variance is the second central moment of a random variable.
 
-**Binomial random variable.** A discrete random variable $X$ taking value $k \in \{0,1,\dots,n\}$ is called a *binomial random variable* with parameters $n$ and $p$ if it satisfies the following probability distribution:
-$$\Pr[X=k] = \binom{n}{k} p^k (1-p)^{n-k}$$
+**Definition 2.20. (Skewness; third normalized central moment)**
+$$\operatorname{Skew}(X)
+= \operatorname{E}\left[\left(\frac{X-\mu}{\sigma}\right)^3\right]
+= \frac{\operatorname{E}[(X-\mu)^3]}{(\operatorname{E}[(X-\mu)^2])^{3/2}}
+$$
 
-A binomial random variable can be represented as a sum of independent, identically distributed Bernoulli random variables.
+**Definition 2.21. (Kurtosis; fourth normalized central moment)**
+$$\operatorname{Kurt}(X)
+= \operatorname{E}\left[\left(\frac{X-\mu}{\sigma}\right)^4\right]
+= \frac{\operatorname{E}[(X-\mu)^4]}{(\operatorname{E}[(X-\mu)^2])^2}
+$$
 
 
 
-# Moments and Deviations
+# Moment-based Probability Bounds
 
 **Theorem 3.1. (Markov's inequality)**
 Let $X$ be a non-negative random variable and $\varepsilon > 0$. Then
@@ -322,11 +355,123 @@ $$\Pr\left[\left|\frac{\sum_{i=1}^n X_i}{n} - \mu\right| \geq \delta\right] \leq
 By linearity of expectation, we have $\operatorname{E}\left[\frac{\sum_{i=1}^n X_i}{n}\right] = \mu$. Applying Chebyshev's inequality to the random variable $\frac{\sum_{i=1}^n X_i}{n}$, we have
 $$\Pr\left[\left|\frac{\sum_{i=1}^n X_i}{n} - \mu\right| \geq \delta\right] \leq \frac{\operatorname{Var}\left(\frac{\sum_{i=1}^n X_i}{n}\right)}{\delta^2}$$
 
-Using pairwise independence (Lemma 2.15), it follows that
+Using pairwise independence (Lemma 2.19), it follows that
 $$\operatorname{Var}\left(\frac{\sum_{i=1}^n X_i}{n}\right)
 = \frac{1}{n^2} \sum_{i=1}^n \operatorname{Var}(X_i) = \frac{1}{n^2} \sum_{i=1}^n \sigma^2 = \frac{\sigma^2}{n}$$
 [QED]
 
 
 
-# Chernoff Bounds
+# Discrete Probability Distributions
+
+A discrete probability distribution is characterized by a probability mass function (pmf).
+
+## Bernoulli Distribution
+
+The *Bernoulli distribution* is the discrete probability distribution of a random variable which takes the value $1$ with success probability of $p$ and the value $0$ with failure probability of $q=1-p$.
+
+A discrete random variable $X$ taking values from $\{0,1\}$ is called a *Bernoulli random variable*. The parameter $p = \Pr[X=1]$ is called the *bias* of $X$.
+
+**pmf.**
+$$f(k;p) = \begin{cases} p & \text{if }k=1, \\
+1-p & \text {if }k=0.\end{cases}$$
+Alternatively,
+$$f(k;p) = p^k (1-p)^{1-k}\!\quad \text{for }k\in\{0,1\}$$
+
+**Mean.**
+$$\operatorname{E}[X] = 0 \cdot (1-p) + 1 \cdot p = p = \Pr[X=1]$$
+
+**Variance.**
+$$\operatorname{Var}(X) = p(1-p)$$
+
+Since $p \in [0,1]$, we have $\operatorname{Var}(X) \leq \frac{1}{4}$.
+
+## Binomial Distribution
+
+The *binomial distribution* is the discrete probability distribution of the number of successes in a sequence of $n$ independent and identically distributed Bernoulli trials.
+
+A discrete random variable $X$ taking value $k \in \{0,1,\dots,n\}$ is called a *binomial random variable* with parameters $n$ and $p$ if it satisfies the following probability distribution:
+$$\Pr[X=k] = \binom{n}{k} p^k (1-p)^{n-k}$$
+
+**pmf.**
+$$f(k;n,p) = \Pr[X=k] = \binom{n}{k} p^k(1-p)^{n-k}$$
+$$X \sim \text{B}(n,p)$$
+
+**Mean.**
+$$\operatorname{E}[X] = np$$
+
+**Variance.**
+$$\operatorname{Var}(X) = np(1-p)$$
+
+Note that a binomial random variable can be represented as a sum of independent, identically distributed Bernoulli random variables:
+$$X = \sum_{k=1}^n X_k \sim \text{B}(n,p)$$
+
+Thus, the Bernoulli distribution is a special case of binomial distribution $\text{B}(1,p)$.
+
+## Negative binomial distribution
+
+The *negative binomial distribution* is the discrete probability distribution of the number of successes in a sequence of independent and identically distributed Bernoulli trials before a specified number of failures (denoted $r$) occurs.
+
+**pmf.**
+$$f(k;r,p) = \Pr[X=k] = \binom{k+r-1}{k} (1-p)^r p^k$$
+$$X \sim \text{NB}(r,p)$$
+
+**Mean.**
+$$\operatorname{E}[X] = \frac{pr}{1-p}$$
+
+**Variance.**
+$$\operatorname{Var}(X) = \frac{pr}{(1-p)^2}$$
+
+When $r$ is an integer, the negative binomial distribution is also known as the *Pascal distribution*.
+
+## Geometric Distribution
+
+The *geometric distribution* is the probability distribution of the number of failures in a sequence of independent and identically distributed Bernoulli trials before the first success.
+
+**pmf.**
+$$f(k;p) = (1-p)^k p$$
+$$X \sim \text{Geom}(p)$$
+
+**Mean.**
+$$\operatorname{E}[X] = \frac{1-p}{p}$$
+
+**Variance.**
+$$\operatorname{Var}(X) = \frac{1-p}{p^2}$$
+
+The geometric distribution $\text{Geom}(p)$ is a special case of negative binomial distribution $\text{NB}(1,1-p)$.
+
+## Summary
+
+|                          | With replacements | No replacements |
+| ------------------------ | :---------------: | :-------------: |
+| Given number of draws    | *Binomial distribution* (Special case when $n=1$: *Bernoulli distribution*) | *Hypergeometric distribution* |
+| Given number of failures | *Negative binomial distribution* (Special case when $r=1$: *Geometric distribution*) | *Negative hypergeometric distribution* |
+
+
+
+# Continuous Probability Distributions
+
+A continuous probability distribution is characterized by a probability density function (pdf).
+
+
+
+---
+
+Related topics:
+
+* [Statistics](/math/statistics/)
+* [Information theory](/info/)
+
+Mathematical theory:
+
+* [Measure theory](/math/analysis/measure/)
+* Advanced probability theory
+
+Fields of application:
+
+* Algorithms
+* Computational biology and biostatistics
+* Cryptography and cryptanalysis
+* Game theory and operations research
+* Machine learning
+* Computer vision and image processing

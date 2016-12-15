@@ -8,7 +8,7 @@
     <meta name="generator" content="pandoc">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="author" content="Mort Yao">
-    <meta name="dcterms.date" content="2016-12-10">
+    <meta name="dcterms.date" content="2016-12-14">
     <title>Basic Probability Theory</title>
     <link rel="canonical" href="https://wiki.soimort.org/math/probability">
     <style type="text/css">code { white-space: pre; }</style>
@@ -34,26 +34,30 @@
       <header>
         <h1 class="title">Basic Probability Theory</h1>
         <address class="author">Mort Yao</address>
-        <!-- h3 class="date">2016-12-10</h3 -->
+        <!-- h3 class="date">2016-12-14</h3 -->
       </header>
       <nav id="TOC">
 <ul>
 <li><a href="#events-and-probability"><span class="toc-section-number">1</span> Events and Probability</a></li>
-<li><a href="#random-variables-and-expectation"><span class="toc-section-number">2</span> Random Variables and Expectation</a></li>
-<li><a href="#moments-and-deviations"><span class="toc-section-number">3</span> Moments and Deviations</a></li>
-<li><a href="#chernoff-bounds"><span class="toc-section-number">4</span> Chernoff Bounds</a></li>
+<li><a href="#random-variables-and-probability-distribution"><span class="toc-section-number">2</span> Random Variables and Probability Distribution</a></li>
+<li><a href="#moment-based-probability-bounds"><span class="toc-section-number">3</span> Moment-based Probability Bounds</a></li>
+<li><a href="#discrete-probability-distributions"><span class="toc-section-number">4</span> Discrete Probability Distributions</a><ul>
+<li><a href="#bernoulli-distribution"><span class="toc-section-number">4.1</span> Bernoulli Distribution</a></li>
+<li><a href="#binomial-distribution"><span class="toc-section-number">4.2</span> Binomial Distribution</a></li>
+<li><a href="#negative-binomial-distribution"><span class="toc-section-number">4.3</span> Negative binomial distribution</a></li>
+<li><a href="#geometric-distribution"><span class="toc-section-number">4.4</span> Geometric Distribution</a></li>
+<li><a href="#summary"><span class="toc-section-number">4.5</span> Summary</a></li>
+</ul></li>
+<li><a href="#continuous-probability-distributions"><span class="toc-section-number">5</span> Continuous Probability Distributions</a></li>
 </ul>
       </nav>
       <div id="content">
-<p>Textbook:</p>
+<p>Basic probability theory and statistics:</p>
 <ul>
 <li>Michael Mitzenmacher and Eli Upfal. <strong><em>Probability and Computing: Randomized Algorithms and Probabilistic Analysis</em></strong>.</li>
-</ul>
-<p>Supplementary reading:</p>
-<ul>
 <li>Michael Baron. <strong><em>Probability and Statistics for Computer Scientists, 2nd edition</em></strong>.</li>
 </ul>
-<p>Reading on advanced probability:</p>
+<p>Advanced probability:</p>
 <ul>
 <li>Alexander Sokol and Anders Rønn-Nielsen. <a href="http://www.math.ku.dk/noter/filer/vidsand12.pdf"><strong><em>Advanced Probability</em></strong></a>.</li>
 <li>Grégory Miermont. <a href="http://perso.ens-lyon.fr/gregory.miermont/AdPr2006.pdf"><strong><em>Advanced Probability</em></strong></a>.</li>
@@ -62,29 +66,29 @@
 <hr />
 <section id="events-and-probability" class="level1">
 <h1><span class="header-section-number">1</span> Events and Probability</h1>
-<p><strong>Definition 1.1. (Experiment)</strong> An <em>experiment</em> or <em>trial</em> is any procedure that can be infinitely repeated and has a well-defined <a href="/math/set">set</a> of possible <em>outcomes</em>, known as the <em>sample space</em>.</p>
+<p><strong>Definition 1.1. (Experiment)</strong> An <em>experiment</em> or <em>trial</em> is any procedure that can be infinitely repeated and has a well-defined <a href="/math/set/">set</a> of possible <em>outcomes</em>, known as the <em>sample space</em>.</p>
 <p>An experiment is said to be <em>random</em> if it has more than one possible outcome, and <em>deterministic</em> if it has only one.</p>
 <p>A random experiment that has exactly two possible outcomes is known as a <em>Bernoulli trial</em> (or <em>binomial trial</em>).</p>
 <p><strong>Definition 1.2. (Outcome)</strong> An <em>outcome</em> of an experiment is a possible result of that experiment. Each possible outcome of a particular experiment is unique, and different outcomes are mutually exclusive.</p>
 <p><strong>Definition 1.3. (Sample space)</strong> The <em>sample space</em> of an experiment is the set of all possible outcomes of that experiment. A sample space is usually denoted using set notation, e.g., <span class="math inline">\(\Omega\)</span>, <span class="math inline">\(S\)</span> or <span class="math inline">\(U\)</span>.</p>
 <p>In some sample spaces, it is reasonable to assume that all outcomes in the space are equally likely (that they occur with equal <em>probability</em>).</p>
-<p><strong>Definition 1.4. (Event)</strong> Any <a href="/math/analysis/measure">measurable</a> subset of the sample space, constituting a σ-algebra over the sample space itself, is known as an <em>event</em>.</p>
+<p><strong>Definition 1.4. (Event)</strong> Any <a href="/math/analysis/measure/">measurable</a> subset of the sample space, constituting a σ-algebra over the sample space itself, is known as an <em>event</em>.</p>
 <p>Any subset of the sample space that is not an element of the σ-algebra is not an event, and does not have a probability. With a reasonable specification of the probability space, however, all events of interest are elements of the σ-algebra.</p>
 <p>We say that the event <span class="math inline">\(A\)</span> occurs when the outcome of the experiment lies in <span class="math inline">\(A\)</span>.</p>
 <p>Events are written as propositional formulas involving random variables, e.g., if <span class="math inline">\(X\)</span> is a real-valued random variable defined on the sample space <span class="math inline">\(\Omega\)</span>, the event <span class="math display">\[\{a \in \Omega | u &lt; X(a) \leq v \}\]</span></p>
 <p>can also be written as <span class="math display">\[u &lt; X \leq v\]</span></p>
 <p><strong>Definition 1.5. (Elementary event)</strong> An <em>elementary event</em> (also called an <em>atomic event</em> or <em>simple event</em>) is an event which contains only a single outcome in the sample space. Using set theory terminology, an elementary event is a singleton.</p>
 <p><strong>Definition 1.6. (Null event)</strong> An <em>null event</em> is an event consisting of no outcome and hence could not occur, denoted by <span class="math inline">\(\varnothing\)</span>.</p>
-<p><strong>Definition 1.7. (Union and intersection of events)</strong> For any events <span class="math inline">\(A_1, A_2, \dots\)</span> of a sample space <span class="math inline">\(\Omega\)</span>, the <em>union (or disjunction) of these events</em>, denoted by <span class="math inline">\(\bigcup_{n=1}^\infty A_n\)</span>, is defined to be the event that consists of all outcomes that are in <span class="math inline">\(A_n\)</span> for at least one value of <span class="math inline">\(n = 1, 2, \dots\)</span>.</p>
-<p>Similarly, the <em>intersection (or conjunction) of the events</em> <span class="math inline">\(A_1, A_2, \dots\)</span>, denoted by <span class="math inline">\(\bigcap_{n=1}^\infty A_n\)</span>, is defined to be the event consisting of those outcomes that are in all of the events.</p>
-<p>If <span class="math inline">\(\bigcap_{n=1}^\infty A_n = \varnothing\)</span>, then events <span class="math inline">\(A_n\)</span> are said to be <em>mutually exclusive</em> or <em>mutually disjoint</em>.</p>
+<p><strong>Definition 1.7. (Union and intersection of events)</strong> For any events <span class="math inline">\(A_1, A_2, \dots\)</span> of a sample space <span class="math inline">\(\Omega\)</span>, the <em>union (or disjunction) of these events</em>, denoted by <span class="math inline">\(\bigcup_n A_n\)</span>, is defined to be the event that consists of all outcomes that are in <span class="math inline">\(A_n\)</span> for at least one value of <span class="math inline">\(n = 1, 2, \dots\)</span>.</p>
+<p>Similarly, the <em>intersection (or conjunction) of the events</em> <span class="math inline">\(A_1, A_2, \dots\)</span>, denoted by <span class="math inline">\(\bigcap_n A_n\)</span>, is defined to be the event consisting of those outcomes that are in all of the events.</p>
+<p>If <span class="math inline">\(\bigcap_n A_n = \varnothing\)</span>, then events <span class="math inline">\(A_n\)</span> are said to be <em>mutually exclusive</em> or <em>mutually disjoint</em>.</p>
 <p><strong>Definition 1.8. (Complementary event)</strong> For any event <span class="math inline">\(A\)</span> we define the new event <span class="math inline">\(\bar{A}\)</span> (also denoted by <span class="math inline">\(A&#39;\)</span> or <span class="math inline">\(A^c\)</span>), referred to as the <em>complement of <span class="math inline">\(A\)</span></em>, to consist of all outcomes in the sample space <span class="math inline">\(\Omega\)</span> that are not in <span class="math inline">\(A\)</span>, i.e., <span class="math inline">\(\bar{A}\)</span> will occur if and only if <span class="math inline">\(A\)</span> does not occur. <span class="math inline">\(\bar{A} = \Omega \backslash A\)</span>.</p>
 <p>The event <span class="math inline">\(A\)</span> and its complement <span class="math inline">\(\bar{A}\)</span> are mutually exclusive and exhaustive. Given an event, the event and its complementary event define a Bernoulli trial.</p>
 <p><strong>Definition 1.9. (Probability defined on events)</strong> Consider an experiment whose sample space is <span class="math inline">\(\Omega\)</span>. For each event <span class="math inline">\(A\)</span>, we assume that a number <span class="math inline">\(\Pr[A]\)</span> is defined and satisfies the following conditions (<em>Kolmogorov’s axioms</em>):</p>
 <ol type="1">
 <li><span class="math inline">\(\Pr[A] \in \mathbb{R}\)</span>, <span class="math inline">\(\Pr[A] \geq 0\)</span>.</li>
 <li><em>(Assumption of unit measure)</em> <span class="math inline">\(\Pr[\Omega] = 1\)</span>.</li>
-<li><em>(Assumption of σ-additivity)</em> For any finite or countably infinite sequence of events <span class="math inline">\(A_1, A_2, \dots\)</span> that are mutually exclusive, i.e., events for which <span class="math inline">\(A_nA_m = \varnothing\)</span> when <span class="math inline">\(n \neq m\)</span>, then <span class="math display">\[\Pr\left[\bigcup_{n=1}^\infty A_n\right] = \sum_{n=1}^\infty \Pr[A_n]\]</span></li>
+<li><em>(Assumption of σ-additivity)</em> For any finite or countably infinite sequence of events <span class="math inline">\(A_1, A_2, \dots\)</span> that are mutually exclusive, i.e., events for which <span class="math inline">\(A_nA_m = \varnothing\)</span> when <span class="math inline">\(n \neq m\)</span>, then <span class="math display">\[\Pr\left[\bigcup_n A_n\right] = \sum_n \Pr[A_n]\]</span></li>
 </ol>
 <p>We refer to <span class="math inline">\(\Pr[A]\)</span> as the <em>probability of the event <span class="math inline">\(A\)</span></em>.</p>
 <p>A function <span class="math inline">\(\Pr : \mathcal{F} \to \mathbb{R}\)</span> is also called a <em>probability function</em>, if for any given event <span class="math inline">\(A \in \mathcal{F} \subseteq \mathcal{P}(\Omega)\)</span>, the above conditions hold.</p>
@@ -103,7 +107,7 @@
 <p>The monotonicity of probability follows from the fact that a measure is monotone.</p>
 <p><strong>Lemma 1.14.</strong> <span class="math inline">\(0 \leq \Pr[A] \leq 1\)</span>.</p>
 <p><strong>Proof.</strong> Since <span class="math inline">\(\varnothing \subseteq A \subseteq \Omega\)</span>, <span class="math inline">\(\Pr[\varnothing] = 0\)</span> and <span class="math inline">\(\Pr[\Omega] = 1\)</span>, by Lemma 1.13 it holds that <span class="math inline">\(0 \leq \Pr[A] \leq 1\)</span>. <p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
-<p><strong>Theorem 1.15. (Addition law of probability)</strong> <span class="math display">\[\Pr[A_1 \cup A_2] = \Pr[A_1] + \Pr[A_2] - \Pr[A_1 \cap A_2]\]</span></p>
+<p><strong>Lemma 1.15. (Addition law of probability)</strong> <span class="math display">\[\Pr[A_1 \cup A_2] = \Pr[A_1] + \Pr[A_2] - \Pr[A_1 \cap A_2]\]</span></p>
 <p><strong>Theorem 1.16. (Inclusion-exclusion principle)</strong> <span class="math display">\[\Pr\left[\bigcup_{i=1}^n A_i\right] = \sum_{i=1}^n\left((-1)^{i-1} \sum_{I \subset \{1,\dots,n\}, |I|=i} \Pr\left[\bigcap_{i \in I} A_i\right]\right)
 \]</span></p>
 <p><strong>Theorem 1.17. (Union bound; Boole’s inequality)</strong> <span class="math display">\[\Pr\left[\bigcup_{i=1}^n A_i\right] \leq \sum_{i=1}^n \Pr[A_i]\]</span></p>
@@ -120,13 +124,19 @@
 <p><strong>Theorem 1.24. (Law of total probability)</strong> Let <span class="math inline">\(A_1,A_2,\dots,A_n\)</span> be mutually exclusive events such that <span class="math inline">\(\bigcup_{i=1}^n A_i = A\)</span>. Then <span class="math display">\[\Pr[A] = \sum_{i=1}^n \Pr[A \cap A_i] = \sum_{i=1}^n \Pr[A|A_i] \Pr[A_i]\]</span>.</p>
 <p><strong>Lemma 1.25.</strong> <span class="math display">\[\Pr\left[\bigcup_{i=1}^n A_i\right] \leq \Pr[A_1] + \sum_{i=2}^n \Pr[A_i | \bar{A}_1 \cap \dots \cap \bar{A}_{i-1}]\]</span></p>
 </section>
-<section id="random-variables-and-expectation" class="level1">
-<h1><span class="header-section-number">2</span> Random Variables and Expectation</h1>
-<p><strong>Definition 2.1. (Random variable)</strong> A <em>random variable</em> <span class="math inline">\(X\)</span> on sample space <span class="math inline">\(\Omega\)</span> is a real-valued function <span class="math inline">\(X : \Omega \to \mathbb{R}\)</span>. A <em>discrete random variable</em> is a random variable that takes on a finite or countably infinite number of values.</p>
-<p><strong>Definition 2.2. (Pairwise independence of random variables)</strong> Random variables <span class="math inline">\(X_1,\dots,X_n\)</span> are said to be <em>pairwise independent</em>, if and only if for any pair <span class="math inline">\(i,j\)</span> <span class="math inline">\((i \neq j)\)</span> and any <span class="math inline">\(x_i,x_j\)</span>, <span class="math inline">\(\Pr[(X_i=x_i)\cap(X_j=x_j)] = \Pr[X_i=x_i] \cdot \Pr[X_j=x_j]\)</span>.</p>
-<p><strong>Definition 2.3. (Mutual independence of random variables)</strong> Random variables <span class="math inline">\(X_1,\dots,X_n\)</span> are said to be <em>mutually independent</em>, if and only if for any subset of indices <span class="math inline">\(I \subseteq \{1,\dots,n\}\)</span> and any <span class="math inline">\(x_i (i \in I)\)</span>, <span class="math display">\[\Pr\left[\bigcap_{i \in I} (X_i=x_i)\right] = \prod_{i \in I} \Pr[X_i=x_i]\]</span></p>
-<p><strong>Definition 2.4. (Expectation)</strong> Let <span class="math inline">\(X\)</span> be a discrete random variable and let <span class="math inline">\(\mathcal{X}\)</span> be the set of all possible values it can take. The <em>expectation</em> of <span class="math inline">\(X\)</span>, denoted by <span class="math inline">\(\operatorname{E}[X]\)</span>, is given by <span class="math display">\[\operatorname{E}[X] = \sum_{x \in \mathcal{X}} x\Pr[X=x]\]</span> The expectation is a finite number if and only if <span class="math inline">\(\sum_{x \in \mathcal{X}} x\Pr[X=x]\)</span> converges.</p>
-<p><strong>Lemma 2.5.</strong> For any constant <span class="math inline">\(c\)</span>, <span class="math inline">\(\operatorname{E}[cX] = c\operatorname{E}[X]\)</span>.</p>
+<section id="random-variables-and-probability-distribution" class="level1">
+<h1><span class="header-section-number">2</span> Random Variables and Probability Distribution</h1>
+<p><strong>Definition 2.1. (Random variable)</strong> A <em>random variable</em> <span class="math inline">\(X\)</span> is a real-valued function <span class="math inline">\(X : \mathcal{X} \to A\)</span> (<span class="math inline">\(A \subseteq \mathbb{R}\)</span>). A <em>discrete random variable</em> is a random variable that takes on a finite or countably infinite number of values.</p>
+<p><strong>Definition 2.2. (Probability mass function)</strong> Suppose that the random variable <span class="math inline">\(X\)</span> is a function <span class="math inline">\(X : \mathcal{X} \to A\)</span> (<span class="math inline">\(A \subseteq \mathbb{R}\)</span>). The <em>probability mass function</em> (<em>pmf</em>) <span class="math inline">\(f_X : A \to [0,1]\)</span> for <span class="math inline">\(X\)</span> is defined as <span class="math display">\[f_X(x) = \Pr[X=x] = \Pr[\{s \in \mathcal{X} : X(s) = x\}]\]</span></p>
+<p>Intuitively, a probability mass function is a function that gives the probability that a discrete random variable is exactly equal to some value.</p>
+<p><strong>Definition 2.3. (Probability distribution)</strong> The <em>probability distribution</em> of a random variable <span class="math inline">\(X\)</span> is a function <span class="math inline">\(f_X(x)\)</span> that describes the probabilities <span class="math inline">\(\Pr[X=x]\)</span> of all events in the sample space of an experiment. Typically, a probability distribution determines a unique probability function <span class="math inline">\(\Pr\)</span> for a given experiment. A <em>discrete probability distribution</em> is a probability distribution characterized by a probability mass function.</p>
+<p>Thus, by the assumption of unit measure, the distribution of a random variable <span class="math inline">\(X\)</span> is discrete, and <span class="math inline">\(X\)</span> is called a discrete random variable, if and only if <span class="math display">\[\sum_{x \in \mathcal{X}} \Pr[X=x]=1\]</span></p>
+<p>In the following text, “random variables” refer to discrete random variables, and “probability distributions” refer to discrete probability distributions, unless otherwise stated.</p>
+<p><strong>Definition 2.4. (Pairwise independence of random variables)</strong> Random variables <span class="math inline">\(X_1,\dots,X_n\)</span> are said to be <em>pairwise independent</em>, if and only if for any pair <span class="math inline">\(i,j\)</span> <span class="math inline">\((i \neq j)\)</span> and any <span class="math inline">\(x_i,x_j\)</span>, <span class="math inline">\(\Pr[(X_i=x_i)\cap(X_j=x_j)] = \Pr[X_i=x_i] \cdot \Pr[X_j=x_j]\)</span>.</p>
+<p><strong>Definition 2.5. (Mutual independence of random variables)</strong> Random variables <span class="math inline">\(X_1,\dots,X_n\)</span> are said to be <em>mutually independent</em>, if and only if for any subset of indices <span class="math inline">\(I \subseteq \{1,\dots,n\}\)</span> and any <span class="math inline">\(x_i (i \in I)\)</span>, <span class="math display">\[\Pr\left[\bigcap_{i \in I} (X_i=x_i)\right] = \prod_{i \in I} \Pr[X_i=x_i]\]</span></p>
+<p>As mentioned before, mutual independence is a stronger notion of statistical independence, and it implies pairwise independence; by contrast, pairwise independence does not imply mutual independence.</p>
+<p><strong>Definition 2.6. (Expectation)</strong> Let <span class="math inline">\(X\)</span> be a random variable and let <span class="math inline">\(\mathcal{X}\)</span> be the set of all possible values it can take. The <em>expectation</em> (alternatively <em>expected value</em>, <em>mean</em>, <em>average</em> or <em>first raw moment</em>) of <span class="math inline">\(X\)</span>, denoted by <span class="math inline">\(\operatorname{E}[X]\)</span>, is given by <span class="math display">\[\operatorname{E}[X] = \sum_{x \in \mathcal{X}} x\Pr[X=x]\]</span> The expectation is a finite number if and only if <span class="math inline">\(\sum_{x \in \mathcal{X}} x\Pr[X=x]\)</span> converges.</p>
+<p><strong>Lemma 2.7.</strong> For any constant <span class="math inline">\(c\)</span> and random variable <span class="math inline">\(X\)</span>, <span class="math inline">\(\operatorname{E}[cX] = c\operatorname{E}[X]\)</span>.</p>
 <strong>Proof.</strong>
 <span class="math display">\[\begin{align*}
 \operatorname{E}[cX] &amp;= \sum_{x \in \mathcal{X}} cx \Pr[cX=cx] \\
@@ -134,7 +144,7 @@
 &amp;= c \operatorname{E}[X]
 \end{align*}\]</span>
 <p><p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
-<p><strong>Lemma 2.6. (Linearity of expectation)</strong> For any pair of random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, <span class="math inline">\(\operatorname{E}[X+Y] = \operatorname{E}[X] + \operatorname{E}[Y]\)</span>.</p>
+<p><strong>Lemma 2.8. (Linearity of expectation)</strong> For any pair of random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, <span class="math inline">\(\operatorname{E}[X+Y] = \operatorname{E}[X] + \operatorname{E}[Y]\)</span>.</p>
 <strong>Proof.</strong>
 <span class="math display">\[\begin{align*}
 \operatorname{E}[X+Y]
@@ -145,7 +155,10 @@
 &amp;= \operatorname{E}[X] + \operatorname{E}[Y]
 \end{align*}\]</span>
 <p><p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
-<p><strong>Lemma 2.7. (Iterated expectation)</strong> <span class="math inline">\(\operatorname{E}[X] = \operatorname{E}[\operatorname{E}[X|Y]]\)</span>.</p>
+<p><strong>Corollary 2.9.</strong> For any finite or countably infinite number of random variables <span class="math inline">\(X_1, X_2, \dots\)</span>, <span class="math inline">\(\operatorname{E}[\sum_i X_i] = \sum_i \operatorname{E}[X_i]\)</span>.</p>
+<p><strong>Definition 2.10. (Conditional expectation)</strong> <span class="math display">\[\operatorname{E}[X|Y=y] = \sum_{x \in \mathcal{X}} x\Pr[X=x|Y=y]\]</span></p>
+<p><span class="math inline">\(\operatorname{E}[X|Y]\)</span> is a random variable that takes on the value <span class="math inline">\(\operatorname{E}[X|Y=y]\)</span> when <span class="math inline">\(Y=y\)</span>.</p>
+<p><strong>Lemma 2.11. (Iterated expectation)</strong> <span class="math inline">\(\operatorname{E}[X] = \operatorname{E}[\operatorname{E}[X|Y]]\)</span>.</p>
 <strong>Proof.</strong>
 <span class="math display">\[\begin{align*}
 \operatorname{E}[\operatorname{E}[X|Y]]
@@ -158,7 +171,7 @@
 &amp;= \operatorname{E}[X]
 \end{align*}\]</span>
 <p><p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
-<p><strong>Lemma 2.8.</strong> For <em>independent random variables</em> <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, <span class="math inline">\(\operatorname{E}[XY] = \operatorname{E}[X] \operatorname{E}[Y]\)</span>.</p>
+<p><strong>Lemma 2.12.</strong> For <em>independent random variables</em> <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, <span class="math inline">\(\operatorname{E}[XY] = \operatorname{E}[X] \operatorname{E}[Y]\)</span>.</p>
 <strong>Proof.</strong>
 <span class="math display">\[\begin{align*}
 \operatorname{E}[XY]
@@ -168,13 +181,13 @@
 &amp;= \operatorname{E}[X] \operatorname{E}[Y]
 \end{align*}\]</span>
 <p><p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
-<p><strong>Definition 2.9. (Covariance)</strong> <span class="math inline">\(\operatorname{Cov}(X,Y) = \operatorname{E}[(X - \operatorname{E}[X])(Y - \operatorname{E}[Y])]\)</span>.</p>
-<p><strong>Lemma 2.10.</strong> <span class="math inline">\(\operatorname{Cov}(X,Y) = \operatorname{E}[XY] - \operatorname{E}[X] \operatorname{E}[Y]\)</span>.</p>
-<p>Intuitively, covariance is a measure of how much two random variables change together.</p>
-<p>When <span class="math inline">\(\operatorname{Cov}(X,Y) = 0\)</span>, <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are said to be <em>uncorrelated</em>. Independent random variables are a notable case of uncorrelated variables (follows from Lemma 2.8). Note that the uncorrelatedness of two variables does not necessarily imply that they are independent.</p>
-<p><strong>Definition 2.11. (Variance)</strong> <span class="math inline">\(\operatorname{Var}(X) = \sigma^2 = \operatorname{E}[(X-\mu)^2]\)</span>, where <span class="math inline">\(\mu = \operatorname{E}[X]\)</span>.</p>
+<p><strong>Definition 2.13. (Covariance)</strong> <span class="math inline">\(\operatorname{Cov}(X,Y) = \operatorname{E}[(X - \operatorname{E}[X])(Y - \operatorname{E}[Y])]\)</span>.</p>
+<p><strong>Lemma 2.14.</strong> <span class="math inline">\(\operatorname{Cov}(X,Y) = \operatorname{E}[XY] - \operatorname{E}[X] \operatorname{E}[Y]\)</span>.</p>
+<p>Intuitively, covariance is a measure of how much two random variables change together. In <a href="/math/statistics/">statistics</a>, correlation coefficients are often defined in terms of covariance.</p>
+<p>When <span class="math inline">\(\operatorname{Cov}(X,Y) = 0\)</span>, <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are said to be <em>uncorrelated</em>. Independent random variables are a notable case of uncorrelated variables (implied by Lemma 2.12). Note that the uncorrelatedness of two variables does not necessarily imply that they are independent.</p>
+<p><strong>Definition 2.15. (Variance)</strong> <span class="math inline">\(\operatorname{Var}(X) = \sigma^2 = \operatorname{E}[(X-\mu)^2]\)</span>, where <span class="math inline">\(\mu = \operatorname{E}[X]\)</span>.</p>
 <p><span class="math inline">\(\sigma = \sqrt{\operatorname{Var}(X)}\)</span> is also called the <em>standard deviation</em> of <span class="math inline">\(X\)</span>.</p>
-<p><strong>Lemma 2.12.</strong> <span class="math inline">\(\operatorname{Var}(X) = \operatorname{E}[X^2] - (\operatorname{E}[X])^2\)</span>.</p>
+<p><strong>Lemma 2.16.</strong> <span class="math inline">\(\operatorname{Var}(X) = \operatorname{E}[X^2] - (\operatorname{E}[X])^2\)</span>.</p>
 <strong>Proof.</strong>
 <span class="math display">\[\begin{align*}
 \operatorname{Var}(X) = \operatorname{E}[(X-\operatorname{E}[X])^2]
@@ -184,17 +197,25 @@
 &amp;= \sum_{x \in \mathcal{X}} x^2 \Pr[X=x] - (\operatorname{E}[X])^2 = \operatorname{E}[X^2] - (\operatorname{E}[X])^2
 \end{align*}\]</span>
 <p><p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
+<p><strong>Jensen’s inequality.</strong> If <span class="math inline">\(X\)</span> is a random variable and <span class="math inline">\(\varphi\)</span> is a convex function, then <span class="math inline">\(\varphi(\operatorname{E}[X]) \leq \operatorname{E}[\varphi(X)]\)</span>.</p>
+<p>By Jensen’s inequality, we have that <span class="math inline">\(\operatorname{Var}(X) = \operatorname{E}[X^2] - (\operatorname{E}[X])^2 \geq 0\)</span>. Thus, the standard deviation <span class="math inline">\(\sigma = \sqrt{\operatorname{Var}(X)}\)</span> is a unique non-negative real number.</p>
 <p>Intuitively, variance is a measure of how far a set of numbers are spread out from their mean. Variance is a special case of the covariance when the two variables are identical, that is, the covariance of the random variable with itself. <span class="math inline">\(\operatorname{Var}(X) = \operatorname{Cov}(X,X)\)</span>.</p>
-<p><strong>Lemma 2.13.</strong> <span class="math inline">\(\operatorname{Var}(aX+b) = a^2 \operatorname{Var}(X)\)</span>.</p>
-<p><strong>Lemma 2.14.</strong> <span class="math inline">\(\operatorname{Var}(X+Y) = \operatorname{Var}(X) + \operatorname{Var}(Y) + 2 \operatorname{Cov}(X,Y)\)</span>.</p>
-<p><strong>Lemma 2.15.</strong> If <span class="math inline">\(X_1,\dots,X_n\)</span> are pairwise independent, then <span class="math inline">\(\operatorname{Var}(\sum_{i=1}^n X_i) = \sum_{i=1}^n \operatorname{Var}(X_i)\)</span>.</p>
-<p><strong>Bernoulli random variable.</strong> A discrete random variable <span class="math inline">\(X\)</span> taking values from <span class="math inline">\(\{0,1\}\)</span> is called a <em>Bernoulli random variable</em>. The parameter <span class="math inline">\(p = \Pr[X=1]\)</span> is called the <em>bias</em> of <span class="math inline">\(X\)</span>.</p>
-<p>For Bernoulli random variable <span class="math inline">\(X\)</span>, we have <span class="math inline">\(\operatorname{E}[X] = 0 \cdot (1-p) + 1 \cdot p = p = \Pr[X=1]\)</span>. Furthermore, we have <span class="math inline">\(\operatorname{Var}(X) \leq \frac{1}{4}\)</span>, since <span class="math inline">\(\operatorname{E}[X] = \operatorname{E}[X^2]\)</span>, thus <span class="math inline">\(\operatorname{Var}(X) = \operatorname{E}[X] \cdot (1-\operatorname{E}[X]) \leq \frac{1}{4}\)</span>.</p>
-<p><strong>Binomial random variable.</strong> A discrete random variable <span class="math inline">\(X\)</span> taking value <span class="math inline">\(k \in \{0,1,\dots,n\}\)</span> is called a <em>binomial random variable</em> with parameters <span class="math inline">\(n\)</span> and <span class="math inline">\(p\)</span> if it satisfies the following probability distribution: <span class="math display">\[\Pr[X=k] = \binom{n}{k} p^k (1-p)^{n-k}\]</span></p>
-<p>A binomial random variable can be represented as a sum of independent, identically distributed Bernoulli random variables.</p>
+<p><strong>Lemma 2.17.</strong> <span class="math inline">\(\operatorname{Var}(aX+b) = a^2 \operatorname{Var}(X)\)</span>.</p>
+<p><strong>Lemma 2.18.</strong> <span class="math inline">\(\operatorname{Var}(X+Y) = \operatorname{Var}(X) + \operatorname{Var}(Y) + 2 \operatorname{Cov}(X,Y)\)</span>.</p>
+<p><strong>Lemma 2.19.</strong> If <span class="math inline">\(X_1,\dots,X_n\)</span> are pairwise independent, then <span class="math inline">\(\operatorname{Var}(\sum_{i=1}^n X_i) = \sum_{i=1}^n \operatorname{Var}(X_i)\)</span>.</p>
+<p>Compared to Corollary 2.9 (linearity of expectation), the linearity of variance holds if and only if random variables are uncorrelated.</p>
+<p>The variance is the second central moment of a random variable.</p>
+<p><strong>Definition 2.20. (Skewness; third normalized central moment)</strong> <span class="math display">\[\operatorname{Skew}(X)
+= \operatorname{E}\left[\left(\frac{X-\mu}{\sigma}\right)^3\right]
+= \frac{\operatorname{E}[(X-\mu)^3]}{(\operatorname{E}[(X-\mu)^2])^{3/2}}
+\]</span></p>
+<p><strong>Definition 2.21. (Kurtosis; fourth normalized central moment)</strong> <span class="math display">\[\operatorname{Kurt}(X)
+= \operatorname{E}\left[\left(\frac{X-\mu}{\sigma}\right)^4\right]
+= \frac{\operatorname{E}[(X-\mu)^4]}{(\operatorname{E}[(X-\mu)^2])^2}
+\]</span></p>
 </section>
-<section id="moments-and-deviations" class="level1">
-<h1><span class="header-section-number">3</span> Moments and Deviations</h1>
+<section id="moment-based-probability-bounds" class="level1">
+<h1><span class="header-section-number">3</span> Moment-based Probability Bounds</h1>
 <p><strong>Theorem 3.1. (Markov’s inequality)</strong> Let <span class="math inline">\(X\)</span> be a non-negative random variable and <span class="math inline">\(\varepsilon &gt; 0\)</span>. Then <span class="math display">\[\Pr[X \geq \varepsilon] \leq \frac{\operatorname{E}[X]}{\varepsilon}\]</span></p>
 <strong>Proof.</strong> Let <span class="math inline">\(X\)</span> takes values from the set <span class="math inline">\(\mathcal{X}\)</span>. We have
 <span class="math display">\[\begin{align*}
@@ -215,11 +236,101 @@
 <p><p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
 <p><strong>Corollary 3.3.</strong> Let <span class="math inline">\(X_1,\dots,X_n\)</span> be pairwise-independent random variables with the same expectation <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>. Then for every <span class="math inline">\(\delta &gt; 0\)</span>, <span class="math display">\[\Pr\left[\left|\frac{\sum_{i=1}^n X_i}{n} - \mu\right| \geq \delta\right] \leq \frac{\sigma^2}{\delta^2 n}\]</span></p>
 <p><strong>Proof.</strong> By linearity of expectation, we have <span class="math inline">\(\operatorname{E}\left[\frac{\sum_{i=1}^n X_i}{n}\right] = \mu\)</span>. Applying Chebyshev’s inequality to the random variable <span class="math inline">\(\frac{\sum_{i=1}^n X_i}{n}\)</span>, we have <span class="math display">\[\Pr\left[\left|\frac{\sum_{i=1}^n X_i}{n} - \mu\right| \geq \delta\right] \leq \frac{\operatorname{Var}\left(\frac{\sum_{i=1}^n X_i}{n}\right)}{\delta^2}\]</span></p>
-<p>Using pairwise independence (Lemma 2.15), it follows that <span class="math display">\[\operatorname{Var}\left(\frac{\sum_{i=1}^n X_i}{n}\right)
+<p>Using pairwise independence (Lemma 2.19), it follows that <span class="math display">\[\operatorname{Var}\left(\frac{\sum_{i=1}^n X_i}{n}\right)
 = \frac{1}{n^2} \sum_{i=1}^n \operatorname{Var}(X_i) = \frac{1}{n^2} \sum_{i=1}^n \sigma^2 = \frac{\sigma^2}{n}\]</span> <p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
 </section>
-<section id="chernoff-bounds" class="level1">
-<h1><span class="header-section-number">4</span> Chernoff Bounds</h1>
+<section id="discrete-probability-distributions" class="level1">
+<h1><span class="header-section-number">4</span> Discrete Probability Distributions</h1>
+<p>A discrete probability distribution is characterized by a probability mass function (pmf).</p>
+<section id="bernoulli-distribution" class="level2">
+<h2><span class="header-section-number">4.1</span> Bernoulli Distribution</h2>
+<p>The <em>Bernoulli distribution</em> is the discrete probability distribution of a random variable which takes the value <span class="math inline">\(1\)</span> with success probability of <span class="math inline">\(p\)</span> and the value <span class="math inline">\(0\)</span> with failure probability of <span class="math inline">\(q=1-p\)</span>.</p>
+<p>A discrete random variable <span class="math inline">\(X\)</span> taking values from <span class="math inline">\(\{0,1\}\)</span> is called a <em>Bernoulli random variable</em>. The parameter <span class="math inline">\(p = \Pr[X=1]\)</span> is called the <em>bias</em> of <span class="math inline">\(X\)</span>.</p>
+<p><strong>pmf.</strong> <span class="math display">\[f(k;p) = \begin{cases} p &amp; \text{if }k=1, \\
+1-p &amp; \text {if }k=0.\end{cases}\]</span> Alternatively, <span class="math display">\[f(k;p) = p^k (1-p)^{1-k}\!\quad \text{for }k\in\{0,1\}\]</span></p>
+<p><strong>Mean.</strong> <span class="math display">\[\operatorname{E}[X] = 0 \cdot (1-p) + 1 \cdot p = p = \Pr[X=1]\]</span></p>
+<p><strong>Variance.</strong> <span class="math display">\[\operatorname{Var}(X) = p(1-p)\]</span></p>
+<p>Since <span class="math inline">\(p \in [0,1]\)</span>, we have <span class="math inline">\(\operatorname{Var}(X) \leq \frac{1}{4}\)</span>.</p>
+</section>
+<section id="binomial-distribution" class="level2">
+<h2><span class="header-section-number">4.2</span> Binomial Distribution</h2>
+<p>The <em>binomial distribution</em> is the discrete probability distribution of the number of successes in a sequence of <span class="math inline">\(n\)</span> independent and identically distributed Bernoulli trials.</p>
+<p>A discrete random variable <span class="math inline">\(X\)</span> taking value <span class="math inline">\(k \in \{0,1,\dots,n\}\)</span> is called a <em>binomial random variable</em> with parameters <span class="math inline">\(n\)</span> and <span class="math inline">\(p\)</span> if it satisfies the following probability distribution: <span class="math display">\[\Pr[X=k] = \binom{n}{k} p^k (1-p)^{n-k}\]</span></p>
+<p><strong>pmf.</strong> <span class="math display">\[f(k;n,p) = \Pr[X=k] = \binom{n}{k} p^k(1-p)^{n-k}\]</span> <span class="math display">\[X \sim \text{B}(n,p)\]</span></p>
+<p><strong>Mean.</strong> <span class="math display">\[\operatorname{E}[X] = np\]</span></p>
+<p><strong>Variance.</strong> <span class="math display">\[\operatorname{Var}(X) = np(1-p)\]</span></p>
+<p>Note that a binomial random variable can be represented as a sum of independent, identically distributed Bernoulli random variables: <span class="math display">\[X = \sum_{k=1}^n X_k \sim \text{B}(n,p)\]</span></p>
+<p>Thus, the Bernoulli distribution is a special case of binomial distribution <span class="math inline">\(\text{B}(1,p)\)</span>.</p>
+</section>
+<section id="negative-binomial-distribution" class="level2">
+<h2><span class="header-section-number">4.3</span> Negative binomial distribution</h2>
+<p>The <em>negative binomial distribution</em> is the discrete probability distribution of the number of successes in a sequence of independent and identically distributed Bernoulli trials before a specified number of failures (denoted <span class="math inline">\(r\)</span>) occurs.</p>
+<p><strong>pmf.</strong> <span class="math display">\[f(k;r,p) = \Pr[X=k] = \binom{k+r-1}{k} (1-p)^r p^k\]</span> <span class="math display">\[X \sim \text{NB}(r,p)\]</span></p>
+<p><strong>Mean.</strong> <span class="math display">\[\operatorname{E}[X] = \frac{pr}{1-p}\]</span></p>
+<p><strong>Variance.</strong> <span class="math display">\[\operatorname{Var}(X) = \frac{pr}{(1-p)^2}\]</span></p>
+<p>When <span class="math inline">\(r\)</span> is an integer, the negative binomial distribution is also known as the <em>Pascal distribution</em>.</p>
+</section>
+<section id="geometric-distribution" class="level2">
+<h2><span class="header-section-number">4.4</span> Geometric Distribution</h2>
+<p>The <em>geometric distribution</em> is the probability distribution of the number of failures in a sequence of independent and identically distributed Bernoulli trials before the first success.</p>
+<p><strong>pmf.</strong> <span class="math display">\[f(k;p) = (1-p)^k p\]</span> <span class="math display">\[X \sim \text{Geom}(p)\]</span></p>
+<p><strong>Mean.</strong> <span class="math display">\[\operatorname{E}[X] = \frac{1-p}{p}\]</span></p>
+<p><strong>Variance.</strong> <span class="math display">\[\operatorname{Var}(X) = \frac{1-p}{p^2}\]</span></p>
+<p>The geometric distribution <span class="math inline">\(\text{Geom}(p)\)</span> is a special case of negative binomial distribution <span class="math inline">\(\text{NB}(1,1-p)\)</span>.</p>
+</section>
+<section id="summary" class="level2">
+<h2><span class="header-section-number">4.5</span> Summary</h2>
+<table style="width:82%;">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 25%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">With replacements</th>
+<th style="text-align: center;">No replacements</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Given number of draws</td>
+<td style="text-align: center;"><em>Binomial distribution</em> (Special case when <span class="math inline">\(n=1\)</span>: <em>Bernoulli distribution</em>)</td>
+<td style="text-align: center;"><em>Hypergeometric distribution</em></td>
+</tr>
+<tr class="even">
+<td>Given number of failures</td>
+<td style="text-align: center;"><em>Negative binomial distribution</em> (Special case when <span class="math inline">\(r=1\)</span>: <em>Geometric distribution</em>)</td>
+<td style="text-align: center;"><em>Negative hypergeometric distribution</em></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="continuous-probability-distributions" class="level1">
+<h1><span class="header-section-number">5</span> Continuous Probability Distributions</h1>
+<p>A continuous probability distribution is characterized by a probability density function (pdf).</p>
+<hr />
+<p>Related topics:</p>
+<ul>
+<li><a href="/math/statistics/">Statistics</a></li>
+<li><a href="/info/">Information theory</a></li>
+</ul>
+<p>Mathematical theory:</p>
+<ul>
+<li><a href="/math/analysis/measure/">Measure theory</a></li>
+<li>Advanced probability theory</li>
+</ul>
+<p>Fields of application:</p>
+<ul>
+<li>Algorithms</li>
+<li>Computational biology and biostatistics</li>
+<li>Cryptography and cryptanalysis</li>
+<li>Game theory and operations research</li>
+<li>Machine learning</li>
+<li>Computer vision and image processing</li>
+</ul>
 </section>
       </div>
       <footer>
@@ -257,7 +368,7 @@
           <i class="fa fa-anchor" aria-hidden="true"></i>
           <code>Permalink</code>
         </a> |
-        Last updated: <span id="update-time">2016-12-10</span>
+        Last updated: <span id="update-time">2016-12-14</span>
       </footer>
     </article></main>
   </body>
