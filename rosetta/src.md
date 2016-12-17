@@ -2,12 +2,12 @@
 % Mort Yao
 % 2016-12-17
 
----
-
-| Symbols  | Semantics                                      | LaTeX |       |
-| :------- | :--------------------------------------------- | :---- | :---- |
+| Symbols  | Semantics                                         | LaTeX        |
+| :------- | :------------------------------------------------ | :----------- |
 | $a$, $b$ | (known) variable or element of a set |
 | $c$ | constant |
+| $e$ | mathematical constant $e$ (Euler's number) |
+| $\pi$ | mathematical constant $\pi$ | `\pi`
 | $\varepsilon$ | small positive infinitesimal quantity | `\varepsilon`
 | $i$ | general integer; subscript or superscript; imaginary unit |
 | $j$, $k$, $l$ | general integer; subscript or superscript |
@@ -22,8 +22,9 @@
 | $\Im(z)$; $\operatorname{Im}(z)$ | imaginary part | `\Im(z)`
 | $\mathcal{E}$ | experiment | `\mathcal{E}`
 | $A$, $B$ | (known) set; event |
-| $S$, $\Omega$ | set; sample space |
+| $S$, $\Omega$ | set; class of sets; sample space |
 | $U$ | universe |
+| $A^\complement$; $\overline{A}$; $\complement_U A$ | complement of set | `A^\complement`
 | $\varnothing$ | empty set | `\varnothing`
 | $X$, $Y$ | (unknown) set; random variable |
 | $\mathcal{X}$, $\mathcal{Y}$ | set with special structure, space | `\mathcal{X}`
@@ -41,6 +42,7 @@
 | $\mathbb{C}^n$ | $n$-dimensional complex coordinate space | `\mathbb{C}^n`
 | $\mathbf{A}$, $\mathbf{B}$, $\mathbf{X}$, $\mathbf{Y}$ | matrix | `\mathbf{A}`
 | $\boldsymbol{a}$, $\boldsymbol{b}$, $\boldsymbol{x}$, $\boldsymbol{y}$ | vector | `\boldsymbol{a}`
+| $\boldsymbol{e}$, $\boldsymbol{i}$, $\boldsymbol{j}$, $\boldsymbol{k}$ | unit vector |
 | $\boldsymbol{v}$ | eigenvector |
 | $\lambda$ | eigenvalue | `\lambda`
 | $\vert\vert \boldsymbol{a} \vert\vert$, $\vert\vert \mathbf{A} \vert\vert$ | norm |
@@ -54,6 +56,9 @@
 | $\det(\mathbf{A})$ | determinant of matrix | `\det(\mathbf{A})`
 | $f$, $g$, $h$ | function or mapping |
 | $\varphi$ | function or mapping with special property | `\varphi`
+| $\delta$ | Dirac delta function | `\delta`
+| $\eta$ | Dedekind eta function | `\eta`
+| $\psi$, $\Psi$ | wave function | `\psi`
 | $\wp$ | Weierstrass's elliptic function | `\wp`
 | $\operatorname{negl}(x)$ | negligible function |
 | $\min(S)$ | minimum | `\min(S)`
@@ -63,6 +68,8 @@
 | $\lim(f(x))$; $\lim(a_n)$ | limit | `\lim(f(x))`
 | $d{x}$ | differential operator |
 | $\partial{x}$ | partial differential operator | `\partial{x}`
+| $\Delta$ | forward difference; Laplace operator | `\Delta`
+| $\nabla$ | backward difference; gradient | `\nabla`
 | $e^{x}$; $\exp(x)$ | exponential function |
 | $\ln(x)$ | natural logarithm | `\ln(x)`
 | $\log(x)$ | logarithm | `\log(x)`
@@ -72,7 +79,7 @@
 | $\Theta(f(n))$ | big-Theta notation | `\Theta(f(n))`
 | $p_X \left({x}\right)$ | probability mass function (pmf) | `p_X(x)`
 | $\Pr[X=x]$ | probability measure | `\Pr[X=x]`
-| $\operatorname{E}[X]$; $\mu$ | expectation | `\operatorname{E}[X]`
+| $\operatorname{E}[X]$; $\overline{X}$; $\mu$ | expectation / mean | `\operatorname{E}[X]`
 | $\operatorname{Cov}(X,Y)$ | covariance | `\operatorname{Cov}(X,Y)`
 | $\operatorname{Var}(X)$ | variance | `\operatorname{Var}(X)`
 | $\sigma$ | standard deviation | `\sigma`
