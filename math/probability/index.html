@@ -8,7 +8,7 @@
     <meta name="generator" content="pandoc">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="author" content="Mort Yao">
-    <meta name="dcterms.date" content="2016-12-14">
+    <meta name="dcterms.date" content="2016-12-17">
     <title>Basic Probability Theory</title>
     <link rel="canonical" href="https://wiki.soimort.org/math/probability">
     <style type="text/css">code { white-space: pre; }</style>
@@ -34,7 +34,7 @@
       <header>
         <h1 class="title">Basic Probability Theory</h1>
         <address class="author">Mort Yao</address>
-        <!-- h3 class="date">2016-12-14</h3 -->
+        <!-- h3 class="date">2016-12-17</h3 -->
       </header>
       <nav id="TOC">
 <ul>
@@ -205,14 +205,50 @@
 <p><strong>Lemma 2.19.</strong> If <span class="math inline">\(X_1,\dots,X_n\)</span> are pairwise independent, then <span class="math inline">\(\operatorname{Var}(\sum_{i=1}^n X_i) = \sum_{i=1}^n \operatorname{Var}(X_i)\)</span>.</p>
 <p>Compared to Corollary 2.9 (linearity of expectation), the linearity of variance holds if and only if random variables are uncorrelated.</p>
 <p>The variance is the second central moment of a random variable.</p>
-<p><strong>Definition 2.20. (Skewness; third normalized central moment)</strong> <span class="math display">\[\operatorname{Skew}(X)
-= \operatorname{E}\left[\left(\frac{X-\mu}{\sigma}\right)^3\right]
-= \frac{\operatorname{E}[(X-\mu)^3]}{(\operatorname{E}[(X-\mu)^2])^{3/2}}
-\]</span></p>
-<p><strong>Definition 2.21. (Kurtosis; fourth normalized central moment)</strong> <span class="math display">\[\operatorname{Kurt}(X)
-= \operatorname{E}\left[\left(\frac{X-\mu}{\sigma}\right)^4\right]
-= \frac{\operatorname{E}[(X-\mu)^4]}{(\operatorname{E}[(X-\mu)^2])^2}
-\]</span></p>
+<p><strong>Definition 2.20. (Raw moment)</strong> The <em>(first) raw moment</em> of a random variable <span class="math inline">\(X\)</span>, denoted <span class="math inline">\(\mu\)</span>, is defined as <span class="math display">\[\mu = \operatorname{E}[X]\]</span> That is, the first raw moment of a random variable is its expectation (mean).</p>
+<p><strong>Definition 2.21. (Central moment)</strong> The <em><span class="math inline">\(n\)</span>th central moment</em> of a random variable <span class="math inline">\(X\)</span>, denoted <span class="math inline">\(\mu_n\)</span>, is defined as <span class="math display">\[\mu_n = \operatorname{E}[(X - \mu)^n]\]</span> where <span class="math inline">\(\mu = \operatorname{E}[X]\)</span> is the expectation (first raw moment) of <span class="math inline">\(X\)</span>.</p>
+<p><strong>Definition 2.22. (Standardized moment)</strong> The <em><span class="math inline">\(n\)</span>th standardized moment</em> (or <em>normalized central moment</em>) of a random variable <span class="math inline">\(X\)</span>, denoted <span class="math inline">\(\hat\mu_n\)</span>, is defined as <span class="math display">\[\hat\mu_n = \frac{\mu_n}{\sigma^n} = \frac{\operatorname{E}[(X - \mu)^n]}{\sigma^n} = \operatorname{E}\left[\left(\frac{X - \mu}{\sigma}\right)^n\right]\]</span> where <span class="math inline">\(\mu_n\)</span> is the <span class="math inline">\(n\)</span>th central moment of <span class="math inline">\(X\)</span>, and <span class="math inline">\(\sigma = \sqrt{\operatorname{Var}(X)} = \sqrt{\mu_2}\)</span> is the standard deviation of <span class="math inline">\(X\)</span>.</p>
+<table>
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 55%" />
+<col style="width: 36%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(n\)</span>th</th>
+<th style="text-align: center;">Central moment</th>
+<th style="text-align: center;">Standardized moment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><span class="math inline">\(\mu_0 = \operatorname{E}[1] = 1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\hat\mu_0 = 1\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="math inline">\(\mu_1 = \operatorname{E}[X - \operatorname{E}[X]] = 0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\hat\mu_1 = 0\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"><span class="math inline">\(\mu_2 = \operatorname{E}[(X - \operatorname{E}[X])^2] = \operatorname{E}[X^2] - (\operatorname{E}[X])^2\)</span> <br> <span class="math inline">\(= \operatorname{Var}(X) = \sigma^2\)</span> (<strong>Variance</strong>)</td>
+<td style="text-align: center;"><span class="math inline">\(\hat\mu_2 = 1\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"><span class="math inline">\(\mu_3 = \operatorname{E}[(X - \operatorname{E}[X])^3]\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\hat\mu_3 = \frac{\operatorname{E}[(X-\mu)^3]}{(\operatorname{E}[(X-\mu)^2])^{3/2}}\)</span> <br> <span class="math inline">\(= \operatorname{Skew}(X)\)</span> (<strong>Skewness</strong>)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;"><span class="math inline">\(\mu_4 = \operatorname{E}[(X - \operatorname{E}[X])^4]\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\hat\mu_4 = \frac{\operatorname{E}[(X-\mu)^4]}{(\operatorname{E}[(X-\mu)^2])^2}\)</span> <br> <span class="math inline">\(= \operatorname{Kurt}(X)\)</span> (<strong>Kurtosis</strong>)</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="moment-based-probability-bounds" class="level1">
 <h1><span class="header-section-number">3</span> Moment-based Probability Bounds</h1>
@@ -368,7 +404,7 @@
           <i class="fa fa-anchor" aria-hidden="true"></i>
           <code>Permalink</code>
         </a> |
-        Last updated: <span id="update-time">2016-12-14</span>
+        Last updated: <span id="update-time">2016-12-17</span>
       </footer>
     </article></main>
   </body>

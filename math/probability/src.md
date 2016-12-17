@@ -1,6 +1,6 @@
 % Basic Probability Theory
 % Mort Yao
-% 2016-12-14
+% 2016-12-17
 
 Basic probability theory and statistics:
 
@@ -303,17 +303,25 @@ Compared to Corollary 2.9 (linearity of expectation), the linearity of variance 
 
 The variance is the second central moment of a random variable.
 
-**Definition 2.20. (Skewness; third normalized central moment)**
-$$\operatorname{Skew}(X)
-= \operatorname{E}\left[\left(\frac{X-\mu}{\sigma}\right)^3\right]
-= \frac{\operatorname{E}[(X-\mu)^3]}{(\operatorname{E}[(X-\mu)^2])^{3/2}}
-$$
+**Definition 2.20. (Raw moment)** The *(first) raw moment* of a random variable $X$, denoted $\mu$, is defined as
+$$\mu = \operatorname{E}[X]$$
+That is, the first raw moment of a random variable is its expectation (mean).
 
-**Definition 2.21. (Kurtosis; fourth normalized central moment)**
-$$\operatorname{Kurt}(X)
-= \operatorname{E}\left[\left(\frac{X-\mu}{\sigma}\right)^4\right]
-= \frac{\operatorname{E}[(X-\mu)^4]}{(\operatorname{E}[(X-\mu)^2])^2}
-$$
+**Definition 2.21. (Central moment)** The *$n$th central moment* of a random variable $X$, denoted $\mu_n$, is defined as
+$$\mu_n = \operatorname{E}[(X - \mu)^n]$$
+where $\mu = \operatorname{E}[X]$ is the expectation (first raw moment) of $X$.
+
+**Definition 2.22. (Standardized moment)** The *$n$th standardized moment* (or *normalized central moment*) of a random variable $X$, denoted $\hat\mu_n$, is defined as
+$$\hat\mu_n = \frac{\mu_n}{\sigma^n} = \frac{\operatorname{E}[(X - \mu)^n]}{\sigma^n} = \operatorname{E}\left[\left(\frac{X - \mu}{\sigma}\right)^n\right]$$
+where $\mu_n$ is the $n$th central moment of $X$, and $\sigma = \sqrt{\operatorname{Var}(X)} = \sqrt{\mu_2}$ is the standard deviation of $X$.
+
+| $n$th | Central moment                          | Standardized moment       |
+| :---: | :-------------------------------------: | :-----------------------: |
+| 0 | $\mu_0 = \operatorname{E}[1] = 1$ | $\hat\mu_0 = 1$
+| 1 | $\mu_1 = \operatorname{E}[X - \operatorname{E}[X]] = 0$ | $\hat\mu_1 = 0$
+| 2 | $\mu_2 = \operatorname{E}[(X - \operatorname{E}[X])^2] = \operatorname{E}[X^2] - (\operatorname{E}[X])^2$ <br> $= \operatorname{Var}(X) = \sigma^2$ (**Variance**) | $\hat\mu_2 = 1$
+| 3 | $\mu_3 = \operatorname{E}[(X - \operatorname{E}[X])^3]$ | $\hat\mu_3 = \frac{\operatorname{E}[(X-\mu)^3]}{(\operatorname{E}[(X-\mu)^2])^{3/2}}$ <br> $= \operatorname{Skew}(X)$ (**Skewness**)
+| 4 | $\mu_4 = \operatorname{E}[(X - \operatorname{E}[X])^4]$ | $\hat\mu_4 = \frac{\operatorname{E}[(X-\mu)^4]}{(\operatorname{E}[(X-\mu)^2])^2}$ <br> $= \operatorname{Kurt}(X)$ (**Kurtosis**)
 
 
 
