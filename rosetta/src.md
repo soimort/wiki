@@ -1,4 +1,4 @@
-% List of Common Notations
+% Common Mathematical Notation
 % Mort Yao
 % 2016-12-17
 
