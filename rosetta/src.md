@@ -83,6 +83,6 @@
 | $\operatorname{Cov}(X,Y)$ | covariance | `\operatorname{Cov}(X,Y)`
 | $\operatorname{Var}(X)$ | variance | `\operatorname{Var}(X)`
 | $\sigma$ | standard deviation | `\sigma`
-| $s$ | sample standard deviation |
+| $s$ | (unbiased) sample standard deviation |
 | $\bar{X}$ | sample mean | `\bar{X}`
 | $X \sim \operatorname{Pois}(\lambda)$ | random variable that satisfies a probability distribution | `\sim`
