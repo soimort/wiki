@@ -59,7 +59,7 @@ Similarly, the *intersection (or conjunction) of the events* $A_1, A_2, \dots$, 
 If $\bigcap_n A_n = \varnothing$, then events $A_n$ are said to be *mutually exclusive* or *mutually disjoint*.
 
 **Definition 1.8. (Complementary event)**
-For any event $A$ we define the new event $\bar{A}$ (also denoted by $A'$ or $A^c$), referred to as the *complement of $A$*, to consist of all outcomes in the sample space $\Omega$ that are not in $A$, i.e., $\bar{A}$ will occur if and only if $A$ does not occur. $\bar{A} = \Omega \backslash A$.
+For any event $A$ we define the new event $\bar{A}$ (also denoted by $A'$, $A^\complement$ or $\complement_U A$), referred to as the *complement of $A$*, to consist of all outcomes in the sample space $\Omega$ that are not in $A$, i.e., $\bar{A}$ will occur if and only if $A$ does not occur. $\bar{A} = \Omega \setminus A$.
 
 The event $A$ and its complement $\bar{A}$ are mutually exclusive and exhaustive. Given an event, the event and its complementary event define a Bernoulli trial.
 
@@ -322,6 +322,12 @@ where $\mu_n$ is the $n$th central moment of $X$, and $\sigma = \sqrt{\operatorn
 | 2 | $\mu_2 = \operatorname{E}[(X - \operatorname{E}[X])^2] = \operatorname{E}[X^2] - (\operatorname{E}[X])^2$ <br> $= \operatorname{Var}(X) = \sigma^2$ (**Variance**) | $\hat\mu_2 = 1$
 | 3 | $\mu_3 = \operatorname{E}[(X - \operatorname{E}[X])^3]$ | $\hat\mu_3 = \frac{\operatorname{E}[(X-\mu)^3]}{(\operatorname{E}[(X-\mu)^2])^{3/2}}$ <br> $= \operatorname{Skew}(X)$ (**Skewness**)
 | 4 | $\mu_4 = \operatorname{E}[(X - \operatorname{E}[X])^4]$ | $\hat\mu_4 = \frac{\operatorname{E}[(X-\mu)^4]}{(\operatorname{E}[(X-\mu)^2])^2}$ <br> $= \operatorname{Kurt}(X)$ (**Kurtosis**)
+
+**Remark 2.23.** In the case of continuous probability distribution with a probability density function $f$, where the expectation is calculated as $\operatorname{E}[X] = \int_{-\infty}^\infty x f(x) dx$, $\operatorname{E}[X]$ and all other moments can be undefined (Example: Cauchy distribution). For discrete probability distributions, however, all moments are well-defined.
+
+**Remark 2.24.** In [statistics](/math/statistics/), when the exact expectations $\operatorname{E}[X]$ and $\operatorname{E}[Y]$ are unknown, the *sample covariance* (similarly for *sample variance* and *sample standard deviation*) is given by
+$$s^2 = \frac{1}{N-1} \sum_{i=1}^N (X_i-\bar{X})(Y_i-\bar{Y})$$
+Notice that $\bar{X}$ and $\bar{Y}$ are *empirical means* rather than expectations. The use of $\frac{1}{N-1}$ instead of $\frac{1}{N}$ is called *Bessel's correction*, which gives an unbiased estimator of the population covariance (variance, standard deviation).
 
 
 
