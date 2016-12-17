@@ -40,6 +40,7 @@ kbd {
 
 table {
   border-collapse: collapse;
+  margin: 1em;
 }
 table, th, td {
   border: 1px solid gray;
