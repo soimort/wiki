@@ -1,6 +1,6 @@
 /* Academia (pandoc HTML5 template)
  * designer:     soimort
- * last updated: 2016-11-24
+ * last updated: 2016-12-17
  */
 
 /* General */
@@ -36,6 +36,14 @@ kbd {
   box-shadow: 2px 2px 2px dimgray;
   background-color: black;
   color: white;
+}
+
+table {
+  border-collapse: collapse;
+}
+table, th, td {
+  border: 1px solid gray;
+  padding: .5em;
 }
 
 
