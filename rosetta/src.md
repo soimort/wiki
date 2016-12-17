@@ -1,6 +1,6 @@
 % Common Mathematical Notation
 % Mort Yao
-% 2016-12-17
+% 2016-12-18
 
 | Symbols  | Semantics                                         | LaTeX        |
 | :------- | :------------------------------------------------ | :----------- |
@@ -23,7 +23,7 @@
 | $\mathcal{E}$ | experiment | `\mathcal{E}`
 | $A$, $B$ | (known) set; event |
 | $S$, $\Omega$ | set; class of sets; sample space |
-| $U$ | universe |
+| $U$ | universal set |
 | $A^\complement$; $\overline{A}$; $\complement_U A$ | complement of set | `A^\complement`
 | $\varnothing$ | empty set | `\varnothing`
 | $X$, $Y$ | (unknown) set; random variable |
@@ -79,8 +79,10 @@
 | $\Theta(f(n))$ | big-Theta notation | `\Theta(f(n))`
 | $p_X \left({x}\right)$ | probability mass function (pmf) | `p_X(x)`
 | $\Pr[X=x]$ | probability measure | `\Pr[X=x]`
-| $\operatorname{E}[X]$; $\overline{X}$; $\mu$ | expectation / mean | `\operatorname{E}[X]`
+| $\operatorname{E}[X]$; $\mu$ | expectation | `\operatorname{E}[X]`
 | $\operatorname{Cov}(X,Y)$ | covariance | `\operatorname{Cov}(X,Y)`
 | $\operatorname{Var}(X)$ | variance | `\operatorname{Var}(X)`
 | $\sigma$ | standard deviation | `\sigma`
+| $s$ | sample standard deviation |
+| $\bar{X}$ | sample mean | `\bar{X}`
 | $X \sim \operatorname{Pois}(\lambda)$ | random variable that satisfies a probability distribution | `\sim`
