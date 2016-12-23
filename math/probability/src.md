@@ -368,6 +368,8 @@ Let $Y=(X-\operatorname{E}[X])^2$ be a non-negative random variable. Using Marko
 \end{align*}
 [QED]
 
+Chebyshev's inequality provides an upper bound on the probability that a random variable deviates from its expected value. It may be used to show the law of large numbers (LNN), assumed that the variance $\operatorname{Var}(X)$ is finite.
+
 **Corollary 3.3.**
 Let $X_1,\dots,X_n$ be pairwise-independent random variables with the same expectation $\mu$ and variance $\sigma^2$. Then for every $\delta > 0$,
 $$\Pr\left[\left|\frac{\sum_{i=1}^n X_i}{n} - \mu\right| \geq \delta\right] \leq \frac{\sigma^2}{\delta^2 n}$$

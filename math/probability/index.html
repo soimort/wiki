@@ -275,6 +275,7 @@
 = \frac{\operatorname{Var}(X)}{\delta^2}
 \end{align*}\]</span>
 <p><p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
+<p>Chebyshev’s inequality provides an upper bound on the probability that a random variable deviates from its expected value. It may be used to show the law of large numbers (LNN), assumed that the variance <span class="math inline">\(\operatorname{Var}(X)\)</span> is finite.</p>
 <p><strong>Corollary 3.3.</strong> Let <span class="math inline">\(X_1,\dots,X_n\)</span> be pairwise-independent random variables with the same expectation <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>. Then for every <span class="math inline">\(\delta &gt; 0\)</span>, <span class="math display">\[\Pr\left[\left|\frac{\sum_{i=1}^n X_i}{n} - \mu\right| \geq \delta\right] \leq \frac{\sigma^2}{\delta^2 n}\]</span></p>
 <p><strong>Proof.</strong> By linearity of expectation, we have <span class="math inline">\(\operatorname{E}\left[\frac{\sum_{i=1}^n X_i}{n}\right] = \mu\)</span>. Applying Chebyshev’s inequality to the random variable <span class="math inline">\(\frac{\sum_{i=1}^n X_i}{n}\)</span>, we have <span class="math display">\[\Pr\left[\left|\frac{\sum_{i=1}^n X_i}{n} - \mu\right| \geq \delta\right] \leq \frac{\operatorname{Var}\left(\frac{\sum_{i=1}^n X_i}{n}\right)}{\delta^2}\]</span></p>
 <p>Using pairwise independence (Lemma 2.19), it follows that <span class="math display">\[\operatorname{Var}\left(\frac{\sum_{i=1}^n X_i}{n}\right)
