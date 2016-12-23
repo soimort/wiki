@@ -8,7 +8,7 @@
     <meta name="generator" content="pandoc">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="author" content="Mort Yao">
-    <meta name="dcterms.date" content="2016-12-17">
+    <meta name="dcterms.date" content="2016-12-23">
     <title>Basic Probability Theory</title>
     <link rel="canonical" href="https://wiki.soimort.org/math/probability">
     <style type="text/css">code { white-space: pre; }</style>
@@ -34,13 +34,13 @@
       <header>
         <h1 class="title">Basic Probability Theory</h1>
         <address class="author">Mort Yao</address>
-        <!-- h3 class="date">2016-12-17</h3 -->
+        <!-- h3 class="date">2016-12-23</h3 -->
       </header>
       <nav id="TOC">
 <ul>
 <li><a href="#events-and-probability"><span class="toc-section-number">1</span> Events and Probability</a></li>
 <li><a href="#random-variables-and-probability-distribution"><span class="toc-section-number">2</span> Random Variables and Probability Distribution</a></li>
-<li><a href="#moment-based-probability-bounds"><span class="toc-section-number">3</span> Moment-based Probability Bounds</a></li>
+<li><a href="#concentration-inequalities"><span class="toc-section-number">3</span> Concentration Inequalities</a></li>
 <li><a href="#discrete-probability-distributions"><span class="toc-section-number">4</span> Discrete Probability Distributions</a><ul>
 <li><a href="#bernoulli-distribution"><span class="toc-section-number">4.1</span> Bernoulli Distribution</a></li>
 <li><a href="#binomial-distribution"><span class="toc-section-number">4.2</span> Binomial Distribution</a></li>
@@ -252,8 +252,9 @@
 <p><strong>Remark 2.23.</strong> In the case of continuous probability distribution with a probability density function <span class="math inline">\(f\)</span>, where the expectation is calculated as <span class="math inline">\(\operatorname{E}[X] = \int_{-\infty}^\infty x f(x) dx\)</span>, <span class="math inline">\(\operatorname{E}[X]\)</span> and all other moments can be undefined (Example: Cauchy distribution). For discrete probability distributions, however, all moments are well-defined.</p>
 <p><strong>Remark 2.24.</strong> In <a href="/math/statistics/">statistics</a>, when the exact expectations <span class="math inline">\(\operatorname{E}[X]\)</span> and <span class="math inline">\(\operatorname{E}[Y]\)</span> are unknown, the <em>sample covariance</em> (similarly for <em>sample variance</em> and <em>sample standard deviation</em>) is given by <span class="math display">\[s^2 = \frac{1}{N-1} \sum_{i=1}^N (X_i-\bar{X})(Y_i-\bar{Y})\]</span> Notice that <span class="math inline">\(\bar{X}\)</span> and <span class="math inline">\(\bar{Y}\)</span> are <em>empirical means</em> rather than expectations. The use of <span class="math inline">\(\frac{1}{N-1}\)</span> instead of <span class="math inline">\(\frac{1}{N}\)</span> is called <em>Bessel’s correction</em>, which gives an unbiased estimator of the population covariance (variance, standard deviation).</p>
 </section>
-<section id="moment-based-probability-bounds" class="level1">
-<h1><span class="header-section-number">3</span> Moment-based Probability Bounds</h1>
+<section id="concentration-inequalities" class="level1">
+<h1><span class="header-section-number">3</span> Concentration Inequalities</h1>
+<p>Concentration inequalities provide bounds on how a random variable deviates from some value (typically one of its moments, e.g., the expectation).</p>
 <p><strong>Theorem 3.1. (Markov’s inequality)</strong> Let <span class="math inline">\(X\)</span> be a non-negative random variable and <span class="math inline">\(\varepsilon &gt; 0\)</span>. Then <span class="math display">\[\Pr[X \geq \varepsilon] \leq \frac{\operatorname{E}[X]}{\varepsilon}\]</span></p>
 <strong>Proof.</strong> Let <span class="math inline">\(X\)</span> takes values from the set <span class="math inline">\(\mathcal{X}\)</span>. We have
 <span class="math display">\[\begin{align*}
@@ -263,7 +264,9 @@
 &amp;= \varepsilon \cdot \Pr[X \geq \varepsilon]
 \end{align*}\]</span>
 <p><p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
-<p><strong>Theorem 3.2. (Chebyshev’s inequality)</strong> Let <span class="math inline">\(X\)</span> be a random variable and <span class="math inline">\(\delta &gt; 0\)</span>. Then <span class="math display">\[\Pr[|X - \operatorname{E}[X]| \geq \delta] \leq \frac{\operatorname{Var}(X)}{\delta^2}\]</span></p>
+<p>Markov’s inequality extends to a strictly increasing and non-negative function <span class="math inline">\(\varphi\)</span>: <span class="math display">\[\Pr[X \geq \varepsilon] = \Pr[\varphi(X) \geq \varphi(\varepsilon)] \leq \frac{\operatorname{E}[\varphi(X)]}{\varphi(\varepsilon)}\]</span></p>
+<p>Markov’s inequality is the simplest and weakest upper bound based on the expectation of a random variable. Nevertheless, it forms the basis for many other stronger and more powerful bounds.</p>
+<p><strong>Theorem 3.2. (Chebyshev’s inequality)</strong> Let <span class="math inline">\(X\)</span> be a random variable and <span class="math inline">\(\delta &gt; 0\)</span>. If <span class="math inline">\(\operatorname{E}[X]\)</span> and <span class="math inline">\(\operatorname{Var}(X)\)</span> are bounded, then <span class="math display">\[\Pr[|X - \operatorname{E}[X]| \geq \delta] \leq \frac{\operatorname{Var}(X)}{\delta^2}\]</span></p>
 <strong>Proof.</strong> Let <span class="math inline">\(Y=(X-\operatorname{E}[X])^2\)</span> be a non-negative random variable. Using Markov’s inequality, we have
 <span class="math display">\[\begin{align*}
 \Pr[|X - \operatorname{E}[X]| \geq \delta]
@@ -276,6 +279,13 @@
 <p><strong>Proof.</strong> By linearity of expectation, we have <span class="math inline">\(\operatorname{E}\left[\frac{\sum_{i=1}^n X_i}{n}\right] = \mu\)</span>. Applying Chebyshev’s inequality to the random variable <span class="math inline">\(\frac{\sum_{i=1}^n X_i}{n}\)</span>, we have <span class="math display">\[\Pr\left[\left|\frac{\sum_{i=1}^n X_i}{n} - \mu\right| \geq \delta\right] \leq \frac{\operatorname{Var}\left(\frac{\sum_{i=1}^n X_i}{n}\right)}{\delta^2}\]</span></p>
 <p>Using pairwise independence (Lemma 2.19), it follows that <span class="math display">\[\operatorname{Var}\left(\frac{\sum_{i=1}^n X_i}{n}\right)
 = \frac{1}{n^2} \sum_{i=1}^n \operatorname{Var}(X_i) = \frac{1}{n^2} \sum_{i=1}^n \sigma^2 = \frac{\sigma^2}{n}\]</span> <p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
+<p><strong>Theorem 3.4. (Chernoff bound)</strong> Let <span class="math inline">\(X\)</span> be a non-negative random variable. Then for every <span class="math inline">\(\varepsilon &gt; 0\)</span> and <span class="math inline">\(t &gt; 0\)</span>, <span class="math display">\[\Pr[X \geq \varepsilon] \leq \frac{\operatorname{E}[e^{tX}]}{e^{t\varepsilon}}\]</span> For every <span class="math inline">\(\varepsilon &gt; 0\)</span> and <span class="math inline">\(t &lt; 0\)</span>, <span class="math display">\[\Pr[X \leq \varepsilon] \leq \frac{\operatorname{E}[e^{tX}]}{e^{t\varepsilon}}\]</span></p>
+<p><strong>Lemma 3.5. (Hoeffding’s lemma)</strong> Let <span class="math inline">\(X\)</span> be a random variable, such that <span class="math inline">\(\Pr[a \leq X \leq b] = 1\)</span>. Then for any <span class="math inline">\(\lambda \in \mathbb{R}\)</span>, <span class="math display">\[\operatorname{E}[e^{\lambda X}] \leq e^{\lambda \operatorname{E}[X] + \frac{\lambda^2 (b-a)^2}{8}}\]</span></p>
+<p>The function <span class="math inline">\(f(\lambda) = \operatorname{E}[e^{\lambda X}]\)</span> is known as the <em>moment generating function (mgf)</em> of <span class="math inline">\(X\)</span>, since <span class="math inline">\(f^{(k)}(0) = \operatorname{E}[X^k]\)</span> is the <span class="math inline">\(k\)</span>th raw moment of <span class="math inline">\(X\)</span>.</p>
+<p><strong>Theorem 3.6. (Hoeffding’s inequality)</strong> Let <span class="math inline">\(X_1, \dots, X_n\)</span> be independent real-valued random variables, such that for <span class="math inline">\(i \in \{1,\dots,n\}\)</span> there exist <span class="math inline">\(a_i \leq b_i\)</span> such that <span class="math inline">\(\Pr[a_i \leq X_i \leq b_i] = 1\)</span>. Then for every <span class="math inline">\(\varepsilon &gt; 0\)</span>, <span class="math display">\[\Pr\left[\sum_{i=1}^n X_i - \operatorname{E}\left[\sum_{i=1}^n X_i\right] \geq \varepsilon \right] \leq e^{-2\varepsilon^2 / \sum_{i=1}^n (b_i-a_i)^2}\]</span> and <span class="math display">\[\Pr\left[\sum_{i=1}^n X_i - \operatorname{E}\left[\sum_{i=1}^n X_i\right] \leq -\varepsilon \right] \leq e^{-2\varepsilon^2 / \sum_{i=1}^n (b_i-a_i)^2}\]</span></p>
+<p><strong>Corollary 3.7. (Two-sided Hoeffding’s inequality)</strong> <span class="math display">\[\Pr\left[\left|\sum_{i=1}^n X_i - \operatorname{E}\left[\sum_{i=1}^n X_i\right]\right| \geq \varepsilon \right] \leq 2e^{-2\varepsilon^2 / \sum_{i=1}^n (b_i-a_i)^2}\]</span></p>
+<p>Hoeffding’s inequality provides an upper bound on the probability that the sum of random variables deviates from its expected value. It is also useful to analyze the number of required samples needed to obtain a confidence interval.</p>
+<p><strong>Corollary 3.8.</strong> Let <span class="math inline">\(X_1, \dots, X_n\)</span> be independent real-valued random variables, such that for <span class="math inline">\(i \in \{1,\dots,n\}\)</span>, <span class="math inline">\(X_i \in [0,1]\)</span> and <span class="math inline">\(\operatorname{E}[X_i] = \mu\)</span>. Then for every <span class="math inline">\(\varepsilon &gt; 0\)</span>, <span class="math display">\[\Pr\left[ \frac{1}{n} \sum_{i=1}^n X_i - \mu \geq \varepsilon \right] \leq e^{-2n\varepsilon^2}\]</span> and <span class="math display">\[\Pr\left[ \mu - \frac{1}{n} \sum_{i=1}^n X_i \geq \varepsilon \right] \leq e^{-2n\varepsilon^2}\]</span></p>
 </section>
 <section id="discrete-probability-distributions" class="level1">
 <h1><span class="header-section-number">4</span> Discrete Probability Distributions</h1>
@@ -406,7 +416,7 @@
           <i class="fa fa-anchor" aria-hidden="true"></i>
           <code>Permalink</code>
         </a> |
-        Last updated: <span id="update-time">2016-12-17</span>
+        Last updated: <span id="update-time">2016-12-23</span>
       </footer>
     </article></main>
   </body>

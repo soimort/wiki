@@ -1,6 +1,6 @@
 % Basic Probability Theory
 % Mort Yao
-% 2016-12-17
+% 2016-12-23
 
 Basic probability theory and statistics:
 
@@ -331,7 +331,9 @@ Notice that $\bar{X}$ and $\bar{Y}$ are *empirical means* rather than expectatio
 
 
 
-# Moment-based Probability Bounds
+# Concentration Inequalities
+
+Concentration inequalities provide bounds on how a random variable deviates from some value (typically one of its moments, e.g., the expectation).
 
 **Theorem 3.1. (Markov's inequality)**
 Let $X$ be a non-negative random variable and $\varepsilon > 0$. Then
@@ -347,8 +349,13 @@ Let $X$ takes values from the set $\mathcal{X}$. We have
 \end{align*}
 [QED]
 
+Markov's inequality extends to a strictly increasing and non-negative function $\varphi$:
+$$\Pr[X \geq \varepsilon] = \Pr[\varphi(X) \geq \varphi(\varepsilon)] \leq \frac{\operatorname{E}[\varphi(X)]}{\varphi(\varepsilon)}$$
+
+Markov's inequality is the simplest and weakest upper bound based on the expectation of a random variable. Nevertheless, it forms the basis for many other stronger and more powerful bounds.
+
 **Theorem 3.2. (Chebyshev's inequality)**
-Let $X$ be a random variable and $\delta > 0$. Then
+Let $X$ be a random variable and $\delta > 0$. If $\operatorname{E}[X]$ and $\operatorname{Var}(X)$ are bounded, then
 $$\Pr[|X - \operatorname{E}[X]| \geq \delta] \leq \frac{\operatorname{Var}(X)}{\delta^2}$$
 
 **Proof.**
@@ -373,6 +380,35 @@ Using pairwise independence (Lemma 2.19), it follows that
 $$\operatorname{Var}\left(\frac{\sum_{i=1}^n X_i}{n}\right)
 = \frac{1}{n^2} \sum_{i=1}^n \operatorname{Var}(X_i) = \frac{1}{n^2} \sum_{i=1}^n \sigma^2 = \frac{\sigma^2}{n}$$
 [QED]
+
+**Theorem 3.4. (Chernoff bound)**
+Let $X$ be a non-negative random variable. Then for every $\varepsilon > 0$ and $t > 0$,
+$$\Pr[X \geq \varepsilon] \leq \frac{\operatorname{E}[e^{tX}]}{e^{t\varepsilon}}$$
+For every $\varepsilon > 0$ and $t < 0$,
+$$\Pr[X \leq \varepsilon] \leq \frac{\operatorname{E}[e^{tX}]}{e^{t\varepsilon}}$$
+
+**Lemma 3.5. (Hoeffding's lemma)**
+Let $X$ be a random variable, such that $\Pr[a \leq X \leq b] = 1$. Then for any $\lambda \in \mathbb{R}$,
+$$\operatorname{E}[e^{\lambda X}] \leq e^{\lambda \operatorname{E}[X] + \frac{\lambda^2 (b-a)^2}{8}}$$
+
+The function $f(\lambda) = \operatorname{E}[e^{\lambda X}]$ is known as the *moment generating function (mgf)* of $X$, since $f^{(k)}(0) = \operatorname{E}[X^k]$ is the $k$th raw moment of $X$.
+
+**Theorem 3.6. (Hoeffding's inequality)**
+Let $X_1, \dots, X_n$ be independent real-valued random variables, such that for $i \in \{1,\dots,n\}$ there exist $a_i \leq b_i$ such that $\Pr[a_i \leq X_i \leq b_i] = 1$. Then for every $\varepsilon > 0$,
+$$\Pr\left[\sum_{i=1}^n X_i - \operatorname{E}\left[\sum_{i=1}^n X_i\right] \geq \varepsilon \right] \leq e^{-2\varepsilon^2 / \sum_{i=1}^n (b_i-a_i)^2}$$
+and
+$$\Pr\left[\sum_{i=1}^n X_i - \operatorname{E}\left[\sum_{i=1}^n X_i\right] \leq -\varepsilon \right] \leq e^{-2\varepsilon^2 / \sum_{i=1}^n (b_i-a_i)^2}$$
+
+**Corollary 3.7. (Two-sided Hoeffding's inequality)**
+$$\Pr\left[\left|\sum_{i=1}^n X_i - \operatorname{E}\left[\sum_{i=1}^n X_i\right]\right| \geq \varepsilon \right] \leq 2e^{-2\varepsilon^2 / \sum_{i=1}^n (b_i-a_i)^2}$$
+
+Hoeffding's inequality provides an upper bound on the probability that the sum of random variables deviates from its expected value. It is also useful to analyze the number of required samples needed to obtain a confidence interval.
+
+**Corollary 3.8.**
+Let $X_1, \dots, X_n$ be independent real-valued random variables, such that for $i \in \{1,\dots,n\}$, $X_i \in [0,1]$ and $\operatorname{E}[X_i] = \mu$. Then for every $\varepsilon > 0$,
+$$\Pr\left[ \frac{1}{n} \sum_{i=1}^n X_i - \mu \geq \varepsilon \right] \leq e^{-2n\varepsilon^2}$$
+and
+$$\Pr\left[ \mu - \frac{1}{n} \sum_{i=1}^n X_i \geq \varepsilon \right] \leq e^{-2n\varepsilon^2}$$
 
 
 
