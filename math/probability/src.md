@@ -1,6 +1,6 @@
 % Basic Probability Theory
 % Mort Yao
-% 2016-12-23
+% 2016-12-24
 
 Basic probability theory and statistics:
 
@@ -327,7 +327,7 @@ where $\mu_n$ is the $n$th central moment of $X$, and $\sigma = \sqrt{\operatorn
 
 **Remark 2.24.** In [statistics](/math/statistics/), when the exact expectations $\operatorname{E}[X]$ and $\operatorname{E}[Y]$ are unknown, the *sample covariance* (similarly for *sample variance* and *sample standard deviation*) is given by
 $$s^2 = \frac{1}{N-1} \sum_{i=1}^N (X_i-\bar{X})(Y_i-\bar{Y})$$
-Notice that $\bar{X}$ and $\bar{Y}$ are *empirical means* rather than expectations. The use of $\frac{1}{N-1}$ instead of $\frac{1}{N}$ is called *Bessel's correction*, which gives an unbiased estimator of the population covariance (variance, standard deviation).
+Notice that $\bar{X}$ and $\bar{Y}$ are *empirical means* rather than expectations. The use of $\frac{1}{N-1}$ instead of $\frac{1}{N}$ is called *Bessel's correction*, which gives an unbiased estimator of the population covariance (and variance).
 
 
 
