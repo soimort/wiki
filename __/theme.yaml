@@ -18,14 +18,15 @@ header-includes: [
   <link rel="apple-touch-icon" href="/favicon.png">,
   ]
 filters: [
-  mathsvg
+  qed.hs
   ]
 raw-options: [
-  #--number-sections,
+  --number-sections,
   --section-divs,
   --toc,
-  --toc-depth=2,
+  --toc-depth=1,
   --smart,  # produce typographically correct output
+  --mathjax,
   ]
 output-format: html5
 ---
