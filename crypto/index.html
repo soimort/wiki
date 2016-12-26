@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-07 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Mort Yao">
+    <meta name="dcterms.date" content="2016-12-26">
+    <title>Cryptography</title>
+    <link rel="canonical" href="https://wiki.soimort.org/crypto">
+    <style type="text/css">code { white-space: pre; }</style>
+    <link rel="stylesheet" href="//cdn.soimort.org/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/mathsvg/latest/mathsvg.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Roman.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Mono.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/__/css/style.css">
+    <link rel="stylesheet" href="/__/css/pygments.css">
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.soimort.org/jk/latest/jk.min.js"></script>
+    <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>
+    <script src="/__/js/jk-minibar.js"></script>
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+  <body>
+    <main><article>
+      <header>
+        <h1 class="title">Cryptography</h1>
+        <address class="author">Mort Yao</address>
+        <!-- h3 class="date">2016-12-26</h3 -->
+      </header>
+      <nav id="TOC">
+<ul>
+<li><a href="#introduction"><span class="toc-section-number">1</span> Introduction</a></li>
+<li><a href="#information-theoretic-security"><span class="toc-section-number">2</span> Information-Theoretic Security</a></li>
+<li><a href="#private-key-cryptography"><span class="toc-section-number">3</span> Private-Key Cryptography</a></li>
+<li><a href="#public-key-cryptography"><span class="toc-section-number">4</span> Public-Key Cryptography</a></li>
+<li><a href="#quantum-cryptography"><span class="toc-section-number">5</span> Quantum Cryptography</a></li>
+</ul>
+      </nav>
+      <div id="content">
+<p>Textbook:</p>
+<ul>
+<li>Jonathan Katz and Yehuda Lindell. <strong><em>Introduction to Modern Cryptography, 2nd edition</em></strong>.</li>
+</ul>
+<p>Supplementary reading:</p>
+<ul>
+<li>John Talbot and Dominic Welsh. <strong><em>Complexity and Cryptography: An Introduction</em></strong>.</li>
+<li>Alfred J. Menezes, Paul C. van Oorschot and Scott A. Vanstone. <a href="http://citeseer.ist.psu.edu/viewdoc/download?doi=10.1.1.99.2838&amp;rep=rep1&amp;type=pdf"><strong><em>Handbook of Applied Cryptography</em></strong></a>.</li>
+<li>Darrel Hankerson, Alfred Menezes and Scott Vanstone. <a href="http://diamond.boisestate.edu/~liljanab/MATH308/GuideToECC.pdf"><strong><em>Guide to Elliptic Curve Cryptography</em></strong></a>.</li>
+</ul>
+<hr />
+<section id="introduction" class="level1">
+<h1><span class="header-section-number">1</span> Introduction</h1>
+<p>Preliminaries: Basic <a href="/math/statistics/">statistics</a>, <a href="/comp/">theory of computation</a> (Computability: Turing machines and algorithms).</p>
+<section id="principles-of-modern-cryptography" class="level2">
+<h2><span class="header-section-number">1.1</span> <a href="intro/">Principles of Modern Cryptography</a></h2>
+</section>
+<section id="classical-ciphers" class="level2">
+<h2><span class="header-section-number">1.2</span> <a href="classical/">Classical Ciphers</a></h2>
+</section>
+</section>
+<section id="information-theoretic-security" class="level1">
+<h1><span class="header-section-number">2</span> Information-Theoretic Security</h1>
+<p>Preliminaries: <a href="/info/">Information theory</a>.</p>
+<section id="perfect-secrecy" class="level2">
+<h2><span class="header-section-number">2.1</span> <a href="perfect-secrecy/">Perfect Secrecy</a></h2>
+</section>
+<section id="one-time-pad-otp" class="level2">
+<h2><span class="header-section-number">2.2</span> <a href="one-time-pad/">One-Time Pad (OTP)</a></h2>
+</section>
+</section>
+<section id="private-key-cryptography" class="level1">
+<h1><span class="header-section-number">3</span> Private-Key Cryptography</h1>
+<p>Preliminaries: Basic <a href="/math/probability/">probability theory</a>, <a href="/comp/">theory of computation</a> (Complexity: efficient algorithms and negligible functions).</p>
+<section id="one-way-functions-and-pseudorandomness" class="level2">
+<h2><span class="header-section-number">3.1</span> One-Way Functions and Pseudorandomness</h2>
+</section>
+<section id="private-key-encryption-and-computational-security" class="level2">
+<h2><span class="header-section-number">3.2</span> Private-Key Encryption and Computational Security</h2>
+</section>
+<section id="message-authentication-codes-mac" class="level2">
+<h2><span class="header-section-number">3.3</span> Message Authentication Codes (MAC)</h2>
+</section>
+<section id="stream-ciphers" class="level2">
+<h2><span class="header-section-number">3.4</span> Stream Ciphers</h2>
+</section>
+<section id="block-ciphers" class="level2">
+<h2><span class="header-section-number">3.5</span> Block Ciphers</h2>
+</section>
+<section id="hash-functions" class="level2">
+<h2><span class="header-section-number">3.6</span> Hash Functions</h2>
+</section>
+</section>
+<section id="public-key-cryptography" class="level1">
+<h1><span class="header-section-number">4</span> Public-Key Cryptography</h1>
+<p>Preliminaries: Basic abstract algebra, algebraic and computational number theory.</p>
+<section id="cryptographic-hardness-assumptions" class="level2">
+<h2><span class="header-section-number">4.1</span> Cryptographic Hardness Assumptions</h2>
+</section>
+<section id="key-exchange" class="level2">
+<h2><span class="header-section-number">4.2</span> Key Exchange</h2>
+</section>
+<section id="public-key-encryption" class="level2">
+<h2><span class="header-section-number">4.3</span> Public-Key Encryption</h2>
+</section>
+<section id="digital-signatures" class="level2">
+<h2><span class="header-section-number">4.4</span> Digital Signatures</h2>
+</section>
+<section id="ssltls" class="level2">
+<h2><span class="header-section-number">4.5</span> SSL/TLS</h2>
+</section>
+<section id="advanced-topics" class="level2">
+<h2><span class="header-section-number">4.6</span> Advanced Topics</h2>
+<section id="elliptic-curves" class="level3">
+<h3><span class="header-section-number">4.6.1</span> Elliptic Curves</h3>
+</section>
+<section id="trapdoor-permutations" class="level3">
+<h3><span class="header-section-number">4.6.2</span> Trapdoor Permutations</h3>
+</section>
+<section id="multilinear-maps" class="level3">
+<h3><span class="header-section-number">4.6.3</span> Multilinear Maps</h3>
+</section>
+<section id="fully-homomorphic-encryption-fhe" class="level3">
+<h3><span class="header-section-number">4.6.4</span> Fully Homomorphic Encryption (FHE)</h3>
+</section>
+<section id="computational-indistinguishability-obfuscation" class="level3">
+<h3><span class="header-section-number">4.6.5</span> Computational Indistinguishability Obfuscation</h3>
+</section>
+</section>
+</section>
+<section id="quantum-cryptography" class="level1">
+<h1><span class="header-section-number">5</span> Quantum Cryptography</h1>
+<section id="quantum-computing" class="level2">
+<h2><span class="header-section-number">5.1</span> Quantum Computing</h2>
+</section>
+<section id="hidden-subgroup-problem-hsp" class="level2">
+<h2><span class="header-section-number">5.2</span> Hidden Subgroup Problem (HSP)</h2>
+</section>
+<section id="shors-algorithm" class="level2">
+<h2><span class="header-section-number">5.3</span> Shor’s Algorithm</h2>
+</section>
+<section id="simons-algorithm" class="level2">
+<h2><span class="header-section-number">5.4</span> Simon’s Algorithm</h2>
+</section>
+</section>
+      </div>
+      <footer>
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard shortcut: R"
+           href="https://wiki.soimort.org/crypto/src.md">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
+        <a class="history" accesskey="h"
+           title="Keyboard shortcut: H"
+           href="https://github.com/soimort/wiki/commits/gh-pages/crypto/src.md">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard shortcut: E"
+           href="https://github.com/soimort/wiki/edit/gh-pages/crypto/src.md">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
+           href="https://wiki.soimort.org/crypto">
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
+        Last updated: <span id="update-time">2016-12-26</span>
+      </footer>
+    </article></main>
+  </body>
+</html>
