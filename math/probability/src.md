@@ -460,7 +460,7 @@ $$X = \sum_{k=1}^n X_k \sim \text{B}(n,p)$$
 
 Thus, the Bernoulli distribution is a special case of binomial distribution $\text{B}(1,p)$.
 
-## Negative binomial distribution
+## Negative Binomial Distribution
 
 The *negative binomial distribution* is the discrete probability distribution of the number of successes in a sequence of independent and identically distributed Bernoulli trials before a specified number of failures (denoted $r$) occurs.
 
