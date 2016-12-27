@@ -1,10 +1,10 @@
 % Git Tricks
 % Mort Yao
-% 2016-10-19
+% 2016-12-27
 
-## Working with branches
+# Working with branches
 
-### Clone a single branch from a remote repository
+## Clone a single branch from a remote repository
 
     $ git clone -b [develop] --single-branch [git@github.com:soimort/example.git]
 
@@ -14,7 +14,7 @@ Or: (if there's already an existing remote, just `checkout` the branch)
 
 Source: <http://stackoverflow.com/a/8142070/1114972>
 
-### Force update of a repository brutally (and throw away any uncommitted local changes / commits)
+## Force update of a repository brutally (and throw away any uncommitted local changes / commits)
 
 This operation does not require configuration of git user name / email. (Thus could be useful on an app server.)
 
@@ -23,7 +23,7 @@ This operation does not require configuration of git user name / email. (Thus co
 
 Source: <http://stackoverflow.com/a/17713604/1114972>
 
-### Create a new, unrelated branch to work on (e.g., `gh-pages` for GitHub Pages)
+## Create a new, unrelated branch to work on (e.g., `gh-pages` for GitHub Pages)
 
 Personally I would prefer to put an orphaned branch in a separated directory so that it can never mess up with the major codebase.
 
@@ -34,11 +34,11 @@ Personally I would prefer to put an orphaned branch in a separated directory so 
     ...
     $ git push origin [gh-pages]
 
-### Delete a remote branch
+## Delete a remote branch
 
     $ git push origin :[branch-to-be-deleted]
 
-### Clean obsolete references
+## Clean obsolete references
 
 Show all stale branches:
 
@@ -50,17 +50,17 @@ Update local references to the remote repository: (and delete obsolete reference
 
 
 
-## Working with submodules
+# Working with submodules
 
-### Update all submodules
+## Update all submodules
 
     $ git submodule update --recursive --remote
 
 
 
-## Staging
+# Staging
 
-### Revert (uncommitted change of) a single file
+## Revert (uncommitted change of) a single file
 
     $ git checkout [file]
 
@@ -68,19 +68,19 @@ To avoid confusion with a branch name, use:
 
     $ git checkout -- [file]
 
-### Unstage any staged changes for a file
+## Unstage any staged changes for a file
 
     $ git reset [file]
 
-### Stage the removal of a file (but leave it untracked in the working tree)
+## Stage the removal of a file (but leave it untracked in the working tree)
 
     $ git rm --cached [file]
 
 
 
-## GitHub tricks
+# GitHub tricks
 
-### Get a Pull Request (and create a feature branch for the PR)
+## Get a Pull Request (and create a feature branch for the PR)
 
     $ git fetch origin [pull/123/head]
     $ git checkout -b [feature-branch] FETCH_HEAD
@@ -90,19 +90,23 @@ Or:
     $ git fetch origin [pull/123/head:feature-branch]
     $ git checkout [feature-branch]
 
+## Push an empty commit to trigger a GitHub Pages rebuild
+
+    $ git commit -m 'rebuild pages' --allow-empty
 
 
-## Miscellaneous
 
-### Compare two arbitrary files
+# Miscellaneous
+
+## Compare two arbitrary files
 
     $ git diff --no-index [file_a] [file_b]
 
-### Create the archive of a tag
+## Create the archive of a tag
 
     $ git archive --format=tar.gz --prefix=[foobar-1.2.3/] [v1.2.3] > [v1.2.3.tar.gz]
 
-### Remove untracked files and directories from the working tree
+## Remove untracked files and directories from the working tree
 
     $ git clean -fd
 

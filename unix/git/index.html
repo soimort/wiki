@@ -8,7 +8,7 @@
     <meta name="generator" content="pandoc">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="author" content="Mort Yao">
-    <meta name="dcterms.date" content="2016-10-19">
+    <meta name="dcterms.date" content="2016-12-27">
     <title>Git Tricks</title>
     <link rel="canonical" href="https://wiki.soimort.org/unix/git">
     <style type="text/css">code { white-space: pre; }</style>
@@ -33,36 +33,36 @@
       <header>
         <h1 class="title">Git Tricks</h1>
         <address class="author">Mort Yao</address>
-        <!-- h3 class="date">2016-10-19</h3 -->
+        <!-- h3 class="date">2016-12-27</h3 -->
       </header>
       <nav id="TOC">
 <ul>
-<li><a href="#working-with-branches">Working with branches</a></li>
-<li><a href="#working-with-submodules">Working with submodules</a></li>
-<li><a href="#staging">Staging</a></li>
-<li><a href="#github-tricks">GitHub tricks</a></li>
-<li><a href="#miscellaneous">Miscellaneous</a></li>
+<li><a href="#working-with-branches"><span class="toc-section-number">1</span> Working with branches</a></li>
+<li><a href="#working-with-submodules"><span class="toc-section-number">2</span> Working with submodules</a></li>
+<li><a href="#staging"><span class="toc-section-number">3</span> Staging</a></li>
+<li><a href="#github-tricks"><span class="toc-section-number">4</span> GitHub tricks</a></li>
+<li><a href="#miscellaneous"><span class="toc-section-number">5</span> Miscellaneous</a></li>
 </ul>
       </nav>
       <div id="content">
-<section id="working-with-branches" class="level2">
-<h2>Working with branches</h2>
-<section id="clone-a-single-branch-from-a-remote-repository" class="level3">
-<h3>Clone a single branch from a remote repository</h3>
+<section id="working-with-branches" class="level1">
+<h1><span class="header-section-number">1</span> Working with branches</h1>
+<section id="clone-a-single-branch-from-a-remote-repository" class="level2">
+<h2><span class="header-section-number">1.1</span> Clone a single branch from a remote repository</h2>
 <pre><code>$ git clone -b <span class="do">develop</span> --single-branch <span class="do">git@github.com:soimort/example.git</span></code></pre>
 <p>Or: (if there’s already an existing remote, just <code>checkout</code> the branch)</p>
 <pre><code>$ git checkout -b <span class="do">develop</span> <span class="do">origin/develop</span></code></pre>
 <p>Source: <a href="http://stackoverflow.com/a/8142070/1114972" class="uri">http://stackoverflow.com/a/8142070/1114972</a></p>
 </section>
-<section id="force-update-of-a-repository-brutally-and-throw-away-any-uncommitted-local-changes-commits" class="level3">
-<h3>Force update of a repository brutally (and throw away any uncommitted local changes / commits)</h3>
+<section id="force-update-of-a-repository-brutally-and-throw-away-any-uncommitted-local-changes-commits" class="level2">
+<h2><span class="header-section-number">1.2</span> Force update of a repository brutally (and throw away any uncommitted local changes / commits)</h2>
 <p>This operation does not require configuration of git user name / email. (Thus could be useful on an app server.)</p>
 <pre><code>$ git fetch
 $ git reset --hard <span class="do">origin/master</span></code></pre>
 <p>Source: <a href="http://stackoverflow.com/a/17713604/1114972" class="uri">http://stackoverflow.com/a/17713604/1114972</a></p>
 </section>
-<section id="create-a-new-unrelated-branch-to-work-on-e.g.-gh-pages-for-github-pages" class="level3">
-<h3>Create a new, unrelated branch to work on (e.g., <code>gh-pages</code> for GitHub Pages)</h3>
+<section id="create-a-new-unrelated-branch-to-work-on-e.g.-gh-pages-for-github-pages" class="level2">
+<h2><span class="header-section-number">1.3</span> Create a new, unrelated branch to work on (e.g., <code>gh-pages</code> for GitHub Pages)</h2>
 <p>Personally I would prefer to put an orphaned branch in a separated directory so that it can never mess up with the major codebase.</p>
 <pre><code>$ mkdir <span class="do">gh-pages</span> && cd <span class="do">gh-pages</span>
 $ git init
@@ -71,65 +71,69 @@ $ git checkout -b <span class="do">gh-pages</span>
 ...
 $ git push origin <span class="do">gh-pages</span></code></pre>
 </section>
-<section id="delete-a-remote-branch" class="level3">
-<h3>Delete a remote branch</h3>
+<section id="delete-a-remote-branch" class="level2">
+<h2><span class="header-section-number">1.4</span> Delete a remote branch</h2>
 <pre><code>$ git push origin :<span class="do">branch-to-be-deleted</span></code></pre>
 </section>
-<section id="clean-obsolete-references" class="level3">
-<h3>Clean obsolete references</h3>
+<section id="clean-obsolete-references" class="level2">
+<h2><span class="header-section-number">1.5</span> Clean obsolete references</h2>
 <p>Show all stale branches:</p>
 <pre><code>$ git branch -r</code></pre>
 <p>Update local references to the remote repository: (and delete obsolete references that are removed in the remote repository)</p>
 <pre><code>$ git fetch --prune</code></pre>
 </section>
 </section>
-<section id="working-with-submodules" class="level2">
-<h2>Working with submodules</h2>
-<section id="update-all-submodules" class="level3">
-<h3>Update all submodules</h3>
+<section id="working-with-submodules" class="level1">
+<h1><span class="header-section-number">2</span> Working with submodules</h1>
+<section id="update-all-submodules" class="level2">
+<h2><span class="header-section-number">2.1</span> Update all submodules</h2>
 <pre><code>$ git submodule update --recursive --remote</code></pre>
 </section>
 </section>
-<section id="staging" class="level2">
-<h2>Staging</h2>
-<section id="revert-uncommitted-change-of-a-single-file" class="level3">
-<h3>Revert (uncommitted change of) a single file</h3>
+<section id="staging" class="level1">
+<h1><span class="header-section-number">3</span> Staging</h1>
+<section id="revert-uncommitted-change-of-a-single-file" class="level2">
+<h2><span class="header-section-number">3.1</span> Revert (uncommitted change of) a single file</h2>
 <pre><code>$ git checkout <span class="do">file</span></code></pre>
 <p>To avoid confusion with a branch name, use:</p>
 <pre><code>$ git checkout -- <span class="do">file</span></code></pre>
 </section>
-<section id="unstage-any-staged-changes-for-a-file" class="level3">
-<h3>Unstage any staged changes for a file</h3>
+<section id="unstage-any-staged-changes-for-a-file" class="level2">
+<h2><span class="header-section-number">3.2</span> Unstage any staged changes for a file</h2>
 <pre><code>$ git reset <span class="do">file</span></code></pre>
 </section>
-<section id="stage-the-removal-of-a-file-but-leave-it-untracked-in-the-working-tree" class="level3">
-<h3>Stage the removal of a file (but leave it untracked in the working tree)</h3>
+<section id="stage-the-removal-of-a-file-but-leave-it-untracked-in-the-working-tree" class="level2">
+<h2><span class="header-section-number">3.3</span> Stage the removal of a file (but leave it untracked in the working tree)</h2>
 <pre><code>$ git rm --cached <span class="do">file</span></code></pre>
 </section>
 </section>
-<section id="github-tricks" class="level2">
-<h2>GitHub tricks</h2>
-<section id="get-a-pull-request-and-create-a-feature-branch-for-the-pr" class="level3">
-<h3>Get a Pull Request (and create a feature branch for the PR)</h3>
+<section id="github-tricks" class="level1">
+<h1><span class="header-section-number">4</span> GitHub tricks</h1>
+<section id="get-a-pull-request-and-create-a-feature-branch-for-the-pr" class="level2">
+<h2><span class="header-section-number">4.1</span> Get a Pull Request (and create a feature branch for the PR)</h2>
 <pre><code>$ git fetch origin <span class="do">pull/123/head</span>
 $ git checkout -b <span class="do">feature-branch</span> FETCH_HEAD</code></pre>
 <p>Or:</p>
 <pre><code>$ git fetch origin <span class="do">pull/123/head:feature-branch</span>
 $ git checkout <span class="do">feature-branch</span></code></pre>
 </section>
+<section id="push-an-empty-commit-to-trigger-a-github-pages-rebuild" class="level2">
+<h2><span class="header-section-number">4.2</span> Push an empty commit to trigger a GitHub Pages rebuild</h2>
+<pre><code>$ git commit -m 'rebuild pages' --allow-empty</code></pre>
 </section>
-<section id="miscellaneous" class="level2">
-<h2>Miscellaneous</h2>
-<section id="compare-two-arbitrary-files" class="level3">
-<h3>Compare two arbitrary files</h3>
+</section>
+<section id="miscellaneous" class="level1">
+<h1><span class="header-section-number">5</span> Miscellaneous</h1>
+<section id="compare-two-arbitrary-files" class="level2">
+<h2><span class="header-section-number">5.1</span> Compare two arbitrary files</h2>
 <pre><code>$ git diff --no-index <span class="do">file_a</span> <span class="do">file_b</span></code></pre>
 </section>
-<section id="create-the-archive-of-a-tag" class="level3">
-<h3>Create the archive of a tag</h3>
+<section id="create-the-archive-of-a-tag" class="level2">
+<h2><span class="header-section-number">5.2</span> Create the archive of a tag</h2>
 <pre><code>$ git archive --format=tar.gz --prefix=<span class="do">foobar-1.2.3/</span> <span class="do">v1.2.3</span> > <span class="do">v1.2.3.tar.gz</span></code></pre>
 </section>
-<section id="remove-untracked-files-and-directories-from-the-working-tree" class="level3">
-<h3>Remove untracked files and directories from the working tree</h3>
+<section id="remove-untracked-files-and-directories-from-the-working-tree" class="level2">
+<h2><span class="header-section-number">5.3</span> Remove untracked files and directories from the working tree</h2>
 <pre><code>$ git clean -fd</code></pre>
 <p>To remove ignored files as well:</p>
 <pre><code>$ git clean -fdx</code></pre>
@@ -171,7 +175,7 @@ $ git checkout <span class="do">feature-branch</span></code></pre>
           <i class="fa fa-anchor" aria-hidden="true"></i>
           <code>Permalink</code>
         </a> |
-        Last updated: <span id="update-time">2016-10-19</span>
+        Last updated: <span id="update-time">2016-12-27</span>
       </footer>
     </article></main>
   </body>
