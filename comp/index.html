@@ -8,7 +8,7 @@
     <meta name="generator" content="pandoc">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="author" content="Mort Yao">
-    <meta name="dcterms.date" content="2016-10-14">
+    <meta name="dcterms.date" content="2016-12-28">
     <title>Theory of Computation</title>
     <link rel="canonical" href="https://wiki.soimort.org/comp">
     <style type="text/css">code { white-space: pre; }</style>
@@ -33,56 +33,128 @@
       <header>
         <h1 class="title">Theory of Computation</h1>
         <address class="author">Mort Yao</address>
-        <!-- h3 class="date">2016-10-14</h3 -->
+        <!-- h3 class="date">2016-12-28</h3 -->
       </header>
-      <div id="content">
+      <nav id="TOC">
 <ul>
-<li><a href="language">Formal language</a> and automaton
-<ul>
-<li>Regular language</li>
-<li>Context-free language</li>
-</ul></li>
-<li>Computability
-<ul>
-<li>Church-Turing thesis
-<ul>
-<li>Automata theory and models of computation
-<ul>
-<li>Turing machine</li>
-<li>Pushdown automaton (PDA)</li>
-<li>Finite state machine (FSM)</li>
-<li>Combinational logic</li>
-<li>λ-calculus</li>
-<li>Recursive function</li>
-<li>Combinatory logic</li>
-<li>Cellular automaton</li>
-<li>Abstract rewriting system</li>
-</ul></li>
-<li>Algorithm</li>
-</ul></li>
-<li><a href="decidability">Decidability</a>
-<ul>
-<li>Undecidability</li>
-</ul></li>
-<li><a href="reducibility">Reducibility</a>
-<ul>
-<li>Many-one reduction</li>
-<li>Turing reduction, Turing equivalence and Turing degree</li>
-</ul></li>
-</ul></li>
-<li><a href="complexity">Complexity</a>
-<ul>
-<li><a href="complexity/time">Time complexity</a>
-<ul>
-<li><a href="complexity/time/npc">NP-completeness</a></li>
-</ul></li>
-<li>Space complexity</li>
-<li>Intractability</li>
-<li><a href="/algo/approximation">Approximation algorithms</a> <i class="fa fa-link" aria-hidden="true"></i></li>
-<li><a href="/algo/randomization">Probabilistic algorithms</a> <i class="fa fa-link" aria-hidden="true"></i></li>
-<li><a href="/crypto">Cryptography</a> <i class="fa fa-link" aria-hidden="true"></i></li>
-</ul></li>
+<li><a href="#languages-and-automata"><span class="toc-section-number">1</span> Languages and Automata</a></li>
+<li><a href="#computability"><span class="toc-section-number">2</span> Computability</a></li>
+<li><a href="#complexity"><span class="toc-section-number">3</span> <a href="complexity/">Complexity</a></a></li>
 </ul>
+      </nav>
+      <div id="content">
+<p>Textbook:</p>
+<ul>
+<li>Michael Sipser. <strong><em>Introduction to the Theory of Computation, 3rd edition</em></strong>.</li>
+</ul>
+<p>Supplementary reading:</p>
+<ul>
+<li>Neil Jones. <strong><em>Computability and Complexity: From a Programming Perspective</em></strong>.</li>
+</ul>
+<hr />
+<section id="languages-and-automata" class="level1">
+<h1><span class="header-section-number">1</span> Languages and Automata</h1>
+<section id="formal-language-and-automaton" class="level2">
+<h2><span class="header-section-number">1.1</span> <a href="language/">Formal Language</a> and Automaton</h2>
+<p>Formal definition of a <em>language</em>.</p>
+</section>
+<section id="regular-language" class="level2">
+<h2><span class="header-section-number">1.2</span> Regular Language</h2>
+</section>
+<section id="context-free-language" class="level2">
+<h2><span class="header-section-number">1.3</span> Context-Free Language</h2>
+</section>
+</section>
+<section id="computability" class="level1">
+<h1><span class="header-section-number">2</span> Computability</h1>
+<section id="church-turing-thesis" class="level2">
+<h2><span class="header-section-number">2.1</span> Church-Turing Thesis</h2>
+</section>
+<section id="automata-theory-and-models-of-computation" class="level2">
+<h2><span class="header-section-number">2.2</span> Automata Theory and Models of Computation</h2>
+<section id="turing-machine" class="level3">
+<h3><span class="header-section-number">2.2.1</span> Turing Machine</h3>
+</section>
+<section id="pushdown-automaton-pda" class="level3">
+<h3><span class="header-section-number">2.2.2</span> Pushdown Automaton (PDA)</h3>
+</section>
+<section id="finite-state-machine-fsm" class="level3">
+<h3><span class="header-section-number">2.2.3</span> Finite State Machine (FSM)</h3>
+</section>
+<section id="combinational-logic" class="level3">
+<h3><span class="header-section-number">2.2.4</span> Combinational Logic</h3>
+</section>
+<section id="λ-calculus" class="level3">
+<h3><span class="header-section-number">2.2.5</span> λ-Calculus</h3>
+</section>
+<section id="recursive-function" class="level3">
+<h3><span class="header-section-number">2.2.6</span> Recursive Function</h3>
+</section>
+<section id="combinatory-logic" class="level3">
+<h3><span class="header-section-number">2.2.7</span> Combinatory Logic</h3>
+</section>
+<section id="cellular-automaton" class="level3">
+<h3><span class="header-section-number">2.2.8</span> Cellular Automaton</h3>
+</section>
+<section id="abstract-rewriting-system" class="level3">
+<h3><span class="header-section-number">2.2.9</span> Abstract Rewriting System</h3>
+</section>
+</section>
+<section id="algorithm" class="level2">
+<h2><span class="header-section-number">2.3</span> <a href="algorithm/">Algorithm</a></h2>
+</section>
+<section id="decidability" class="level2">
+<h2><span class="header-section-number">2.4</span> <a href="decidability/">Decidability</a></h2>
+<section id="undecidability" class="level3">
+<h3><span class="header-section-number">2.4.1</span> Undecidability</h3>
+</section>
+</section>
+<section id="reducibility" class="level2">
+<h2><span class="header-section-number">2.5</span> <a href="reducibility/">Reducibility</a></h2>
+<section id="many-one-reduction" class="level3">
+<h3><span class="header-section-number">2.5.1</span> Many-One Reduction</h3>
+</section>
+<section id="turing-reduction-turing-equivalence-and-turing-degree" class="level3">
+<h3><span class="header-section-number">2.5.2</span> Turing Reduction, Turing Equivalence and Turing Degree</h3>
+</section>
+</section>
+</section>
+<section id="complexity" class="level1">
+<h1><span class="header-section-number">3</span> <a href="complexity/">Complexity</a></h1>
+<section id="time-complexity" class="level2">
+<h2><span class="header-section-number">3.1</span> <a href="complexity/time/">Time Complexity</a></h2>
+<section id="np-completeness" class="level3">
+<h3><span class="header-section-number">3.1.1</span> <a href="complexity/time/npc/">NP-Completeness</a></h3>
+</section>
+</section>
+<section id="space-complexity" class="level2">
+<h2><span class="header-section-number">3.2</span> Space Complexity</h2>
+</section>
+<section id="intractability" class="level2">
+<h2><span class="header-section-number">3.3</span> Intractability</h2>
+</section>
+<section id="advanced-topics" class="level2">
+<h2><span class="header-section-number">3.4</span> Advanced Topics</h2>
+<section id="approximation-algorithms" class="level3">
+<h3><span class="header-section-number">3.4.1</span> <a href="/algo/approximation/">Approximation Algorithms</a> <i class="fa fa-link" aria-hidden="true"></i></h3>
+</section>
+<section id="probabilistic-algorithms" class="level3">
+<h3><span class="header-section-number">3.4.2</span> <a href="/algo/randomization/">Probabilistic Algorithms</a> <i class="fa fa-link" aria-hidden="true"></i></h3>
+</section>
+<section id="alternation" class="level3">
+<h3><span class="header-section-number">3.4.3</span> Alternation</h3>
+</section>
+<section id="interactive-proof-systems" class="level3">
+<h3><span class="header-section-number">3.4.4</span> Interactive Proof Systems</h3>
+</section>
+<section id="parallel-computation" class="level3">
+<h3><span class="header-section-number">3.4.5</span> Parallel Computation</h3>
+</section>
+<section id="cryptography" class="level3">
+<h3><span class="header-section-number">3.4.6</span> <a href="/crypto/">Cryptography</a> <i class="fa fa-link" aria-hidden="true"></i></h3>
+</section>
+</section>
+</section>
       </div>
       <footer>
         <!-- TO BE MODIFIED BY NEED -->
@@ -119,7 +191,7 @@
           <i class="fa fa-anchor" aria-hidden="true"></i>
           <code>Permalink</code>
         </a> |
-        Last updated: <span id="update-time">2016-10-14</span>
+        Last updated: <span id="update-time">2016-12-28</span>
       </footer>
     </article></main>
   </body>

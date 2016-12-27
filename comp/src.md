@@ -1,36 +1,64 @@
 % Theory of Computation
 % Mort Yao
-% 2016-10-14
+% 2016-12-28
 
-* [Formal language](language) and automaton
-    * Regular language
-    * Context-free language
-* Computability
-    * Church-Turing thesis
-        * Automata theory and models of computation
-            * Turing machine
-            * Pushdown automaton (PDA)
-            * Finite state machine (FSM)
-            * Combinational logic
-            * λ-calculus
-            * Recursive function
-            * Combinatory logic
-            * Cellular automaton
-            * Abstract rewriting system
-        * Algorithm
-    * [Decidability](decidability)
-        * Undecidability
-    * [Reducibility](reducibility)
-        * Many-one reduction
-        * Turing reduction, Turing equivalence and Turing degree
-* [Complexity](complexity)
-    * [Time complexity](complexity/time)
-        * [NP-completeness](complexity/time/npc)
-    * Space complexity
-    * Intractability
-    * [Approximation algorithms](/algo/approximation)
-      <i class="fa fa-link" aria-hidden="true"></i>
-    * [Probabilistic algorithms](/algo/randomization)
-      <i class="fa fa-link" aria-hidden="true"></i>
-    * [Cryptography](/crypto)
-      <i class="fa fa-link" aria-hidden="true"></i>
+Textbook:
+
+* Michael Sipser. ***Introduction to the Theory of Computation, 3rd edition***.
+
+Supplementary reading:
+
+* Neil Jones. ***Computability and Complexity: From a Programming Perspective***.
+
+---
+
+# Languages and Automata
+
+## [Formal Language](language/) and Automaton
+Formal definition of a *language*.
+
+## Regular Language
+## Context-Free Language
+
+
+
+# Computability
+
+## Church-Turing Thesis
+## Automata Theory and Models of Computation
+### Turing Machine
+### Pushdown Automaton (PDA)
+### Finite State Machine (FSM)
+### Combinational Logic
+### λ-Calculus
+### Recursive Function
+### Combinatory Logic
+### Cellular Automaton
+### Abstract Rewriting System
+## [Algorithm](algorithm/)
+
+## [Decidability](decidability/)
+### Undecidability
+
+## [Reducibility](reducibility/)
+### Many-One Reduction
+### Turing Reduction, Turing Equivalence and Turing Degree
+
+
+
+# [Complexity](complexity/)
+
+## [Time Complexity](complexity/time/)
+### [NP-Completeness](complexity/time/npc/)
+
+## Space Complexity
+
+## Intractability
+
+## Advanced Topics
+### [Approximation Algorithms](/algo/approximation/) <i class="fa fa-link" aria-hidden="true"></i>
+### [Probabilistic Algorithms](/algo/randomization/) <i class="fa fa-link" aria-hidden="true"></i>
+### Alternation
+### Interactive Proof Systems
+### Parallel Computation
+### [Cryptography](/crypto/) <i class="fa fa-link" aria-hidden="true"></i>
