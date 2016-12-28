@@ -1,6 +1,6 @@
 % Cryptography
 % Mort Yao
-% 2016-12-26
+% 2016-12-28
 
 Textbook:
 
@@ -13,6 +13,8 @@ Supplementary reading:
 * Darrel Hankerson, Alfred Menezes and Scott Vanstone. [***Guide to Elliptic Curve Cryptography***](http://diamond.boisestate.edu/~liljanab/MATH308/GuideToECC.pdf).
 
 ---
+
+[**List of Acronyms**](acronyms/)
 
 # Introduction
 
