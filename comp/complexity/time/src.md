@@ -1,6 +1,6 @@
 % Time Complexity
 % Mort Yao
-% 2016-10-17
+% 2016-12-28
 
 **Concrete problems.** An [abstract problem](/comp/decidability) whose instance set $I$ is the set of binary strings ($I \subseteq \{0,1\}^*$) is called a *concrete problem*, in the sense that the problem instance is concretely encoded as a binary string (as in all modern computers). We say that an algorithm *solves* a concrete problem in time $\mathcal{O}(T(n))$, if it produces the solution in $\mathcal{O}(T(n))$ time, when given a problem instance $i$ of length $n=|i|$. We say that an algorithm *verifies* a solution to a concrete problem in time $\mathcal{O}(T(n))$, if it decides whether a certain solution is correct in $\mathcal{O}(T(n))$ time, when given a problem instance $i$ of length $n=|i|$ and a solution in question.
 
@@ -31,12 +31,19 @@ $$\mathrm{P} = \{L : \textrm{there exists an algorithm }\mathcal{A}\textrm{ that
 
 **Proof.** Let $L$ be the language accepted by some polynomial-time algorithm $\mathcal{A}$ in time $\mathcal{O}(n^k)$ for some constant $k$, there also exists a constant $c$ such that $\mathcal{A}$ accepts $L$ in at most $cn^k$ steps. For any input string $x$, the algorithm $\mathcal{A}'$ *simulates* $cn^k$ steps of $\mathcal{A}$. If $\mathcal{A}$ accepted $x$, then $\mathcal{A}'$ accepts $x$ by outputting $1$; if $\mathcal{A}$ did not accept $x$, then $\mathcal{A}'$ rejects $x$ by outputting $0$. The time of $\mathcal{A}'$ simulating $\mathcal{A}$ is polynomial to the running time of $\mathcal{A}$, thus, $\mathcal{A}'$ is a polynomial-time algorithm that decides $L$. [QED]
 
+**Theorem 5.**
+$\mathrm{P}$ is closed under polynomial-time reductions.
+
+**Proof sketch.** Given any language $A \in \mathrm{P}$, we want to prove that for any language $B$ such that $w \in A \Leftrightarrow f(w) \in B$, where $f$ is a polynomial-time computable function, it holds that $B \in \mathrm{P}$.
+
+Since $A \in \mathrm{P}$, there exists an algorithm $\mathcal{A}_1$ that decides $A$ in polynomial time. Since $f$ is polynomial-time computable, there also exists an algorithm $\mathcal{A}_2$ that computes $f(w)$ in polynomial time. Construct the following algorithm $\mathcal{A}$: Run $\mathcal{A}_1$ on $w$, and run $\mathcal{A}_2$ on $w$ and compute $f(w)$. If both accept, $\mathcal{A}$ accepts $B$; otherwise, it rejects $B$. Therefore, $\mathcal{A}$ is an algorithm that decides $B$ in polynomial time. [QED]
+
 **Verification algorithms.** A two-argument algorithm $\mathcal{A}$ *verifies* an input string $x$ if there exists a certificate $y$ such that $\mathcal{A}(x,y)=1$. The language verified by a verification algorithm $\mathcal{A}$ is
 $$L = \{x \in \{0,1\}^* : \textrm{there exists } y \in \{0,1\}^* \textrm{ such that } \mathcal{A}(x,y) = 1\}$$
 
 Intuitively, an algorithm $\mathcal{A}$ verifies a language $L$ if for any string $x \in L$, there exists a certificate $y$ that $\mathcal{A}$ can use to prove that $x \in L$. Moreover, for any string $x \not\in L$ there must be no certificate showing that $x \in L$.
 
-**Definition 5. (Complexity class $\mathrm{NP}$)** The complexity class $\mathrm{NP}$ is the set of concrete decision problems that are *polynomial-time verifiable* (i.e., for any given solution, we can verify it in polynomial time).
+**Definition 6. (Complexity class $\mathrm{NP}$)** The complexity class $\mathrm{NP}$ is the set of concrete decision problems that are *polynomial-time verifiable* (i.e., for any given solution, we can verify it in polynomial time).
 
 A language $L$ belongs to $\mathrm{NP}$ if and only if there exists a two-argument polynomial-time algorithm $\mathcal{A}$ and a constant $c$ such that
 $$L = \{x \in \{0,1\}^* : \textrm{there exists a certificate } y \textrm{ with } |y| = \mathcal{O}(|x|^c) \textrm{ such that } \mathcal{A}(x,y) = 1\}$$
@@ -45,7 +52,7 @@ Notice that, to verify the correctness of a solution to a problem, we can always
 
 **$\mathrm{P}=\mathrm{NP}$ problem**. It is an open question whether $\mathrm{P}=\mathrm{NP}$ or $\mathrm{P} \subset \mathrm{NP}$.
 
-**Definition 6. (Complexity class $\textrm{co-NP}$)** The complexity class $\textrm{co-NP}$ is the set of languages $L$ such that $\overline{L} \in \mathrm{NP}$.
+**Definition 7. (Complexity class $\textrm{co-NP}$)** The complexity class $\textrm{co-NP}$ is the set of languages $L$ such that $\overline{L} \in \mathrm{NP}$.
 
 Intuitively, $\textrm{co-NP}$ is the class of problems for which efficiently verifiable proofs of "no"-instances exist. For example, for the SUBSET-SUM problem (which in the $\mathrm{NP}$ class): given a finite set of integers, is there a non-empty subset that sums to zero? The complementary problem (which is in the $\textrm{co-NP}$ class) asks: given a finite set of integers, does every non-empty subset have a non-zero sum?
 
@@ -53,11 +60,13 @@ Clearly, $\mathrm{P} \subseteq \textrm{co-NP}$, since if a problem is polynomial
 
 **$\mathrm{NP}=\textrm{co-NP}$ problem.** It is an open question whether $\mathrm{NP}=\textrm{co-NP}$. That is, it is unknown whether $\mathrm{NP}$ is closed under complement.
 
-**Further topics.**
+---
+
+Further topics:
 
 * [NP-completeness](npc): The class of $\mathrm{NP}$ problems to which every $\mathrm{NP}$ problem is reducible. Intuitively, the class of NP problems which are considered to be "the hardest".
 
-**More complexity classes.**
+More complexity classes:
 
 * $\mathrm{ZPP}$: The class of decision problems that can be solved with zero error on a probabilistic Turing machine in polynomial time.
 * $\mathrm{RP}$: The class of decision problems that can be solved with 1-sided error on a probabilistic Turing machine in polynomial time.
