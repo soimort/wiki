@@ -88,6 +88,14 @@ Therefore,
 <li><span class="math inline">\(\mathsf{Enc}\)</span> is deterministic.</li>
 </ol>
 <p>without changing <span class="math inline">\(\Pr[C=c | M=m]\)</span> for any <span class="math inline">\(m,c\)</span>.</p>
+<p><strong>Theorem 7.</strong> If <span class="math inline">\(\Pi=(\mathsf{Gen},\mathsf{Enc},\mathsf{Dec})\)</span> is a perfectly secret encryption scheme with message space <span class="math inline">\(\mathcal{M}\)</span> and key space <span class="math inline">\(\mathcal{K}\)</span>, then it must hold that <span class="math display">\[|\mathcal{K}| \geq |\mathcal{M}|\]</span></p>
+<p>Theorem 7 shows an important inherent limitation of perfect secrecy: For any encryption scheme to be perfectly secret (“theoretically unbreakable”), it <em>must</em> have a key space which is no smaller than the message space. In other words, assume that both the key and the message are encoded as binary strings, the key should be a uniform binary string which is (at least) as long as the message to be encrypted.</p>
+<p><strong>Theorem 8. (Shannon’s theorem)</strong> Let <span class="math inline">\(\Pi=(\mathsf{Gen},\mathsf{Enc},\mathsf{Dec})\)</span> be an encryption scheme with message space <span class="math inline">\(\mathcal{M}\)</span> and key space <span class="math inline">\(\mathcal{K}\)</span>, for which <span class="math inline">\(|\mathcal{M}| = |\mathcal{K}| = |\mathcal{C}|\)</span>. The scheme is perfectly secret if and only if:</p>
+<ol type="1">
+<li>Every <span class="math inline">\(k \in \mathcal{K}\)</span> is chosen by <span class="math inline">\(\mathsf{Gen}\)</span> with the same probability <span class="math inline">\(\frac{1}{|\mathcal{K}|}\)</span>.</li>
+<li>For every <span class="math inline">\(m \in \mathcal{M}\)</span> and every <span class="math inline">\(c \in \mathcal{C}\)</span>, there exists a unique key <span class="math inline">\(k \in \mathcal{K}\)</span> such that <span class="math inline">\(\mathsf{Enc}_k(m)\)</span> outputs <span class="math inline">\(c\)</span>.</li>
+</ol>
+<p><strong>Practical construction.</strong> A practical construction of perfectly secret encryption schemes is called the <a href="/crypto/one-time-pad/">one-time pad (OTP)</a>. It is easy to verify that the two conditions specified in Shannon’s theorem are satisfied by the one-time pad.</p>
       </div>
       <footer>
         <!-- TO BE MODIFIED BY NEED -->

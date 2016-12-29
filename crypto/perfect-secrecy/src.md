@@ -85,3 +85,15 @@ Clearly, any adversary can succeed in the game with probability $\frac{1}{2}$ by
 (2) $\mathsf{Enc}$ is deterministic.
 
 without changing $\Pr[C=c | M=m]$ for any $m,c$.
+
+**Theorem 7.** If $\Pi=(\mathsf{Gen},\mathsf{Enc},\mathsf{Dec})$ is a perfectly secret encryption scheme with message space $\mathcal{M}$ and key space $\mathcal{K}$, then it must hold that
+$$|\mathcal{K}| \geq |\mathcal{M}|$$
+
+Theorem 7 shows an important inherent limitation of perfect secrecy: For any encryption scheme to be perfectly secret ("theoretically unbreakable"), it *must* have a key space which is no smaller than the message space. In other words, assume that both the key and the message are encoded as binary strings, the key should be a uniform binary string which is (at least) as long as the message to be encrypted.
+
+**Theorem 8. (Shannon's theorem)** Let $\Pi=(\mathsf{Gen},\mathsf{Enc},\mathsf{Dec})$ be an encryption scheme with message space $\mathcal{M}$ and key space $\mathcal{K}$, for which $|\mathcal{M}| = |\mathcal{K}| = |\mathcal{C}|$. The scheme is perfectly secret if and only if:
+
+1. Every $k \in \mathcal{K}$ is chosen by $\mathsf{Gen}$ with the same probability $\frac{1}{|\mathcal{K}|}$.
+2. For every $m \in \mathcal{M}$ and every $c \in \mathcal{C}$, there exists a unique key $k \in \mathcal{K}$ such that $\mathsf{Enc}_k(m)$ outputs $c$.
+
+**Practical construction.** A practical construction of perfectly secret encryption schemes is called the [one-time pad (OTP)](/crypto/one-time-pad/). It is easy to verify that the two conditions specified in Shannon's theorem are satisfied by the one-time pad.
