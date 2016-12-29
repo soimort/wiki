@@ -20,9 +20,22 @@ The encryption algorithm $\mathsf{Enc}$ can be either deterministic or probabili
 
 **Uniform key selection**. Without loss of generality, we assume that $\mathsf{Gen}$ chooses the key $k \in \mathcal{K}$ uniformly. It can be shown that any encryption scheme can be transformed into a scheme with $\mathsf{Gen}$ such that a uniform key is always chosen without degrading the level of security, by redefining the key space $\mathcal{K}$. It is important that $\mathsf{Gen}$ must be probabilistic, that is, the selection of the key must involve some randomness. This will also be shown later.
 
-**Kerckhoffs' principle (Shannon's maxim)**. A cryptosystem should remain secure even if everything about the system, except the key, is public knowledge. In other words, we should assume that the adversaries always have full knowledge of the encryption scheme $\Pi=(\mathsf{Gen},\mathsf{Enc},\mathsf{Dec})$ that is being used ("The enemy knows the system") but not the actual key $k$.
+**Kerckhoffs' principle (Shannon's maxim)**. A cryptosystem should remain secure even if everything about the system, except the key, is public knowledge. In other words, we should assume that the attackers always have full knowledge of the encryption scheme $\Pi=(\mathsf{Gen},\mathsf{Enc},\mathsf{Dec})$ that is being used ("The enemy knows the system") but not the actual key $k$.
 
 **Security through obscurity**. In contrast to Shannon's maxim, "security through obscurity" means that the security of a cryptosystem can partially or even fully rely on the secrecy of the encryption scheme. This is not an advisable way for maintaining security in modern cryptography, for mainly two reasons:
 
 1. It is relatively more involved to keep the whole scheme (which consists of three algorithms) secret, especially during the secret sharing process between trusted parties. Meanwhile, sharing a single key and keeping it secret are much easier.
 2. Once the secret scheme is leaked, there would be no proper fix other than changing the whole scheme. Meanwhile, if the security of the cryptosystem solely relies on the key, one can simply change the key and notify the other party; this process is also much easier to implement.
+
+**Principles of modern cryptography**:
+
+1. *Formal definition of security*: A ciphertext should leak absolutely no information about the underlying plaintext, regardless of how much information an attacker already has.
+2. *Minimal assumptions*: For example, if we can make the assumption that solving a mathematical problem is computationally hard and that decrypting a ciphertext is equivalent to solving that problem, then it is possible to define a notion of security based on the difficulty of some computation. Note that most modern cryptographic constructions cannot be proven secure unless such assumptions are preconceived.
+3. *Rigorous mathematical proofs of security*.
+
+**Common threat models**:
+
+1. *Ciphertext-only attack*, where an attacker knows nothing more than the ciphertext.
+2. *Known-plaintext attack* (KPA), where an attacker is able to obtain the encrypted ciphertext for some known, given plaintext.
+3. *Chosen-plaintext attack* (CPA), where an attacker is able to obtain the encrypted ciphertext for some plaintext of their choice.
+4. *Chosen-ciphertext attack* (CCA), where an attacker is able to obtain the decrypted plaintext for some ciphertext of their choice.
