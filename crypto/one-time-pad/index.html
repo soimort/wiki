@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-07 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Mort Yao">
+    <meta name="dcterms.date" content="2016-12-29">
+    <title>One-Time Pad</title>
+    <link rel="canonical" href="https://wiki.soimort.org/crypto/one-time-pad">
+    <style type="text/css">code { white-space: pre; }</style>
+    <link rel="stylesheet" href="//cdn.soimort.org/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/mathsvg/latest/mathsvg.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Roman.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Mono.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/__/css/style.css">
+    <link rel="stylesheet" href="/__/css/pygments.css">
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.soimort.org/jk/latest/jk.min.js"></script>
+    <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>
+    <script src="/__/js/jk-minibar.js"></script>
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+  <body>
+    <main><article>
+      <header>
+        <h1 class="title">One-Time Pad</h1>
+        <address class="author">Mort Yao</address>
+        <!-- h3 class="date">2016-12-29</h3 -->
+      </header>
+      <nav id="TOC">
+<ul>
+<li><a href="#construction"><span class="toc-section-number">1</span> Construction</a></li>
+<li><a href="#proof-of-security"><span class="toc-section-number">2</span> Proof of Security</a></li>
+</ul>
+      </nav>
+      <div id="content">
+<section id="construction" class="level1">
+<h1><span class="header-section-number">1</span> Construction</h1>
+<p><strong>One-time pad (Vernam cipher).</strong> Given <span class="math inline">\(\ell \in \mathbb{Z}^+\)</span> which is the fixed length of the plaintext, define the following encryption scheme <span class="math inline">\(\Pi=(\mathsf{Gen},\mathsf{Enc},\mathsf{Dec})\)</span>:</p>
+<ul>
+<li>Message space <span class="math inline">\(\mathcal{M} = \{0,1\}^\ell\)</span>.</li>
+<li>Key space <span class="math inline">\(\mathcal{K} = \{0,1\}^\ell\)</span>.</li>
+<li>Ciphertext space <span class="math inline">\(\mathcal{C} = \{0,1\}^\ell\)</span>.</li>
+<li><span class="math inline">\(\mathsf{Gen}\)</span> outputs a key <span class="math inline">\(k \in \mathcal{K}\)</span> according to the uniform distribution.</li>
+<li><span class="math inline">\(\mathsf{Enc}\)</span> takes as input a key <span class="math inline">\(k \in \mathcal{K}\)</span> and a message <span class="math inline">\(m \in \mathcal{M}\)</span>, and outputs the ciphertext <span class="math inline">\(c := k \oplus m\)</span>.</li>
+<li><span class="math inline">\(\mathsf{Dec}\)</span> takes as input a key <span class="math inline">\(k \in \mathcal{K}\)</span> and a ciphertext <span class="math inline">\(c \in \mathcal{C}\)</span>, and outputs the message <span class="math inline">\(m := k \oplus c\)</span>.</li>
+</ul>
+where <span class="math inline">\(\oplus\)</span> denotes the bitwise exclusive-or (XOR) of two binary strings. Since
+<span class="math display">\[\begin{align*}
+\mathsf{Dec}_k(\mathsf{Enc}_k(m)) &amp;= k \oplus (k \oplus m) \\
+&amp;= (k \oplus k) \oplus m \\
+&amp;= \{0\}^\ell \oplus m \\
+&amp;= m
+\end{align*}\]</span>
+<p>this encryption scheme satisfies the correctness requirement.</p>
+</section>
+<section id="proof-of-security" class="level1">
+<h1><span class="header-section-number">2</span> Proof of Security</h1>
+<p><strong>Theorem 2.</strong> One-time pad is perfectly secret.</p>
+<strong>Proof.</strong> For any <span class="math inline">\(c \in \mathcal{C}\)</span> and <span class="math inline">\(m \in \mathcal{M}\)</span>,
+<span class="math display">\[\begin{align*}
+\Pr[C=c | M=m] &amp;= \Pr[\mathsf{Enc}_K(m) = c] \\
+&amp;= \Pr[m \oplus K=c] \\
+&amp;= \Pr[K=m \oplus c] \\
+&amp;= 2^{-\ell}
+\end{align*}\]</span>
+<p>where the last equality holds since the key <span class="math inline">\(K\)</span> is a uniform <span class="math inline">\(\ell\)</span>-bit string.</p>
+Fix any distribution over <span class="math inline">\(\mathcal{M}\)</span>. For any <span class="math inline">\(c \in \mathcal{C}\)</span>, we have
+<span class="math display">\[\begin{align*}
+\Pr[C=c] &amp;= \sum_{m&#39; \in \mathcal{M}} \Pr[C=c | M=m&#39;] \cdot \Pr[M=m&#39;] \\
+&amp;= 2^{-\ell} \cdot \sum_{m&#39; \in \mathcal{M}} \Pr[M=m&#39;] \\
+&amp;= 2^{-\ell}
+\end{align*}\]</span>
+Using Bayes’ Theorem:
+<span class="math display">\[\begin{align*}
+\Pr[M=m | C=c] &amp;= \frac{\Pr[C=c | M=m] \cdot \Pr[M=m]}{\Pr[C=c]} \\
+&amp;= \frac{2^{-\ell} \cdot \Pr[M=m]}{2^{-\ell}} \\
+&amp;= \Pr[M=m]
+\end{align*}\]</span>
+<p>Therefore, the one-time pad encryption scheme is perfectly secret. <p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
+</section>
+      </div>
+      <footer>
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard shortcut: R"
+           href="https://wiki.soimort.org/crypto/one-time-pad/src.md">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
+        <a class="history" accesskey="h"
+           title="Keyboard shortcut: H"
+           href="https://github.com/soimort/wiki/commits/gh-pages/crypto/one-time-pad/src.md">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard shortcut: E"
+           href="https://github.com/soimort/wiki/edit/gh-pages/crypto/one-time-pad/src.md">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
+           href="https://wiki.soimort.org/crypto/one-time-pad">
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
+        Last updated: <span id="update-time">2016-12-29</span>
+      </footer>
+    </article></main>
+  </body>
+</html>
