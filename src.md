@@ -1,6 +1,6 @@
 % Mort's small traces
 % Mort Yao
-% 2016-12-17
+% 2016-12-29
 
 ![<small>
 A lifelong project to do my study notes on Math / Computer Science systematically and spirally. \
@@ -17,113 +17,120 @@ It is still woefully incomplete, but it shouldn't always be. I keep learning thi
 <br> --- Kurt Vonnegut
 </div>
 
-# Contents
+
 
 * [Reading list](/todo/)
 * [Common mathematical notation](/rosetta/)
 
-1. Mathematics
-    * [Naive set theory](/math/set/)
-    * **[Mathematical logic](/math/logic/)**
-        * Classical logic
-            * Propositional logic
-            * First-order logic
-        * Axiomatic set theory (ZFC)
-        * Model theory
-        * Computability theory
-            * Peano axioms
-            * Gödel's incompleteness theorems
-        * Non-classical logic
-            * Intuitionistic logic
-            * Linear logic
-    * [Linear algebra](/math/linear-algebra)
-    * Abstract algebra
-        * Group theory
-        * Representation theory
-        * Category theory and homological algebra
-    * Topology and geometry
-        * General topology
-        * Geometric topology
-        * Algebraic topology and geometry
-        * Differential topology and geometry
-        * Lie groups
-    * Calculus
-        * [Limit](/math/calculus/limit/) and continuity
-        * Differential calculus
-        * Integral calculus
-        * Series
-        * Vector calculus
-    * Differential equations and dynamical systems
-        * Control theory
-        * Chaos and fractals
-    * Analysis
-        * Measure theory
-        * Complex analysis
-        * Real analysis
-        * Functional analysis
-    * Number theory
-        * Algebraic number theory
-        * Analytic number theory
-    * Graph theory
-    * Combinatorics
-2. Applied mathematics
-    * [Probability theory](/math/probability/) and [statistics](/math/statistics/)
-    * Information theory
-        * Coding theory
-        * Quantum information theory
-    * **[Theory of Computation](/comp/)**
-        * Formal language and automaton
-        * Computability
-        * Complexity
-    * **[Algorithms](/algo/)**
-        * Data structures
-        * Sorting
-        * Searching
-        * [Randomization](/algo/randomization/)
-        * [Approximation](/algo/approximation/)
-        * Numerical analysis
-        * Computational number theory
-        * [Computational geometry](/algo/computational-geometry/)
-        * Computer graphics and visualization
-    * **[Cryptography](/crypto/)**
-        * Classical cryptography
-        * Information-theoretic security
-        * Private-key cryptography
-        * Public-key cryptography
-        * Quantum resistance
-    * Game theory and operations research
-        * Linear programming and mathematical optimization
-        * Evolutionary computation
-        * Algorithmic game theory
-    * **Machine learning**
-        * Artificial neural networks
-        * Deep learning
-    * **Computer vision and image processing**
-    * Natural language processing
-    * **[Programming language theory](/plt/)**
-        * Formal semantics
-        * Type theory and Curry-Howard correspondence
-        * Program analysis and transformation
-3. Software technology
-    * Computer systems and architectures
-    * Operating systems
-        * [Unix from user space](/unix/)
-        * Unix system programming
-        * Linux kernel
-    * TCP/IP
-        * Internet protocol suite
-        * Socket programming
-    * Web and databases
-        * Relational database and normalization
-        * NoSQL
-        * Knowledge representation and Semantic Web
-    * Programming paradigms
-        * Functional programming
-        * Logic programming
-        * Dataflow programming and concurrency
-    * Compilers
-    * **Information security**
-        * Proof-carrying code
+# Mathematics
+
+* [Naive set theory](/math/set/)
+* **[Mathematical logic](/math/logic/)**
+    * Classical logic
+        * Propositional logic
+        * First-order logic
+    * Axiomatic set theory (ZFC)
+    * Model theory
+    * Computability theory
+        * Peano axioms
+        * Gödel's incompleteness theorems
+    * Non-classical logic
+        * Intuitionistic logic
+        * Linear logic
+* [Linear algebra](/math/linear-algebra)
+* Abstract algebra
+    * Group theory
+    * Representation theory
+    * Category theory and homological algebra
+* Topology and geometry
+    * General topology
+    * Geometric topology
+    * Algebraic topology and geometry
+    * Differential topology and geometry
+    * Lie groups
+* Calculus
+    * [Limit](/math/calculus/limit/) and continuity
+    * Differential calculus
+    * Integral calculus
+    * Series
+    * Vector calculus
+* Differential equations and dynamical systems
+    * Control theory
+    * Chaos and fractals
+* Analysis
+    * Measure theory
+    * Complex analysis
+    * Real analysis
+    * Functional analysis
+* Number theory
+    * Algebraic number theory
+    * Analytic number theory
+* Graph theory
+* Combinatorics
+
+# Applied Mathematics
+
+* [Probability theory](/math/probability/) and [statistics](/math/statistics/)
+* Information theory
+    * Coding theory
+    * Quantum information theory
+* **[Theory of Computation](/comp/)**
+    * Formal language and automaton
+    * Computability
+    * Complexity
+* **[Algorithms](/algo/)**
+    * Data structures
+    * Sorting
+    * Searching
+    * [Randomization](/algo/randomization/)
+    * [Approximation](/algo/approximation/)
+    * Numerical analysis
+    * Computational number theory
+    * [Computational geometry](/algo/computational-geometry/)
+    * Computer graphics and visualization
+* **[Cryptography](/crypto/)**
+    * Classical cryptography
+    * Information-theoretic security
+    * Private-key cryptography
+    * Public-key cryptography
+    * Quantum resistance
+* Game theory and operations research
+    * Linear programming and mathematical optimization
+    * Evolutionary computation
+    * Algorithmic game theory
+* **Machine learning**
+    * Artificial neural networks
+    * Deep learning
+* **Computer vision and image processing**
+* Natural language processing
+* **[Programming language theory](/plt/)**
+    * Formal semantics
+    * Type theory and Curry-Howard correspondence
+    * Program analysis and transformation
+
+# Software Technology
+
+* Computer systems and architectures
+* Operating systems
+    * [Unix from user space](/unix/)
+    * Unix system programming
+    * Linux kernel
+* TCP/IP
+    * Internet protocol suite
+    * Socket programming
+* Web and databases
+    * Relational database and normalization
+    * NoSQL
+    * Knowledge representation and Semantic Web
+* Programming paradigms
+    * Functional programming
+    * Logic programming
+    * Dataflow programming and concurrency
+* Compilers
+* **Information security**
+    * Proof-carrying code
+
+---
 
 * [Cornerstone](/cornerstone/)
 
