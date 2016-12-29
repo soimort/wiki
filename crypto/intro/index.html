@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-07 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Mort Yao">
+    <meta name="dcterms.date" content="2016-12-29">
+    <title>Principles of Modern Cryptography</title>
+    <link rel="canonical" href="https://wiki.soimort.org/crypto/intro">
+    <style type="text/css">code { white-space: pre; }</style>
+    <link rel="stylesheet" href="//cdn.soimort.org/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/mathsvg/latest/mathsvg.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Roman.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Mono.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/__/css/style.css">
+    <link rel="stylesheet" href="/__/css/pygments.css">
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.soimort.org/jk/latest/jk.min.js"></script>
+    <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>
+    <script src="/__/js/jk-minibar.js"></script>
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+  <body>
+    <main><article>
+      <header>
+        <h1 class="title">Principles of Modern Cryptography</h1>
+        <address class="author">Mort Yao</address>
+        <!-- h3 class="date">2016-12-29</h3 -->
+      </header>
+      <div id="content">
+<p><strong>Private-key encryption scheme</strong>. A <em>private-key encryption scheme</em> is defined by specifying a message space along with three <a href="/comp/algorithm/">algorithms</a>:</p>
+<ol type="1">
+<li>The <em>message space</em> <span class="math inline">\(\mathcal{M}\)</span>, which is the set of all possible messages (plaintexts).</li>
+<li>The <em>key-generation algorithm</em> <span class="math inline">\(\mathsf{Gen}\)</span>, which is a (probabilistic) algorithm that chooses a key <span class="math inline">\(k \in \mathcal{K}\)</span> (where <span class="math inline">\(\mathcal{K}\)</span> is said to be the <em>key space</em>) according to some distribution.</li>
+<li>The <em>encryption algorithm</em> <span class="math inline">\(\mathsf{Enc}\)</span>, which takes as input a key <span class="math inline">\(k\)</span> and a message <span class="math inline">\(m \in \mathcal{M}\)</span> and outputs a ciphertext <span class="math inline">\(c \leftarrow \mathsf{Enc}_k(m)\)</span>.</li>
+<li>The <em>decryption algorithm</em> <span class="math inline">\(\mathsf{Dec}\)</span>, which takes as input a key <span class="math inline">\(k\)</span> and a ciphertext <span class="math inline">\(c\)</span> and outputs a plaintext <span class="math inline">\(m := \mathsf{Dec}_k(c)\)</span>.</li>
+</ol>
+<p>Furthermore, an encryption scheme must satisfy the correctness requirement: for every <span class="math inline">\(k \in \mathcal{K}\)</span> and every <span class="math inline">\(m \in \mathcal{M}\)</span>, it holds that <span class="math display">\[\mathsf{Dec}_k(\mathsf{Enc}_k(m)) = m\]</span></p>
+<p><strong>Encoding</strong>. Most of the time, we assume that all messages are encoded as binary strings. Thus, <span class="math inline">\(\mathcal{M} \subseteq \{0,1\}^*\)</span>.</p>
+<p><strong>Deterministic or probabilistic algorithms.</strong> Clearly, the decryption algorithm <span class="math inline">\(\mathsf{Dec}\)</span> should be deterministic, since the recipient party expects that a message can be decrypted deterministically and unambiguously.</p>
+<p>The encryption algorithm <span class="math inline">\(\mathsf{Enc}\)</span> can be either deterministic or probabilistic. However, without loss of generality, any encryption scheme with a probabilistic <span class="math inline">\(\mathsf{Enc}\)</span> can be transformed into a scheme with a deterministic one without degrading the level of security, by redefining the key space <span class="math inline">\(\mathcal{K}\)</span>. This will be shown later.</p>
+<p><strong>Uniform key selection</strong>. Without loss of generality, we assume that <span class="math inline">\(\mathsf{Gen}\)</span> chooses the key <span class="math inline">\(k \in \mathcal{K}\)</span> uniformly. It can be shown that any encryption scheme can be transformed into a scheme with <span class="math inline">\(\mathsf{Gen}\)</span> such that a uniform key is always chosen without degrading the level of security, by redefining the key space <span class="math inline">\(\mathcal{K}\)</span>. It is important that <span class="math inline">\(\mathsf{Gen}\)</span> must be probabilistic, that is, the selection of the key must involve some randomness. This will also be shown later.</p>
+<p><strong>Kerckhoffs’ principle (Shannon’s maxim)</strong>. A cryptosystem should remain secure even if everything about the system, except the key, is public knowledge. In other words, we should assume that the adversaries always have full knowledge of the encryption scheme <span class="math inline">\(\Pi=(\mathsf{Gen},\mathsf{Enc},\mathsf{Dec})\)</span> that is being used (“The enemy knows the system”) but not the actual key <span class="math inline">\(k\)</span>.</p>
+<p><strong>Security through obscurity</strong>. In contrast to Shannon’s maxim, “security through obscurity” means that the security of a cryptosystem can partially or even fully rely on the secrecy of the encryption scheme. This is not an advisable way for maintaining security in modern cryptography, for mainly two reasons:</p>
+<ol type="1">
+<li>It is relatively more involved to keep the whole scheme (which consists of three algorithms) secret, especially during the secret sharing process between trusted parties. Meanwhile, sharing a single key and keeping it secret are much easier.</li>
+<li>Once the secret scheme is leaked, there would be no proper fix other than changing the whole scheme. Meanwhile, if the security of the cryptosystem solely relies on the key, one can simply change the key and notify the other party; this process is also much easier to implement.</li>
+</ol>
+      </div>
+      <footer>
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard shortcut: R"
+           href="https://wiki.soimort.org/crypto/intro/src.md">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
+        <a class="history" accesskey="h"
+           title="Keyboard shortcut: H"
+           href="https://github.com/soimort/wiki/commits/gh-pages/crypto/intro/src.md">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard shortcut: E"
+           href="https://github.com/soimort/wiki/edit/gh-pages/crypto/intro/src.md">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
+           href="https://wiki.soimort.org/crypto/intro">
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
+        Last updated: <span id="update-time">2016-12-29</span>
+      </footer>
+    </article></main>
+  </body>
+</html>
