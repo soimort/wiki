@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-07 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Mort Yao">
+    <meta name="dcterms.date" content="2016-12-29">
+    <title>Perfect Secrecy</title>
+    <link rel="canonical" href="https://wiki.soimort.org/crypto/perfect-secrecy">
+    <style type="text/css">code { white-space: pre; }</style>
+    <link rel="stylesheet" href="//cdn.soimort.org/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/mathsvg/latest/mathsvg.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Roman.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Mono.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/__/css/style.css">
+    <link rel="stylesheet" href="/__/css/pygments.css">
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.soimort.org/jk/latest/jk.min.js"></script>
+    <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>
+    <script src="/__/js/jk-minibar.js"></script>
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+  <body>
+    <main><article>
+      <header>
+        <h1 class="title">Perfect Secrecy</h1>
+        <address class="author">Mort Yao</address>
+        <!-- h3 class="date">2016-12-29</h3 -->
+      </header>
+      <div id="content">
+<p><strong>Definition 1. (Perfect secrecy)</strong> An encryption scheme <span class="math inline">\(\Pi=(\mathsf{Gen},\mathsf{Enc},\mathsf{Dec})\)</span> with message space <span class="math inline">\(\mathcal{M}\)</span> is said to be <em>perfectly secret</em> if for every probability distribution over <span class="math inline">\(\mathcal{M}\)</span>, every message <span class="math inline">\(m \in \mathcal{M}\)</span> and every ciphertext <span class="math inline">\(c \in \mathcal{C}\)</span> (<span class="math inline">\(\Pr[C=c] &gt; 0\)</span>), it holds that <span class="math display">\[\Pr[M=m | C=c] = \Pr[M=m]\]</span></p>
+<p><strong>Definition 2.</strong> An encryption scheme <span class="math inline">\(\Pi=(\mathsf{Gen},\mathsf{Enc},\mathsf{Dec})\)</span> with message space <span class="math inline">\(\mathcal{M}\)</span> is perfectly secret if for every <span class="math inline">\(m, m&#39; \in \mathcal{M}\)</span> and every ciphertext <span class="math inline">\(c \in \mathcal{C}\)</span>, <span class="math display">\[\Pr[\mathsf{Enc}_K(m) = c] = \Pr[\mathsf{Enc}_K(m&#39;) = c]\]</span> where the probabilities are over the choice of <span class="math inline">\(K\)</span> and the randomness of <span class="math inline">\(\mathsf{Enc}\)</span>.</p>
+<p><strong>Lemma 3.</strong> Definition 2 is equivalent to Definition 1.</p>
+<p><strong>Proof.</strong></p>
+<p><strong>i. (<span class="math inline">\(\Rightarrow\)</span>)</strong> Fix a distribution over <span class="math inline">\(\mathcal{M}\)</span>, a message <span class="math inline">\(m\)</span> and a ciphertext <span class="math inline">\(c\)</span> for which <span class="math inline">\(\Pr[C=c] &gt; 0\)</span>.</p>
+<p>Note that if <span class="math inline">\(\Pr[M=m] = 0\)</span>, we immediately have <span class="math display">\[\Pr[M=m | C=c] = 0 = \Pr[M=m]\]</span></p>
+<p>If <span class="math inline">\(\Pr[M=m] &gt; 0\)</span>, there is <span class="math display">\[\Pr[C=c | M=m] = \Pr[\mathsf{Enc}_K(M)=c | M=m] = \Pr[\mathsf{Enc}_K(m)=c]\]</span></p>
+Note that given Definition 2, for any <span class="math inline">\(m&#39; \in \mathcal{M}\)</span>, it holds that <span class="math inline">\(\Pr[\mathsf{Enc}_K(m&#39;)=c] = \Pr[C=c | M=m&#39;] = \Pr[\mathsf{Enc}_K(m)=c] = \Pr[C=c | M=m]\)</span>. Using Bayes’ Theorem:
+<span class="math display">\[\begin{align*}
+\Pr[M=m | C=c] &amp;= \frac{\Pr[C=c | M=m] \cdot \Pr[M=m]}{\Pr[C=c]} \\
+&amp;= \frac{\Pr[C=c | M=m] \cdot \Pr[M=m]}{\sum_{m&#39; \in \mathcal{M}}\Pr[C=c | M=m&#39;] \cdot \Pr[M=m&#39;]} \\
+&amp;= \frac{\Pr[M=m]}{\sum_{m&#39; \in \mathcal{M}} \Pr[M=m&#39;]} \\
+&amp;= \frac{\Pr[M=m]}{1} \\
+&amp;= \Pr[M=m]
+\end{align*}\]</span>
+<p>that is, Definition 1 holds if Definition 2 holds.</p>
+<p><strong>ii. (<span class="math inline">\(\Leftarrow\)</span>)</strong> Given Definition 1, for every distribution on <span class="math inline">\(\mathcal{M}\)</span>, we have <span class="math display">\[\Pr[M=m | C=c] = \Pr[M=m]\]</span></p>
+<p>for all <span class="math inline">\(m \in \mathcal{M}\)</span> and all <span class="math inline">\(c \in \mathcal{C}\)</span> for which <span class="math inline">\(\Pr[C=c] &gt; 0\)</span>.</p>
+<p>Note that <span class="math display">\[\Pr[M=m] = \frac{\Pr[M=m]}{\sum_{m&#39; \in \mathcal{M}} \Pr[M=m&#39;]}\]</span></p>
+Also by Bayes’ Theorem:
+<span class="math display">\[\begin{align*}
+\Pr[M=m | C=c]
+&amp;= \frac{\Pr[C=c | M=m] \cdot \Pr[M=m]}{\Pr[C=c]} \\
+&amp;= \frac{\Pr[C=c | M=m] \cdot \Pr[M=m]}{\sum_{m&#39; \in \mathcal{M}}\Pr[C=c | M=m&#39;] \cdot \Pr[M=m&#39;]}
+\end{align*}\]</span>
+<p>For the equation in Definition 1 to hold, it must hold true that <span class="math display">\[\Pr[C=c | M=m] = \Pr[C=c | M=m&#39;]\]</span></p>
+<p>for any value of <span class="math inline">\(m&#39;\)</span>, and <span class="math inline">\(\Pr[M=m] \neq 0\)</span>.</p>
+Therefore,
+<span class="math display">\[\begin{align*}
+\Pr[\mathsf{Enc}_K(m)=c] = \Pr[C=c | M=m]
+&amp;= \Pr[C=c | M=m&#39;] \\
+&amp;= \Pr[\mathsf{Enc}_K(m&#39;)=c]
+\end{align*}\]</span>
+<p>that is, Definition 2 holds if Definition 1 holds.</p>
+<p><p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
+<p><strong>Adversarial indistinguishability experiment <span class="math inline">\(\mathsf{PrivK}_{\mathcal{A},\Pi}^\mathsf{eav}\)</span>:</strong></p>
+<ol type="1">
+<li>The adversary <span class="math inline">\(\mathcal{A}\)</span> outputs a pair of messages <span class="math inline">\(m_0, m_1 \in \mathcal{M}\)</span>.</li>
+<li>A key <span class="math inline">\(k\)</span> is generated using <span class="math inline">\(\mathsf{Gen}\)</span> and a uniformly random bit <span class="math inline">\(b \in \{0,1\}\)</span> is chosen; both are unknown to <span class="math inline">\(\mathcal{A}\)</span>. A ciphertext <span class="math inline">\(c \leftarrow \mathsf{Enc}_k(m_b)\)</span> (called the <em>challenge ciphertext</em>) is computed and given to <span class="math inline">\(\mathcal{A}\)</span>.</li>
+<li><span class="math inline">\(\mathcal{A}\)</span> outputs a bit <span class="math inline">\(b&#39;\)</span>.</li>
+<li>If <span class="math inline">\(b&#39;=b\)</span>, the output of the experiment is defined to be <span class="math inline">\(\mathsf{PrivK}_{\mathcal{A},\Pi}^\mathsf{eav} = 1\)</span> (<span class="math inline">\(\mathcal{A}\)</span> <em>succeeds</em> in the game); otherwise, it is defined to be 0 (<span class="math inline">\(\mathcal{A}\)</span> <em>fails</em> in the game).</li>
+</ol>
+<p><strong>Definition 4. (Perfect indistinguishability)</strong> An encryption scheme <span class="math inline">\(\Pi=(\mathsf{Gen},\mathsf{Enc},\mathsf{Dec})\)</span> with message space <span class="math inline">\(\mathcal{M}\)</span> is said to be <em>perfectly indistinguishable</em> if for every <span class="math inline">\(\mathcal{A}\)</span>, it holds that <span class="math display">\[\Pr\left[ \mathsf{PrivK}_{\mathcal{A},\Pi}^\mathsf{eav} = 1 \right] = \frac{1}{2}\]</span></p>
+<p>Clearly, any adversary can succeed in the game with probability <span class="math inline">\(\frac{1}{2}\)</span> by making a random guess on the unknown bit <span class="math inline">\(b\)</span>. Intuitively, the definition of perfect indistinguishability says that no adversary can do better than this.</p>
+<p><strong>Lemma 5.</strong> Definition 3 (perfect indistinguishability) is equivalent to Definition 1 (perfect secrecy).</p>
+<p><strong>Theorem 6.</strong> By redefining the key space, we can assume that any encryption scheme <span class="math inline">\(\Pi=(\mathsf{Gen},\mathsf{Enc},\mathsf{Dec})\)</span> with message space <span class="math inline">\(\mathcal{M}\)</span> satisfies</p>
+<ol type="1">
+<li><span class="math inline">\(\mathsf{Gen}\)</span> chooses a key uniformly at random from the key space.</li>
+<li><span class="math inline">\(\mathsf{Enc}\)</span> is deterministic.</li>
+</ol>
+<p>without changing <span class="math inline">\(\Pr[C=c | M=m]\)</span> for any <span class="math inline">\(m,c\)</span>.</p>
+      </div>
+      <footer>
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard shortcut: R"
+           href="https://wiki.soimort.org/crypto/perfect-secrecy/src.md">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
+        <a class="history" accesskey="h"
+           title="Keyboard shortcut: H"
+           href="https://github.com/soimort/wiki/commits/gh-pages/crypto/perfect-secrecy/src.md">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard shortcut: E"
+           href="https://github.com/soimort/wiki/edit/gh-pages/crypto/perfect-secrecy/src.md">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
+           href="https://wiki.soimort.org/crypto/perfect-secrecy">
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
+        Last updated: <span id="update-time">2016-12-29</span>
+      </footer>
+    </article></main>
+  </body>
+</html>
