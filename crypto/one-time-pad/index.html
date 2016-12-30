@@ -8,7 +8,7 @@
     <meta name="generator" content="pandoc">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="author" content="Mort Yao">
-    <meta name="dcterms.date" content="2016-12-29">
+    <meta name="dcterms.date" content="2016-12-30">
     <title>One-Time Pad</title>
     <link rel="canonical" href="https://wiki.soimort.org/crypto/one-time-pad">
     <style type="text/css">code { white-space: pre; }</style>
@@ -34,12 +34,12 @@
       <header>
         <h1 class="title">One-Time Pad</h1>
         <address class="author">Mort Yao</address>
-        <!-- h3 class="date">2016-12-29</h3 -->
+        <!-- h3 class="date">2016-12-30</h3 -->
       </header>
       <nav id="TOC">
 <ul>
 <li><a href="#construction"><span class="toc-section-number">1</span> Construction</a></li>
-<li><a href="#proof-of-security"><span class="toc-section-number">2</span> Proof of Security</a></li>
+<li><a href="#secrecy-and-cryptanalysis"><span class="toc-section-number">2</span> Secrecy and Cryptanalysis</a></li>
 </ul>
       </nav>
       <div id="content">
@@ -63,9 +63,9 @@ where <span class="math inline">\(\oplus\)</span> denotes the bitwise exclusive-
 \end{align*}\]</span>
 <p>this encryption scheme satisfies the correctness requirement.</p>
 </section>
-<section id="proof-of-security" class="level1">
-<h1><span class="header-section-number">2</span> Proof of Security</h1>
-<p><strong>Theorem 2.</strong> One-time pad is perfectly secret.</p>
+<section id="secrecy-and-cryptanalysis" class="level1">
+<h1><span class="header-section-number">2</span> Secrecy and Cryptanalysis</h1>
+<p><strong>Theorem 2.1.</strong> One-time pad is perfectly secret.</p>
 <strong>Proof.</strong> For any <span class="math inline">\(c \in \mathcal{C}\)</span> and <span class="math inline">\(m \in \mathcal{M}\)</span>,
 <span class="math display">\[\begin{align*}
 \Pr[C=c | M=m] &amp;= \Pr[\mathsf{Enc}_K(m) = c] \\
@@ -87,6 +87,24 @@ Using Bayes’ Theorem:
 &amp;= \Pr[M=m]
 \end{align*}\]</span>
 <p>Therefore, the one-time pad encryption scheme is perfectly secret. <p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
+<p><em>Remark 2.2.</em> In the proof of Theorem 2.1 (perfect secrecy of one-time pad), we assumed that <span class="math inline">\(\Pr[K = m \oplus c] = 2^{-\ell}\)</span>. If the key <span class="math inline">\(K\)</span> is not a independently, uniformly chosen <span class="math inline">\(\ell\)</span>-bit string, the equality does not hold. In practice, for the one-time pad to be perfectly secure, it is required that a one-time key is used for each encryption. If the same key is used more than once (in multiple sessions of encryption), then perfect secrecy cannot be guaranteed.</p>
+<p>Theoretically, the one-time pad scheme is unbreakable under any cryptanalysis (as long as the key is uniformly chosen every time). When the key is reused, the resulting scheme is sometimes called a <em>two-time pad</em> and it is vulnerable to frequency analysis or other kinds of heuristic attacks. Notice that an adversary who obtains <span class="math inline">\(c = k \oplus m\)</span> and <span class="math inline">\(c&#39; = k \oplus m&#39;\)</span> can compute <span class="math display">\[c \oplus c&#39; = (k \oplus m) \oplus (k \oplus m&#39;) = m \oplus m&#39;
+\]</span> which is the bitwise exclusive-or of the two messages.</p>
+<p><strong>Theorem 2.3.</strong> One-time pad does not yield indistinguishable multiple encryptions in the presence of an eavesdropper.</p>
+<p><strong>Proof.</strong> In a multiple-message eavesdropping experiment <span class="math inline">\(\mathsf{PrivK}^\mathsf{mult}\)</span> where a random bit <span class="math inline">\(b\)</span> is chosen, consider the following polynomial-time adversary <span class="math inline">\(\mathcal{A}\)</span>:</p>
+<ol type="1">
+<li><span class="math inline">\(\mathcal{A}\)</span> outputs <span class="math inline">\(\vec{M}_0 = (m_{0,1}, m_{0,2}) = (\{0\}^\ell, \{0\}^\ell)\)</span> and <span class="math inline">\(\vec{M}_1 = (m_{1,1}, m_{1,2}) = (\{0\}^\ell, \{1\}^\ell)\)</span>.</li>
+<li><span class="math inline">\(\mathcal{A}\)</span> receives <span class="math inline">\(\vec{C} = (c_1, c_2)\)</span> which contains two ciphertexts.
+<ul>
+<li>If <span class="math inline">\(c_1 = c_2\)</span>, <span class="math inline">\(\mathcal{A}\)</span> outputs <span class="math inline">\(b&#39; = 0\)</span>.</li>
+<li>Otherwise, <span class="math inline">\(\mathcal{A}\)</span> outputs <span class="math inline">\(b&#39; = 1\)</span>.</li>
+</ul></li>
+</ol>
+<p>Let <span class="math inline">\(k\)</span> be the reused key. It is known that <span class="math inline">\(k \oplus m_{0,1} = k \oplus m_{0,2}\)</span> and <span class="math inline">\(k \oplus m_{1,1} \neq k \oplus m_{1,2}\)</span>. Clearly, <span class="math inline">\(c_1 = c_2\)</span> if and only if <span class="math inline">\(b=0\)</span>, otherwise <span class="math inline">\(b=1\)</span>. Therefore, the adversary <span class="math inline">\(\mathcal{A}\)</span> will output <span class="math inline">\(b&#39;=b\)</span> correctly with probability <span class="math inline">\(1\)</span>. <p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
+<p><strong>Theorem 2.4.</strong> One-time pad is not CPA-secure.</p>
+<p><strong>Proof.</strong> Given any pair of plaintext and ciphertext <span class="math inline">\((m, c)\)</span>, the adversary computes <span class="math display">\[m \oplus c = m \oplus (k \oplus m) = k
+\]</span> which is the key. <p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
+<p>As shown by Theorem 2.4, it is extremely simple to recover the key used in one-time pad under any attack where an attacker can obtain the plaintext and the ciphertext at the same time (e.g., KPA, CPA, CCA). However, this is rarely a concern in reality, since the one-time key is never supposed to be reused.</p>
 </section>
       </div>
       <footer>
@@ -124,7 +142,7 @@ Using Bayes’ Theorem:
           <i class="fa fa-anchor" aria-hidden="true"></i>
           <code>Permalink</code>
         </a> |
-        Last updated: <span id="update-time">2016-12-29</span>
+        Last updated: <span id="update-time">2016-12-30</span>
       </footer>
     </article></main>
   </body>
