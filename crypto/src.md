@@ -1,6 +1,6 @@
 % Cryptography
 % Mort Yao
-% 2016-12-28
+% 2016-12-30
 
 Textbook:
 
@@ -22,7 +22,10 @@ Preliminaries: Basic [statistics](/math/statistics/), [theory of computation](/c
 
 ## [Principles of Modern Cryptography](intro/)
 
-## [Classical Ciphers](classical/)
+## Classical Ciphers
+### [Shift Cipher](classical/shift/)
+### [Substitution Cipher](classical/substitution/)
+### [Vigenère Cipher](classical/vigenere/)
 
 
 
