@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-07 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Mort Yao">
+    <meta name="dcterms.date" content="2017-01-01">
+    <title>Vigenère Cipher</title>
+    <link rel="canonical" href="https://wiki.soimort.org/crypto/classical/vigenere">
+    <style type="text/css">code { white-space: pre; }</style>
+    <link rel="stylesheet" href="//cdn.soimort.org/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/mathsvg/latest/mathsvg.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Roman.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Mono.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/__/css/style.css">
+    <link rel="stylesheet" href="/__/css/pygments.css">
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.soimort.org/jk/latest/jk.min.js"></script>
+    <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>
+    <script src="/__/js/jk-minibar.js"></script>
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+  <body>
+    <main><article>
+      <header>
+        <h1 class="title">Vigenère Cipher</h1>
+        <address class="author">Mort Yao</address>
+        <!-- h3 class="date">2017-01-01</h3 -->
+      </header>
+      <nav id="TOC">
+<ul>
+<li><a href="#construction"><span class="toc-section-number">1</span> Construction</a></li>
+<li><a href="#secrecy-and-cryptanalysis"><span class="toc-section-number">2</span> Secrecy and Cryptanalysis</a></li>
+</ul>
+      </nav>
+      <div id="content">
+<section id="construction" class="level1">
+<h1><span class="header-section-number">1</span> Construction</h1>
+<p>Assume that all data are encoded using the alphabet <span class="math inline">\(\Sigma = \{0,\dots,n-1\}\)</span> (where <span class="math inline">\(n\)</span> is the length of the alphabet).</p>
+<p><strong>Vigenère cipher (poly-alphabetic shift cipher).</strong> Given <span class="math inline">\(\ell \in \mathbb{Z}^+\)</span> which is the fixed length of the plaintext and <span class="math inline">\(t \in \mathbb{Z}^+\)</span> which is the fixed length of the key, define the following encryption scheme <span class="math inline">\(\Pi=(\mathsf{Gen},\mathsf{Enc},\mathsf{Dec})\)</span>:</p>
+<ul>
+<li>Message space <span class="math inline">\(\mathcal{M} = \{0,\dots,n-1\}^\ell\)</span>.</li>
+<li>Key space <span class="math inline">\(\mathcal{K} = k_1 k_2 \dots k_t = \{0,\dots,n-1\}^t\)</span>.</li>
+<li>Ciphertext space <span class="math inline">\(\mathcal{C} = \{0,\dots,n-1\}^\ell\)</span>.</li>
+<li><span class="math inline">\(\mathsf{Gen}\)</span> outputs a key <span class="math inline">\(k \in \mathcal{K}\)</span> according to the uniform distribution.</li>
+<li><span class="math inline">\(\mathsf{Enc}\)</span> takes as input a key <span class="math inline">\(k \in \mathcal{K}\)</span> and a message <span class="math inline">\(m \in \mathcal{M}\)</span>, and outputs the ciphertext <span class="math display">\[\mathsf{Enc}_k(m_1 \dots m_\ell) = c_1 \dots c_\ell \textrm{, where } c_i := [(m_i+k_{[(i-1) \operatorname{mod} t] + 1}) \operatorname{mod} n].\]</span></li>
+<li><span class="math inline">\(\mathsf{Dec}\)</span> takes as input a key <span class="math inline">\(k \in \mathcal{K}\)</span> and a ciphertext <span class="math inline">\(c \in \mathcal{C}\)</span>, and outputs the message <span class="math display">\[\mathsf{Dec}_k(c_1 \dots c_\ell) = m_1 \dots m_\ell \textrm{, where } m_i := [(c_i-k_{[(i-1) \operatorname{mod} t] + 1}) \operatorname{mod} n].\]</span></li>
+</ul>
+<p>(<span class="math inline">\(k_{[(i-1) \operatorname{mod} t] + 1}\)</span> guarantees that for each <span class="math inline">\(i\)</span>, a valid index from the range <span class="math inline">\(\{1,\dots,t\}\)</span> is selected, e.g., for <span class="math inline">\(i \in \{1,1+t,1+2t,\dots\}\)</span>, <span class="math inline">\(k_1\)</span> is always used.)</p>
+<p><em>Remark 1.1.</em> In practice, the key length <span class="math inline">\(t\)</span> is not necessarily known (to the attacker). We fix it here as an integer so that <span class="math inline">\(\mathsf{Gen}\)</span> can choose a key uniformly from the finite key space.</p>
+</section>
+<section id="secrecy-and-cryptanalysis" class="level1">
+<h1><span class="header-section-number">2</span> Secrecy and Cryptanalysis</h1>
+<p>Notice that <span class="math inline">\(|\mathcal{K}| = n^t\)</span>, <span class="math inline">\(|\mathcal{M}| = n^\ell\)</span>. If <span class="math inline">\(|\mathcal{K}| &lt; |\mathcal{M}|\)</span>, then the scheme cannot be perfectly secret.</p>
+<p><strong>Theorem 2.1.</strong> Vigenère cipher is not perfectly secret when <span class="math inline">\(t &lt; \ell\)</span>.</p>
+<p><strong>Possible cryptanalysis:</strong></p>
+<ol type="1">
+<li>When the key length <span class="math inline">\(t\)</span> is known, for all <span class="math inline">\(j \in \{1,\dots,t\}\)</span>, extract all sequences <span class="math display">\[c_j,c_{j+t},c_{j+2t}\dots\]</span> and apply frequency analysis.</li>
+<li>When the key length is unknown, two approaches may be used to determine the key length <span class="math inline">\(t\)</span> efficiently:
+<ul>
+<li><em>Kasiski’s method</em>.</li>
+<li><em>Index of coincidence method</em>.</li>
+</ul></li>
+</ol>
+</section>
+      </div>
+      <footer>
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard shortcut: R"
+           href="https://wiki.soimort.org/crypto/classical/vigenere/src.md">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
+        <a class="history" accesskey="h"
+           title="Keyboard shortcut: H"
+           href="https://github.com/soimort/wiki/commits/gh-pages/crypto/classical/vigenere/src.md">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard shortcut: E"
+           href="https://github.com/soimort/wiki/edit/gh-pages/crypto/classical/vigenere/src.md">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
+           href="https://wiki.soimort.org/crypto/classical/vigenere">
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
+        Last updated: <span id="update-time">2017-01-01</span>
+      </footer>
+    </article></main>
+  </body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-07 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Mort Yao">
+    <meta name="dcterms.date" content="2017-01-01">
+    <title>Substitution Cipher</title>
+    <link rel="canonical" href="https://wiki.soimort.org/crypto/classical/substitution">
+    <style type="text/css">code { white-space: pre; }</style>
+    <link rel="stylesheet" href="//cdn.soimort.org/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/mathsvg/latest/mathsvg.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Roman.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Mono.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/__/css/style.css">
+    <link rel="stylesheet" href="/__/css/pygments.css">
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.soimort.org/jk/latest/jk.min.js"></script>
+    <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>
+    <script src="/__/js/jk-minibar.js"></script>
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+  <body>
+    <main><article>
+      <header>
+        <h1 class="title">Substitution Cipher</h1>
+        <address class="author">Mort Yao</address>
+        <!-- h3 class="date">2017-01-01</h3 -->
+      </header>
+      <nav id="TOC">
+<ul>
+<li><a href="#construction"><span class="toc-section-number">1</span> Construction</a></li>
+<li><a href="#secrecy-and-cryptanalysis"><span class="toc-section-number">2</span> Secrecy and Cryptanalysis</a></li>
+</ul>
+      </nav>
+      <div id="content">
+<section id="construction" class="level1">
+<h1><span class="header-section-number">1</span> Construction</h1>
+<p>Assume that all data are encoded using the alphabet <span class="math inline">\(\Sigma = \{0,\dots,n-1\}\)</span> (where <span class="math inline">\(n\)</span> is the length of the alphabet).</p>
+<p><strong>Substitution cipher.</strong> Given <span class="math inline">\(\ell \in \mathbb{Z}^+\)</span> which is the fixed length of the plaintext, define the following encryption scheme <span class="math inline">\(\Pi=(\mathsf{Gen},\mathsf{Enc},\mathsf{Dec})\)</span>:</p>
+<ul>
+<li>Message space <span class="math inline">\(\mathcal{M} = \{0,\dots,n-1\}^\ell\)</span>.</li>
+<li>Key space <span class="math inline">\(\mathcal{K} = \mathfrak{S}_\Sigma\)</span> which is the symmetric group on <span class="math inline">\(\Sigma\)</span>. (Thus <span class="math inline">\(|\mathcal{K}| = n!\)</span>)</li>
+<li>Ciphertext space <span class="math inline">\(\mathcal{C} = \{0,\dots,n-1\}^\ell\)</span>.</li>
+<li><span class="math inline">\(\mathsf{Gen}\)</span> outputs a permutation (as the key) <span class="math inline">\(\sigma \in \mathcal{K}\)</span> according to the uniform distribution.</li>
+<li><span class="math inline">\(\mathsf{Enc}\)</span> takes as input a key <span class="math inline">\(\sigma \in \mathcal{K}\)</span> and a message <span class="math inline">\(m \in \mathcal{M}\)</span>, and outputs the ciphertext <span class="math display">\[\mathsf{Enc}_k(m_1 \dots m_\ell) = c_1 \dots c_\ell \textrm{, where } c_i := \sigma(m_i).\]</span></li>
+<li><span class="math inline">\(\mathsf{Dec}\)</span> takes as input a key <span class="math inline">\(\sigma \in \mathcal{K}\)</span> and a ciphertext <span class="math inline">\(c \in \mathcal{C}\)</span>, and outputs the message <span class="math display">\[\mathsf{Dec}_k(c_1 \dots c_\ell) = m_1 \dots m_\ell \textrm{, where } m_i := \sigma^{-1}(c_i).\]</span> Note that since <span class="math inline">\(\sigma\)</span> is bijective, its inverse <span class="math inline">\(\sigma^{-1}\)</span> is guaranteed to exist uniquely.</li>
+</ul>
+<p>Obviously, <span class="math display">\[\sigma^{-1}(\sigma(m_i)) = m_i\]</span> thus this encryption scheme satisfies the correctness requirement.</p>
+<p><em>Remark 1.1.</em> The <a href="/classical/shift/">shift cipher</a> may be considered as a limited form of the substitution cipher, where the key space is merely a permutation group <span class="math inline">\(\mathcal{K} &lt; \mathfrak{S}_\Sigma\)</span>.</p>
+</section>
+<section id="secrecy-and-cryptanalysis" class="level1">
+<h1><span class="header-section-number">2</span> Secrecy and Cryptanalysis</h1>
+<p>Notice that <span class="math inline">\(|\mathcal{K}| = n!\)</span>, <span class="math inline">\(|\mathcal{M}| = n^\ell\)</span>. If <span class="math inline">\(|\mathcal{K}| &lt; |\mathcal{M}|\)</span>, then the scheme cannot be perfectly secret.</p>
+<p><strong>Theorem 2.1.</strong> Substitution cipher is not perfectly secret when <span class="math inline">\(\ell\)</span> is sufficiently large (e.g., <span class="math inline">\(\ell \geq n\)</span>).</p>
+<p><strong>Possible cryptanalysis:</strong> Frequency analysis.</p>
+</section>
+      </div>
+      <footer>
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard shortcut: R"
+           href="https://wiki.soimort.org/crypto/classical/substitution/src.md">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
+        <a class="history" accesskey="h"
+           title="Keyboard shortcut: H"
+           href="https://github.com/soimort/wiki/commits/gh-pages/crypto/classical/substitution/src.md">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard shortcut: E"
+           href="https://github.com/soimort/wiki/edit/gh-pages/crypto/classical/substitution/src.md">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
+           href="https://wiki.soimort.org/crypto/classical/substitution">
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
+        Last updated: <span id="update-time">2017-01-01</span>
+      </footer>
+    </article></main>
+  </body>
+</html>
