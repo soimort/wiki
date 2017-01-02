@@ -1,6 +1,6 @@
 % Mort's small traces
 % Mort Yao
-% 2016-12-29
+% 2016-01-02
 
 ![<small>
 A lifelong project to do my study notes on Math / Computer Science systematically and spirally. \
@@ -71,8 +71,9 @@ It is still woefully incomplete, but it shouldn't always be. I keep learning thi
 # Applied Mathematics
 
 * [Probability theory](/math/probability/) and [statistics](/math/statistics/)
-* Information theory
+* [Information theory](/info/)
     * Coding theory
+    * Algorithmic information theory
     * Quantum information theory
 * **[Theory of Computation](/comp/)**
     * Formal language and automaton
