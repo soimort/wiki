@@ -1,6 +1,6 @@
 % Basic Probability Theory
 % Mort Yao
-% 2016-12-24
+% 2017-01-02
 
 Basic probability theory and statistics:
 
@@ -478,7 +478,7 @@ When $r$ is an integer, the negative binomial distribution is also known as the 
 
 ## Geometric Distribution
 
-The *geometric distribution* is the probability distribution of the number of failures in a sequence of independent and identically distributed Bernoulli trials before the first success.
+The *geometric distribution* is the discrete probability distribution of the number of failures in a sequence of independent and identically distributed Bernoulli trials before the first success.
 
 **pmf.**
 $$f(k;p) = (1-p)^k p$$
@@ -491,6 +491,20 @@ $$\operatorname{E}[X] = \frac{1-p}{p}$$
 $$\operatorname{Var}(X) = \frac{1-p}{p^2}$$
 
 The geometric distribution $\text{Geom}(p)$ is a special case of negative binomial distribution $\text{NB}(1,1-p)$.
+
+## Discrete Uniform Distribution
+
+The *discrete uniform distribution* is the probability distribution whereby a finite number of values are equally likely to be observed.
+
+**pmf.**
+$$f(a,b) = \frac{1}{b-a+1}$$
+$$X \sim \mathcal{U}\{a,b\}$$
+
+**Mean.**
+$$\operatorname{E}[X] = \frac{a+b}{2}$$
+
+**Variance.**
+$$\operatorname{Var}(X) = \frac{(b-a+1)^2-1}{12}$$
 
 ## Summary
 

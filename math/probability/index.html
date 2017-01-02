@@ -8,7 +8,7 @@
     <meta name="generator" content="pandoc">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="author" content="Mort Yao">
-    <meta name="dcterms.date" content="2016-12-24">
+    <meta name="dcterms.date" content="2017-01-02">
     <title>Basic Probability Theory</title>
     <link rel="canonical" href="https://wiki.soimort.org/math/probability">
     <style type="text/css">code { white-space: pre; }</style>
@@ -34,7 +34,7 @@
       <header>
         <h1 class="title">Basic Probability Theory</h1>
         <address class="author">Mort Yao</address>
-        <!-- h3 class="date">2016-12-24</h3 -->
+        <!-- h3 class="date">2017-01-02</h3 -->
       </header>
       <nav id="TOC">
 <ul>
@@ -315,14 +315,21 @@
 </section>
 <section id="geometric-distribution" class="level2">
 <h2><span class="header-section-number">4.4</span> Geometric Distribution</h2>
-<p>The <em>geometric distribution</em> is the probability distribution of the number of failures in a sequence of independent and identically distributed Bernoulli trials before the first success.</p>
+<p>The <em>geometric distribution</em> is the discrete probability distribution of the number of failures in a sequence of independent and identically distributed Bernoulli trials before the first success.</p>
 <p><strong>pmf.</strong> <span class="math display">\[f(k;p) = (1-p)^k p\]</span> <span class="math display">\[X \sim \text{Geom}(p)\]</span></p>
 <p><strong>Mean.</strong> <span class="math display">\[\operatorname{E}[X] = \frac{1-p}{p}\]</span></p>
 <p><strong>Variance.</strong> <span class="math display">\[\operatorname{Var}(X) = \frac{1-p}{p^2}\]</span></p>
 <p>The geometric distribution <span class="math inline">\(\text{Geom}(p)\)</span> is a special case of negative binomial distribution <span class="math inline">\(\text{NB}(1,1-p)\)</span>.</p>
 </section>
+<section id="discrete-uniform-distribution" class="level2">
+<h2><span class="header-section-number">4.5</span> Discrete Uniform Distribution</h2>
+<p>The <em>discrete uniform distribution</em> is the probability distribution whereby a finite number of values are equally likely to be observed.</p>
+<p><strong>pmf.</strong> <span class="math display">\[f(a,b) = \frac{1}{b-a+1}\]</span> <span class="math display">\[X \sim \mathcal{U}\{a,b\}\]</span></p>
+<p><strong>Mean.</strong> <span class="math display">\[\operatorname{E}[X] = \frac{a+b}{2}\]</span></p>
+<p><strong>Variance.</strong> <span class="math display">\[\operatorname{Var}(X) = \frac{(b-a+1)^2-1}{12}\]</span></p>
+</section>
 <section id="summary" class="level2">
-<h2><span class="header-section-number">4.5</span> Summary</h2>
+<h2><span class="header-section-number">4.6</span> Summary</h2>
 <table style="width:82%;">
 <colgroup>
 <col style="width: 34%" />
@@ -411,7 +418,7 @@
           <i class="fa fa-anchor" aria-hidden="true"></i>
           <code>Permalink</code>
         </a> |
-        Last updated: <span id="update-time">2016-12-24</span>
+        Last updated: <span id="update-time">2017-01-02</span>
       </footer>
     </article></main>
   </body>
