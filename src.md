@@ -1,6 +1,6 @@
 % Mort's small traces
 % Mort Yao
-% 2016-01-02
+% 2016-01-04
 
 ![<small>
 A lifelong project to do my study notes on Math / Computer Science systematically and spirally. \
@@ -54,7 +54,7 @@ It is still woefully incomplete, but it shouldn't always be. I keep learning thi
     * Integral calculus
     * Series
     * Vector calculus
-* Differential equations and dynamical systems
+* Differential equations and dynamical systems theory
     * Control theory
     * Chaos and fractals
 * Analysis
@@ -99,22 +99,32 @@ It is still woefully incomplete, but it shouldn't always be. I keep learning thi
     * Linear programming and mathematical optimization
     * Evolutionary computation
     * Algorithmic game theory
-* **Machine learning**
-    * Artificial neural networks
-    * Deep learning
-* **Computer vision and image processing**
+* **[Machine learning](/ml/)**
+    * Artificial neural networks and deep learning
+* **[Computer vision and image processing](/cv/)**
 * Natural language processing
 * **[Programming language theory](/plt/)**
     * Formal semantics
     * Type theory and Curry-Howard correspondence
     * Program analysis and transformation
 
+# Physics and Life Sciences
+
+* Statistical mechanics
+* Classical mechanics, electromagnetism and field theory
+* Quantum mechanics and quantum field theory
+* Electronics and signal processing
+    * EDA and functional verification
+* Genetics, genomics and bioinformatics
+* Structural biology (biochemistry, biophysics and molecular biology)
+* Computational systems biology
+
 # Software Technology
 
 * Computer systems and architectures
 * Operating systems
     * [Unix from user space](/unix/)
-    * Unix system programming
+    * System programming
     * Linux kernel
 * TCP/IP
     * Internet protocol suite
