@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-07 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Mort Yao">
+    <meta name="dcterms.date" content="2017-01-05">
+    <title>Basic Ergodic Theory</title>
+    <link rel="canonical" href="https://wiki.soimort.org/math/dynamical-systems/ergodic">
+    <style type="text/css">code { white-space: pre; }</style>
+    <link rel="stylesheet" href="//cdn.soimort.org/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/mathsvg/latest/mathsvg.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Roman.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Mono.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/__/css/style.css">
+    <link rel="stylesheet" href="/__/css/pygments.css">
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.soimort.org/jk/latest/jk.min.js"></script>
+    <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>
+    <script src="/__/js/jk-minibar.js"></script>
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+  <body>
+    <main><article>
+      <header>
+        <h1 class="title">Basic Ergodic Theory</h1>
+        <address class="author">Mort Yao</address>
+        <!-- h3 class="date">2017-01-05</h3 -->
+      </header>
+      <div id="content">
+<p><strong>Definition 1. (Measure-preserving dynamical system)</strong> A <em>measure-preserving dynamical system</em> <span class="math inline">\((X, \mathcal{X}, \mu, T)\)</span> is defined by specifying a <a href="/math/probability/">probability</a> space <span class="math inline">\((X, \mathcal{X}, \mu)\)</span> and a <a href="/math/analysis/measure/">measure</a>-preserving transformation (isomorphism) <span class="math inline">\(T\)</span> on it:</p>
+<ul>
+<li><span class="math inline">\(X\)</span> is a set.</li>
+<li><span class="math inline">\(\mathcal{X}\)</span> is a σ-algebra over <span class="math inline">\(X\)</span>.</li>
+<li><span class="math inline">\(\mu : \mathcal{X} \to [0,1]\)</span> is a probability measure.</li>
+<li><span class="math inline">\(T : X \to X\)</span> is a measurable transformation which preserves the measure <span class="math inline">\(\mu\)</span>, i.e., <span class="math inline">\(\forall E \in \mathcal{X}, \mu(T(E)) = \mu(E)\)</span>.</li>
+</ul>
+<p><strong>Definition 2. (Measure-theoretic entropy; Kolmogorov-Sinai entropy)</strong> The <em>entropy of a partition</em> <span class="math inline">\(Q=\{Q_1,\dots,Q_k\}\)</span> is defined as <span class="math display">\[\operatorname{H}(Q) = -\sum_{m=1}^k \mu(Q_m) \log \mu(Q_m)\]</span> The <em>measure-theoretic entropy of a dynamical system <span class="math inline">\((X,\mathcal{X},T,\mu)\)</span> with respect to a partition</em> <span class="math inline">\(Q=\{Q_1,\dots,Q_k\}\)</span> is defined as <span class="math display">\[h_\mu(T,Q) = \lim_{N \to \infty} \frac{1}{N} \operatorname{H}\left(\bigvee_{n=0}^N T^{-n}Q\right)\]</span> The <em>measure-theoretic entropy of a dynamical system</em> <span class="math inline">\((X,\mathcal{X},T,\mu)\)</span> is defined as <span class="math display">\[h_\mu(T) = \sup_Q h_\mu(T,Q)\]</span> where the supremum is taken over all finite measurable partitions <span class="math inline">\(Q\)</span>.</p>
+      </div>
+      <footer>
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard shortcut: R"
+           href="https://wiki.soimort.org/math/dynamical-systems/ergodic/src.md">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
+        <a class="history" accesskey="h"
+           title="Keyboard shortcut: H"
+           href="https://github.com/soimort/wiki/commits/gh-pages/math/dynamical-systems/ergodic/src.md">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard shortcut: E"
+           href="https://github.com/soimort/wiki/edit/gh-pages/math/dynamical-systems/ergodic/src.md">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
+           href="https://wiki.soimort.org/math/dynamical-systems/ergodic">
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
+        Last updated: <span id="update-time">2017-01-05</span>
+      </footer>
+    </article></main>
+  </body>
+</html>
