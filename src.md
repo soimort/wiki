@@ -43,11 +43,11 @@ It is still woefully incomplete, but it shouldn't always be. I keep learning thi
     * Representation theory
     * Category theory and homological algebra
 * Topology and geometry
-    * General topology
+    * General topology (point-set topology)
     * Geometric topology
     * Algebraic topology and geometry
     * Differential topology and geometry
-    * Lie groups
+    * Lie group
 * Calculus
     * [Limit](/math/calculus/limit/) and continuity
     * Differential calculus
@@ -59,19 +59,24 @@ It is still woefully incomplete, but it shouldn't always be. I keep learning thi
     * Complex analysis
     * Real analysis
     * Functional analysis
+    * Harmonic analysis
 * Differential equations and dynamical systems theory
+    * [Ergodic theory](/math/dynamical-systems/ergodic/)
     * Control theory
-    * Ergodic theory
     * Chaos and fractals
 * Number theory
     * Algebraic number theory
     * Analytic number theory
-* Graph theory
 * Combinatorics
+    * Arithmetic combinatorics
+    * Graph theory and knot theory
+    * Algebraic graph theory
 
 # Applied Mathematics
 
 * [Probability theory](/math/probability/) and [statistics](/math/statistics/)
+    * Stochastic process
+    * Nonparametric statistics
 * [Information theory](/info/)
     * Coding theory
     * Algorithmic information theory
@@ -91,11 +96,10 @@ It is still woefully incomplete, but it shouldn't always be. I keep learning thi
     * [Computational geometry](/algo/computational-geometry/)
     * Computer graphics and visualization
 * **[Cryptography](/crypto/)**
-    * Classical cryptography
     * Information-theoretic security
     * Private-key cryptography
     * Public-key cryptography
-    * Quantum resistance
+    * Quantum cryptography
 * Game theory and operations research
     * Linear programming and mathematical optimization
     * Evolutionary computation
