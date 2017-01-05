@@ -53,7 +53,7 @@ It is still woefully incomplete, but it shouldn't always be. I keep learning thi
     * Differential calculus
     * Integral calculus
     * Series
-    * Vector calculus
+    * Vector calculus and tensor calculus
 * Analysis
     * Measure theory
     * Complex analysis
