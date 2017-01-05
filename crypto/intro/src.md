@@ -1,13 +1,13 @@
 % Principles of Modern Cryptography
 % Mort Yao
-% 2016-12-29
+% 2017-01-05
 
-**Private-key encryption scheme**. A *private-key encryption scheme* is defined by specifying a message space along with three [algorithms](/comp/algorithm/):
+**Private-key encryption scheme**. A *private-key encryption scheme* $\Pi = (\mathsf{Gen}, \mathsf{Enc}, \mathsf{Dec})$ is defined by specifying a message space along with three [algorithms](/comp/algorithm/):
 
-1. The *message space* $\mathcal{M}$, which is the set of all possible messages (plaintexts).
-2. The *key-generation algorithm* $\mathsf{Gen}$, which is a (probabilistic) algorithm that chooses a key $k \in \mathcal{K}$ (where $\mathcal{K}$ is said to be the *key space*) according to some distribution.
-3. The *encryption algorithm* $\mathsf{Enc}$, which takes as input a key $k$ and a message $m \in \mathcal{M}$ and outputs a ciphertext $c \leftarrow \mathsf{Enc}_k(m)$.
-4. The *decryption algorithm* $\mathsf{Dec}$, which takes as input a key $k$ and a ciphertext $c$ and outputs a plaintext $m := \mathsf{Dec}_k(c)$.
+* The *message space* $\mathcal{M}$, which is the set of all possible messages (plaintexts).
+* The *key-generation algorithm* $\mathsf{Gen}$, which is a (probabilistic) algorithm that chooses a key $k \in \mathcal{K}$ (where $\mathcal{K}$ is said to be the *key space*) according to some distribution.
+* The *encryption algorithm* $\mathsf{Enc}$, which takes as input a key $k$ and a message $m \in \mathcal{M}$ and outputs a ciphertext $c \leftarrow \mathsf{Enc}_k(m)$.
+* The *decryption algorithm* $\mathsf{Dec}$, which takes as input a key $k$ and a ciphertext $c$ and outputs a plaintext $m := \mathsf{Dec}_k(c)$.
 
 Furthermore, an encryption scheme must satisfy the correctness requirement: for every $k \in \mathcal{K}$ and every $m \in \mathcal{M}$, it holds that
 $$\mathsf{Dec}_k(\mathsf{Enc}_k(m)) = m$$

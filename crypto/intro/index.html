@@ -8,7 +8,7 @@
     <meta name="generator" content="pandoc">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="author" content="Mort Yao">
-    <meta name="dcterms.date" content="2016-12-29">
+    <meta name="dcterms.date" content="2017-01-05">
     <title>Principles of Modern Cryptography</title>
     <link rel="canonical" href="https://wiki.soimort.org/crypto/intro">
     <style type="text/css">code { white-space: pre; }</style>
@@ -34,16 +34,16 @@
       <header>
         <h1 class="title">Principles of Modern Cryptography</h1>
         <address class="author">Mort Yao</address>
-        <!-- h3 class="date">2016-12-29</h3 -->
+        <!-- h3 class="date">2017-01-05</h3 -->
       </header>
       <div id="content">
-<p><strong>Private-key encryption scheme</strong>. A <em>private-key encryption scheme</em> is defined by specifying a message space along with three <a href="/comp/algorithm/">algorithms</a>:</p>
-<ol type="1">
+<p><strong>Private-key encryption scheme</strong>. A <em>private-key encryption scheme</em> <span class="math inline">\(\Pi = (\mathsf{Gen}, \mathsf{Enc}, \mathsf{Dec})\)</span> is defined by specifying a message space along with three <a href="/comp/algorithm/">algorithms</a>:</p>
+<ul>
 <li>The <em>message space</em> <span class="math inline">\(\mathcal{M}\)</span>, which is the set of all possible messages (plaintexts).</li>
 <li>The <em>key-generation algorithm</em> <span class="math inline">\(\mathsf{Gen}\)</span>, which is a (probabilistic) algorithm that chooses a key <span class="math inline">\(k \in \mathcal{K}\)</span> (where <span class="math inline">\(\mathcal{K}\)</span> is said to be the <em>key space</em>) according to some distribution.</li>
 <li>The <em>encryption algorithm</em> <span class="math inline">\(\mathsf{Enc}\)</span>, which takes as input a key <span class="math inline">\(k\)</span> and a message <span class="math inline">\(m \in \mathcal{M}\)</span> and outputs a ciphertext <span class="math inline">\(c \leftarrow \mathsf{Enc}_k(m)\)</span>.</li>
 <li>The <em>decryption algorithm</em> <span class="math inline">\(\mathsf{Dec}\)</span>, which takes as input a key <span class="math inline">\(k\)</span> and a ciphertext <span class="math inline">\(c\)</span> and outputs a plaintext <span class="math inline">\(m := \mathsf{Dec}_k(c)\)</span>.</li>
-</ol>
+</ul>
 <p>Furthermore, an encryption scheme must satisfy the correctness requirement: for every <span class="math inline">\(k \in \mathcal{K}\)</span> and every <span class="math inline">\(m \in \mathcal{M}\)</span>, it holds that <span class="math display">\[\mathsf{Dec}_k(\mathsf{Enc}_k(m)) = m\]</span></p>
 <p><strong>Encoding</strong>. Most of the time, we assume that all messages are encoded as binary strings. Thus, <span class="math inline">\(\mathcal{M} \subseteq \{0,1\}^*\)</span>.</p>
 <p><strong>Deterministic or probabilistic algorithms.</strong> Clearly, the decryption algorithm <span class="math inline">\(\mathsf{Dec}\)</span> should be deterministic, since the recipient party expects that a message can be decrypted deterministically and unambiguously.</p>
@@ -104,7 +104,7 @@
           <i class="fa fa-anchor" aria-hidden="true"></i>
           <code>Permalink</code>
         </a> |
-        Last updated: <span id="update-time">2016-12-29</span>
+        Last updated: <span id="update-time">2017-01-05</span>
       </footer>
     </article></main>
   </body>
