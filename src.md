@@ -1,6 +1,6 @@
 % Mort's small traces
 % Mort Yao
-% 2016-01-04
+% 2017-01-05
 
 ![<small>
 A lifelong project to do my study notes on Math / Computer Science systematically and spirally. \
@@ -54,14 +54,15 @@ It is still woefully incomplete, but it shouldn't always be. I keep learning thi
     * Integral calculus
     * Series
     * Vector calculus
-* Differential equations and dynamical systems theory
-    * Control theory
-    * Chaos and fractals
 * Analysis
     * Measure theory
     * Complex analysis
     * Real analysis
     * Functional analysis
+* Differential equations and dynamical systems theory
+    * Control theory
+    * Ergodic theory
+    * Chaos and fractals
 * Number theory
     * Algebraic number theory
     * Analytic number theory
