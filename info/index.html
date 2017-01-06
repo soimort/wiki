@@ -8,7 +8,7 @@
     <meta name="generator" content="pandoc">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="author" content="Mort Yao">
-    <meta name="dcterms.date" content="2017-01-06">
+    <meta name="dcterms.date" content="2017-01-07">
     <title>Basic Information Theory</title>
     <link rel="canonical" href="https://wiki.soimort.org/info">
     <style type="text/css">code { white-space: pre; }</style>
@@ -34,7 +34,7 @@
       <header>
         <h1 class="title">Basic Information Theory</h1>
         <address class="author">Mort Yao</address>
-        <!-- h3 class="date">2017-01-06</h3 -->
+        <!-- h3 class="date">2017-01-07</h3 -->
       </header>
       <div id="content">
 <p>Basic information theory:</p>
@@ -43,7 +43,10 @@
 </ul>
 <hr />
 <p><strong>Definition 1. (Information entropy; Shannon entropy)</strong> Let <span class="math inline">\(p(x)\)</span> be the probability distribution of a discrete random variable <span class="math inline">\(X\)</span> taking values from <span class="math inline">\(\mathcal{X}\)</span>. The <em>entropy</em> of random variable <span class="math inline">\(X\)</span> is defined as <span class="math display">\[\operatorname{H}(X) = -\sum_{x \in \mathcal{X}} p(x) \log p(x)\]</span> where <span class="math inline">\(0 \log 0\)</span> is taken to be <span class="math inline">\(0\)</span>.</p>
-<p><strong>Definition 2. (Binary entropy function)</strong> Let <span class="math inline">\(p\)</span> be the bias of a Bernoulli random variable <span class="math inline">\(X\)</span>. The entropy of the distribution of <span class="math inline">\(X\)</span> is given by <span class="math display">\[\operatorname{H}_b(p) = -p \log p - (1-p) \log (1-p)\]</span> where <span class="math inline">\(0 \log 0\)</span> is taken to be <span class="math inline">\(0\)</span>. The logarithms in this formula are usually taken to the base 2.</p>
+<p>When the logarithms in the formula are taken to the base 2, the unit of information is called the <em>shannon</em> (or more commonly <em>bit</em>, symbolically <span class="math inline">\(\mathrm{Sh}\)</span>). If a message is made of a sequence of bits, with all possible bit strings equally likely, the message’s information content expressed in shannons is equal to the length of the bit string.</p>
+<p>When base-10 logarithms are used, the unit of information is called the <em>hartley</em> (or <em>ban</em>). When natural logarithms are used, the unit of information is called the <em>nat</em>.</p>
+<p><span class="math display">\[1\,\mathrm{Sh} \approx 0.693\,\mathrm{nat} \approx 0.301\,\mathrm{Hart}\]</span></p>
+<p><strong>Definition 2. (Binary entropy function)</strong> Let <span class="math inline">\(p\)</span> be the bias of a Bernoulli random variable <span class="math inline">\(X\)</span>. The entropy of the distribution of <span class="math inline">\(X\)</span> is given by <span class="math display">\[\operatorname{H}_b(p) = -p \log p - (1-p) \log (1-p)\]</span> where <span class="math inline">\(0 \log 0\)</span> is taken to be <span class="math inline">\(0\)</span>.</p>
 <p>Notice that the binary entropy function <span class="math inline">\(\operatorname{H}_b(p)\)</span> takes a real number <span class="math inline">\(p \in [0,1]\)</span> instead of a probability distribution <span class="math inline">\(p(x)\)</span> as the parameter.</p>
 <p><strong>Lemma 3.</strong> <span class="math display">\[\frac{1}{n+1} e^{n \operatorname{H}(\frac{k}{n})} \leq \binom{n}{k} \leq e^{n \operatorname{H}(\frac{k}{n})}\]</span></p>
 <p><strong>Definition 4. (Joint entropy)</strong> Let <span class="math inline">\(p(x,y)\)</span> be the joint probability of <span class="math inline">\(X=x\)</span> and <span class="math inline">\(Y=y\)</span> occurring together. The <em>joint entropy</em> of random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is defined as <span class="math display">\[\operatorname{H}(X,Y) = -\sum_{x \in \mathcal{X}}\sum_{y \in \mathcal{Y}} p(x,y) \log p(x,y)\]</span> where <span class="math inline">\(0 \log 0\)</span> is taken to be <span class="math inline">\(0\)</span>.</p>
@@ -105,7 +108,7 @@
           <i class="fa fa-anchor" aria-hidden="true"></i>
           <code>Permalink</code>
         </a> |
-        Last updated: <span id="update-time">2017-01-06</span>
+        Last updated: <span id="update-time">2017-01-07</span>
       </footer>
     </article></main>
   </body>

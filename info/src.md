@@ -1,6 +1,6 @@
 % Basic Information Theory
 % Mort Yao
-% 2017-01-06
+% 2017-01-07
 
 Basic information theory:
 
@@ -12,9 +12,15 @@ Basic information theory:
 $$\operatorname{H}(X) = -\sum_{x \in \mathcal{X}} p(x) \log p(x)$$
 where $0 \log 0$ is taken to be $0$.
 
+When the logarithms in the formula are taken to the base 2, the unit of information is called the *shannon* (or more commonly *bit*, symbolically $\mathrm{Sh}$). If a message is made of a sequence of bits, with all possible bit strings equally likely, the message's information content expressed in shannons is equal to the length of the bit string.
+
+When base-10 logarithms are used, the unit of information is called the *hartley* (or *ban*).  When natural logarithms are used, the unit of information is called the *nat*.
+
+$$1\,\mathrm{Sh} \approx 0.693\,\mathrm{nat} \approx 0.301\,\mathrm{Hart}$$
+
 **Definition 2. (Binary entropy function)** Let $p$ be the bias of a Bernoulli random variable $X$. The entropy of the distribution of $X$ is given by
 $$\operatorname{H}_b(p) = -p \log p - (1-p) \log (1-p)$$
-where $0 \log 0$ is taken to be $0$. The logarithms in this formula are usually taken to the base 2.
+where $0 \log 0$ is taken to be $0$.
 
 Notice that the binary entropy function $\operatorname{H}_b(p)$ takes a real number $p \in [0,1]$ instead of a probability distribution $p(x)$ as the parameter.
 
