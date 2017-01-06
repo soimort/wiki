@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-07 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Mort Yao">
+    <meta name="dcterms.date" content="2017-01-06">
+    <title>Basic Information Theory</title>
+    <link rel="canonical" href="https://wiki.soimort.org/info">
+    <style type="text/css">code { white-space: pre; }</style>
+    <link rel="stylesheet" href="//cdn.soimort.org/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/mathsvg/latest/mathsvg.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Roman.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Mono.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/__/css/style.css">
+    <link rel="stylesheet" href="/__/css/pygments.css">
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.soimort.org/jk/latest/jk.min.js"></script>
+    <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>
+    <script src="/__/js/jk-minibar.js"></script>
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+  <body>
+    <main><article>
+      <header>
+        <h1 class="title">Basic Information Theory</h1>
+        <address class="author">Mort Yao</address>
+        <!-- h3 class="date">2017-01-06</h3 -->
+      </header>
+      <div id="content">
+<p>Basic information theory:</p>
+<ul>
+<li>Thomas M. Cover and Joy A. Thomas. <strong><em>Elements of Information Theory, 2nd edition</em></strong>.</li>
+</ul>
+<hr />
+<p><strong>Definition 1. (Information entropy; Shannon entropy)</strong> Let <span class="math inline">\(p(x)\)</span> be the probability distribution of a discrete random variable <span class="math inline">\(X\)</span> taking values from <span class="math inline">\(\mathcal{X}\)</span>. The <em>entropy</em> of random variable <span class="math inline">\(X\)</span> is defined as <span class="math display">\[\operatorname{H}(X) = -\sum_{x \in \mathcal{X}} p(x) \log p(x)\]</span> where <span class="math inline">\(0 \log 0\)</span> is taken to be <span class="math inline">\(0\)</span>.</p>
+<p><strong>Definition 2. (Binary entropy function)</strong> Let <span class="math inline">\(p\)</span> be the bias of a Bernoulli random variable <span class="math inline">\(X\)</span>. The entropy of the distribution of <span class="math inline">\(X\)</span> is given by <span class="math display">\[\operatorname{H}_b(p) = -p \log p - (1-p) \log (1-p)\]</span> where <span class="math inline">\(0 \log 0\)</span> is taken to be <span class="math inline">\(0\)</span>. The logarithms in this formula are usually taken to the base 2.</p>
+<p>Notice that the binary entropy function <span class="math inline">\(\operatorname{H}_b(p)\)</span> takes a real number <span class="math inline">\(p \in [0,1]\)</span> instead of a probability distribution <span class="math inline">\(p(x)\)</span> as the parameter.</p>
+<p><strong>Lemma 3.</strong> <span class="math display">\[\frac{1}{n+1} e^{n \operatorname{H}(\frac{k}{n})} \leq \binom{n}{k} \leq e^{n \operatorname{H}(\frac{k}{n})}\]</span></p>
+<p><strong>Definition 4. (Joint entropy)</strong> Let <span class="math inline">\(p(x,y)\)</span> be the joint probability of <span class="math inline">\(X=x\)</span> and <span class="math inline">\(Y=y\)</span> occurring together. The <em>joint entropy</em> of random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is defined as <span class="math display">\[\operatorname{H}(X,Y) = -\sum_{x \in \mathcal{X}}\sum_{y \in \mathcal{Y}} p(x,y) \log p(x,y)\]</span> where <span class="math inline">\(0 \log 0\)</span> is taken to be <span class="math inline">\(0\)</span>.</p>
+<p><strong>Lemma 5.</strong> <span class="math display">\[\max[\operatorname{H}(X), \operatorname{H}(Y)] \leq \operatorname{H}(X,Y) \leq \operatorname{H}(X) + \operatorname{H}(Y)\]</span></p>
+<p>If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent, we have <span class="math inline">\(\operatorname{H}(X,Y) = \operatorname{H}(X) + \operatorname{H}(Y)\)</span>, since <span class="math inline">\(p(x,y) = p(x)p(y)\)</span>.</p>
+<p><strong>Definition 6. (Conditional entropy)</strong> Let <span class="math inline">\(p(x,y)\)</span> be the joint probability of <span class="math inline">\(X=x\)</span> and <span class="math inline">\(Y=y\)</span> occurring together. The <em>conditional entropy</em> of random variable <span class="math inline">\(X\)</span> conditioned on <span class="math inline">\(Y\)</span> is defined as <span class="math display">\[\operatorname{H}(X|Y) = \sum_{x \in \mathcal{X}}\sum_{y \in \mathcal{Y}} p(x,y) \log \frac{p(y)}{p(x,y)}\]</span> where <span class="math inline">\(0 \log \frac{0}{0} = 0\)</span> and <span class="math inline">\(0 \log \frac{q}{0} = 0\)</span>.</p>
+<p><strong>Lemma 7. (Chain rule for conditional entropy)</strong> <span class="math display">\[\operatorname{H}(X|Y) = \operatorname{H}(X,Y) - \operatorname{H}(Y)\]</span></p>
+<p><strong>Theorem 8. (Bayes’ rule for conditional entropy)</strong> <span class="math display">\[\operatorname{H}(X|Y) + \operatorname{H}(Y) = \operatorname{H}(Y|X) + \operatorname{H}(X)\]</span></p>
+<p><strong>Definition 9. (Mutual information)</strong> Let <span class="math inline">\(p(x,y)\)</span> be the joint probability of <span class="math inline">\(X=x\)</span> and <span class="math inline">\(Y=y\)</span> occurring together. The <em>mutual information</em> of random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is defined as <span class="math display">\[\operatorname{I}(X;Y) = \sum_{x \in \mathcal{X}}\sum_{y \in \mathcal{Y}} p(x,y) \log \frac{p(x,y)}{p(x)p(y)}\]</span></p>
+<p>Mutual information is a measure of the inherent dependence expressed in the joint distribution of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> relative to the joint distribution of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> under the assumption of independence. Therefore, <span class="math inline">\(\operatorname{I}(X;Y) = 0\)</span> if and only if <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent.</p>
+<strong>Lemma 10.</strong>
+<span class="math display">\[\begin{align*}
+\operatorname{I}(X;Y)
+&amp;= \operatorname{H}(X) + \operatorname{H}(Y) - \operatorname{H}(X,Y) \\
+&amp;= \operatorname{H}(X) - \operatorname{H}(X|Y) = \operatorname{H}(Y) - \operatorname{H}(Y|X) \\
+&amp;= \operatorname{H}(X,Y) - \operatorname{H}(X|Y) - \operatorname{H}(Y|X)
+\end{align*}\]</span>
+<p><strong>Definition 11. (Relative entropy; Kullback-Leibler divergence)</strong> Let <span class="math inline">\(p(x)\)</span> and <span class="math inline">\(q(x)\)</span> be two probability distributions of a random variable <span class="math inline">\(X\)</span>, the <em>Kullback-Leibler divergence</em> is defined as <span class="math display">\[\operatorname{D}_\mathrm{KL}(p\|q)
+= \operatorname{E}_p\left[ \log\frac{p(X)}{q(X)} \right]
+= \sum_{x \in \mathcal{X}} p(x) \log \frac{p(x)}{q(x)}
+\]</span> where <span class="math inline">\(0 \log \frac{0}{0} = 0\)</span>, <span class="math inline">\(0 \log \frac{0}{q} = 0\)</span> and <span class="math inline">\(p \log \frac{p}{0} = \infty\)</span>.</p>
+<p>In words, the Kullback-Leibler divergence is the expectation of the logarithmic difference between the probabilities <span class="math inline">\(p(x)\)</span> and <span class="math inline">\(q(x)\)</span>, where the expectation is taken using the probabilities <span class="math inline">\(p(x)\)</span>. Although it does not satisfy the triangle inequality, it is the way of measuring distances between two probability distributions.</p>
+<p>Mutual information can also be expressed as a Kullback–Leibler divergence: <span class="math display">\[\operatorname{I}(X;Y) = \operatorname{D}_\mathrm{KL}(p(x,y)\|p(x)p(y))\]</span></p>
+<p><strong>Definition 12. (Binary kl-divergence)</strong> Let <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> be biases of two Bernoulli random variables. The binary kl-divergence is given by <span class="math display">\[\operatorname{D}_\mathrm{kl}(p\|q) = \operatorname{D}_\mathrm{KL}([1-p,p]\|[1-q,q])
+= p \log \frac{p}{q} + (1-p) \log \frac{1-p}{1-q}\]</span></p>
+      </div>
+      <footer>
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard shortcut: R"
+           href="https://wiki.soimort.org/info/src.md">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
+        <a class="history" accesskey="h"
+           title="Keyboard shortcut: H"
+           href="https://github.com/soimort/wiki/commits/gh-pages/info/src.md">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard shortcut: E"
+           href="https://github.com/soimort/wiki/edit/gh-pages/info/src.md">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
+           href="https://wiki.soimort.org/info">
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
+        Last updated: <span id="update-time">2017-01-06</span>
+      </footer>
+    </article></main>
+  </body>
+</html>
