@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-07 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Mort Yao">
+    <meta name="dcterms.date" content="2017-01-06">
+    <title>Plot a Function</title>
+    <link rel="canonical" href="https://wiki.soimort.org/math/:code/plot">
+    <style type="text/css">code { white-space: pre; }</style>
+    <link rel="stylesheet" href="//cdn.soimort.org/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/mathsvg/latest/mathsvg.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Roman.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Mono.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/__/css/style.css">
+    <link rel="stylesheet" href="/__/css/pygments.css">
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.soimort.org/jk/latest/jk.min.js"></script>
+    <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>
+    <script src="/__/js/jk-minibar.js"></script>
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+  <body>
+    <main><article>
+      <header>
+        <h1 class="title">Plot a Function</h1>
+        <address class="author">Mort Yao</address>
+        <!-- h3 class="date">2017-01-06</h3 -->
+      </header>
+      <nav id="TOC">
+<ul>
+<li><a href="#plot-y-x2"><span class="toc-section-number">1</span> Plot <span class="math inline">\(y = x^2\)</span></a></li>
+<li><a href="#plot-gammax-gamma-function"><span class="toc-section-number">2</span> Plot <span class="math inline">\(\Gamma(x)\)</span> (Gamma Function)</a></li>
+</ul>
+      </nav>
+      <div id="content">
+<section id="plot-y-x2" class="level1">
+<h1><span class="header-section-number">1</span> Plot <span class="math inline">\(y = x^2\)</span></h1>
+<figure>
+<img src="https://i0.wp.com/dl.dropboxusercontent.com/s/i5w5lagy1w2jz6v/square.png" style="width:60.0%" />
+</figure>
+<p><strong>R:</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">png</span>(<span class="st">&#39;square.png&#39;</span>)
+
+square =<span class="st"> </span>function(x) { x *<span class="st"> </span>x }
+<span class="kw">curve</span>(square, <span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">50</span>,
+      <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;y&quot;</span>)
+
+<span class="kw">png</span>(<span class="st">&#39;square-ggplot.png&#39;</span>)
+
+<span class="kw">library</span>(<span class="st">&quot;ggplot2&quot;</span>)
+<span class="kw">ggplot</span>(<span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">50</span>)), <span class="kw">aes</span>(<span class="dt">x =</span> x)) +
+<span class="st">    </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> square, <span class="dt">geom =</span> <span class="st">&quot;line&quot;</span>) +
+<span class="st">    </span><span class="kw">xlab</span>(<span class="st">&quot;x&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;y&quot;</span>)
+
+<span class="kw">dev.off</span>()</code></pre></div>
+</section>
+<section id="plot-gammax-gamma-function" class="level1">
+<h1><span class="header-section-number">2</span> Plot <span class="math inline">\(\Gamma(x)\)</span> (Gamma Function)</h1>
+<figure>
+<img src="https://i0.wp.com/dl.dropboxusercontent.com/s/l0s11ya4s0gr2bp/gamma.png" />
+</figure>
+<p><strong>R:</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">png</span>(<span class="st">&#39;gamma.png&#39;</span>)
+
+x &lt;-<span class="st"> </span><span class="kw">sort</span>(<span class="kw">c</span>(<span class="kw">seq</span>(-<span class="dv">4</span>, <span class="dv">4</span>, <span class="dt">length.out =</span> <span class="dv">201</span>), <span class="kw">outer</span>(<span class="dv">0</span>:-<span class="dv">4</span>, (-<span class="dv">1</span>:<span class="dv">1</span>)*<span class="fl">1e-6</span>, <span class="st">&quot;+&quot;</span>)))
+<span class="kw">plot</span>(x, <span class="kw">gamma</span>(x), <span class="dt">ylim =</span> <span class="kw">c</span>(-<span class="dv">5</span>, <span class="dv">5</span>),
+     <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">lwd =</span> <span class="dv">2</span>,
+     <span class="dt">main =</span> <span class="kw">expression</span>(<span class="kw">Gamma</span>(x)))
+<span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>, <span class="dt">v =</span> -<span class="dv">3</span>:<span class="dv">0</span>, <span class="dt">lty =</span> <span class="dv">3</span>, <span class="dt">col =</span> <span class="st">&quot;midnightblue&quot;</span>)
+
+<span class="kw">dev.off</span>()</code></pre></div>
+</section>
+      </div>
+      <footer>
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard shortcut: R"
+           href="https://wiki.soimort.org/math/:code/plot/src.md">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
+        <a class="history" accesskey="h"
+           title="Keyboard shortcut: H"
+           href="https://github.com/soimort/wiki/commits/gh-pages/math/:code/plot/src.md">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard shortcut: E"
+           href="https://github.com/soimort/wiki/edit/gh-pages/math/:code/plot/src.md">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
+           href="https://wiki.soimort.org/math/:code/plot">
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
+        Last updated: <span id="update-time">2017-01-06</span>
+      </footer>
+    </article></main>
+  </body>
+</html>
