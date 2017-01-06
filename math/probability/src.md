@@ -1,6 +1,6 @@
 % Basic Probability Theory
 % Mort Yao
-% 2017-01-02
+% 2017-01-06
 
 Basic probability theory and statistics:
 
@@ -438,6 +438,9 @@ $$\operatorname{Var}(X) = p(1-p)$$
 
 Since $p \in [0,1]$, we have $\operatorname{Var}(X) \leq \frac{1}{4}$.
 
+**Entropy. (Binary entropy function)**
+$$\operatorname{H}(p) = -p \log p - (1-p) \log (1-p)$$
+
 ## Binomial Distribution
 
 The *binomial distribution* is the discrete probability distribution of the number of successes in a sequence of $n$ independent and identically distributed Bernoulli trials.
@@ -454,6 +457,9 @@ $$\operatorname{E}[X] = np$$
 
 **Variance.**
 $$\operatorname{Var}(X) = np(1-p)$$
+
+**Entropy.**
+$$\operatorname{H}(n,p) = \frac{1}{2} \log (2 \pi e np(1-p)) + \mathcal{O}\left(\frac{1}{n}\right)$$
 
 Note that a binomial random variable can be represented as a sum of independent, identically distributed Bernoulli random variables:
 $$X = \sum_{k=1}^n X_k \sim \text{B}(n,p)$$
@@ -490,6 +496,9 @@ $$\operatorname{E}[X] = \frac{1-p}{p}$$
 **Variance.**
 $$\operatorname{Var}(X) = \frac{1-p}{p^2}$$
 
+**Entropy.**
+$$\operatorname{H}(p) = \frac{-p \log p - (1-p) \log (1-p)}{p}$$
+
 The geometric distribution $\text{Geom}(p)$ is a special case of negative binomial distribution $\text{NB}(1,1-p)$.
 
 ## Discrete Uniform Distribution
@@ -506,6 +515,9 @@ $$\operatorname{E}[X] = \frac{a+b}{2}$$
 **Variance.**
 $$\operatorname{Var}(X) = \frac{(b-a+1)^2-1}{12}$$
 
+**Entropy.**
+$$\operatorname{H}(p) = \log (b-a+1)$$
+
 ## Summary
 
 |                          | With replacements | No replacements |
@@ -518,6 +530,12 @@ $$\operatorname{Var}(X) = \frac{(b-a+1)^2-1}{12}$$
 # Continuous Probability Distributions
 
 A continuous probability distribution is characterized by a probability density function (pdf).
+
+## [Normal Distribution](distributions/normal/) (Gaussian Distribution)
+
+## [Gamma Distribution](distributions/gamma/)
+
+(Special cases: chi-squared distribution, exponential distribution)
 
 
 

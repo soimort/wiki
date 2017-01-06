@@ -8,7 +8,7 @@
     <meta name="generator" content="pandoc">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="author" content="Mort Yao">
-    <meta name="dcterms.date" content="2017-01-02">
+    <meta name="dcterms.date" content="2017-01-06">
     <title>Basic Probability Theory</title>
     <link rel="canonical" href="https://wiki.soimort.org/math/probability">
     <style type="text/css">code { white-space: pre; }</style>
@@ -34,7 +34,7 @@
       <header>
         <h1 class="title">Basic Probability Theory</h1>
         <address class="author">Mort Yao</address>
-        <!-- h3 class="date">2017-01-02</h3 -->
+        <!-- h3 class="date">2017-01-06</h3 -->
       </header>
       <nav id="TOC">
 <ul>
@@ -294,6 +294,7 @@
 <p><strong>Mean.</strong> <span class="math display">\[\operatorname{E}[X] = 0 \cdot (1-p) + 1 \cdot p = p = \Pr[X=1]\]</span></p>
 <p><strong>Variance.</strong> <span class="math display">\[\operatorname{Var}(X) = p(1-p)\]</span></p>
 <p>Since <span class="math inline">\(p \in [0,1]\)</span>, we have <span class="math inline">\(\operatorname{Var}(X) \leq \frac{1}{4}\)</span>.</p>
+<p><strong>Entropy. (Binary entropy function)</strong> <span class="math display">\[\operatorname{H}(p) = -p \log p - (1-p) \log (1-p)\]</span></p>
 </section>
 <section id="binomial-distribution" class="level2">
 <h2><span class="header-section-number">4.2</span> Binomial Distribution</h2>
@@ -302,6 +303,7 @@
 <p><strong>pmf.</strong> <span class="math display">\[f(k;n,p) = \Pr[X=k] = \binom{n}{k} p^k(1-p)^{n-k}\]</span> <span class="math display">\[X \sim \text{B}(n,p)\]</span></p>
 <p><strong>Mean.</strong> <span class="math display">\[\operatorname{E}[X] = np\]</span></p>
 <p><strong>Variance.</strong> <span class="math display">\[\operatorname{Var}(X) = np(1-p)\]</span></p>
+<p><strong>Entropy.</strong> <span class="math display">\[\operatorname{H}(n,p) = \frac{1}{2} \log (2 \pi e np(1-p)) + \mathcal{O}\left(\frac{1}{n}\right)\]</span></p>
 <p>Note that a binomial random variable can be represented as a sum of independent, identically distributed Bernoulli random variables: <span class="math display">\[X = \sum_{k=1}^n X_k \sim \text{B}(n,p)\]</span></p>
 <p>Thus, the Bernoulli distribution is a special case of binomial distribution <span class="math inline">\(\text{B}(1,p)\)</span>.</p>
 </section>
@@ -319,6 +321,7 @@
 <p><strong>pmf.</strong> <span class="math display">\[f(k;p) = (1-p)^k p\]</span> <span class="math display">\[X \sim \text{Geom}(p)\]</span></p>
 <p><strong>Mean.</strong> <span class="math display">\[\operatorname{E}[X] = \frac{1-p}{p}\]</span></p>
 <p><strong>Variance.</strong> <span class="math display">\[\operatorname{Var}(X) = \frac{1-p}{p^2}\]</span></p>
+<p><strong>Entropy.</strong> <span class="math display">\[\operatorname{H}(p) = \frac{-p \log p - (1-p) \log (1-p)}{p}\]</span></p>
 <p>The geometric distribution <span class="math inline">\(\text{Geom}(p)\)</span> is a special case of negative binomial distribution <span class="math inline">\(\text{NB}(1,1-p)\)</span>.</p>
 </section>
 <section id="discrete-uniform-distribution" class="level2">
@@ -327,6 +330,7 @@
 <p><strong>pmf.</strong> <span class="math display">\[f(a,b) = \frac{1}{b-a+1}\]</span> <span class="math display">\[X \sim \mathcal{U}\{a,b\}\]</span></p>
 <p><strong>Mean.</strong> <span class="math display">\[\operatorname{E}[X] = \frac{a+b}{2}\]</span></p>
 <p><strong>Variance.</strong> <span class="math display">\[\operatorname{Var}(X) = \frac{(b-a+1)^2-1}{12}\]</span></p>
+<p><strong>Entropy.</strong> <span class="math display">\[\operatorname{H}(p) = \log (b-a+1)\]</span></p>
 </section>
 <section id="summary" class="level2">
 <h2><span class="header-section-number">4.6</span> Summary</h2>
@@ -361,6 +365,12 @@
 <section id="continuous-probability-distributions" class="level1">
 <h1><span class="header-section-number">5</span> Continuous Probability Distributions</h1>
 <p>A continuous probability distribution is characterized by a probability density function (pdf).</p>
+<section id="normal-distribution-gaussian-distribution" class="level2">
+<h2><span class="header-section-number">5.1</span> <a href="distributions/normal/">Normal Distribution</a> (Gaussian Distribution)</h2>
+</section>
+<section id="gamma-distribution" class="level2">
+<h2><span class="header-section-number">5.2</span> <a href="distributions/gamma/">Gamma Distribution</a></h2>
+<p>(Special cases: chi-squared distribution, exponential distribution)</p>
 <hr />
 <p>Related topics:</p>
 <ul>
@@ -381,6 +391,7 @@
 <li>Machine learning</li>
 <li>Computer vision and image processing</li>
 </ul>
+</section>
 </section>
       </div>
       <footer>
@@ -418,7 +429,7 @@
           <i class="fa fa-anchor" aria-hidden="true"></i>
           <code>Permalink</code>
         </a> |
-        Last updated: <span id="update-time">2017-01-02</span>
+        Last updated: <span id="update-time">2017-01-06</span>
       </footer>
     </article></main>
   </body>
