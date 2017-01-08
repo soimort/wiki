@@ -26,7 +26,7 @@ To describe a sample (data set) quantitatively, three kinds of measures are comm
 $$\mu = \bar{x} = \frac{1}{n} \sum_{i=1}^n x_i$$
 Example: Given data set $\{1,2,2,3,4,7,9\}$, the arithmetic mean is $\mu = \frac{1+2+2+3+4+7+9}{7} = 4$.
 
-*Remark 1.1.1. (Difference between arithmetic mean and expectation)* Note that although the formula of an arithmetic mean looks similar to the one of a mathematical expectation in probability theory, arithmetic mean is defined on a given sample (data set), while expectation is defined on a random variable with a given probability distribution. Moreover, arithmetic mean is generally unweighted.
+**Remark 1.1.1. (Difference between arithmetic mean and expectation)** Note that although the formula of an arithmetic mean looks similar to the one of a mathematical expectation in probability theory, arithmetic mean is defined on a given sample (data set), while expectation is defined on a random variable with a given probability distribution. Moreover, arithmetic mean is generally unweighted.
 
 **Median ($\nu)$.** Middle value separating the greater and lesser halves of a data set.
 Example: Given data set $\{1,2,2,3,4,7,9\}$, the median is $\nu = 3$.
@@ -77,7 +77,7 @@ $$\operatorname{max}\{x_1,\dots,x_n\} = \operatorname{M}_{+\infty}(x_1,\dots,x_n
 $$\operatorname{Range}\{x_1,\dots,x_n\} = \operatorname{max}\{x_1,\dots,x_n\} - \operatorname{min}\{x_1,\dots,x_n\}$$
 Intuitively, the range provides a naïve indication of statistical dispersion of the data set.
 
-*Remark 1.2.1. (Difference between range and support)* Recall that the support of a given probability distribution is the closure of the set of all possible values of a random variable having that distribution. The range is defined for a sample (data set), and does not necessarily include every possible value of the population.
+**Remark 1.2.1. (Difference between range and support)** Recall that the support of a given probability distribution is the closure of the set of all possible values of a random variable having that distribution. The range is defined for a sample (data set), and does not necessarily include every possible value of the population.
 
 **Interquartile range (IQR; mid-spread; H-spread).** The difference between the 75th and the 25th percentiles (i.e., the 3rd and the 1st quartiles).
 
@@ -97,7 +97,7 @@ Clearly, the MAD is a more robust measure of dispersion than the maximum absolut
 $$s^2 = \frac{n}{n-1}s_n^2 = \frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})^2$$
 $s$ is also called the **sample standard deviation**.
 
-*Remark 1.2.2. (Bessel's correction)* The use of the term $n-1$ instead of $n$ is called Bessel's correction. It corrects the bias in the estimation of the population variance; however, it often increases the mean squared error (MSE) in these estimations. $\bar{x}$ in this formula should be interpreted as the sample (arithmetic) mean. When the population mean is already known, there is no need to use Bessel's correction, since the use of the population mean will not lead to any bias for estimating the population variance.
+**Remark 1.2.2. (Bessel's correction)** The use of the term $n-1$ instead of $n$ is called Bessel's correction. It corrects the bias in the estimation of the population variance; however, it often increases the mean squared error (MSE) in these estimations. $\bar{x}$ in this formula should be interpreted as the sample (arithmetic) mean. When the population mean is already known, there is no need to use Bessel's correction, since the use of the population mean will not lead to any bias for estimating the population variance.
 
 **Coefficient of variation (CV; relative standard deviation).** The coefficient of variation is defined as the ratio of the sample standard deviation $s$ to the sample mean $\bar{x}$:
 $$\widehat{c_{\rm v}} = \frac{s}{\bar{x}}$$
