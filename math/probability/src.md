@@ -1,6 +1,6 @@
 % Basic Probability Theory
 % Mort Yao
-% 2017-01-06
+% 2017-01-08
 
 Basic probability theory and statistics:
 
@@ -326,8 +326,8 @@ where $\mu_n$ is the $n$th central moment of $X$, and $\sigma = \sqrt{\operatorn
 **Remark 2.23.** In the case of continuous probability distribution with a probability density function $f$, where the expectation is calculated as $\operatorname{E}[X] = \int_{-\infty}^\infty x f(x) dx$, $\operatorname{E}[X]$ and all other moments can be undefined (Example: Cauchy distribution). For discrete probability distributions, however, all moments are well-defined.
 
 **Remark 2.24.** In [statistics](/math/statistics/), when the exact expectations $\operatorname{E}[X]$ and $\operatorname{E}[Y]$ are unknown, the *sample covariance* (similarly for *sample variance* and *sample standard deviation*) is given by
-$$s^2 = \frac{1}{N-1} \sum_{i=1}^N (X_i-\bar{X})(Y_i-\bar{Y})$$
-Notice that $\bar{X}$ and $\bar{Y}$ are *empirical means* rather than expectations. The use of $\frac{1}{N-1}$ instead of $\frac{1}{N}$ is called *Bessel's correction*, which gives an unbiased estimator of the population covariance (and variance).
+$$s^2 = \frac{1}{n-1} \sum_{i=1}^n (X_i-\bar{X})(Y_i-\bar{Y})$$
+Notice that $\bar{X}$ and $\bar{Y}$ are *empirical means* (i.e., sample means) rather than expectations. The use of $\frac{1}{n-1}$ instead of $\frac{1}{n}$ is called *Bessel's correction*, which gives an unbiased estimator of the population covariance (and variance).
 
 
 
