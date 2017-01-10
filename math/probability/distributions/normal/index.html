@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-07 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Mort Yao">
+    <meta name="dcterms.date" content="2017-01-10">
+    <title>Normal Distribution</title>
+    <link rel="canonical" href="https://wiki.soimort.org/math/probability/distributions/normal">
+    <style type="text/css">code { white-space: pre; }</style>
+    <link rel="stylesheet" href="//cdn.soimort.org/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/mathsvg/latest/mathsvg.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Roman.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Mono.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/__/css/style.css">
+    <link rel="stylesheet" href="/__/css/pygments.css">
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.soimort.org/jk/latest/jk.min.js"></script>
+    <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>
+    <script src="/__/js/jk-minibar.js"></script>
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+  <body>
+    <main><article>
+      <header>
+        <h1 class="title">Normal Distribution</h1>
+        <address class="author">Mort Yao</address>
+        <!-- h3 class="date">2017-01-10</h3 -->
+      </header>
+      <nav id="TOC">
+<ul>
+<li><a href="#maximization-of-entropy"><span class="toc-section-number">1</span> Maximization of Entropy</a></li>
+<li><a href="#univariate-normal-distribution"><span class="toc-section-number">2</span> Univariate Normal Distribution</a></li>
+<li><a href="#multivariate-normal-distribution"><span class="toc-section-number">3</span> Multivariate Normal Distribution</a></li>
+</ul>
+      </nav>
+      <div id="content">
+<section id="maximization-of-entropy" class="level1">
+<h1><span class="header-section-number">1</span> Maximization of Entropy</h1>
+<p>Let <span class="math inline">\(f(x)\)</span> be a probability density function with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>, and let <span class="math inline">\(X\)</span> be a continuous random variable with density <span class="math inline">\(f(x)\)</span>. The differential entropy of <span class="math inline">\(X\)</span> is given by <span class="math display">\[\operatorname{H}(X) = - \int_{-\infty}^\infty f(x) \log f(x) dx\]</span></p>
+To maximize the entropy, notice that the following constraints hold for any pdf:
+<span class="math display">\[\begin{equation}
+    \left.
+        \begin{aligned}
+            \int_{-\infty}^\infty f(x) dx &amp;= 1 \\
+            \int_{-\infty}^\infty (x-\mu)^2 f(x) dx &amp;= \sigma^2
+        \end{aligned}
+    \right\}
+\end{equation}\]</span>
+<p>Define a function with two Lagrange multipliers: <span class="math display">\[\mathcal{L}(x, \lambda_1, \lambda_2) =
+- \int_{-\infty}^\infty f(x) \log f(x) dx
+- \lambda_1 \left( \int_{-\infty}^\infty f(x) dx - 1 \right)
+- \lambda_2 \left( \int_{-\infty}^\infty (x-\mu)^2 f(x) dx - \sigma^2 \right)
+\]</span></p>
+<p>Set the gradient of the Lagrangian to 0: <span class="math display">\[\nabla_{x,\lambda_1,\lambda_2} \mathcal{L}(x, \lambda_1, \lambda_2) = 0\]</span></p>
+We get <span class="math display">\[\frac{\partial \mathcal{L}}{\partial x} =
+- f(x) \left(\log f(x) + 1 + \lambda_1 + \lambda_2(x-\mu)^2 \right) dx = 0
+\]</span> Since it must hold for any <span class="math inline">\(f(x)\)</span> such that <span class="math inline">\(\frac{\partial \mathcal{L}}{\partial x} = 0\)</span>, it holds that
+<span class="math display">\[\begin{align*}
+0 &amp;= \log f(x) + 1 + \lambda_1 + \lambda_2(x-\mu)^2 \\
+\log f(x) &amp;= -1 - \lambda_1 - \lambda_2(x-\mu)^2 \\
+f(x) &amp;= e^{-1 - \lambda_1 - \lambda_2(x-\mu)^2}
+\end{align*}\]</span>
+Consider the constraints:
+<span class="math display">\[\begin{equation}
+    \left.
+        \begin{aligned}
+            \int_{-\infty}^\infty e^{-1 - \lambda_1 - \lambda_2(x-\mu)^2} dx &amp;= 1 \\
+            \int_{-\infty}^\infty (x-\mu)^2 e^{-1 - \lambda_1 - \lambda_2(x-\mu)^2} dx &amp;= \sigma^2
+        \end{aligned}
+    \right\}
+\end{equation}\]</span>
+with solution (using Gaussian integral)
+<span class="math display">\[\begin{align*}
+\lambda_1 &amp;= \frac{1}{2}\log(2\pi\sigma^2) - 1 \\
+\lambda_2 &amp;= \frac{1}{2\sigma^2}
+\end{align*}\]</span>
+We get
+<span class="math display">\[\begin{align*}
+f(x) &amp;= e^{-1 - \lambda_1 - \lambda_2(x-\mu)^2} \\
+&amp;= \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+\end{align*}\]</span>
+<p>which gives the probability distribution that maximizes the entropy for <span class="math inline">\(X\)</span>.</p>
+<p>The entropy of <span class="math inline">\(X\)</span> is given by <span class="math display">\[\frac{1}{2} \left( \log(2\pi\sigma^2) + 1 \right)\]</span></p>
+</section>
+<section id="univariate-normal-distribution" class="level1">
+<h1><span class="header-section-number">2</span> Univariate Normal Distribution</h1>
+<p>The <em>normal distribution</em> (or <em>Gaussian distribution</em>) is the continuous probability distribution with the maximum entropy for a specified mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>.</p>
+<p><strong>pdf.</strong> <span class="math display">\[f_X(x) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}\]</span> <span class="math display">\[X \sim \mathcal{N}(\mu, \sigma^2)\]</span></p>
+<p><strong>Mean.</strong> <span class="math display">\[\operatorname{E}[X] = \mu\]</span></p>
+<p><strong>Variance.</strong> <span class="math display">\[\operatorname{Var}(X) = \sigma^2\]</span></p>
+<p><strong>Skewness.</strong> <span class="math display">\[\operatorname{Skew}(X) = 0\]</span></p>
+<p><strong>Excess kurtosis.</strong> <span class="math display">\[\operatorname{Kurt}(X) = 0\]</span></p>
+<p><strong>Entropy.</strong> <span class="math display">\[\operatorname{H}(X;\sigma) = \frac{1}{2} \left( \log(2\pi\sigma^2) + 1 \right)\]</span></p>
+</section>
+<section id="multivariate-normal-distribution" class="level1">
+<h1><span class="header-section-number">3</span> Multivariate Normal Distribution</h1>
+<p>The multivariate normal distribution is a generalization of the univariate normal distribution to higher dimensions, with parameters:</p>
+<ul>
+<li><span class="math inline">\(k\)</span>-dimensional mean vector: <span class="math inline">\(\boldsymbol \mu = \operatorname{E}[\boldsymbol x]\)</span>.</li>
+<li><span class="math inline">\(k \times k\)</span> covariance matrix: <span class="math inline">\(\mathbf\Sigma = \operatorname{E}[(\boldsymbol x - \boldsymbol \mu)(\boldsymbol x - \boldsymbol \mu)^\mathrm{T}]\)</span>.</li>
+</ul>
+<p><strong>pdf.</strong> <span class="math display">\[f(\boldsymbol x) =
+(2\pi)^{-k/2} |\mathbf\Sigma|^{-1/2} e^{-\frac{1}{2} (\boldsymbol x - \boldsymbol\mu)^\mathrm{T} \Sigma^{-1}(\boldsymbol x - \boldsymbol\mu)}\]</span> <span class="math display">\[\boldsymbol x \sim \mathcal{N}_k(\boldsymbol\mu, \mathbf\Sigma)\]</span></p>
+<p><strong>Mean.</strong> <span class="math display">\[\operatorname{E}[\boldsymbol x] = \boldsymbol\mu\]</span></p>
+<p><strong>Variance.</strong> <span class="math display">\[\operatorname{Var}(\boldsymbol x) = \mathbf\Sigma\]</span></p>
+<p><strong>Entropy.</strong> <span class="math display">\[\operatorname{H}(\boldsymbol x;\mathbf\Sigma) = \frac{1}{2} \left( \log(2 \pi e)^k |\mathbf\Sigma| \right)\]</span></p>
+</section>
+      </div>
+      <footer>
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard shortcut: R"
+           href="https://wiki.soimort.org/math/probability/distributions/normal/src.md">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
+        <a class="history" accesskey="h"
+           title="Keyboard shortcut: H"
+           href="https://github.com/soimort/wiki/commits/gh-pages/math/probability/distributions/normal/src.md">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard shortcut: E"
+           href="https://github.com/soimort/wiki/edit/gh-pages/math/probability/distributions/normal/src.md">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
+           href="https://wiki.soimort.org/math/probability/distributions/normal">
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
+        Last updated: <span id="update-time">2017-01-10</span>
+      </footer>
+    </article></main>
+  </body>
+</html>
