@@ -8,7 +8,7 @@
     <meta name="generator" content="pandoc">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="author" content="Mort Yao">
-    <meta name="dcterms.date" content="2017-01-10">
+    <meta name="dcterms.date" content="2017-01-11">
     <title>Normal Distribution</title>
     <link rel="canonical" href="https://wiki.soimort.org/math/probability/distributions/normal">
     <style type="text/css">code { white-space: pre; }</style>
@@ -34,7 +34,7 @@
       <header>
         <h1 class="title">Normal Distribution</h1>
         <address class="author">Mort Yao</address>
-        <!-- h3 class="date">2017-01-10</h3 -->
+        <!-- h3 class="date">2017-01-11</h3 -->
       </header>
       <nav id="TOC">
 <ul>
@@ -63,7 +63,7 @@ To maximize the entropy, notice that the following constraints hold for any pdf:
 \]</span></p>
 <p>Set the gradient of the Lagrangian to 0: <span class="math display">\[\nabla_{x,\lambda_1,\lambda_2} \mathcal{L}(x, \lambda_1, \lambda_2) = 0\]</span></p>
 We get <span class="math display">\[\frac{\partial \mathcal{L}}{\partial x} =
-- f(x) \left(\log f(x) + 1 + \lambda_1 + \lambda_2(x-\mu)^2 \right) dx = 0
+- f(x) \left(\log f(x) + 1 + \lambda_1 + \lambda_2(x-\mu)^2 \right) = 0
 \]</span> Since it must hold for any <span class="math inline">\(f(x)\)</span> such that <span class="math inline">\(\frac{\partial \mathcal{L}}{\partial x} = 0\)</span>, it holds that
 <span class="math display">\[\begin{align*}
 0 &amp;= \log f(x) + 1 + \lambda_1 + \lambda_2(x-\mu)^2 \\
@@ -151,7 +151,7 @@ f(x) &amp;= e^{-1 - \lambda_1 - \lambda_2(x-\mu)^2} \\
           <i class="fa fa-anchor" aria-hidden="true"></i>
           <code>Permalink</code>
         </a> |
-        Last updated: <span id="update-time">2017-01-10</span>
+        Last updated: <span id="update-time">2017-01-11</span>
       </footer>
     </article></main>
   </body>

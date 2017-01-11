@@ -1,6 +1,6 @@
 % Normal Distribution
 % Mort Yao
-% 2017-01-10
+% 2017-01-11
 
 # Maximization of Entropy
 
@@ -29,7 +29,7 @@ $$\nabla_{x,\lambda_1,\lambda_2} \mathcal{L}(x, \lambda_1, \lambda_2) = 0$$
 
 We get
 $$\frac{\partial \mathcal{L}}{\partial x} =
-- f(x) \left(\log f(x) + 1 + \lambda_1 + \lambda_2(x-\mu)^2 \right) dx = 0
+- f(x) \left(\log f(x) + 1 + \lambda_1 + \lambda_2(x-\mu)^2 \right) = 0
 $$
 Since it must hold for any $f(x)$ such that $\frac{\partial \mathcal{L}}{\partial x} = 0$, it holds that
 \begin{align*}
