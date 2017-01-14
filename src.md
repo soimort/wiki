@@ -1,6 +1,6 @@
 % Mort's small traces
 % Mort Yao
-% 2017-01-05
+% 2017-01-14
 
 ![<small>
 A lifelong project to do my study notes on Math / Computer Science systematically and spirally. \
@@ -21,6 +21,7 @@ It is still woefully incomplete, but it shouldn't always be. I keep learning thi
 
 * [Reading list](/todo/)
 * [Common mathematical notation](/rosetta/)
+* [Logic reasoning](/philosophy/logic)
 
 # Mathematics
 
@@ -37,6 +38,7 @@ It is still woefully incomplete, but it shouldn't always be. I keep learning thi
     * Non-classical logic
         * Intuitionistic logic
         * Linear logic
+        * Probabilistic logic
 * [Linear algebra](/math/linear-algebra)
 * Abstract algebra
     * Group theory
