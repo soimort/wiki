@@ -121,7 +121,7 @@ It is still woefully incomplete, but it shouldn't always be. I keep learning thi
 * Classical mechanics, electromagnetism and field theory
 * Quantum mechanics and quantum field theory
 * Electronics and signal processing
-    * EDA and functional verification
+    * Formal verification and temporal logic
 * Genetics, genomics and bioinformatics
 * Structural biology (biochemistry, biophysics and molecular biology)
 * Computational systems biology
