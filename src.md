@@ -81,8 +81,8 @@ It is still woefully incomplete, but it shouldn't always be. I keep learning thi
 # Applied Mathematics
 
 * [Probability theory](/math/probability/) and [statistics](/math/statistics/)
-    * Stochastic process
-    * Nonparametric statistics
+    * Stochastic process and martingale
+    * Advanced probability theory
 * [Information theory](/info/)
     * Coding theory
     * Algorithmic information theory
@@ -110,8 +110,9 @@ It is still woefully incomplete, but it shouldn't always be. I keep learning thi
     * Linear programming and mathematical optimization
     * Evolutionary computation
     * Algorithmic game theory
+    * Finance and financial markets
 * **[Machine learning](/ml/)**
-    * Artificial neural networks and deep learning
+    * Neural networks and deep learning
 * **[Computer vision and image processing](/cv/)**
 * Natural language processing
 * **[Programming language theory](/plt/)**
