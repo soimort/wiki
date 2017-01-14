@@ -20,8 +20,12 @@ It is still woefully incomplete, but it shouldn't always be. I keep learning thi
 
 
 * [Reading list](/todo/)
+
 * [Common mathematical notation](/rosetta/)
-* [Logic reasoning](/philosophy/logic)
+
+* [Philosophy](/philosophy/)
+    * [Logic](/philosophy/logic/)
+    * [Epistemology](/philosophy/epistemology/)
 
 # Mathematics
 
