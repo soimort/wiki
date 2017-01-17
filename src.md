@@ -1,6 +1,6 @@
 % Mort's small traces
 % Mort Yao
-% 2017-01-14
+% 2017-01-17
 
 ![<small>
 A lifelong project to do my study notes on Math / Computer Science systematically and spirally. \
@@ -152,6 +152,7 @@ It is still woefully incomplete, but it shouldn't always be. I keep learning thi
 * Compilers
 * **Information security**
     * Proof-carrying code
+    * Cryptocurrencies
 
 ---
 
