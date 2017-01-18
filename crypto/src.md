@@ -4,13 +4,13 @@
 
 Textbook:
 
-* Jonathan Katz and Yehuda Lindell. ***Introduction to Modern Cryptography, 2nd edition***.
+* Jonathan Katz and Yehuda Lindell. ***Introduction to Modern Cryptography, 2nd edition.***
 
 Supplementary reading:
 
-* John Talbot and Dominic Welsh. ***Complexity and Cryptography: An Introduction***.
-* Alfred J. Menezes, Paul C. van Oorschot and Scott A. Vanstone. [***Handbook of Applied Cryptography***](http://citeseer.ist.psu.edu/viewdoc/download?doi=10.1.1.99.2838&rep=rep1&type=pdf).
-* Darrel Hankerson, Alfred Menezes and Scott Vanstone. [***Guide to Elliptic Curve Cryptography***](http://diamond.boisestate.edu/~liljanab/MATH308/GuideToECC.pdf).
+* John Talbot and Dominic Welsh. ***Complexity and Cryptography: An Introduction.***
+* Alfred J. Menezes, Paul C. van Oorschot and Scott A. Vanstone. [***Handbook of Applied Cryptography.***](http://citeseer.ist.psu.edu/viewdoc/download?doi=10.1.1.99.2838&rep=rep1&type=pdf)
+* Darrel Hankerson, Alfred Menezes and Scott Vanstone. [***Guide to Elliptic Curve Cryptography.***](http://diamond.boisestate.edu/~liljanab/MATH308/GuideToECC.pdf)
 
 ---
 
