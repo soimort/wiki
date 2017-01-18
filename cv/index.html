@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-07 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Mort Yao">
+    <meta name="dcterms.date" content="2017-01-18">
+    <title>Computer Vision and Image Processing</title>
+    <link rel="canonical" href="https://wiki.soimort.org/cv">
+    <style type="text/css">code { white-space: pre; }</style>
+    <link rel="stylesheet" href="//cdn.soimort.org/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/mathsvg/latest/mathsvg.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Roman.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Mono.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/__/css/style.css">
+    <link rel="stylesheet" href="/__/css/pygments.css">
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.soimort.org/jk/latest/jk.min.js"></script>
+    <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>
+    <script src="/__/js/jk-minibar.js"></script>
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+  <body>
+    <main><article>
+      <header>
+        <h1 class="title">Computer Vision and Image Processing</h1>
+        <address class="author">Mort Yao</address>
+        <!-- h3 class="date">2017-01-18</h3 -->
+      </header>
+      <nav id="TOC">
+<ul>
+<li><a href="#image-formation"><span class="toc-section-number">1</span> Image Formation</a></li>
+<li><a href="#image-processing"><span class="toc-section-number">2</span> Image Processing</a></li>
+<li><a href="#basic-vision"><span class="toc-section-number">3</span> Basic Vision</a></li>
+<li><a href="#high-level-vision"><span class="toc-section-number">4</span> High-Level Vision</a></li>
+</ul>
+      </nav>
+      <div id="content">
+<p>Textbook:</p>
+<ul>
+<li>David Forsyth and Jean Ponce. <strong><em>Computer Vision: A Modern Approach, 2nd edition.</em></strong></li>
+</ul>
+<p>Supplementary reading:</p>
+<ul>
+<li>Christopher Bishop. <strong><em>Pattern Recognition and Machine Learning.</em></strong> (<strong>PRML</strong>)</li>
+</ul>
+<hr />
+<section id="image-formation" class="level1">
+<h1><span class="header-section-number">1</span> Image Formation</h1>
+<section id="geometric-camera-models" class="level2">
+<h2><span class="header-section-number">1.1</span> Geometric Camera Models</h2>
+</section>
+<section id="light-and-shading" class="level2">
+<h2><span class="header-section-number">1.2</span> Light and Shading</h2>
+</section>
+<section id="color" class="level2">
+<h2><span class="header-section-number">1.3</span> Color</h2>
+</section>
+</section>
+<section id="image-processing" class="level1">
+<h1><span class="header-section-number">2</span> Image Processing</h1>
+<section id="linear-filters-and-convolution" class="level2">
+<h2><span class="header-section-number">2.1</span> Linear Filters and Convolution</h2>
+</section>
+<section id="features-and-descriptors" class="level2">
+<h2><span class="header-section-number">2.2</span> Features and Descriptors</h2>
+<section id="edge-detection" class="level3">
+<h3><span class="header-section-number">2.2.1</span> Edge Detection</h3>
+</section>
+<section id="corner-detection" class="level3">
+<h3><span class="header-section-number">2.2.2</span> Corner Detection</h3>
+</section>
+<section id="blob-detection" class="level3">
+<h3><span class="header-section-number">2.2.3</span> Blob Detection</h3>
+</section>
+<section id="sift-and-surf" class="level3">
+<h3><span class="header-section-number">2.2.4</span> SIFT and SURF</h3>
+</section>
+<section id="histogram-of-oriented-gradients-hog" class="level3">
+<h3><span class="header-section-number">2.2.5</span> Histogram of Oriented Gradients (HOG)</h3>
+</section>
+</section>
+<section id="texture" class="level2">
+<h2><span class="header-section-number">2.3</span> Texture</h2>
+</section>
+<section id="multiple-images-stereopsis" class="level2">
+<h2><span class="header-section-number">2.4</span> Multiple Images: Stereopsis</h2>
+</section>
+</section>
+<section id="basic-vision" class="level1">
+<h1><span class="header-section-number">3</span> Basic Vision</h1>
+<section id="segmentation" class="level2">
+<h2><span class="header-section-number">3.1</span> Segmentation</h2>
+</section>
+<section id="fitting" class="level2">
+<h2><span class="header-section-number">3.2</span> Fitting</h2>
+</section>
+<section id="tracking" class="level2">
+<h2><span class="header-section-number">3.3</span> Tracking</h2>
+</section>
+</section>
+<section id="high-level-vision" class="level1">
+<h1><span class="header-section-number">4</span> High-Level Vision</h1>
+<section id="registration" class="level2">
+<h2><span class="header-section-number">4.1</span> Registration</h2>
+</section>
+<section id="classification" class="level2">
+<h2><span class="header-section-number">4.2</span> Classification</h2>
+</section>
+<section id="object-and-pattern-recognition" class="level2">
+<h2><span class="header-section-number">4.3</span> Object and Pattern Recognition</h2>
+<section id="facial-recognition" class="level3">
+<h3><span class="header-section-number">4.3.1</span> Facial Recognition</h3>
+</section>
+<section id="optical-character-recognition-ocr" class="level3">
+<h3><span class="header-section-number">4.3.2</span> Optical Character Recognition (OCR)</h3>
+</section>
+</section>
+<section id="content-based-image-retrieval-cbir" class="level2">
+<h2><span class="header-section-number">4.4</span> Content-Based Image Retrieval (CBIR)</h2>
+</section>
+</section>
+      </div>
+      <footer>
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard shortcut: R"
+           href="https://wiki.soimort.org/cv/src.md">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
+        <a class="history" accesskey="h"
+           title="Keyboard shortcut: H"
+           href="https://github.com/soimort/wiki/commits/gh-pages/cv/src.md">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard shortcut: E"
+           href="https://github.com/soimort/wiki/edit/gh-pages/cv/src.md">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
+           href="https://wiki.soimort.org/cv">
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
+        Last updated: <span id="update-time">2017-01-18</span>
+      </footer>
+    </article></main>
+  </body>
+</html>
