@@ -2,6 +2,15 @@
 % Mort Yao
 % 2017-01-18
 
+Reading:
+
+* Christopher Bishop. ***Pattern Recognition and Machine Learning.*** (**PRML**)
+* Yaser S. Abu-Mostafa, Malik Magdon-Ismail and Hsuan-Tien Lin. ***Learning from Data: A Short Course.***
+* Yevgeny Seldin. ***Machine Learning Lecture Notes.***
+* Su-Yun Huang, Kuang-Yao Lee and Horng-Shing Lu. [***Lecture Notes: Statistical and Machine Learning.***](http://www.stat.sinica.edu.tw/syhuang/kern_stat_toolbox/lecture-notes.pdf)
+
+---
+
 # Learning Theory
 
 Preliminaries: Basic [probability theory](/math/probability/), [statistics](/math/statistics/), [information theory](/info/), [theory of computation](/comp/) (NP-hard problems).
@@ -36,7 +45,9 @@ Preliminaries: Basic [probability theory](/math/probability/), [statistics](/mat
 
 ## k-Nearest Neighbors ($k$-NN)
 
-## Support Vector Machine (SVM)
+## Kernel Methods
+
+### Support Vector Machine (SVM)
 
 ## Decision Trees and Ensembles
 
