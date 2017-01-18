@@ -1,0 +1,107 @@
+% Machine Learning
+% Mort Yao
+% 2017-01-18
+
+# Learning Theory
+
+Preliminaries: Basic [probability theory](/math/probability/), [statistics](/math/statistics/), [information theory](/info/), [theory of computation](/comp/) (NP-hard problems).
+
+## Generalization Bounds
+
+## Occam Learning
+
+## PAC Learning
+
+## Vapnik-Chervonenkis (VC) Theory
+
+
+
+# Supervised Learning
+
+## Classification
+
+### Perceptron
+
+### Naive Bayes Classifier
+
+## Regression
+
+### Simple Linear Regression: Linear Least Squares
+
+### Bayesian Linear Regression
+
+### Logistic Regression
+
+### Generalized Linear Model and LASSO
+
+## k-Nearest Neighbors ($k$-NN)
+
+## Support Vector Machine (SVM)
+
+## Decision Trees and Ensembles
+
+### Bagging
+
+### Boosting
+
+### Random Forests
+
+
+
+# Unsupervised Learning
+
+## Clustering
+
+### $k$-means and $k$-means++
+
+### Mean Shift
+
+### Expectation–Maximization (EM)
+
+## Density Estimation
+
+
+
+# Online Learning Models
+
+## Statistical Learning Model
+
+## Adversarial Model
+
+
+
+# Decomposition and Dimensionality Reduction Methods
+
+## Singular Value Decomposition (SVD)
+
+## Principal Component Analysis (PCA)
+
+## Factor Analysis
+
+## Independent Component Analysis (ICA)
+
+## Nonlinear Dimensionality Reduction (NLDR) and Manifold Learning
+
+
+
+# Anomaly Detection Methods
+
+
+
+# Structured Prediction Methods
+
+## Bayesian Network
+
+## Hidden Markov Model (HMM)
+
+## Conditional Random Field (CRF)
+
+## Hierarchical Temporal Memory (HTM)
+
+
+
+# Neural Networks and Deep Learning
+
+
+
+# Reinforcement Learning

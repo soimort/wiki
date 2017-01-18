@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-07 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Mort Yao">
+    <meta name="dcterms.date" content="2017-01-18">
+    <title>Machine Learning</title>
+    <link rel="canonical" href="https://wiki.soimort.org/ml">
+    <style type="text/css">code { white-space: pre; }</style>
+    <link rel="stylesheet" href="//cdn.soimort.org/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/mathsvg/latest/mathsvg.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Roman.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/api/Latin-Modern-Mono.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/__/css/style.css">
+    <link rel="stylesheet" href="/__/css/pygments.css">
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.soimort.org/jk/latest/jk.min.js"></script>
+    <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>
+    <script src="/__/js/jk-minibar.js"></script>
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+  <body>
+    <main><article>
+      <header>
+        <h1 class="title">Machine Learning</h1>
+        <address class="author">Mort Yao</address>
+        <!-- h3 class="date">2017-01-18</h3 -->
+      </header>
+      <nav id="TOC">
+<ul>
+<li><a href="#learning-theory"><span class="toc-section-number">1</span> Learning Theory</a></li>
+<li><a href="#supervised-learning"><span class="toc-section-number">2</span> Supervised Learning</a></li>
+<li><a href="#unsupervised-learning"><span class="toc-section-number">3</span> Unsupervised Learning</a></li>
+<li><a href="#online-learning-models"><span class="toc-section-number">4</span> Online Learning Models</a></li>
+<li><a href="#decomposition-and-dimensionality-reduction-methods"><span class="toc-section-number">5</span> Decomposition and Dimensionality Reduction Methods</a></li>
+<li><a href="#anomaly-detection-methods"><span class="toc-section-number">6</span> Anomaly Detection Methods</a></li>
+<li><a href="#structured-prediction-methods"><span class="toc-section-number">7</span> Structured Prediction Methods</a></li>
+<li><a href="#neural-networks-and-deep-learning"><span class="toc-section-number">8</span> Neural Networks and Deep Learning</a></li>
+<li><a href="#reinforcement-learning"><span class="toc-section-number">9</span> Reinforcement Learning</a></li>
+</ul>
+      </nav>
+      <div id="content">
+<section id="learning-theory" class="level1">
+<h1><span class="header-section-number">1</span> Learning Theory</h1>
+<p>Preliminaries: Basic <a href="/math/probability/">probability theory</a>, <a href="/math/statistics/">statistics</a>, <a href="/info/">information theory</a>, <a href="/comp/">theory of computation</a> (NP-hard problems).</p>
+<section id="generalization-bounds" class="level2">
+<h2><span class="header-section-number">1.1</span> Generalization Bounds</h2>
+</section>
+<section id="occam-learning" class="level2">
+<h2><span class="header-section-number">1.2</span> Occam Learning</h2>
+</section>
+<section id="pac-learning" class="level2">
+<h2><span class="header-section-number">1.3</span> PAC Learning</h2>
+</section>
+<section id="vapnik-chervonenkis-vc-theory" class="level2">
+<h2><span class="header-section-number">1.4</span> Vapnik-Chervonenkis (VC) Theory</h2>
+</section>
+</section>
+<section id="supervised-learning" class="level1">
+<h1><span class="header-section-number">2</span> Supervised Learning</h1>
+<section id="classification" class="level2">
+<h2><span class="header-section-number">2.1</span> Classification</h2>
+<section id="perceptron" class="level3">
+<h3><span class="header-section-number">2.1.1</span> Perceptron</h3>
+</section>
+<section id="naive-bayes-classifier" class="level3">
+<h3><span class="header-section-number">2.1.2</span> Naive Bayes Classifier</h3>
+</section>
+</section>
+<section id="regression" class="level2">
+<h2><span class="header-section-number">2.2</span> Regression</h2>
+<section id="simple-linear-regression-linear-least-squares" class="level3">
+<h3><span class="header-section-number">2.2.1</span> Simple Linear Regression: Linear Least Squares</h3>
+</section>
+<section id="bayesian-linear-regression" class="level3">
+<h3><span class="header-section-number">2.2.2</span> Bayesian Linear Regression</h3>
+</section>
+<section id="logistic-regression" class="level3">
+<h3><span class="header-section-number">2.2.3</span> Logistic Regression</h3>
+</section>
+<section id="generalized-linear-model-and-lasso" class="level3">
+<h3><span class="header-section-number">2.2.4</span> Generalized Linear Model and LASSO</h3>
+</section>
+</section>
+<section id="k-nearest-neighbors-k-nn" class="level2">
+<h2><span class="header-section-number">2.3</span> k-Nearest Neighbors (<span class="math inline">\(k\)</span>-NN)</h2>
+</section>
+<section id="support-vector-machine-svm" class="level2">
+<h2><span class="header-section-number">2.4</span> Support Vector Machine (SVM)</h2>
+</section>
+<section id="decision-trees-and-ensembles" class="level2">
+<h2><span class="header-section-number">2.5</span> Decision Trees and Ensembles</h2>
+<section id="bagging" class="level3">
+<h3><span class="header-section-number">2.5.1</span> Bagging</h3>
+</section>
+<section id="boosting" class="level3">
+<h3><span class="header-section-number">2.5.2</span> Boosting</h3>
+</section>
+<section id="random-forests" class="level3">
+<h3><span class="header-section-number">2.5.3</span> Random Forests</h3>
+</section>
+</section>
+</section>
+<section id="unsupervised-learning" class="level1">
+<h1><span class="header-section-number">3</span> Unsupervised Learning</h1>
+<section id="clustering" class="level2">
+<h2><span class="header-section-number">3.1</span> Clustering</h2>
+<section id="k-means-and-k-means" class="level3">
+<h3><span class="header-section-number">3.1.1</span> <span class="math inline">\(k\)</span>-means and <span class="math inline">\(k\)</span>-means++</h3>
+</section>
+<section id="mean-shift" class="level3">
+<h3><span class="header-section-number">3.1.2</span> Mean Shift</h3>
+</section>
+<section id="expectationmaximization-em" class="level3">
+<h3><span class="header-section-number">3.1.3</span> Expectation–Maximization (EM)</h3>
+</section>
+</section>
+<section id="density-estimation" class="level2">
+<h2><span class="header-section-number">3.2</span> Density Estimation</h2>
+</section>
+</section>
+<section id="online-learning-models" class="level1">
+<h1><span class="header-section-number">4</span> Online Learning Models</h1>
+<section id="statistical-learning-model" class="level2">
+<h2><span class="header-section-number">4.1</span> Statistical Learning Model</h2>
+</section>
+<section id="adversarial-model" class="level2">
+<h2><span class="header-section-number">4.2</span> Adversarial Model</h2>
+</section>
+</section>
+<section id="decomposition-and-dimensionality-reduction-methods" class="level1">
+<h1><span class="header-section-number">5</span> Decomposition and Dimensionality Reduction Methods</h1>
+<section id="singular-value-decomposition-svd" class="level2">
+<h2><span class="header-section-number">5.1</span> Singular Value Decomposition (SVD)</h2>
+</section>
+<section id="principal-component-analysis-pca" class="level2">
+<h2><span class="header-section-number">5.2</span> Principal Component Analysis (PCA)</h2>
+</section>
+<section id="factor-analysis" class="level2">
+<h2><span class="header-section-number">5.3</span> Factor Analysis</h2>
+</section>
+<section id="independent-component-analysis-ica" class="level2">
+<h2><span class="header-section-number">5.4</span> Independent Component Analysis (ICA)</h2>
+</section>
+<section id="nonlinear-dimensionality-reduction-nldr-and-manifold-learning" class="level2">
+<h2><span class="header-section-number">5.5</span> Nonlinear Dimensionality Reduction (NLDR) and Manifold Learning</h2>
+</section>
+</section>
+<section id="anomaly-detection-methods" class="level1">
+<h1><span class="header-section-number">6</span> Anomaly Detection Methods</h1>
+</section>
+<section id="structured-prediction-methods" class="level1">
+<h1><span class="header-section-number">7</span> Structured Prediction Methods</h1>
+<section id="bayesian-network" class="level2">
+<h2><span class="header-section-number">7.1</span> Bayesian Network</h2>
+</section>
+<section id="hidden-markov-model-hmm" class="level2">
+<h2><span class="header-section-number">7.2</span> Hidden Markov Model (HMM)</h2>
+</section>
+<section id="conditional-random-field-crf" class="level2">
+<h2><span class="header-section-number">7.3</span> Conditional Random Field (CRF)</h2>
+</section>
+<section id="hierarchical-temporal-memory-htm" class="level2">
+<h2><span class="header-section-number">7.4</span> Hierarchical Temporal Memory (HTM)</h2>
+</section>
+</section>
+<section id="neural-networks-and-deep-learning" class="level1">
+<h1><span class="header-section-number">8</span> Neural Networks and Deep Learning</h1>
+</section>
+<section id="reinforcement-learning" class="level1">
+<h1><span class="header-section-number">9</span> Reinforcement Learning</h1>
+</section>
+      </div>
+      <footer>
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard shortcut: R"
+           href="https://wiki.soimort.org/ml/src.md">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
+        <a class="history" accesskey="h"
+           title="Keyboard shortcut: H"
+           href="https://github.com/soimort/wiki/commits/gh-pages/ml/src.md">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard shortcut: E"
+           href="https://github.com/soimort/wiki/edit/gh-pages/ml/src.md">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
+           href="https://wiki.soimort.org/ml">
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
+        Last updated: <span id="update-time">2017-01-18</span>
+      </footer>
+    </article></main>
+  </body>
+</html>
