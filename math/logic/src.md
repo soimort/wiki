@@ -11,7 +11,7 @@
 
 The first book also provides a fair introduction to propositional (sentential) logic.
 
-
+---
 
 # Classical Logic
 
