@@ -1,6 +1,6 @@
 % Computer Vision and Image Processing
 % Mort Yao
-% 2017-01-18
+% 2017-01-19
 
 Textbook:
 
@@ -16,13 +16,39 @@ Supplementary reading:
 
 ## Geometric Camera Models
 
+### Pinhole Perspective
+
+### Weak Perspective and Orthographic Projection
+
 ## Light and Shading
+
+### Lambertian+Specular Model
+
+### Photometric Stereo
 
 ## Color
 
+### Human Color Perception and Gamma Correction
+
+### Color Models and Spaces
+
+#### RGB/RGBA Models: sRGB
+
+#### Luminance/Luma and Chrominance/Chroma: YUV
+
+#### Hue and Saturation: HSL, HSV and HSI
+
+#### CIE
+
+#### CMYK
+
+### Tone Mapping and High Dynamic Range (HDR)
 
 
-# Image Processing
+
+# Image Processing and Vision
+
+## Geometric Transformations
 
 ## Linear Filters and Convolution
 
@@ -40,17 +66,13 @@ Supplementary reading:
 
 ## Texture
 
-## Multiple Images: Stereopsis
-
-
-
-# Basic Vision
-
 ## Segmentation
 
 ## Fitting
 
 ## Tracking
+
+## Stereo Vision
 
 
 
