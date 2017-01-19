@@ -1,6 +1,6 @@
 % Machine Learning
 % Mort Yao
-% 2017-01-18
+% 2017-01-19
 
 Reading:
 
@@ -41,7 +41,7 @@ Preliminaries: Basic [probability theory](/math/probability/), [statistics](/mat
 
 ### Logistic Regression
 
-### Generalized Linear Model and LASSO
+### Generalized Linear Model (GLM) and LASSO
 
 ## k-Nearest Neighbors ($k$-NN)
 
@@ -70,6 +70,8 @@ Preliminaries: Basic [probability theory](/math/probability/), [statistics](/mat
 ### Expectation–Maximization (EM)
 
 ## Density Estimation
+
+### Kernel Density Estimation (KDE)
 
 
 
