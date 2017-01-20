@@ -1,6 +1,6 @@
 % Mort's small traces
 % Mort Yao
-% 2017-01-17
+% 2017-01-19
 
 ![<small>
 A lifelong project to do my study notes on Math / Computer Science systematically and spirally. \
@@ -34,16 +34,19 @@ It is still woefully incomplete, but it shouldn't always be. I keep learning thi
     * Classical logic
         * Propositional logic
         * First-order logic
+        * Second-order logic
     * Axiomatic set theory (ZFC)
     * Model theory
     * Computability theory
         * Peano axioms
         * Gödel's incompleteness theorems
+    * Structural proof theory
     * Non-classical logic
         * Intuitionistic logic
         * Linear logic
         * Probabilistic logic
-* [Linear algebra](/math/linear-algebra)
+    * Algebraic logic
+* [Linear algebra](/math/linear-algebra) and matrix theory
 * Abstract algebra
     * Group theory
     * Representation theory
@@ -56,10 +59,12 @@ It is still woefully incomplete, but it shouldn't always be. I keep learning thi
     * Lie group
 * Calculus
     * [Limit](/math/calculus/limit/) and continuity
-    * Differential calculus
-    * Integral calculus
+    * Differentiation
+    * Integration
     * Series
+    * Special functions
     * Vector calculus and tensor calculus
+    * Calculus of variations
 * Analysis
     * Measure theory
     * Complex analysis
