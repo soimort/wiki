@@ -1,6 +1,6 @@
 % Mathematical Logic
 % Mort Yao
-% 2016-08-16
+% 2017-01-20
 
 *Prerequisites*: Most content on this topic assumes some mathematical proof techniques (incl. mathematical induction) and basic knowledge of [naive set theory](/math/set). The following books might be a good refresher:
 
@@ -90,6 +90,10 @@ Reading:
 
 
 
+# Structural Proof Theory
+
+
+
 # Non-Classical Logic
 
 Reading:
@@ -104,3 +108,7 @@ Reading:
 ## Linear Logic
 
 ## Probabilistic Logic
+
+
+
+# * Algebraic Logic
