@@ -1,12 +1,12 @@
 % Logic
 % Mort Yao
-% 2017-01-19
+% 2017-01-20
 
 # Logical Reasoning
 
 **Deductive reasoning (deduction).** Inferring a conclusion by deriving a logical consequence from some premises using *rules of inference* in a formal system, e.g., propositional logic or first-order logic.
 
-Applications: Mathematics, logic, formal semantics of programming languages, type theory.
+Applications: Mathematics, formal logic, proof theory.
 
 Only deductive reasoning should be used in mathematical proofs and any formal theories of science.
 
