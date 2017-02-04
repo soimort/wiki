@@ -1,0 +1,15 @@
+---
+canonical:           https://wiki.soimort.org/
+
+uri-prefix-raw:      https://wiki.soimort.org
+uri-prefix-history:  https://github.com/soimort/wiki/commits/gh-pages
+uri-prefix-edit:     https://github.com/soimort/wiki/edit/gh-pages
+
+template:            __/template.html
+source:              src.md
+source-metadata:     src.yaml
+source-bibliography: src.bib
+target:              index.html
+
+csl:                 ieee-with-url.csl
+---

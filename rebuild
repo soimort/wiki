@@ -1,5 +1,0 @@
-#!/bin/bash
-for i in `find ./* -type d -not -path '*/[\._]*'`; do
-    echo "pancake $i"; pancake $i
-done
-pancake . server
