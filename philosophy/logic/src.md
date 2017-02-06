@@ -1,8 +1,10 @@
 % Logic
 % Mort Yao
-% 2017-01-20
+% 2017-02-05
 
-# Logical Reasoning
+*Logic* is the study of reasoning and argument.
+
+# Reasoning
 
 **Deductive reasoning (deduction).** Inferring a conclusion by deriving a logical consequence from some premises using *rules of inference* in a formal system, e.g., propositional logic or first-order logic.
 
@@ -12,7 +14,7 @@ Only deductive reasoning should be used in mathematical proofs and any formal th
 
 **Inductive reasoning (induction).** Inferring a probable conclusion from the generalization of some observations.
 
-Applications: Statistical inference, machine learning.
+Applications: Statistical inference, machine learning, inductive programming.
 
 N.B. Despite the name, *mathematical induction*, as an inference rule used in proofs, forms steps of deductive reasoning rather than inductive reasoning. The induction rule may be formalized as an axiom in second-order logic.
 
