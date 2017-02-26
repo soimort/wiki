@@ -8,7 +8,7 @@
     <meta name="generator" content="pandoc">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="author" content="Mort Yao">
-    <meta name="dcterms.date" content="2016-11-04">
+    <meta name="dcterms.date" content="2017-02-26">
     <title>Text Processing</title>
     <link rel="canonical" href="https://wiki.soimort.org/unix/text-processing">
     <style type="text/css">code { white-space: pre; }</style>
@@ -33,51 +33,46 @@
       <header>
         <h1 class="title">Text Processing</h1>
         <address class="author">Mort Yao</address>
-        <!-- h3 class="date">2016-11-04</h3 -->
+        <!-- h3 class="date">2017-02-26</h3 -->
       </header>
       <nav id="TOC">
 <ul>
-<li><a href="#common-usage">Common usage</a></li>
-<li><a href="#web-scraping">Web scraping</a></li>
+<li><a href="#common-usage"><span class="toc-section-number">1</span> Common Usage</a></li>
+<li><a href="#web-scraping"><span class="toc-section-number">2</span> Web Scraping</a></li>
 </ul>
       </nav>
       <div id="content">
-<section id="common-usage" class="level2">
-<h2>Common usage</h2>
-<section id="read-a-certain-line-of-a-file" class="level3">
-<h3>Read a certain line of a file</h3>
-<pre><code>$ sed -n '<span class="do">10</span>p' <span class="do">foo</span></code></pre>
+<section id="common-usage" class="level1">
+<h1><span class="header-section-number">1</span> Common Usage</h1>
+<p><strong>Read a certain line of a file</strong></p>
+<pre><code>$ sed -n &#39;[10]p&#39; [foo]</code></pre>
+<p><strong>HTML escaping</strong></p>
+<pre><code>$ cat [foo.html] | perl -MHTML::Entities -e &#39;while(&lt;&gt;) {print encode_entities($_);}&#39;</code></pre>
+<p><strong>HTML unescaping</strong></p>
+<pre><code>$ cat [foo.html] | perl -MHTML::Entities -e &#39;while(&lt;&gt;) {print decode_entities($_);}&#39;</code></pre>
+<p><strong>Replace patterns in all files</strong></p>
+<p><code>find</code> &amp; <code>sed</code> approach:</p>
+<pre><code>$ find . -type f -print0 | xargs -0 sed -i &#39;s/old/new/g&#39;</code></pre>
+<p>The above approach will descend into hidden paths like <code>.git/</code>, that is usually not desirable. Use this one instead:</p>
+<pre><code>$ find . -name .git -prune -o -type f -print0 | xargs -0 -n 1 sed -i -e &#39;s/old/new/g&#39;</code></pre>
+<p>A better approach using <code>ack</code> &amp; <code>perl</code>: (which will leave hidden paths, binary files and files without target patterns untouched)</p>
+<pre><code>$ ack --print0 -l &#39;old&#39; | xargs -0 perl -p -i -e &#39;s/old/new/g&#39;</code></pre>
 </section>
-<section id="html-escaping" class="level3">
-<h3>HTML escaping</h3>
-<pre><code>$ cat <span class="do">foo.html</span> | perl -MHTML::Entities -e 'while(<>) {print encode_entities($_);}'</code></pre>
-</section>
-<section id="html-unescaping" class="level3">
-<h3>HTML unescaping</h3>
-<pre><code>$ cat <span class="do">foo.html</span> | perl -MHTML::Entities -e 'while(<>) {print decode_entities($_);}'</code></pre>
-</section>
-</section>
-<section id="web-scraping" class="level2">
-<h2>Web scraping</h2>
-<section id="check-unread-gmail" class="level3">
-<h3>Check unread Gmail</h3>
+<section id="web-scraping" class="level1">
+<h1><span class="header-section-number">2</span> Web Scraping</h1>
+<p><strong>Check unread Gmail</strong></p>
 <p>Replace “<code>abcdefghijklmnop</code>” with your <a href="https://security.google.com/settings/security/apppasswords">16-digit app password</a> (not your login password!):</p>
 <pre class="console"><code>$ curl -u foo.bar@gmail.com:abcdefghijklmnop \
 -s &quot;https://mail.google.com/mail/feed/atom&quot; | tr -d &#39;\n&#39; | \
 awk -F &#39;&lt;entry&gt;&#39; &#39;{for (i=2; i&lt;=NF; i++) {print $i}}&#39; | \
 sed -n &quot;s/&lt;title&gt;\(.*\)&lt;\/title.*name&gt;\(.*\)&lt;\/name&gt;.*/\2 - \1/p&quot;</code></pre>
 <p>Source: <a href="http://www.commandlinefu.com/commands/view/3386/check-your-unread-gmail-from-the-command-line" class="uri">http://www.commandlinefu.com/commands/view/3386/check-your-unread-gmail-from-the-command-line</a></p>
-</section>
-<section id="check-an-atom-feed-for-the-newest-entry" class="level3">
-<h3>Check an Atom feed for the newest entry</h3>
-<pre class="console"><code>$ curl -s https://www.soimort.org/atom.xml | sed -e &quot;s/xmlns/ignore/&quot; - | \
+<p><strong>Check an Atom feed for the newest entry</strong></p>
+<pre class="console"><code>$ curl -s https://www.soimort.org/feed.atom | sed -e &quot;s/xmlns/ignore/&quot; - | \
 xmllint --xpath &quot;/feed/entry[1]/title/text()&quot; -</code></pre>
-</section>
-<section id="harvest-email-addresses-from-a-web-page" class="level3">
-<h3>Harvest email addresses from a web page</h3>
+<p><strong>Harvest email addresses from a web page</strong></p>
 <pre class="console"><code>$ curl -s &#39;https://pgp.mit.edu/pks/lookup?search=0x07DA00CB78203251&#39; | \
 grep -o &#39;[[:alnum:].]*@[[:alnum:].]*&#39;</code></pre>
-</section>
 </section>
       </div>
       <footer>
@@ -115,7 +110,7 @@ grep -o &#39;[[:alnum:].]*@[[:alnum:].]*&#39;</code></pre>
           <i class="fa fa-anchor" aria-hidden="true"></i>
           <code>Permalink</code>
         </a> |
-        Last updated: <span id="update-time">2016-11-04</span>
+        Last updated: <span id="update-time">2017-02-26</span>
       </footer>
     </article></main>
   </body>
