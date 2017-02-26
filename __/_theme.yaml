@@ -3,15 +3,15 @@ css: [
 
   //cdn.soimort.org/normalize/5.0.0/normalize.min.css,
   //cdn.soimort.org/mathsvg/latest/mathsvg.min.css,
-  //cdn.soimort.org/fonts/api/Latin-Modern-Roman.css,
-  //cdn.soimort.org/fonts/api/Latin-Modern-Mono.css,
+  //cdn.soimort.org/fonts/latest/Latin-Modern-Roman.css,
+  //cdn.soimort.org/fonts/latest/Latin-Modern-Mono.css,
   //cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css,
   /__/css/style.css,
   /__/css/pygments.css,
   ]
 highlighting-css: # no longer needed
 header-includes: [
-  <script src="//cdn.soimort.org/jk/latest/jk.min.js"></script>,
+  <script src="//cdn.soimort.org/jk/20160504/jk.min.js"></script>,
   <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>,
   <script src="/__/js/jk-minibar.js"></script>,
   <link rel="icon" href="/favicon.png">,
