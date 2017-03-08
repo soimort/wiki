@@ -51,16 +51,16 @@
 <p><strong>R:</strong></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">png</span>(<span class="st">&#39;square.png&#39;</span>)
 
-square =<span class="st"> </span>function(x) { x *<span class="st"> </span>x }
+square =<span class="st"> </span><span class="cf">function</span>(x) { x <span class="op">*</span><span class="st"> </span>x }
 <span class="kw">curve</span>(square, <span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">50</span>,
       <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;y&quot;</span>)
 
 <span class="kw">png</span>(<span class="st">&#39;square-ggplot.png&#39;</span>)
 
 <span class="kw">library</span>(<span class="st">&quot;ggplot2&quot;</span>)
-<span class="kw">ggplot</span>(<span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">50</span>)), <span class="kw">aes</span>(<span class="dt">x =</span> x)) +
-<span class="st">    </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> square, <span class="dt">geom =</span> <span class="st">&quot;line&quot;</span>) +
-<span class="st">    </span><span class="kw">xlab</span>(<span class="st">&quot;x&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;y&quot;</span>)
+<span class="kw">ggplot</span>(<span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">50</span>)), <span class="kw">aes</span>(<span class="dt">x =</span> x)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">stat_function</span>(<span class="dt">fun =</span> square, <span class="dt">geom =</span> <span class="st">&quot;line&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">xlab</span>(<span class="st">&quot;x&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;y&quot;</span>)
 
 <span class="kw">dev.off</span>()</code></pre></div>
 </section>
@@ -72,11 +72,11 @@ square =<span class="st"> </span>function(x) { x *<span class="st"> </span>x }
 <p><strong>R:</strong></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">png</span>(<span class="st">&#39;gamma.png&#39;</span>)
 
-x &lt;-<span class="st"> </span><span class="kw">sort</span>(<span class="kw">c</span>(<span class="kw">seq</span>(-<span class="dv">4</span>, <span class="dv">4</span>, <span class="dt">length.out =</span> <span class="dv">201</span>), <span class="kw">outer</span>(<span class="dv">0</span>:-<span class="dv">4</span>, (-<span class="dv">1</span>:<span class="dv">1</span>)*<span class="fl">1e-6</span>, <span class="st">&quot;+&quot;</span>)))
-<span class="kw">plot</span>(x, <span class="kw">gamma</span>(x), <span class="dt">ylim =</span> <span class="kw">c</span>(-<span class="dv">5</span>, <span class="dv">5</span>),
+x &lt;-<span class="st"> </span><span class="kw">sort</span>(<span class="kw">c</span>(<span class="kw">seq</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="dt">length.out =</span> <span class="dv">201</span>), <span class="kw">outer</span>(<span class="dv">0</span><span class="op">:-</span><span class="dv">4</span>, (<span class="op">-</span><span class="dv">1</span><span class="op">:</span><span class="dv">1</span>)<span class="op">*</span><span class="fl">1e-6</span>, <span class="st">&quot;+&quot;</span>)))
+<span class="kw">plot</span>(x, <span class="kw">gamma</span>(x), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>),
      <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">lwd =</span> <span class="dv">2</span>,
      <span class="dt">main =</span> <span class="kw">expression</span>(<span class="kw">Gamma</span>(x)))
-<span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>, <span class="dt">v =</span> -<span class="dv">3</span>:<span class="dv">0</span>, <span class="dt">lty =</span> <span class="dv">3</span>, <span class="dt">col =</span> <span class="st">&quot;midnightblue&quot;</span>)
+<span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>, <span class="dt">v =</span> <span class="dv">-3</span><span class="op">:</span><span class="dv">0</span>, <span class="dt">lty =</span> <span class="dv">3</span>, <span class="dt">col =</span> <span class="st">&quot;midnightblue&quot;</span>)
 
 <span class="kw">dev.off</span>()</code></pre></div>
 </section>

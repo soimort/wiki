@@ -4,9 +4,9 @@
 
 (***Note:** This page contains tips and tricks of most commonly used command-line utilities on Unix-like OSes. For usages related to the shell itself, see [Shell tricks](/unix/shell) instead.*)
 
-## Common usage
+# Common usage
 
-### See how a Unicode string is encoded internally
+**See how a Unicode string is encoded internally**
 
     $ echo [hello] | hexdump -C
 
@@ -14,19 +14,19 @@ See how it is encoded in UTF-16: (Assume UTF-8 is the default encoding)
 
     $ echo [hello] | iconv -f utf-8 -t utf-16 | hexdump -C
 
-### Show Unix epoch time
+**Show Unix epoch time**
 
     $ date +%s
 
-### Show timestamp in [RFC 3339](https://tools.ietf.org/html/rfc3339) format
+**Show timestamp in [RFC 3339](https://tools.ietf.org/html/rfc3339) format**
 
     $ date --iso-8601=seconds
 
-### Show the MIME type of a file
+**Show the MIME type of a file**
 
     $ file -0 --mime-type '[filename]' | cut -d $'\0' -f2 | cut -d' ' -f2
 
-### List files recursively, etc.
+**List files recursively, etc.**
 
     $ find .
 
@@ -42,7 +42,7 @@ To delete all files with some extension, use:
 
     $ find . -name "[*.o]" -delete
 
-### Get the size of a directory
+**Get the size of a directory**
 
 In terms of kilobytes:
 
@@ -52,11 +52,11 @@ Or: (in human-readable format)
 
     $ du -s [foo/bar] | cut -f1
 
-### List sub-directories in descending order of size
+**List sub-directories in descending order of size**
 
     $ du -hs * | sort -hr
 
-### Archive (and compress) a directory
+**Archive (and compress) a directory**
 
 As ZIP format:
 
@@ -72,13 +72,13 @@ To archive some files under a certain directory without including the pathname i
 
 
 
-### Login to a remote host
+**Login to a remote host**
 
 e.g., login to `127.0.0.1` as user `root`, via port `22`:
 
     $ ssh -p [22] [root]@[127.0.0.1]
 
-### Copy files to a remote host
+**Copy files to a remote host**
 
 e.g., copy some `files` to `127.0.0.1` as user `root`, via port `22`:
 
@@ -86,17 +86,17 @@ e.g., copy some `files` to `127.0.0.1` as user `root`, via port `22`:
 
 
 
-## System maintenance
+# System maintenance
 
-### View ACPI information (battery status, etc.)
+**View ACPI information (battery status, etc.)**
 
     $ acpi -i
 
-### View SMART information
+**View SMART information**
 
     # smartctl -a /dev/sda
 
-### Wipe out a disk
+**Wipe out a disk**
 
 Data removed by `rm -rf` can be easily recovered by a software tool like [TestDisk](http://www.cgsecurity.org/wiki/TestDisk). To wipe out all data on a device (e.g., `/dev/sda`) reliably, use:
 
@@ -106,9 +106,9 @@ Data removed by `rm -rf` can be easily recovered by a software tool like [TestDi
 
 
 
-## Networking
+# Networking
 
-### Show all active Internet connections
+**Show all active Internet connections**
 
 Show only TCP connections:
 
@@ -118,7 +118,7 @@ To include UDP connections:
 
     $ netstat -ntulp
 
-### Port scanning
+**Port scanning**
 
 Check for a port number (e.g., `8000`):
 
@@ -132,15 +132,15 @@ Scan all open ports with [Nmap](https://nmap.org/):
 
     $ nmap -v -A [scanme.nmap.org]
 
-### Query a specific DNS server (e.g., Google Public DNS)
+**Query a specific DNS server (e.g., Google Public DNS)**
 
     $ dig @[8.8.8.8] [www.example.com]
 
-### Find out your IP address on the public Internet
+**Find out your IP address on the public Internet**
 
     $ dig +short myip.opendns.com @resolver1.opendns.com
 
-### Look for the geolocation of a host
+**Look for the geolocation of a host**
 
     $ geoiplookup [google.com]
 
@@ -148,14 +148,14 @@ Or: (IPv6)
 
     $ geoiplookup6 [google.com]
 
-### Start an HTTP server for development
+**Start an HTTP server for development**
 
     $ python3 -m http.server [4000]
 
 
 
-## Multimedia
+# Multimedia
 
-### Record an M3U stream
+**Record an M3U stream**
 
     $ ffmpeg -i [http://foo.bar/hls.m3u8] -c copy -bsf:a aac_adtstoasc [output.mp4]

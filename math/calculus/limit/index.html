@@ -67,7 +67,7 @@
 <p><strong>Theorem 2.4. (Algebraic limit theorem)</strong> <span class="math display">\[\lim_{x \to a} [f(x) + g(x)] = \lim_{x \to a} f(x) + \lim_{x \to a} g(x)\]</span> <span class="math display">\[\lim_{x \to a} [f(x) - g(x)] = \lim_{x \to a} f(x) - \lim_{x \to a} g(x)\]</span> <span class="math display">\[\lim_{x \to a} [f(x) \cdot g(x)] = \lim_{x \to a} f(x) \cdot \lim_{x \to a} g(x)\]</span> <span class="math display">\[\lim_{x \to a} \frac{f(x)}{g(x)} = \frac{\lim_{x \to a} f(x)}{\lim_{x \to a} g(x)}\]</span></p>
 <p><strong>Theorem 2.5. (Squeeze theorem)</strong> If <span class="math inline">\(g(x) \leq f(x) \leq h(x)\)</span> holds for all <span class="math inline">\(x\)</span> in an open interval containing <span class="math inline">\(a\)</span>, except possibly at <span class="math inline">\(x=a\)</span> itself, and <span class="math inline">\(\lim_{x \to a} g(x) = \lim_{x \to a} h(x) = L\)</span>, then <span class="math display">\[\lim_{x \to a} f(x) = L\]</span></p>
 <p><strong>Theorem 2.6. (Composition rule)</strong> If <span class="math inline">\(f(x)\)</span> is continuous at <span class="math inline">\(x=b\)</span> and <span class="math inline">\(\lim_{x \to a} g(x) = b\)</span>, then <span class="math display">\[\lim_{x \to a} f(g(x)) = f(b) = f\big(\lim_{x \to a} g(x)\big)\]</span></p>
-<p><strong>*Theorem 2.7. (L'Hôpital's rule)</strong> Let <span class="math inline">\(f(x)\)</span> and <span class="math inline">\(g(x)\)</span> be differentiable functions defined on an open interval except possibly at <span class="math inline">\(x=a\)</span> itself, if:</p>
+<p><strong>*Theorem 2.7. (L’Hôpital’s rule)</strong> Let <span class="math inline">\(f(x)\)</span> and <span class="math inline">\(g(x)\)</span> be differentiable functions defined on an open interval except possibly at <span class="math inline">\(x=a\)</span> itself, if:</p>
 <ol type="1">
 <li><span class="math inline">\(\lim_{x \to a} f(x) = \lim_{x \to a} g(x) = 0 \textrm{ or } \pm\infty\)</span></li>
 <li><span class="math inline">\(g&#39;(x) \neq 0\)</span> for all <span class="math inline">\(x \neq a\)</span></li>
@@ -80,18 +80,18 @@
 <section id="computation-of-limits-using-maxima" class="level1">
 <h1><span class="header-section-number">3</span> Computation of Limits (Using Maxima)</h1>
 <p><strong>Example 3.1.</strong> Compute <span class="math inline">\(\lim_{x \to 1} \frac{\ln x}{x - 1}\)</span>:</p>
-<div class="sourceCode"><pre class="sourceCode maxima"><code class="sourceCode maxima"> <span class="fu">limit</span>(<span class="fu">log</span>(x) / (x - <span class="dv">1</span>), x, <span class="dv">1</span>);</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode maxima"><code class="sourceCode maxima"> <span class="fu">limit</span>(<span class="fu">log</span>(<span class="cn">x</span>) / (<span class="cn">x</span> - <span class="dv">1</span>), <span class="cn">x</span>, <span class="dv">1</span>);</code></pre></div>
 <p><strong>Example 3.2.</strong> Compute <span class="math inline">\(\lim_{x \to \infty} \frac{e^x}{x}\)</span>:</p>
-<div class="sourceCode"><pre class="sourceCode maxima"><code class="sourceCode maxima"> <span class="fu">limit</span>(<span class="fu">exp</span>(x) / x, x, inf);</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode maxima"><code class="sourceCode maxima"> <span class="fu">limit</span>(<span class="fu">exp</span>(<span class="cn">x</span>) / <span class="cn">x</span>, <span class="cn">x</span>, <span class="cn">inf</span>);</code></pre></div>
 <p><strong>Example 3.3.</strong> Compute one-sided limits <span class="math inline">\(\lim_{x \to \frac{\pi}{2}^+} \tan x\)</span> and <span class="math inline">\(\lim_{x \to \frac{\pi}{2}^-} \tan x\)</span>:</p>
-<div class="sourceCode"><pre class="sourceCode maxima"><code class="sourceCode maxima"> <span class="fu">limit</span>(<span class="fu">tan</span>(x), x, %pi / <span class="dv">2</span>, plus);
- <span class="fu">limit</span>(<span class="fu">tan</span>(x), x, %pi / <span class="dv">2</span>, minus);</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode maxima"><code class="sourceCode maxima"> <span class="fu">limit</span>(<span class="fu">tan</span>(<span class="cn">x</span>), <span class="cn">x</span>, %<span class="cn">pi</span> / <span class="dv">2</span>, <span class="cn">plus</span>);
+ <span class="fu">limit</span>(<span class="fu">tan</span>(<span class="cn">x</span>), <span class="cn">x</span>, %<span class="cn">pi</span> / <span class="dv">2</span>, <span class="cn">minus</span>);</code></pre></div>
 </section>
 <section id="limits-of-special-interest" class="level1">
 <h1><span class="header-section-number">4</span> Limits of Special Interest</h1>
 <p><strong>Theorem 4.1. (Asymptotes for rational functions)</strong> Suppose that all <span class="math inline">\(a_i\)</span> and <span class="math inline">\(b_i\)</span> are constants, <span class="math inline">\(n \in \mathbb{N}\)</span>, then <span class="math display">\[\lim_{x \to \infty} \frac{a_1x^n + a_2x^{n-1} + \dots + a_n}{b_1x^n + b_2x^{n-1} + \dots + b_n} = \frac{a_1}{b_1}\]</span></p>
-<p><strong>Theorem 4.2. (Euler's number)</strong> <span class="math display">\[\lim_{x \to \infty} \left(1 + \frac{1}{x}\right)^x = e\]</span></p>
-<p>where <span class="math inline">\(e = \sum_{n=0}^\infty \frac{1}{n!} \approx 2.718 \dots\)</span> is a mathematical constant. See also <a href="/math/analysis/inequalities">some inequalities related to Euler's number</a>.</p>
+<p><strong>Theorem 4.2. (Euler’s number)</strong> <span class="math display">\[\lim_{x \to \infty} \left(1 + \frac{1}{x}\right)^x = e\]</span></p>
+<p>where <span class="math inline">\(e = \sum_{n=0}^\infty \frac{1}{n!} \approx 2.718 \dots\)</span> is a mathematical constant. See also <a href="/math/analysis/inequalities">some inequalities related to Euler’s number</a>.</p>
 </section>
       </div>
       <footer>

@@ -4,9 +4,9 @@
 
 (***Note:** This page contains tips and tricks which are specific to the Linux kernel or a certain Linux distribution. For cross-platform utilities that may run on Linux, e.g., GNU, see [CLI tricks](/unix/cli) instead.*)
 
-## Kernel
+# Kernel
 
-### Useful information
+## Useful information
 
 Show the parameters passed to the kernel at the time it was started:
 
@@ -22,9 +22,9 @@ Or:
 
 
 
-## Kernel modules
+# Kernel modules
 
-### Disable the touchpad
+## Disable the touchpad
 
 `psmouse` seems to be the module designated for the touchpad on many laptops. If it annoys when typing, simply remove the module with:
 
@@ -36,25 +36,25 @@ To bring it back:
 
 
 
-## util-linux
+# util-linux
 
 (Wikipedia: <https://en.wikipedia.org/wiki/Util-linux>)
 
-### Display system shutdown entries and run level changes
+## Display system shutdown entries and run level changes
 
     $ last -x | less
 
-### Show bad login attempts
+## Show bad login attempts
 
     # lastb | less
 
-### View kernel message buffer (and follow it)
+## View kernel message buffer (and follow it)
 
 In human-readable timestamp: (may be inaccurate!)
 
     $ dmesg -Tw
 
-### Force releasing the swap space
+## Force releasing the swap space
 
 Swapping generally downgrades the overall performance; it is sometimes good to manually release everything back into the RAM.
 
@@ -64,11 +64,11 @@ Swapping generally downgrades the overall performance; it is sometimes good to m
 
 
 
-## SysV init
+# SysV init
 
 (Wikipedia: <https://en.wikipedia.org/wiki/Init>)
 
-### Start a system service (e.g., httpd)
+## Start a system service (e.g., httpd)
 
     # /etc/rc.d/httpd start
 
@@ -78,23 +78,23 @@ Or:
 
 
 
-## systemd
+# systemd
 
 (Wikipedia: <https://en.wikipedia.org/wiki/Systemd>)
 
-### Start a system service (e.g., httpd)
+## Start a system service (e.g., httpd)
 
     # systemctl start httpd
 
-### View systemd journal (reverse chronologically)
+## View systemd journal (reverse chronologically)
 
     $ journalctl -r
 
-### View kernel message log from current boot (and follow it)
+## View kernel message log from current boot (and follow it)
 
     $ journalctl -kf
 
-### Write a simple service
+## Write a simple service
 
 Create a file `foobar.service`:
 
@@ -116,9 +116,9 @@ Copy the file to systemd's designated place and enable the service:
 
 
 
-## Distro-specific
+# Distro-specific
 
-### Arch Linux
+## Arch Linux
 
 Find out which package owns the program:
 

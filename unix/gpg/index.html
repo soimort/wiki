@@ -37,59 +37,56 @@
       </header>
       <nav id="TOC">
 <ul>
-<li><a href="#exchanging-keys">Exchanging keys</a></li>
-<li><a href="#encrypting-and-decrypting-documents">Encrypting and decrypting documents</a></li>
-<li><a href="#making-and-verifying-signatures">Making and verifying signatures</a></li>
-<li><a href="#gpg-agent">gpg-agent</a></li>
-<li><a href="#references">References</a></li>
+<li><a href="#exchanging-keys"><span class="toc-section-number">1</span> Exchanging keys</a></li>
+<li><a href="#encrypting-and-decrypting-documents"><span class="toc-section-number">2</span> Encrypting and decrypting documents</a></li>
+<li><a href="#making-and-verifying-signatures"><span class="toc-section-number">3</span> Making and verifying signatures</a></li>
+<li><a href="#gpg-agent"><span class="toc-section-number">4</span> gpg-agent</a></li>
 </ul>
       </nav>
       <div id="content">
-<section id="exchanging-keys" class="level2">
-<h2>Exchanging keys</h2>
+<section id="exchanging-keys" class="level1">
+<h1><span class="header-section-number">1</span> Exchanging keys</h1>
 <p>Check for your own keys:</p>
 <pre><code>$ gpg --list-secret-keys</code></pre>
 <p>List all keys on your public keyring: (<code>~/.gnupg/pubring.kbx</code>)</p>
 <pre><code>$ gpg --list-keys</code></pre>
 <p>Print your public key: (in ASCII-armored format)</p>
-<pre><code>$ gpg --armor --export <span class="do">alice@example.com</span></code></pre>
+<pre><code>$ gpg --armor --export [alice@example.com]</code></pre>
 <p>Export your public key: (in binary format)</p>
-<pre><code>$ gpg --output <span class="do">alice.gpg</span> --export <span class="do">alice@example.com</span></code></pre>
+<pre><code>$ gpg --output [alice.gpg] --export [alice@example.com]</code></pre>
 <p>Import a public key:</p>
-<pre><code>$ gpg --import <span class="do">bob.gpg</span></code></pre>
+<pre><code>$ gpg --import [bob.gpg]</code></pre>
 </section>
-<section id="encrypting-and-decrypting-documents" class="level2">
-<h2>Encrypting and decrypting documents</h2>
+<section id="encrypting-and-decrypting-documents" class="level1">
+<h1><span class="header-section-number">2</span> Encrypting and decrypting documents</h1>
 <p>Encrypt a document with a public key:</p>
-<pre><code>$ gpg --output <span class="do">doc.gpg</span> --encrypt --recipient <span class="do">bob@example.com</span> <span class="do">doc</span></code></pre>
+<pre><code>$ gpg --output [doc.gpg] --encrypt --recipient [bob@example.com] [doc]</code></pre>
 <p>Encrypt a document with a symmetric cipher:</p>
-<pre><code>$ gpg --output <span class="do">doc.gpg</span> --symmetric <span class="do">doc</span></code></pre>
+<pre><code>$ gpg --output [doc.gpg] --symmetric [doc]</code></pre>
 <p>Decrypt a document:</p>
-<pre><code>$ gpg --output <span class="do">doc</span> --decrypt <span class="do">doc.gpg</span></code></pre>
+<pre><code>$ gpg --output [doc] --decrypt [doc.gpg]</code></pre>
 </section>
-<section id="making-and-verifying-signatures" class="level2">
-<h2>Making and verifying signatures</h2>
+<section id="making-and-verifying-signatures" class="level1">
+<h1><span class="header-section-number">3</span> Making and verifying signatures</h1>
 <p>Sign a document:</p>
-<pre><code>$ gpg --output <span class="do">doc.sig</span> --sign <span class="do">doc</span></code></pre>
+<pre><code>$ gpg --output [doc.sig] --sign [doc]</code></pre>
 <p>Verify a signature and recover the encrypted document:</p>
-<pre><code>$ gpg --output <span class="do">doc</span> --decrypt <span class="do">doc.sig</span></code></pre>
+<pre><code>$ gpg --output [doc] --decrypt [doc.sig]</code></pre>
 <p>Sign a document, but create an ASCII-armored signature:</p>
-<pre><code>$ gpg --clearsign <span class="do">doc</span></code></pre>
+<pre><code>$ gpg --clearsign [doc]</code></pre>
 <p>Sign a document, but create a detached signature:</p>
-<pre><code>$ gpg --output <span class="do">doc.sig</span> --detach-sig <span class="do">doc</span></code></pre>
+<pre><code>$ gpg --output [doc.sig] --detach-sig [doc]</code></pre>
 <p>Verify a detached signature with respect to the original document:</p>
-<pre><code>$ gpg --verify <span class="do">doc.sig</span> <span class="do">doc</span></code></pre>
+<pre><code>$ gpg --verify [doc.sig] [doc]</code></pre>
 </section>
-<section id="gpg-agent" class="level2">
-<h2>gpg-agent</h2>
+<section id="gpg-agent" class="level1">
+<h1><span class="header-section-number">4</span> gpg-agent</h1>
 <p>The following line should be added to your <code>.bashrc</code> or <code>.zshrc, etc.</code>:</p>
 <div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="bu">export</span> <span class="va">GPG_TTY=$(</span><span class="ex">tty</span><span class="va">)</span></code></pre></div>
 <p>Reload <code>gpg-agent</code>:</p>
 <pre><code>$ gpg-connect-agent reloadagent /bye</code></pre>
 <hr />
-</section>
-<section id="references" class="level2">
-<h2>References</h2>
+<p><strong>References</strong></p>
 <ul>
 <li>The Free Software Foundation. “The GNU Privacy Handbook.” Accessed April 7, 2016. <a href="https://www.gnupg.org/gph/en/manual/book1.html" class="uri">https://www.gnupg.org/gph/en/manual/book1.html</a></li>
 <li>“Using the GNU Privacy Guard: Invoking GPG-AGENT.” Accessed April 7, 2016. <a href="https://www.gnupg.org/documentation/manuals/gnupg/Invoking-GPG_002dAGENT.html" class="uri">https://www.gnupg.org/documentation/manuals/gnupg/Invoking-GPG_002dAGENT.html</a></li>

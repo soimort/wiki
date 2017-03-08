@@ -37,22 +37,22 @@
       </header>
       <nav id="TOC">
 <ul>
-<li><a href="#setting-up-an-ssh-server-the-right-way">Setting up an SSH server (the right way)</a></li>
+<li><a href="#setting-up-an-ssh-server-the-right-way"><span class="toc-section-number">1</span> Setting up an SSH server (the right way)</a></li>
 </ul>
       </nav>
       <div id="content">
-<section id="setting-up-an-ssh-server-the-right-way" class="level2">
-<h2>Setting up an SSH server (the right way)</h2>
+<section id="setting-up-an-ssh-server-the-right-way" class="level1">
+<h1><span class="header-section-number">1</span> Setting up an SSH server (the right way)</h1>
 <p>In <code>/etc/ssh/sshd_config</code>, enable public key authentication and disable password authentication: (perhaps change the default port also)</p>
 <div class="sourceCode"><pre class="sourceCode ini"><code class="sourceCode ini"><span class="dt">RSAAuthentication yes</span>
 <span class="dt">PubkeyAuthentication yes</span>
 
 <span class="dt">PasswordAuthentication no</span></code></pre></div>
 <p>Copy the client’s <em>public key</em> (e.g., <code>id_rsa.pub</code>) to the server’s <code>authorized_keys</code>:</p>
-<pre><code>$ ssh-copy-id <span class="do">username@remote_host</span></code></pre>
+<pre><code>$ ssh-copy-id [username@remote_host]</code></pre>
 <p>Or:</p>
 <pre><code>$ cat ~/.ssh/id_rsa.pub |\
-  ssh <span class="do">username@remote_host</span> "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"</code></pre>
+  ssh [username@remote_host] &quot;mkdir -p ~/.ssh &amp;&amp; cat &gt;&gt; ~/.ssh/authorized_keys&quot;</code></pre>
 <p>Make sure about permissions:</p>
 <pre><code>$ chmod 700 ~/.ssh
 $ chmod 600 ~/.ssh/*

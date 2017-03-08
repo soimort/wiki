@@ -37,20 +37,20 @@
       </header>
       <nav id="TOC">
 <ul>
-<li><a href="#kernel">Kernel</a></li>
-<li><a href="#kernel-modules">Kernel modules</a></li>
-<li><a href="#util-linux">util-linux</a></li>
-<li><a href="#sysv-init">SysV init</a></li>
-<li><a href="#systemd">systemd</a></li>
-<li><a href="#distro-specific">Distro-specific</a></li>
+<li><a href="#kernel"><span class="toc-section-number">1</span> Kernel</a></li>
+<li><a href="#kernel-modules"><span class="toc-section-number">2</span> Kernel modules</a></li>
+<li><a href="#util-linux"><span class="toc-section-number">3</span> util-linux</a></li>
+<li><a href="#sysv-init"><span class="toc-section-number">4</span> SysV init</a></li>
+<li><a href="#systemd"><span class="toc-section-number">5</span> systemd</a></li>
+<li><a href="#distro-specific"><span class="toc-section-number">6</span> Distro-specific</a></li>
 </ul>
       </nav>
       <div id="content">
 <p>(<em><strong>Note:</strong> This page contains tips and tricks which are specific to the Linux kernel or a certain Linux distribution. For cross-platform utilities that may run on Linux, e.g., GNU, see <a href="/unix/cli">CLI tricks</a> instead.</em>)</p>
-<section id="kernel" class="level2">
-<h2>Kernel</h2>
-<section id="useful-information" class="level3">
-<h3>Useful information</h3>
+<section id="kernel" class="level1">
+<h1><span class="header-section-number">1</span> Kernel</h1>
+<section id="useful-information" class="level2">
+<h2><span class="header-section-number">1.1</span> Useful information</h2>
 <p>Show the parameters passed to the kernel at the time it was started:</p>
 <pre><code>$ cat /proc/cmdline</code></pre>
 <p>Show the config options of the current running kernel:</p>
@@ -59,66 +59,66 @@
 <pre><code>$ zcat /proc/config.gz</code></pre>
 </section>
 </section>
-<section id="kernel-modules" class="level2">
-<h2>Kernel modules</h2>
-<section id="disable-the-touchpad" class="level3">
-<h3>Disable the touchpad</h3>
+<section id="kernel-modules" class="level1">
+<h1><span class="header-section-number">2</span> Kernel modules</h1>
+<section id="disable-the-touchpad" class="level2">
+<h2><span class="header-section-number">2.1</span> Disable the touchpad</h2>
 <p><code>psmouse</code> seems to be the module designated for the touchpad on many laptops. If it annoys when typing, simply remove the module with:</p>
 <pre><code># rmmod psmouse</code></pre>
 <p>To bring it back:</p>
 <pre><code># modprobe psmouse</code></pre>
 </section>
 </section>
-<section id="util-linux" class="level2">
-<h2>util-linux</h2>
+<section id="util-linux" class="level1">
+<h1><span class="header-section-number">3</span> util-linux</h1>
 <p>(Wikipedia: <a href="https://en.wikipedia.org/wiki/Util-linux" class="uri">https://en.wikipedia.org/wiki/Util-linux</a>)</p>
-<section id="display-system-shutdown-entries-and-run-level-changes" class="level3">
-<h3>Display system shutdown entries and run level changes</h3>
+<section id="display-system-shutdown-entries-and-run-level-changes" class="level2">
+<h2><span class="header-section-number">3.1</span> Display system shutdown entries and run level changes</h2>
 <pre><code>$ last -x | less</code></pre>
 </section>
-<section id="show-bad-login-attempts" class="level3">
-<h3>Show bad login attempts</h3>
+<section id="show-bad-login-attempts" class="level2">
+<h2><span class="header-section-number">3.2</span> Show bad login attempts</h2>
 <pre><code># lastb | less</code></pre>
 </section>
-<section id="view-kernel-message-buffer-and-follow-it" class="level3">
-<h3>View kernel message buffer (and follow it)</h3>
+<section id="view-kernel-message-buffer-and-follow-it" class="level2">
+<h2><span class="header-section-number">3.3</span> View kernel message buffer (and follow it)</h2>
 <p>In human-readable timestamp: (may be inaccurate!)</p>
 <pre><code>$ dmesg -Tw</code></pre>
 </section>
-<section id="force-releasing-the-swap-space" class="level3">
-<h3>Force releasing the swap space</h3>
+<section id="force-releasing-the-swap-space" class="level2">
+<h2><span class="header-section-number">3.4</span> Force releasing the swap space</h2>
 <p>Swapping generally downgrades the overall performance; it is sometimes good to manually release everything back into the RAM.</p>
 <p>(<strong>Warning:</strong> To run this command safely, freely available RAM is assumed to be sufficient; otherwise, the system may kill some processes to make room.)</p>
 <pre><code># swapoff -a &amp;&amp; swapon -a</code></pre>
 </section>
 </section>
-<section id="sysv-init" class="level2">
-<h2>SysV init</h2>
+<section id="sysv-init" class="level1">
+<h1><span class="header-section-number">4</span> SysV init</h1>
 <p>(Wikipedia: <a href="https://en.wikipedia.org/wiki/Init" class="uri">https://en.wikipedia.org/wiki/Init</a>)</p>
-<section id="start-a-system-service-e.g.-httpd" class="level3">
-<h3>Start a system service (e.g., httpd)</h3>
+<section id="start-a-system-service-e.g.-httpd" class="level2">
+<h2><span class="header-section-number">4.1</span> Start a system service (e.g., httpd)</h2>
 <pre><code># /etc/rc.d/httpd start</code></pre>
 <p>Or:</p>
 <pre><code># rc.d start httpd</code></pre>
 </section>
 </section>
-<section id="systemd" class="level2">
-<h2>systemd</h2>
+<section id="systemd" class="level1">
+<h1><span class="header-section-number">5</span> systemd</h1>
 <p>(Wikipedia: <a href="https://en.wikipedia.org/wiki/Systemd" class="uri">https://en.wikipedia.org/wiki/Systemd</a>)</p>
-<section id="start-a-system-service-e.g.-httpd-1" class="level3">
-<h3>Start a system service (e.g., httpd)</h3>
+<section id="start-a-system-service-e.g.-httpd-1" class="level2">
+<h2><span class="header-section-number">5.1</span> Start a system service (e.g., httpd)</h2>
 <pre><code># systemctl start httpd</code></pre>
 </section>
-<section id="view-systemd-journal-reverse-chronologically" class="level3">
-<h3>View systemd journal (reverse chronologically)</h3>
+<section id="view-systemd-journal-reverse-chronologically" class="level2">
+<h2><span class="header-section-number">5.2</span> View systemd journal (reverse chronologically)</h2>
 <pre><code>$ journalctl -r</code></pre>
 </section>
-<section id="view-kernel-message-log-from-current-boot-and-follow-it" class="level3">
-<h3>View kernel message log from current boot (and follow it)</h3>
+<section id="view-kernel-message-log-from-current-boot-and-follow-it" class="level2">
+<h2><span class="header-section-number">5.3</span> View kernel message log from current boot (and follow it)</h2>
 <pre><code>$ journalctl -kf</code></pre>
 </section>
-<section id="write-a-simple-service" class="level3">
-<h3>Write a simple service</h3>
+<section id="write-a-simple-service" class="level2">
+<h2><span class="header-section-number">5.4</span> Write a simple service</h2>
 <p>Create a file <code>foobar.service</code>:</p>
 <div class="sourceCode"><pre class="sourceCode ini"><code class="sourceCode ini"><span class="kw">[Unit]</span>
 <span class="dt">Description</span><span class="ot">=</span><span class="st">My dumb daemon</span>
@@ -133,14 +133,14 @@
 # systemctl enable foobar</code></pre>
 </section>
 </section>
-<section id="distro-specific" class="level2">
-<h2>Distro-specific</h2>
-<section id="arch-linux" class="level3">
-<h3>Arch Linux</h3>
+<section id="distro-specific" class="level1">
+<h1><span class="header-section-number">6</span> Distro-specific</h1>
+<section id="arch-linux" class="level2">
+<h2><span class="header-section-number">6.1</span> Arch Linux</h2>
 <p>Find out which package owns the program:</p>
-<pre><code>$ which <span class="do">cpp</span> | pacman -Qo -</code></pre>
+<pre><code>$ which [cpp] | pacman -Qo -</code></pre>
 <p>List all installed packages, in descending order of size:</p>
-<pre><code>$ expac -s -H M "%-30n %m" | sort -rhk 2</code></pre>
+<pre><code>$ expac -s -H M &quot;%-30n %m&quot; | sort -rhk 2</code></pre>
 </section>
 </section>
       </div>

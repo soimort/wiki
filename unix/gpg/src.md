@@ -2,7 +2,7 @@
 % Mort Yao
 % 2016-04-07
 
-## Exchanging keys
+# Exchanging keys
 
 Check for your own keys:
 
@@ -26,7 +26,7 @@ Import a public key:
 
 
 
-## Encrypting and decrypting documents
+# Encrypting and decrypting documents
 
 Encrypt a document with a public key:
 
@@ -42,7 +42,7 @@ Decrypt a document:
 
 
 
-## Making and verifying signatures
+# Making and verifying signatures
 
 Sign a document:
 
@@ -66,7 +66,7 @@ Verify a detached signature with respect to the original document:
 
 
 
-## gpg-agent
+# gpg-agent
 
 The following line should be added to your `.bashrc` or `.zshrc, etc.`:
 
@@ -80,7 +80,7 @@ Reload `gpg-agent`:
 
 ---
 
-## References
+**References**
 
 * The Free Software Foundation. “The GNU Privacy Handbook.”
 Accessed April 7, 2016.

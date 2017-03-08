@@ -37,15 +37,14 @@
       </header>
       <nav id="TOC">
 <ul>
-<li><a href="#how-to-block-google-analytics-from-tracking-you">How to block Google Analytics (from tracking you)</a></li>
-<li><a href="#references">References</a></li>
+<li><a href="#how-to-block-google-analytics-from-tracking-you"><span class="toc-section-number">1</span> How to block Google Analytics (from tracking you)</a></li>
 </ul>
       </nav>
       <div id="content">
-<section id="how-to-block-google-analytics-from-tracking-you" class="level2">
-<h2>How to block Google Analytics (from tracking you)</h2>
-<section id="option-1.-the-official-questionably-working-way" class="level3">
-<h3>Option 1. The official (questionably working) way</h3>
+<section id="how-to-block-google-analytics-from-tracking-you" class="level1">
+<h1><span class="header-section-number">1</span> How to block Google Analytics (from tracking you)</h1>
+<section id="option-1.-the-official-questionably-working-way" class="level2">
+<h2><span class="header-section-number">1.1</span> Option 1. The official (questionably working) way</h2>
 <p>Install the <a href="https://tools.google.com/dlpage/gaoptout">Google Analytics Opt-out Browser Add-on</a>.</p>
 <p>Note the following claims on their <a href="https://chrome.google.com/webstore/detail/google-analytics-opt-out/fllaojicojecljbmefodhfapmkghcbnh">description</a> page:</p>
 <blockquote>
@@ -53,24 +52,22 @@
 </blockquote>
 <p>So even if it does work, it <em>may</em> stop working without you noticing it. See Option 2 for a more proper solution.</p>
 </section>
-<section id="option-2.-the-brutal-and-the-only-correct-way" class="level3">
-<h3>Option 2. The brutal (and the only correct) way</h3>
+<section id="option-2.-the-brutal-and-the-only-correct-way" class="level2">
+<h2><span class="header-section-number">1.2</span> Option 2. The brutal (and the only correct) way</h2>
 <p>Add this one line to your <code>/etc/hosts</code>:</p>
 <pre><code>127.0.0.1   www.google-analytics.com</code></pre>
 <p>So your browser will not even have a chance to see the tracking code (<a href="https://www.google-analytics.com/analytics.js" class="uri">https://www.google-analytics.com/analytics.js</a> or <a href="https://www.google-analytics.com/ga.js" class="uri">https://www.google-analytics.com/ga.js</a>).</p>
 </section>
-<section id="notes" class="level3">
-<h3>Notes</h3>
+<section id="notes" class="level2">
+<h2><span class="header-section-number">1.3</span> Notes</h2>
 <p>Note that although this method effectively blocks Google Analytics’ tracking code, it is normally not possible to know whether there are other pieces of JavaScript engaged in traffic tracking activities on a Web page. Google Analytics is just the most commonly-used and the cheapest (free) one, used by many sites without visitors’ consent.</p>
 <p>Also, be aware that the method here does not prevent the server itself logging your activities; nor does it protect you from eavesdropping.</p>
 <hr />
-</section>
-</section>
-<section id="references" class="level2">
-<h2>References</h2>
+<p><strong>References</strong></p>
 <ul>
 <li>City College of San Francisco. “Instructions: Block Google Analytics” Accessed May 24, 2016. <a href="http://www.ccsf.edu/Policy/Privacy/ga.html" class="uri">http://www.ccsf.edu/Policy/Privacy/ga.html</a></li>
 </ul>
+</section>
 </section>
       </div>
       <footer>

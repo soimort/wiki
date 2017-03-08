@@ -2,7 +2,7 @@
 % Mort Yao
 % 2016-10-13
 
-## Setting up an SSH server (the right way)
+# Setting up an SSH server (the right way)
 
 In `/etc/ssh/sshd_config`, enable public key authentication and disable password authentication: (perhaps change the default port also)
 

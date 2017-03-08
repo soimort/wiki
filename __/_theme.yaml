@@ -25,8 +25,8 @@ raw-options: [
   --section-divs,
   --toc,
   --toc-depth=1,
-  --smart,  # produce typographically correct output
   --mathjax,
   ]
+input-format: markdown+smart # produce typographically correct output
 output-format: html5
 ---

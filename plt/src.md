@@ -4,7 +4,7 @@
 
 [Wikipedia: [Programming language theory](https://en.wikipedia.org/wiki/Programming_language_theory)]
 
-## Functional Programming
+# Functional Programming
 
 [Wikipedia: [Functional programming](https://en.wikipedia.org/wiki/Functional_programming)]
 
@@ -17,7 +17,7 @@ Books:
 * *Purely Functional Data Structures* (by Chris Okasaki) [[PDF](http://www.cs.cmu.edu/~rwh/theses/okasaki.pdf)]
     * StackExchange: *What's new in purely functional data structures since Okasaki?* [[Link](http://cstheory.stackexchange.com/questions/1539/whats-new-in-purely-functional-data-structures-since-okasaki)]
 
-## Programming Paradigms
+# Programming Paradigms
 
 [Wikipedia: [Programming paradigm](https://en.wikipedia.org/wiki/Programming_paradigm)]
 
@@ -25,14 +25,14 @@ Books:
 
 * *Concepts, Techniques, and Models of Computer Programming* (**CTM**, **"Oz Book"**) (by Peter Van Roy, Seif Haridi) [[Homepage](http://www.info.ucl.ac.be/~pvr/book.html)]
 
-## Programming Languages
+# Programming Languages
 
 Books:
 
 * *Essentials of Programming Languages* (**EOPL**) (by Daniel P. Friedman, Mitchell Wand, Christopher T. Haynes) [[Homepage](http://www.eopl3.com/)] [[Code](https://github.com/mwand/eopl3)]
 * *Programming Languages: Application and Interpretation* (**PLAI**) (by Shriram Krishnamurthi) [[Homepage](http://cs.brown.edu/~sk/Publications/Books/ProgLangs/)] [[HTML](http://cs.brown.edu/courses/cs173/2012/book/)] [[PDF](http://www.cs.brown.edu/courses/cs173/2012/book/book.pdf)]
 
-## Abstract Algebra
+# Abstract Algebra
 
 [Wikipedia: [Abstract algebra](https://en.wikipedia.org/wiki/Abstract_algebra)]
 
@@ -44,7 +44,7 @@ Books:
 
 * *A Book of Abstract Algebra* (by Charles C. Pinter)
 
-### Category Theory
+## Category Theory
 
 [Wikipedia: [Category theory](https://en.wikipedia.org/wiki/Category_theory)]
 
@@ -56,7 +56,7 @@ Books:
 * *Conceptual Mathematics: A First Introduction to Categories* (by F. William Lawere, Stephen H. Schanuel)
 * *Categories for the Working Mathematician* (by Saunders Mac Lane)
 
-## Mathematical Logic and Foundations of Mathematics
+# Mathematical Logic and Foundations of Mathematics
 
 [Wikipedia: [Mathematical logic](https://en.wikipedia.org/wiki/Mathematical_logic)] [Wikipedia: [Foundations of mathematics](https://en.wikipedia.org/wiki/Foundations_of_mathematics)]
 
@@ -72,7 +72,7 @@ Books:
 * *Introduction to Metamathematics* (by Stephen Cole Kleene)
 * *The Foundations of Mathematics* (by Kenneth Kunen)
 
-## Lambda Calculus
+# Lambda Calculus
 
 [Wikipedia: [Lambda calculus](https://en.wikipedia.org/wiki/Lambda_calculus)]
 
@@ -84,7 +84,7 @@ Books:
 * *The Lambda Calculus, Its Syntax and Semantics* (by Henk Barendregt)
 * *Lambda Calculus with Types* (by Henk Barendregt, Wil Dekkers, Richard Statman)
 
-## Type Theory
+# Type Theory
 
 [Wikipedia: [Type theory](https://en.wikipedia.org/wiki/Type_theory)]
 
@@ -105,7 +105,7 @@ Books:
 * *Certified Programming with Dependent Types* (**CPDT**) (by Adam Chlipala) [[Homepage](http://adam.chlipala.net/cpdt/)]
 * *Homotopy Type Theory* (**HoTT**) (by Univalent Foundations of Mathematics) [[Homepage](http://homotopytypetheory.org/book/)] [[GitHub](https://github.com/HoTT/book)]
 
-## Compiler Construction
+# Compiler Construction
 
 [Wikipedia: [Compiler construction](https://en.wikipedia.org/wiki/Compiler_construction)]
 

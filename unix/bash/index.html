@@ -35,45 +35,24 @@
         <address class="author">Mort Yao</address>
         <!-- h3 class="date">2016-12-13</h3 -->
       </header>
-      <nav id="TOC">
-<ul>
-<li><a href="#use-a-variable-abort-if-it-has-an-empty-value">Use a variable, abort if it has an empty value</a></li>
-<li><a href="#get-the-substring">Get the substring</a></li>
-<li><a href="#test-if-a-string-starts-with-some-string">Test if a string starts with some string</a></li>
-<li><a href="#test-if-a-string-matches-some-regular-expression">Test if a string matches some regular expression</a></li>
-<li><a href="#combining-expressions-in-if-statements">Combining expressions in <code>if</code>-statements</a></li>
-<li><a href="#read-a-file-line-by-line">Read a file line by line</a></li>
-</ul>
-      </nav>
       <div id="content">
-<section id="use-a-variable-abort-if-it-has-an-empty-value" class="level2">
-<h2>Use a variable, abort if it has an empty value</h2>
+<p><strong>Use a variable, abort if it has an empty value</strong></p>
 <div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="va">${str?</span>-WTF!<span class="va">}</span></code></pre></div>
-</section>
-<section id="get-the-substring" class="level2">
-<h2>Get the substring</h2>
+<p><strong>Get the substring</strong></p>
 <div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="va">${str:0:1}</span></code></pre></div>
-</section>
-<section id="test-if-a-string-starts-with-some-string" class="level2">
-<h2>Test if a string starts with some string</h2>
+<p><strong>Test if a string starts with some string</strong></p>
 <div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="kw">if [[</span> <span class="va">$str</span> <span class="ot">==</span> /*<span class="kw"> ]]</span>; <span class="kw">then</span>
   <span class="ex">...</span>
 <span class="kw">fi</span></code></pre></div>
-</section>
-<section id="test-if-a-string-matches-some-regular-expression" class="level2">
-<h2>Test if a string matches some regular expression</h2>
+<p><strong>Test if a string matches some regular expression</strong></p>
 <div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="kw">if [[</span> <span class="va">$str</span> =~ ^/<span class="kw"> ]]</span>; <span class="kw">then</span>
   <span class="ex">...</span>
 <span class="kw">fi</span></code></pre></div>
-</section>
-<section id="combining-expressions-in-if-statements" class="level2">
-<h2>Combining expressions in <code>if</code>-statements</h2>
+<p><strong>Combining expressions in <code>if</code>-statements</strong></p>
 <div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="kw">if [[</span> expr1 &amp;&amp; expr2 || expr3<span class="kw"> ]]</span>; <span class="kw">then</span>
   <span class="ex">...</span>
 <span class="kw">fi</span></code></pre></div>
-</section>
-<section id="read-a-file-line-by-line" class="level2">
-<h2>Read a file line by line</h2>
+<p><strong>Read a file line by line</strong></p>
 <div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="kw">while</span> <span class="va">IFS=</span> <span class="bu">read</span> -r <span class="va">line</span>; <span class="kw">do</span>
   <span class="bu">echo</span> <span class="va">$line</span>
   <span class="ex">...</span>
@@ -83,7 +62,6 @@
   <span class="bu">echo</span> <span class="va">$line</span>
   <span class="ex">...</span>
 <span class="kw">done</span></code></pre></div>
-</section>
       </div>
       <footer>
         <!-- TO BE MODIFIED BY NEED -->
