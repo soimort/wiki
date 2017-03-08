@@ -46,11 +46,11 @@ To delete all files with some extension, use:
 
 In terms of kilobytes:
 
-    $ du -hs [foo/bar] | cut -f1
+    $ du -s [foo/bar] | cut -f1
 
 Or: (in human-readable format)
 
-    $ du -s [foo/bar] | cut -f1
+    $ du -hs [foo/bar] | cut -f1
 
 **List sub-directories in descending order of size**
 

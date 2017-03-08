@@ -67,9 +67,9 @@
 <pre><code>$ find . -name &quot;[*.o]&quot; -delete</code></pre>
 <p><strong>Get the size of a directory</strong></p>
 <p>In terms of kilobytes:</p>
-<pre><code>$ du -hs [foo/bar] | cut -f1</code></pre>
-<p>Or: (in human-readable format)</p>
 <pre><code>$ du -s [foo/bar] | cut -f1</code></pre>
+<p>Or: (in human-readable format)</p>
+<pre><code>$ du -hs [foo/bar] | cut -f1</code></pre>
 <p><strong>List sub-directories in descending order of size</strong></p>
 <pre><code>$ du -hs * | sort -hr</code></pre>
 <p><strong>Archive (and compress) a directory</strong></p>
