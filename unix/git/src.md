@@ -1,6 +1,6 @@
 % Git Tricks
 % Mort Yao
-% 2016-12-27
+% 2017-03-10
 
 # Working with branches
 
@@ -93,6 +93,10 @@ Or:
 ## Push an empty commit to trigger a GitHub Pages rebuild
 
     $ git commit -m 'rebuild pages' --allow-empty
+
+## Download a specific folder in a GitHub repo
+
+    $ svn export [https://github.com/user/repo.git/trunk/path/to/something]
 
 
 
