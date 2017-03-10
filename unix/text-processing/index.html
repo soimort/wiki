@@ -45,18 +45,18 @@
 <section id="common-usage" class="level1">
 <h1><span class="header-section-number">1</span> Common Usage</h1>
 <p><strong>Read a certain line of a file</strong></p>
-<pre><code>$ sed -n &#39;[10]p&#39; [foo]</code></pre>
+<pre><code>$ sed -n '<span class="do">10</span>p' <span class="do">foo</span></code></pre>
 <p><strong>HTML escaping</strong></p>
-<pre><code>$ cat [foo.html] | perl -MHTML::Entities -e &#39;while(&lt;&gt;) {print encode_entities($_);}&#39;</code></pre>
+<pre><code>$ cat <span class="do">foo.html</span> | perl -MHTML::Entities -e 'while(<>) {print encode_entities($_);}'</code></pre>
 <p><strong>HTML unescaping</strong></p>
-<pre><code>$ cat [foo.html] | perl -MHTML::Entities -e &#39;while(&lt;&gt;) {print decode_entities($_);}&#39;</code></pre>
+<pre><code>$ cat <span class="do">foo.html</span> | perl -MHTML::Entities -e 'while(<>) {print decode_entities($_);}'</code></pre>
 <p><strong>Replace patterns in all files</strong></p>
 <p><code>find</code> &amp; <code>sed</code> approach:</p>
-<pre><code>$ find . -type f -print0 | xargs -0 sed -i &#39;s/old/new/g&#39;</code></pre>
+<pre><code>$ find . -type f -print0 | xargs -0 sed -i 's/old/new/g'</code></pre>
 <p>The above approach will descend into hidden paths like <code>.git/</code>, that is usually not desirable. Use this one instead:</p>
-<pre><code>$ find . -name .git -prune -o -type f -print0 | xargs -0 -n 1 sed -i -e &#39;s/old/new/g&#39;</code></pre>
+<pre><code>$ find . -name .git -prune -o -type f -print0 | xargs -0 -n 1 sed -i -e 's/old/new/g'</code></pre>
 <p>A better approach using <code>ack</code> &amp; <code>perl</code>: (which will leave hidden paths, binary files and files without target patterns untouched)</p>
-<pre><code>$ ack --print0 -l &#39;old&#39; | xargs -0 perl -p -i -e &#39;s/old/new/g&#39;</code></pre>
+<pre><code>$ ack --print0 -l 'old' | xargs -0 perl -p -i -e 's/old/new/g'</code></pre>
 </section>
 <section id="web-scraping" class="level1">
 <h1><span class="header-section-number">2</span> Web Scraping</h1>

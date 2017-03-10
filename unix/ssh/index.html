@@ -49,10 +49,10 @@
 
 <span class="dt">PasswordAuthentication no</span></code></pre></div>
 <p>Copy the client’s <em>public key</em> (e.g., <code>id_rsa.pub</code>) to the server’s <code>authorized_keys</code>:</p>
-<pre><code>$ ssh-copy-id [username@remote_host]</code></pre>
+<pre><code>$ ssh-copy-id <span class="do">username@remote_host</span></code></pre>
 <p>Or:</p>
 <pre><code>$ cat ~/.ssh/id_rsa.pub |\
-  ssh [username@remote_host] &quot;mkdir -p ~/.ssh &amp;&amp; cat &gt;&gt; ~/.ssh/authorized_keys&quot;</code></pre>
+  ssh <span class="do">username@remote_host</span> "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"</code></pre>
 <p>Make sure about permissions:</p>
 <pre><code>$ chmod 700 ~/.ssh
 $ chmod 600 ~/.ssh/*

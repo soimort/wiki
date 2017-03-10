@@ -48,43 +48,43 @@
 <section id="common-usage" class="level1">
 <h1><span class="header-section-number">1</span> Common usage</h1>
 <p><strong>See how a Unicode string is encoded internally</strong></p>
-<pre><code>$ echo [hello] | hexdump -C</code></pre>
+<pre><code>$ echo <span class="do">hello</span> | hexdump -C</code></pre>
 <p>See how it is encoded in UTF-16: (Assume UTF-8 is the default encoding)</p>
-<pre><code>$ echo [hello] | iconv -f utf-8 -t utf-16 | hexdump -C</code></pre>
+<pre><code>$ echo <span class="do">hello</span> | iconv -f utf-8 -t utf-16 | hexdump -C</code></pre>
 <p><strong>Show Unix epoch time</strong></p>
 <pre><code>$ date +%s</code></pre>
 <p><strong>Show timestamp in <a href="https://tools.ietf.org/html/rfc3339">RFC 3339</a> format</strong></p>
 <pre><code>$ date --iso-8601=seconds</code></pre>
 <p><strong>Show the MIME type of a file</strong></p>
-<pre><code>$ file -0 --mime-type &#39;[filename]&#39; | cut -d $&#39;\0&#39; -f2 | cut -d&#39; &#39; -f2</code></pre>
+<pre><code>$ file -0 --mime-type '<span class="do">filename</span>' | cut -d $'\0' -f2 | cut -d' ' -f2</code></pre>
 <p><strong>List files recursively, etc.</strong></p>
 <pre><code>$ find .</code></pre>
 <p>List files by extension:</p>
-<pre><code>$ find . -name &quot;[*.py]&quot;</code></pre>
+<pre><code>$ find . -name "<span class="do">*.py</span>"</code></pre>
 <p>To calculate the total number of lines of code, use:</p>
-<pre><code>$ find . -name &quot;[*.py]&quot; | xargs grep -v &quot;^$&quot; | wc -l</code></pre>
+<pre><code>$ find . -name "<span class="do">*.py</span>" | xargs grep -v "^$" | wc -l</code></pre>
 <p>To delete all files with some extension, use:</p>
-<pre><code>$ find . -name &quot;[*.o]&quot; -delete</code></pre>
+<pre><code>$ find . -name "<span class="do">*.o</span>" -delete</code></pre>
 <p><strong>Get the size of a directory</strong></p>
 <p>In terms of kilobytes:</p>
-<pre><code>$ du -s [foo/bar] | cut -f1</code></pre>
+<pre><code>$ du -s <span class="do">foo/bar</span> | cut -f1</code></pre>
 <p>Or: (in human-readable format)</p>
-<pre><code>$ du -hs [foo/bar] | cut -f1</code></pre>
+<pre><code>$ du -hs <span class="do">foo/bar</span> | cut -f1</code></pre>
 <p><strong>List sub-directories in descending order of size</strong></p>
 <pre><code>$ du -hs * | sort -hr</code></pre>
 <p><strong>Archive (and compress) a directory</strong></p>
 <p>As ZIP format:</p>
-<pre><code>$ zip -r [src.zip] [src]</code></pre>
+<pre><code>$ zip -r <span class="do">src.zip</span> <span class="do">src</span></code></pre>
 <p>As gzip format:</p>
-<pre><code>$ tar -czf [src.tar.gz] [src]</code></pre>
+<pre><code>$ tar -czf <span class="do">src.tar.gz</span> <span class="do">src</span></code></pre>
 <p>To archive some files under a certain directory without including the pathname in the resulting archive, change the directory with <code>-C</code>:</p>
-<pre><code>$ tar -czf [files.tar.gz] -C [src] [files]</code></pre>
+<pre><code>$ tar -czf <span class="do">files.tar.gz</span> -C <span class="do">src</span> <span class="do">files</span></code></pre>
 <p><strong>Login to a remote host</strong></p>
 <p>e.g., login to <code>127.0.0.1</code> as user <code>root</code>, via port <code>22</code>:</p>
-<pre><code>$ ssh -p [22] [root]@[127.0.0.1]</code></pre>
+<pre><code>$ ssh -p <span class="do">22</span> <span class="do">root</span>@<span class="do">127.0.0.1</span></code></pre>
 <p><strong>Copy files to a remote host</strong></p>
 <p>e.g., copy some <code>files</code> to <code>127.0.0.1</code> as user <code>root</code>, via port <code>22</code>:</p>
-<pre><code>$ scp -P [22] [files] [root]@[127.0.0.1]:[/home/root/bak]</code></pre>
+<pre><code>$ scp -P <span class="do">22</span> <span class="do">files</span> <span class="do">root</span>@<span class="do">127.0.0.1</span>:<span class="do">/home/root/bak</span></code></pre>
 </section>
 <section id="system-maintenance" class="level1">
 <h1><span class="header-section-number">2</span> System maintenance</h1>
@@ -106,26 +106,26 @@
 <pre><code>$ netstat -ntulp</code></pre>
 <p><strong>Port scanning</strong></p>
 <p>Check for a port number (e.g., <code>8000</code>):</p>
-<pre><code>$ netcat -v -w 3 -z [scanme.nmap.org] [8000]</code></pre>
+<pre><code>$ netcat -v -w 3 -z <span class="do">scanme.nmap.org</span> <span class="do">8000</span></code></pre>
 <p>Check for a range of ports (e.g., <code>20</code> - <code>80</code>):</p>
-<pre><code>$ netcat -v -w 3 -z [scanme.nmap.org] [20-80]</code></pre>
+<pre><code>$ netcat -v -w 3 -z <span class="do">scanme.nmap.org</span> <span class="do">20-80</span></code></pre>
 <p>Scan all open ports with <a href="https://nmap.org/">Nmap</a>:</p>
-<pre><code>$ nmap -v -A [scanme.nmap.org]</code></pre>
+<pre><code>$ nmap -v -A <span class="do">scanme.nmap.org</span></code></pre>
 <p><strong>Query a specific DNS server (e.g., Google Public DNS)</strong></p>
-<pre><code>$ dig @[8.8.8.8] [www.example.com]</code></pre>
+<pre><code>$ dig @<span class="do">8.8.8.8</span> <span class="do">www.example.com</span></code></pre>
 <p><strong>Find out your IP address on the public Internet</strong></p>
 <pre><code>$ dig +short myip.opendns.com @resolver1.opendns.com</code></pre>
 <p><strong>Look for the geolocation of a host</strong></p>
-<pre><code>$ geoiplookup [google.com]</code></pre>
+<pre><code>$ geoiplookup <span class="do">google.com</span></code></pre>
 <p>Or: (IPv6)</p>
-<pre><code>$ geoiplookup6 [google.com]</code></pre>
+<pre><code>$ geoiplookup6 <span class="do">google.com</span></code></pre>
 <p><strong>Start an HTTP server for development</strong></p>
-<pre><code>$ python3 -m http.server [4000]</code></pre>
+<pre><code>$ python3 -m http.server <span class="do">4000</span></code></pre>
 </section>
 <section id="multimedia" class="level1">
 <h1><span class="header-section-number">4</span> Multimedia</h1>
 <p><strong>Record an M3U stream</strong></p>
-<pre><code>$ ffmpeg -i [http://foo.bar/hls.m3u8] -c copy -bsf:a aac_adtstoasc [output.mp4]</code></pre>
+<pre><code>$ ffmpeg -i <span class="do">http://foo.bar/hls.m3u8</span> -c copy -bsf:a aac_adtstoasc <span class="do">output.mp4</span></code></pre>
 </section>
       </div>
       <footer>

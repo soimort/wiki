@@ -51,14 +51,14 @@
 </ul>
 <section id="step-1.-split-the-pdf-document-into-single-page-pdfs" class="level2">
 <h2><span class="header-section-number">1.1</span> Step 1. Split the PDF document into single-page PDFs</h2>
-<pre><code>$ pdfseparate [foo.pdf] &#39;[foo%d.pdf]&#39;</code></pre>
+<pre><code>$ pdfseparate <span class="do">foo.pdf</span> '<span class="do">foo%d.pdf</span>'</code></pre>
 </section>
 <section id="step-2.-convert-single-page-pdf-to-svg-to-edit" class="level2">
 <h2><span class="header-section-number">1.2</span> Step 2. Convert single-page PDF to SVG (to edit)</h2>
 <p>Suppose the page to edit is <code>foo1.pdf</code>:</p>
-<pre><code>$ inkscape --without-gui --file=[foo1.pdf] --export-plain-svg=[foo1.svg]</code></pre>
+<pre><code>$ inkscape --without-gui --file=<span class="do">foo1.pdf</span> --export-plain-svg=<span class="do">foo1.svg</span></code></pre>
 <p>Or:</p>
-<pre><code>$ pdftocairo -svg [foo1.pdf] [foo1.svg]</code></pre>
+<pre><code>$ pdftocairo -svg <span class="do">foo1.pdf</span> <span class="do">foo1.svg</span></code></pre>
 </section>
 <section id="step-3.-edit-the-svg" class="level2">
 <h2><span class="header-section-number">1.3</span> Step 3. Edit the SVG</h2>
@@ -66,11 +66,11 @@
 </section>
 <section id="step-4.-convert-svg-back-to-pdf" class="level2">
 <h2><span class="header-section-number">1.4</span> Step 4. Convert SVG back to PDF</h2>
-<pre><code>$ inkscape --without-gui --file=[foo1.svg] --export-pdf=[foo1.pdf]</code></pre>
+<pre><code>$ inkscape --without-gui --file=<span class="do">foo1.svg</span> --export-pdf=<span class="do">foo1.pdf</span></code></pre>
 </section>
 <section id="step-5.-join-single-page-pdfs-into-one-pdf-document" class="level2">
 <h2><span class="header-section-number">1.5</span> Step 5. Join single-page PDFs into one PDF document</h2>
-<pre><code>$ pdfunite [foo1.pdf] [foo2.pdf] [...] [bar.pdf]</code></pre>
+<pre><code>$ pdfunite <span class="do">foo1.pdf</span> <span class="do">foo2.pdf</span> <span class="do">...</span> <span class="do">bar.pdf</span></code></pre>
 </section>
 </section>
       </div>
