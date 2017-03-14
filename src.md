@@ -32,15 +32,18 @@ It is still woefully incomplete, but it shouldn't always be. I keep learning thi
 * [Naive set theory](/math/set/)
 * **[Mathematical logic](/math/logic/)**
     * Classical logic
+        * Introduction
         * Propositional logic
         * First-order logic
         * Second-order logic
+        * Modal logic
     * Axiomatic set theory (ZFC)
     * Model theory
     * Computability theory
         * Peano axioms
         * Gödel's incompleteness theorems
     * Structural proof theory
+        * Deep inference and cirquent calculi
     * Non-classical logic
         * Intuitionistic logic
         * Linear logic

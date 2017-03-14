@@ -39,6 +39,8 @@ Supplementary reading:
 * Robert S. Wolf.
 ***A Tour Through Mathematical Logic.***
 
+## [Introduction](intro/)
+
 ## Propositional Logic
 
 ## First-Order Logic
@@ -86,11 +88,13 @@ Reading:
 
 ## Peano Axioms
 
-## Gödel’s Incompleteness Theorems
+## Gödel's Incompleteness Theorems
 
 
 
 # Structural Proof Theory
+
+## Deep Inference and Cirquent Calculi
 
 
 
@@ -105,7 +109,7 @@ Reading:
 
 ## Intuitionistic Logic
 
-## Linear Logic
+## Linear Logic and Relevant Logic
 
 ## Probabilistic Logic
 
