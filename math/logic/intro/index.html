@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-07 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Mort Yao">
+    <meta name="dcterms.date" content="2017-03-14">
+    <title>Formal Proofs and Deductive Systems</title>
+    <link rel="canonical" href="https://wiki.soimort.org/math/logic/intro">
+    <style type="text/css">code { white-space: pre; }</style>
+    <link rel="stylesheet" href="//cdn.soimort.org/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/mathsvg/latest/mathsvg.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/latest/Latin-Modern-Roman.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/latest/Latin-Modern-Mono.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/__/css/style.css">
+    <link rel="stylesheet" href="/__/css/pygments.css">
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.soimort.org/jk/20160504/jk.min.js"></script>
+    <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>
+    <script src="/__/js/jk-minibar.js"></script>
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+  <body>
+    <main><article>
+      <header>
+        <h1 class="title">Formal Proofs and Deductive Systems</h1>
+        <address class="author">Mort Yao</address>
+        <!-- h3 class="date">2017-03-14</h3 -->
+      </header>
+      <nav id="TOC">
+<ul>
+<li><a href="#formal-proofs"><span class="toc-section-number">1</span> Formal Proofs</a></li>
+<li><a href="#rules-of-inference"><span class="toc-section-number">2</span> Rules of Inference</a></li>
+<li><a href="#first-order-logic-with-equality"><span class="toc-section-number">3</span> First-Order Logic With Equality</a></li>
+<li><a href="#indirect-proofs"><span class="toc-section-number">4</span> Indirect Proofs</a></li>
+<li><a href="#induction"><span class="toc-section-number">5</span> Induction</a></li>
+</ul>
+      </nav>
+      <div id="content">
+<section id="formal-proofs" class="level1">
+<h1><span class="header-section-number">1</span> Formal Proofs</h1>
+<p><strong>Formal proof.</strong> A <em>formal proof</em> (or a <em>derivation</em>) is a finite sequence of <em>well-formed formulas</em> (in the scope of <a href="/comp/language/">formal languages</a>), each of which is an <em>axiom</em>, an <em>assumption</em>, or follows from the preceding sentences in the sequence by a <em>rule of inference</em>. Formal proofs are a form of logical argumentation using <a href="/philosophy/logic/#reasoning">deductive reasoning</a>.</p>
+<p>Several commonly used deduction styles (also called <em>proof calculi</em>) for expressing logical arguments exist:</p>
+<ul>
+<li>Structural proof theory (prefers the use of rules of inferences)
+<ul>
+<li><strong>Natural deduction</strong>. Every line is a conditional tautology with zero or more conditions on the left, and exactly one asserted proposition on the right.</li>
+<li><strong>Sequent calculus</strong>. Every line is a conditional tautology with zero or more conditions on the left, and zero or more asserted propositions on the right.</li>
+</ul></li>
+<li><strong>Hilbert-style systems</strong> (prefers the use of axioms). Every line is an unconditional tautology.</li>
+</ul>
+<p>A proof calculus is merely a style of formal inferences, which may be applied to different logics (e.g., classical logic, intuitionistic logic) in different formal systems.</p>
+<p>A <em>semi-formal proof</em> is a proof written in a natural language, which is intended to be read by human. A semi-formal proof should be easily translatable into a formal proof that can be verified by a machine.</p>
+<p><strong>Term.</strong> A <em>well-formed term</em> is either a parameter variable, or a function applied to some other terms. In formal grammar: <span class="math display">\[t ::= x\ |\ f(t_1, \dots, t_n)\]</span></p>
+<p>A <em>function symbol</em> builds up a term from other terms, which can be defined as <span class="math display">\[f(x_1, \dots, x_n) \equiv t\]</span> (Note that <span class="math inline">\(t\)</span> may not use <span class="math inline">\(f\)</span> recursively.)</p>
+<p>A <em>relation symbol</em> (or a <em>predicate</em>) builds up an <em>atomic formula</em> from terms, which can be defined as <span class="math display">\[p(x_1, \dots, x_n) \equiv P\]</span> (Note that <span class="math inline">\(P\)</span> may not use <span class="math inline">\(p\)</span> recursively.)</p>
+<p><strong>Formula.</strong> A <em>well-formed formula</em> is either an atomic formula, or a compound formula built up from atomic formulas using <em>connectives</em> or <em>quantifiers</em>. In formal grammar: <span class="math display">\[P ::= p(t_1, \dots, t_n)\ |\ P_1 \land P_2\ |\ P_1 \lor P_2\ |\ P_1 \Rightarrow P_2\ |\ \top\ |\ \bot\ |\ \lnot P_1\ |\ \forall x : S . P_1\ |\ \exists x : S . P_1\]</span></p>
+<p>(Note that a formula may contain <em>free variables</em> that are not bound by any quantifier.)</p>
+<p><strong>Proposition.</strong> A <em>proposition</em> is a statement such that</p>
+<blockquote>
+<p>For all <span class="math inline">\(x_1\)</span> in <span class="math inline">\(S_1\)</span>, , and <span class="math inline">\(x_n\)</span> in <span class="math inline">\(S_n\)</span>, if <span class="math inline">\(P_1, \dots, P_m\)</span> all hold, then <span class="math inline">\(Q\)</span> holds.</p>
+</blockquote>
+<p>or (as a well-formed formula) <span class="math display">\[\models \forall x_1 : S_1 . \cdots \forall x_n : S_n . P_1 \land \cdots \land P_m \Rightarrow Q\]</span> where <span class="math inline">\(x_1, \dots, x_n\)</span> are the <em>parameters</em>, <span class="math inline">\(P_1, \dots, P_m\)</span> are the <em>assumptions</em> (or the <em>hypotheses</em>), and <span class="math inline">\(Q\)</span> is the <em>conclusion</em> (or the <em>consequence</em>). The assumptions and the conclusion may not contain free variables other than the given parameters. Thus, a proposition always has a definite truth value.</p>
+<p>A proposition is <em>valid</em> (semantically <em>true</em> in all interpretations), if and only if there is a truth judgment <span class="math display">\[P_1, \dots, P_m \models Q\]</span></p>
+<p>A proposition is <em>provable</em>, if and only there is a sequent judgment <span class="math display">\[P_1, \dots, P_m \vdash Q\]</span> that follows from a formal proof, where <span class="math inline">\(P_1, \dots, P_m\)</span> (also written collectively as <span class="math inline">\(\Gamma\)</span>) are the <em>antecedents</em>, and <span class="math inline">\(Q\)</span> is the <em>consequent</em>.</p>
+<p><strong>Theorem.</strong> A provably true proposition is a <em>theorem</em>.</p>
+<p><strong>Soundness.</strong> A formal system is said to be <em>sound</em>, if and only if given all axioms and rules of inference, <span class="math inline">\(\Gamma \vdash Q\)</span> implies <span class="math inline">\(\Gamma \models Q\)</span>. (<em>Provability implies validity</em>)</p>
+<p><strong>Completeness.</strong> A formal system is said to be <em>complete</em>, if and only if given all axioms and rules of inference, <span class="math inline">\(\Gamma \models Q\)</span> implies <span class="math inline">\(\Gamma \vdash Q\)</span>. (<em>Validity implies provability</em>)</p>
+<p>While verifying a proof is often mechanized efficiently, finding the proof of a theorem can be computationally intractable or only semi-decidable.</p>
+</section>
+<section id="rules-of-inference" class="level1">
+<h1><span class="header-section-number">2</span> Rules of Inference</h1>
+<p>In the tree-like presentation of a proof (proof tree), a derivation is constructed from proof rules such as <span class="math display">\[\frac{\Gamma_1 \vdash Q_1 \quad \cdots \quad \Gamma_n \vdash Q_n}{\Gamma \vdash Q}\]</span> The sequents above the line are the <em>premises</em> of the rule; the sequent below the line is the <em>conclusion</em> of the rule.</p>
+<section id="assumption" class="level2">
+<h2><span class="header-section-number">2.1</span> Assumption</h2>
+<p><span class="math display">\[\textsf{Ass}_i : \frac{}{P_1, \dots, P_n \vdash P_i}
+\quad (i \in \{1, \dots, n\})\]</span></p>
+</section>
+<section id="axiom" class="level2">
+<h2><span class="header-section-number">2.2</span> Axiom</h2>
+<p><span class="math display">\[\textsf{Axiom}_P : \frac{}{\Gamma \vdash P}
+\quad (P \textrm{ is an axiom})\]</span></p>
+</section>
+<section id="lemma" class="level2">
+<h2><span class="header-section-number">2.3</span> Lemma</h2>
+<p><span class="math display">\[\textsf{Lemma} : \frac{\Gamma \vdash P \qquad \Gamma, P \vdash Q}{\Gamma \vdash Q}\]</span></p>
+</section>
+<section id="conjunction-introduction-or-adjunction" class="level2">
+<h2><span class="header-section-number">2.4</span> Conjunction Introduction (or Adjunction)</h2>
+<p><span class="math display">\[\land\textsf{I} : \frac{\Gamma \vdash P_1 \quad \Gamma \vdash P_2}{\Gamma \vdash P_1 \land P_2}\]</span></p>
+</section>
+<section id="conjunction-elimination-or-simplification" class="level2">
+<h2><span class="header-section-number">2.5</span> Conjunction Elimination (or Simplification)</h2>
+<p><span class="math display">\[\land\textsf{E}_1 : \frac{\Gamma \vdash P_1 \land P_2}{\Gamma \vdash P_1}\]</span></p>
+<p><span class="math display">\[\land\textsf{E}_2 : \frac{\Gamma \vdash P_1 \land P_2}{\Gamma \vdash P_2}\]</span></p>
+</section>
+<section id="disjunction-introduction-or-addition" class="level2">
+<h2><span class="header-section-number">2.6</span> Disjunction Introduction (or Addition)</h2>
+<p><span class="math display">\[\lor\textsf{I}_1 : \frac{\Gamma \vdash P_1}{\Gamma \vdash P_1 \lor P_2}\]</span></p>
+<p><span class="math display">\[\lor\textsf{I}_2 : \frac{\Gamma \vdash P_2}{\Gamma \vdash P_1 \lor P_2}\]</span></p>
+</section>
+<section id="disjunction-elimination-or-proof-by-cases" class="level2">
+<h2><span class="header-section-number">2.7</span> Disjunction Elimination (or Proof by Cases)</h2>
+<p><span class="math display">\[\lor\textsf{E} : \frac{\Gamma \vdash P_1 \lor P_2 \quad \Gamma, P_1 \vdash Q \quad \Gamma,P_2 \vdash Q}{\Gamma \vdash Q}
+\]</span></p>
+</section>
+<section id="implication-introduction-or-deduction-theorem" class="level2">
+<h2><span class="header-section-number">2.8</span> Implication Introduction (or Deduction Theorem)</h2>
+<p><span class="math display">\[\Rightarrow\textsf{I} : \frac{\Gamma, P \vdash Q}{\Gamma \vdash P \Rightarrow Q}\]</span></p>
+</section>
+<section id="implication-elimination-or-modus-ponens" class="level2">
+<h2><span class="header-section-number">2.9</span> Implication Elimination (or Modus Ponens)</h2>
+<p><span class="math display">\[\Rightarrow\textsf{E} : \frac{\Gamma \vdash P \Rightarrow Q \quad \Gamma \vdash P}{\Gamma \vdash Q}\]</span></p>
+</section>
+<section id="truth-introduction" class="level2">
+<h2><span class="header-section-number">2.10</span> Truth Introduction</h2>
+<p><span class="math display">\[\top\textsf{I} : \frac{}{\Gamma \vdash \top}\]</span></p>
+</section>
+<section id="falsehood-elimination" class="level2">
+<h2><span class="header-section-number">2.11</span> Falsehood Elimination</h2>
+<p><span class="math display">\[\bot\textsf{E} : \frac{\Gamma \vdash \bot}{\Gamma \vdash Q}\]</span></p>
+</section>
+<section id="negation-introduction" class="level2">
+<h2><span class="header-section-number">2.12</span> Negation Introduction</h2>
+<p><span class="math display">\[\lnot\textsf{I} : \frac{\Gamma, P \vdash \bot}{\Gamma \vdash \lnot P}\]</span></p>
+</section>
+<section id="negation-elimination" class="level2">
+<h2><span class="header-section-number">2.13</span> Negation Elimination</h2>
+<p><span class="math display">\[\lnot\textsf{E} : \frac{\Gamma \vdash \lnot P \quad \Gamma \vdash P}{\Gamma \vdash \bot}\]</span></p>
+</section>
+<section id="universal-introduction" class="level2">
+<h2><span class="header-section-number">2.14</span> Universal Introduction</h2>
+<p><span class="math display">\[\forall\textsf{I} : \frac{\Gamma \vdash P[x&#39;/x]}{\Gamma \vdash \forall x : S . P}
+\quad (x&#39; \textrm{ does not occur in } \Gamma \textrm{ or } P.)\]</span></p>
+</section>
+<section id="universal-elimination" class="level2">
+<h2><span class="header-section-number">2.15</span> Universal Elimination</h2>
+<p><span class="math display">\[\forall\textsf{E}_t : \frac{\Gamma \vdash \forall x : S . P}{\Gamma \vdash P[t/x]}
+\quad (t \textrm{ is a term of sort } S.)\]</span></p>
+</section>
+<section id="existential-introduction" class="level2">
+<h2><span class="header-section-number">2.16</span> Existential Introduction</h2>
+<p><span class="math display">\[\exists\textsf{I}_t : \frac{\Gamma \vdash P[t/x]}{\Gamma \vdash \exists x : S . P}
+\quad (t \textrm{ is a term of sort } S.)\]</span></p>
+</section>
+<section id="existential-elimination" class="level2">
+<h2><span class="header-section-number">2.17</span> Existential Elimination</h2>
+<p><span class="math display">\[\exists\textsf{E} : \frac{\Gamma \vdash \exists x : S . P \quad \Gamma, P[x&#39;/x] \vdash Q}{\Gamma \vdash Q}
+\quad (x&#39; \textrm{ does not occur in } \Gamma, P \textrm{ or } Q.)\]</span></p>
+</section>
+</section>
+<section id="first-order-logic-with-equality" class="level1">
+<h1><span class="header-section-number">3</span> First-Order Logic With Equality</h1>
+<section id="equality-introduction-or-reflexivity" class="level2">
+<h2><span class="header-section-number">3.1</span> Equality Introduction (or Reflexivity)</h2>
+<p><span class="math display">\[=\textsf{I} : \frac{}{\Gamma \vdash t = t}\]</span></p>
+</section>
+<section id="equality-elimination" class="level2">
+<h2><span class="header-section-number">3.2</span> Equality Elimination</h2>
+<p><span class="math display">\[=\textsf{E} : \frac{\Gamma \vdash t_1 = t_2 \quad \Gamma \vdash P[t_1/x]}{\Gamma \vdash P[t_2/x]}\]</span></p>
+</section>
+</section>
+<section id="indirect-proofs" class="level1">
+<h1><span class="header-section-number">4</span> Indirect Proofs</h1>
+<section id="proof-by-contradiction" class="level2">
+<h2><span class="header-section-number">4.1</span> Proof by Contradiction</h2>
+<p><span class="math display">\[\textsf{PBC} : \frac{\Gamma, \lnot P \vdash \bot}{\Gamma \vdash P}\]</span></p>
+</section>
+<section id="double-negation-elimination" class="level2">
+<h2><span class="header-section-number">4.2</span> Double Negation Elimination</h2>
+<p><span class="math display">\[\textsf{DNE} : \frac{\Gamma \vdash \lnot\lnot P}{\Gamma \vdash P}\]</span></p>
+</section>
+<section id="law-of-excluded-middle" class="level2">
+<h2><span class="header-section-number">4.3</span> Law of Excluded Middle</h2>
+<p><span class="math display">\[\textsf{LEM} : \frac{}{\Gamma \vdash P \lor \lnot P}\]</span></p>
+</section>
+</section>
+<section id="induction" class="level1">
+<h1><span class="header-section-number">5</span> Induction</h1>
+<section id="mathematical-induction" class="level2">
+<h2><span class="header-section-number">5.1</span> Mathematical Induction</h2>
+<p><span class="math display">\[\textsf{Ind}_\mathbb{N} :
+\frac{\Gamma \vdash P[0/x] \quad \Gamma, P[x&#39;/x] \vdash P[(x&#39; + 1)/x]}{\Gamma \vdash \forall x : \mathbb{N} . P}
+\quad (x&#39; \textrm{ does not occur in } \Gamma \textrm{ or } P.)\]</span></p>
+</section>
+</section>
+      </div>
+      <footer>
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard shortcut: R"
+           href="https://wiki.soimort.org/math/logic/intro/src.md">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
+        <a class="history" accesskey="h"
+           title="Keyboard shortcut: H"
+           href="https://github.com/soimort/wiki/commits/gh-pages/math/logic/intro/src.md">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard shortcut: E"
+           href="https://github.com/soimort/wiki/edit/gh-pages/math/logic/intro/src.md">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
+           href="https://wiki.soimort.org/math/logic/intro">
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
+        Last updated: <span id="update-time">2017-03-14</span>
+      </footer>
+    </article></main>
+  </body>
+</html>
