@@ -62,6 +62,11 @@ Swapping generally downgrades the overall performance; it is sometimes good to m
 
     # swapoff -a && swapon -a
 
+## Synchronize hardware clock with an NTP server
+
+    # ntpd -qg
+    # hwclock --systohc
+
 
 
 # SysV init

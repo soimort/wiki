@@ -91,6 +91,11 @@
 <p>(<strong>Warning:</strong> To run this command safely, freely available RAM is assumed to be sufficient; otherwise, the system may kill some processes to make room.)</p>
 <pre><code># swapoff -a &amp;&amp; swapon -a</code></pre>
 </section>
+<section id="synchronize-hardware-clock-with-an-ntp-server" class="level2">
+<h2><span class="header-section-number">3.5</span> Synchronize hardware clock with an NTP server</h2>
+<pre><code># ntpd -qg
+# hwclock --systohc</code></pre>
+</section>
 </section>
 <section id="sysv-init" class="level1">
 <h1><span class="header-section-number">4</span> SysV init</h1>
