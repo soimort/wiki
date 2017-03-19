@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-07 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Mort Yao">
+    <meta name="dcterms.date" content="2017-03-19">
+    <title>Desktop Tricks</title>
+    <link rel="canonical" href="https://wiki.soimort.org/unix/desktop">
+    <style type="text/css">code { white-space: pre; }</style>
+    <link rel="stylesheet" href="//cdn.soimort.org/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/mathsvg/latest/mathsvg.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/latest/Latin-Modern-Roman.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/latest/Latin-Modern-Mono.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/__/css/style.css">
+    <link rel="stylesheet" href="/__/css/pygments.css">
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.soimort.org/jk/20160504/jk.min.js"></script>
+    <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>
+    <script src="/__/js/jk-minibar.js"></script>
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+  <body>
+    <main><article>
+      <header>
+        <h1 class="title">Desktop Tricks</h1>
+        <address class="author">Mort Yao</address>
+        <!-- h3 class="date">2017-03-19</h3 -->
+      </header>
+      <nav id="TOC">
+<ul>
+<li><a href="#x.org"><span class="toc-section-number">1</span> X.Org</a></li>
+<li><a href="#wayland"><span class="toc-section-number">2</span> Wayland</a></li>
+<li><a href="#gnome"><span class="toc-section-number">3</span> GNOME</a></li>
+</ul>
+      </nav>
+      <div id="content">
+<section id="x.org" class="level1">
+<h1><span class="header-section-number">1</span> X.Org</h1>
+<section id="desired-screen-resolution-not-detected" class="level2">
+<h2><span class="header-section-number">1.1</span> Desired screen resolution not detected</h2>
+<p>Related bug: <a href="https://bugzilla.redhat.com/show_bug.cgi?id=1339930" class="uri">https://bugzilla.redhat.com/show_bug.cgi?id=1339930</a></p>
+<p>Manually add a resolution:</p>
+<pre><code>$ cvt <span class="do">1366 768</span>
+# 1368x768 59.88 Hz (CVT) hsync: 47.79 kHz; pclk: 85.25 MHz
+Modeline "1368x768_60.00"   85.25  1368 1440 1576 1784  768 771 781 798 -hsync +vsync
+$ xrandr --newmode <span class="do">"1368x768_60.00"   85.25  1368 1440 1576 1784  768 771 781 798 -hsync +vsync</span>
+$ xrandr --addmode <span class="do">eDP-1 1368x768_60.00</span>
+$ xrandr --output <span class="do">eDP-1</span> --mode <span class="do">1368x768_60.00</span></code></pre>
+<p>To add an undetected resolution permanently, create a configuration file <code>/etc/X11/xorg.conf.d/10-monitor.conf</code>:</p>
+<pre><code>Section &quot;Monitor&quot;
+    Identifier &quot;eDP-1&quot;
+    Modeline &quot;1368x768_60.00&quot;   85.25  1368 1440 1576 1784  768 771 781 798 -hsync +vsync
+    Option &quot;PreferredMode&quot; &quot;1368x768_60.00&quot;
+EndSection
+
+Section &quot;Screen&quot;
+    Identifier &quot;Primary Screen&quot;
+    Monitor &quot;eDP-1&quot;
+    DefaultDepth 24
+    SubSection &quot;Display&quot;
+        Modes &quot;1368x768_60.00&quot;
+    EndSubSection
+EndSection
+
+Section &quot;Device&quot;
+    Identifier &quot;Primary Device&quot;
+    Driver &quot;intel&quot;
+EndSection</code></pre>
+<p>References:</p>
+<ul>
+<li><a href="https://wiki.archlinux.org/index.php/xrandr" class="uri">https://wiki.archlinux.org/index.php/xrandr</a></li>
+<li><a href="https://wiki.ubuntu.com/X/Config/Resolution#Setting_xrandr_changes_persistently" class="uri">https://wiki.ubuntu.com/X/Config/Resolution#Setting_xrandr_changes_persistently</a></li>
+</ul>
+</section>
+</section>
+<section id="wayland" class="level1">
+<h1><span class="header-section-number">2</span> Wayland</h1>
+<section id="tint2-not-working-for-wayland-windows" class="level2">
+<h2><span class="header-section-number">2.1</span> tint2 not working for Wayland windows</h2>
+<p>Related bugs:</p>
+<ul>
+<li><a href="https://gitlab.com/o9000/tint2/issues/609" class="uri">https://gitlab.com/o9000/tint2/issues/609</a></li>
+<li><a href="https://gitlab.com/o9000/tint2/issues/627" class="uri">https://gitlab.com/o9000/tint2/issues/627</a></li>
+</ul>
+<p>Workaround: Don’t run GNOME on Wayland yet.</p>
+</section>
+</section>
+<section id="gnome" class="level1">
+<h1><span class="header-section-number">3</span> GNOME</h1>
+<section id="tracker-is-a-cpu-and-disk-hog" class="level2">
+<h2><span class="header-section-number">3.1</span> Tracker is a CPU (and disk) hog</h2>
+<p>Terminate all running Tracker processes:</p>
+<pre><code>$ tracker daemon -t</code></pre>
+<p>Disable Tracker processes on startup and clean its cache:</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash">$ <span class="bu">cd</span> ~/.config/autostart
+$ <span class="fu">cp</span> -v /etc/xdg/autostart/tracker-* ./
+$ <span class="kw">for</span> <span class="ex">FILE</span> in tracker-*.desktop <span class="kw">;</span> <span class="kw">do</span> <span class="bu">echo</span> Hidden=true <span class="op">&gt;&gt;</span> <span class="va">$FILE</span><span class="kw">;</span> <span class="kw">done</span>
+$ <span class="fu">rm</span> -rf ~/.cache/tracker ~/.local/share/tracker</code></pre></div>
+<p>Furthermore, change all relevant lines in <code>tracker-*.desktop</code> to something like</p>
+<pre><code>X-GNOME-Autostart-enabled=false</code></pre>
+<p>However, <code>tracker-store</code> seems tenacious and will start on next boot anyway.</p>
+<p>References:</p>
+<ul>
+<li><a href="https://gist.github.com/vancluever/d34b41eb77e6d077887c" class="uri">https://gist.github.com/vancluever/d34b41eb77e6d077887c</a></li>
+<li><a href="http://askubuntu.com/questions/346211/tracker-store-and-tracker-miner-fs-eating-up-my-cpu-on-every-startup" class="uri">http://askubuntu.com/questions/346211/tracker-store-and-tracker-miner-fs-eating-up-my-cpu-on-every-startup</a></li>
+</ul>
+</section>
+<section id="tracker-freezes-nautilus-on-properties" class="level2">
+<h2><span class="header-section-number">3.2</span> Tracker freezes Nautilus (on “Properties”)</h2>
+<p>(Bad) Workaround:</p>
+<pre><code>$ sudo rm /usr/lib/nautilus/extensions-3.0/libnautilus-tracker-tags.so</code></pre>
+<p>Reference: <a href="https://bbs.archlinux.org/viewtopic.php?id=119307" class="uri">https://bbs.archlinux.org/viewtopic.php?id=119307</a></p>
+</section>
+<section id="nautilus-freezes-on-typing-filter-search" class="level2">
+<h2><span class="header-section-number">3.3</span> Nautilus freezes on typing (filter search)</h2>
+<p>Related bug: <a href="https://bugzilla.gnome.org/show_bug.cgi?id=728608" class="uri">https://bugzilla.gnome.org/show_bug.cgi?id=728608</a></p>
+<p>Workaround: Don’t use Nautilus.</p>
+</section>
+<section id="gnome-freezes" class="level2">
+<h2><span class="header-section-number">3.4</span> GNOME freezes</h2>
+<p>Send <code>SIGQUIT</code> to the <code>gnome-shell</code> process:</p>
+<pre><code>$ killall -3 gnome-shell</code></pre>
+<p>Reference: <a href="http://askubuntu.com/a/496999/227503" class="uri">http://askubuntu.com/a/496999/227503</a></p>
+</section>
+</section>
+      </div>
+      <footer>
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard shortcut: R"
+           href="https://wiki.soimort.org/unix/desktop/src.md">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
+        <a class="history" accesskey="h"
+           title="Keyboard shortcut: H"
+           href="https://github.com/soimort/wiki/commits/gh-pages/unix/desktop/src.md">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard shortcut: E"
+           href="https://github.com/soimort/wiki/edit/gh-pages/unix/desktop/src.md">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
+           href="https://wiki.soimort.org/unix/desktop">
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
+        Last updated: <span id="update-time">2017-03-19</span>
+      </footer>
+    </article></main>
+  </body>
+</html>

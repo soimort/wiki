@@ -23,3 +23,4 @@ Tips and tricks about Unix-like systems and tools that run on them.
     * [SSH](ssh)
     * [Internet Privacy (How to block Google Analytics)](internet-privacy)
     * Anonymity  `[TBD]`
+* [Desktop](desktop)
