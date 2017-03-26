@@ -1,6 +1,6 @@
 % Mort's small traces
 % Mort Yao
-% 2017-01-19
+% 2017-03-26
 
 ![<small>
 A lifelong project to do my study notes on Math / Computer Science systematically and spirally. \
@@ -31,25 +31,8 @@ It is still woefully incomplete, but it shouldn't always be. I keep learning thi
 
 * [Naive set theory](/math/set/)
 * **[Mathematical logic](/math/logic/)**
-    * Classical logic
-        * Introduction
-        * Propositional logic
-        * First-order logic
-        * Second-order logic
-        * Modal logic
-    * Axiomatic set theory (ZFC)
-    * Model theory
-    * Computability theory
-        * Peano axioms
-        * Gödel's incompleteness theorems
-    * Structural proof theory
-        * Deep inference and cirquent calculi
-    * Non-classical logic
-        * Intuitionistic logic
-        * Linear logic
-        * Probabilistic logic
-    * Algebraic logic
-* [Linear algebra](/math/linear-algebra) and matrix theory
+* Linear algebra
+    * Matrix theory
 * Abstract algebra
     * Group theory
     * Representation theory
