@@ -1,6 +1,6 @@
 % Mathematical Logic
 % Mort Yao
-% 2017-01-20
+% 2017-03-26
 
 *Prerequisites*: Most content on this topic assumes some mathematical proof techniques (incl. mathematical induction) and basic knowledge of [naive set theory](/math/set). The following books might be a good refresher:
 
@@ -41,13 +41,13 @@ Supplementary reading:
 
 ## [Introduction](intro/)
 
-## Propositional Logic
+## Propositional Logic (Sentential Logic)
 
 ## First-Order Logic
 
-## * Second-Order Logic
+## Second-Order Logic
 
-## * Modal Logic
+## Modal Logic
 
 
 
@@ -73,6 +73,10 @@ Reading:
 * Maria Manzano.
 ***Model Theory.***
 
+## Kripke Semantics
+
+## Algebraic Logic
+
 
 
 # Computability Theory
@@ -86,9 +90,13 @@ Reading:
 * George Boolos, John P. Burgess and Richard Jeffrey.
 ***Computability and Logic.***
 
-## Peano Axioms
+## Number Theory
 
-## Gödel's Incompleteness Theorems
+### Presburger Arithmetic
+
+### Peano Arithmetic
+
+## Undecidability and Gödel's Incompleteness Theorems
 
 
 
@@ -109,10 +117,18 @@ Reading:
 
 ## Intuitionistic Logic
 
-## Linear Logic and Relevant Logic
+### Minimal Logic
 
-## Probabilistic Logic
+## Substructural Logic and Paraconsistent Logic
 
+### Linear Logic
 
+### Relevant Logic
 
-# * Algebraic Logic
+## Non-Reflexive Logic
+
+## Many-Valued Logic
+
+### Fuzzy Logic
+
+### Probability Logic
