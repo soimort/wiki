@@ -1,6 +1,6 @@
 % Formal Proofs and Deductive Systems
 % Mort Yao
-% 2017-03-14
+% 2017-03-27
 
 # Formal Proofs
 
@@ -64,119 +64,160 @@ In the tree-like presentation of a proof (proof tree), a derivation is construct
 $$\frac{\Gamma_1 \vdash Q_1 \quad \cdots \quad \Gamma_n \vdash Q_n}{\Gamma \vdash Q}$$
 The sequents above the line are the *premises* of the rule; the sequent below the line is the *conclusion* of the rule.
 
+
 ## Assumption
 
-$$\textsf{Ass}_i : \frac{}{P_1, \dots, P_n \vdash P_i}
+$$\textsc{Ass}_i : \frac{}{P_1, \dots, P_n \vdash P_i}
 \quad (i \in \{1, \dots, n\})$$
 
-## Axiom
 
-$$\textsf{Axiom}_P : \frac{}{\Gamma \vdash P}
+## Domain-Specific Axiom
+
+$$\textsc{Axiom}_P : \frac{}{\Gamma \vdash P}
 \quad (P \textrm{ is an axiom})$$
 
-## Lemma
 
-$$\textsf{Lemma} : \frac{\Gamma \vdash P \qquad \Gamma, P \vdash Q}{\Gamma \vdash Q}$$
+## Internal Lemma
 
-## Conjunction Introduction (or Adjunction)
+$$\textsc{Lemma} : \frac{\Gamma \vdash P \quad \Gamma, P \vdash Q}{\Gamma \vdash Q}$$
 
-$$\land\textsf{I} : \frac{\Gamma \vdash P_1 \quad \Gamma \vdash P_2}{\Gamma \vdash P_1 \land P_2}$$
 
-## Conjunction Elimination (or Simplification)
+## Conjunction Introduction
 
-$$\land\textsf{E}_1 : \frac{\Gamma \vdash P_1 \land P_2}{\Gamma \vdash P_1}$$
+Also called *adjunction*.
 
-$$\land\textsf{E}_2 : \frac{\Gamma \vdash P_1 \land P_2}{\Gamma \vdash P_2}$$
+$$\land\textsc{I} : \frac{\Gamma \vdash P_1 \quad \Gamma \vdash P_2}{\Gamma \vdash P_1 \land P_2}$$
 
-## Disjunction Introduction (or Addition)
 
-$$\lor\textsf{I}_1 : \frac{\Gamma \vdash P_1}{\Gamma \vdash P_1 \lor P_2}$$
+## Conjunction Elimination
 
-$$\lor\textsf{I}_2 : \frac{\Gamma \vdash P_2}{\Gamma \vdash P_1 \lor P_2}$$
+Also called *simplification*.
 
-## Disjunction Elimination (or Proof by Cases)
+$$\land\textsc{E}_1 : \frac{\Gamma \vdash P_1 \land P_2}{\Gamma \vdash P_1}$$
 
-$$\lor\textsf{E} : \frac{\Gamma \vdash P_1 \lor P_2 \quad \Gamma, P_1 \vdash Q \quad \Gamma,P_2 \vdash Q}{\Gamma \vdash Q}
+$$\land\textsc{E}_2 : \frac{\Gamma \vdash P_1 \land P_2}{\Gamma \vdash P_2}$$
+
+
+## Disjunction Introduction
+
+Also called *addition*.
+
+$$\lor\textsc{I}_1 : \frac{\Gamma \vdash P_1}{\Gamma \vdash P_1 \lor P_2}$$
+
+$$\lor\textsc{I}_2 : \frac{\Gamma \vdash P_2}{\Gamma \vdash P_1 \lor P_2}$$
+
+
+## Disjunction Elimination
+
+Also called *proof by cases*.
+
+$$\lor\textsc{E} : \frac{\Gamma \vdash P_1 \lor P_2 \quad \Gamma, P_1 \vdash Q \quad \Gamma,P_2 \vdash Q}{\Gamma \vdash Q}
 $$
 
-## Implication Introduction (or Deduction Theorem)
 
-$$\Rightarrow\textsf{I} : \frac{\Gamma, P \vdash Q}{\Gamma \vdash P \Rightarrow Q}$$
+## Implication Introduction
 
-## Implication Elimination (or Modus Ponens)
+Also called the *deduction theorem*.
 
-$$\Rightarrow\textsf{E} : \frac{\Gamma \vdash P \Rightarrow Q \quad \Gamma \vdash P}{\Gamma \vdash Q}$$
+$$\Rightarrow\textsc{I} : \frac{\Gamma, P \vdash Q}{\Gamma \vdash P \Rightarrow Q}$$
+
+
+## Implication Elimination
+
+Also called *modus ponens*.
+
+$$\Rightarrow\textsc{E} : \frac{\Gamma \vdash P \Rightarrow Q \quad \Gamma \vdash P}{\Gamma \vdash Q}$$
+
 
 ## Truth Introduction
 
-$$\top\textsf{I} : \frac{}{\Gamma \vdash \top}$$
+$$\top\textsc{I} : \frac{}{\Gamma \vdash \top}$$
+
 
 ## Falsehood Elimination
 
-$$\bot\textsf{E} : \frac{\Gamma \vdash \bot}{\Gamma \vdash Q}$$
+Also called the *principle of explosion* (*ex falso quodlibet*).
+This rule is rejected by minimal logic.
+
+$$\bot\textsc{E} : \frac{\Gamma \vdash \bot}{\Gamma \vdash Q}$$
+
+An alternative rule of the ex falso axiom is
+
+$$\Rightarrow\textsc{EFQ} = \frac{\Gamma \vdash \lnot P}{\Gamma \vdash P \Rightarrow Q}$$
+
 
 ## Negation Introduction
 
-$$\lnot\textsf{I} : \frac{\Gamma, P \vdash \bot}{\Gamma \vdash \lnot P}$$
+$$\lnot\textsc{I} : \frac{\Gamma, P \vdash \bot}{\Gamma \vdash \lnot P}$$
+
+A related rule is *modus tollens*:
+
+$$\lnot\textsc{MT} : \frac{\Gamma \vdash P \Rightarrow Q, \lnot Q}{\Gamma \vdash \lnot P}$$
+
 
 ## Negation Elimination
 
-$$\lnot\textsf{E} : \frac{\Gamma \vdash \lnot P \quad \Gamma \vdash P}{\Gamma \vdash \bot}$$
+$$\lnot\textsc{E} : \frac{\Gamma \vdash \lnot P \quad \Gamma \vdash P}{\Gamma \vdash \bot}$$
+
 
 ## Universal Introduction
 
-$$\forall\textsf{I} : \frac{\Gamma \vdash P[x'/x]}{\Gamma \vdash \forall x : S . P}
+$$\forall\textsc{I} : \frac{\Gamma \vdash P[x'/x]}{\Gamma \vdash \forall x : S . P}
 \quad (x' \textrm{ does not occur in } \Gamma \textrm{ or } P.)$$
+
 
 ## Universal Elimination
 
-$$\forall\textsf{E}_t : \frac{\Gamma \vdash \forall x : S . P}{\Gamma \vdash P[t/x]}
+$$\forall\textsc{E}_t : \frac{\Gamma \vdash \forall x : S . P}{\Gamma \vdash P[t/x]}
 \quad (t \textrm{ is a term of sort } S.)$$
+
 
 ## Existential Introduction
 
-$$\exists\textsf{I}_t : \frac{\Gamma \vdash P[t/x]}{\Gamma \vdash \exists x : S . P}
+$$\exists\textsc{I}_t : \frac{\Gamma \vdash P[t/x]}{\Gamma \vdash \exists x : S . P}
 \quad (t \textrm{ is a term of sort } S.)$$
+
 
 ## Existential Elimination
 
-$$\exists\textsf{E} : \frac{\Gamma \vdash \exists x : S . P \quad \Gamma, P[x'/x] \vdash Q}{\Gamma \vdash Q}
+$$\exists\textsc{E} : \frac{\Gamma \vdash \exists x : S . P \quad \Gamma, P[x'/x] \vdash Q}{\Gamma \vdash Q}
 \quad (x' \textrm{ does not occur in } \Gamma, P \textrm{ or } Q.)$$
 
 
+## Equality
 
-# First-Order Logic With Equality
+### Equality Introduction
 
-## Equality Introduction (or Reflexivity)
+Also call *reflexivity*.
 
-$$=\textsf{I} : \frac{}{\Gamma \vdash t = t}$$
+$$=\textsc{I} : \frac{}{\Gamma \vdash t = t}$$
 
-## Equality Elimination
+### Equality Elimination
 
-$$=\textsf{E} : \frac{\Gamma \vdash t_1 = t_2 \quad \Gamma \vdash P[t_1/x]}{\Gamma \vdash P[t_2/x]}$$
-
-
-
-# Indirect Proofs
-
-## Proof by Contradiction
-
-$$\textsf{PBC} : \frac{\Gamma, \lnot P \vdash \bot}{\Gamma \vdash P}$$
-
-## Double Negation Elimination
-
-$$\textsf{DNE} : \frac{\Gamma \vdash \lnot\lnot P}{\Gamma \vdash P}$$
-
-## Law of Excluded Middle
-
-$$\textsf{LEM} : \frac{}{\Gamma \vdash P \lor \lnot P}$$
+$$=\textsc{E} : \frac{\Gamma \vdash t_1 = t_2 \quad \Gamma \vdash P[t_1/x]}{\Gamma \vdash P[t_2/x]}$$
 
 
+## Indirect Proofs
 
-# Induction
+These rules are rejected by intuitionistic logic.
 
-## Mathematical Induction
+### Proof by Contradiction
 
-$$\textsf{Ind}_\mathbb{N} :
+$$\textsc{PBC} : \frac{\Gamma, \lnot P \vdash \bot}{\Gamma \vdash P}$$
+
+### Double Negation Elimination
+
+$$\textsc{DNE} : \frac{\Gamma \vdash \lnot\lnot P}{\Gamma \vdash P}$$
+
+### Law of Excluded Middle
+
+$$\textsc{LEM} : \frac{}{\Gamma \vdash P \lor \lnot P}$$
+
+
+## Induction
+
+### Mathematical Induction
+
+$$\textsc{Ind}_\mathbb{N} :
 \frac{\Gamma \vdash P[0/x] \quad \Gamma, P[x'/x] \vdash P[(x' + 1)/x]}{\Gamma \vdash \forall x : \mathbb{N} . P}
 \quad (x' \textrm{ does not occur in } \Gamma \textrm{ or } P.)$$

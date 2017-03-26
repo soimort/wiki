@@ -8,7 +8,7 @@
     <meta name="generator" content="pandoc">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="author" content="Mort Yao">
-    <meta name="dcterms.date" content="2017-03-14">
+    <meta name="dcterms.date" content="2017-03-27">
     <title>Formal Proofs and Deductive Systems</title>
     <link rel="canonical" href="https://wiki.soimort.org/math/logic/intro">
     <style type="text/css">code { white-space: pre; }</style>
@@ -30,19 +30,19 @@
     <link rel="apple-touch-icon" href="/favicon.png">
   </head>
   <body>
+<p hidden>
+<span class="math display">\[\def\textsc#1{\dosc#1\csod} \def\dosc#1#2\csod{{\rm #1{\small #2}}}\]</span>
+</p>
     <main><article>
       <header>
         <h1 class="title">Formal Proofs and Deductive Systems</h1>
         <address class="author">Mort Yao</address>
-        <!-- h3 class="date">2017-03-14</h3 -->
+        <!-- h3 class="date">2017-03-27</h3 -->
       </header>
       <nav id="TOC">
 <ul>
 <li><a href="#formal-proofs"><span class="toc-section-number">1</span> Formal Proofs</a></li>
 <li><a href="#rules-of-inference"><span class="toc-section-number">2</span> Rules of Inference</a></li>
-<li><a href="#first-order-logic-with-equality"><span class="toc-section-number">3</span> First-Order Logic With Equality</a></li>
-<li><a href="#indirect-proofs"><span class="toc-section-number">4</span> Indirect Proofs</a></li>
-<li><a href="#induction"><span class="toc-section-number">5</span> Induction</a></li>
 </ul>
       </nav>
       <div id="content">
@@ -82,115 +82,128 @@
 <p>In the tree-like presentation of a proof (proof tree), a derivation is constructed from proof rules such as <span class="math display">\[\frac{\Gamma_1 \vdash Q_1 \quad \cdots \quad \Gamma_n \vdash Q_n}{\Gamma \vdash Q}\]</span> The sequents above the line are the <em>premises</em> of the rule; the sequent below the line is the <em>conclusion</em> of the rule.</p>
 <section id="assumption" class="level2">
 <h2><span class="header-section-number">2.1</span> Assumption</h2>
-<p><span class="math display">\[\textsf{Ass}_i : \frac{}{P_1, \dots, P_n \vdash P_i}
+<p><span class="math display">\[\textsc{Ass}_i : \frac{}{P_1, \dots, P_n \vdash P_i}
 \quad (i \in \{1, \dots, n\})\]</span></p>
 </section>
-<section id="axiom" class="level2">
-<h2><span class="header-section-number">2.2</span> Axiom</h2>
-<p><span class="math display">\[\textsf{Axiom}_P : \frac{}{\Gamma \vdash P}
+<section id="domain-specific-axiom" class="level2">
+<h2><span class="header-section-number">2.2</span> Domain-Specific Axiom</h2>
+<p><span class="math display">\[\textsc{Axiom}_P : \frac{}{\Gamma \vdash P}
 \quad (P \textrm{ is an axiom})\]</span></p>
 </section>
-<section id="lemma" class="level2">
-<h2><span class="header-section-number">2.3</span> Lemma</h2>
-<p><span class="math display">\[\textsf{Lemma} : \frac{\Gamma \vdash P \qquad \Gamma, P \vdash Q}{\Gamma \vdash Q}\]</span></p>
+<section id="internal-lemma" class="level2">
+<h2><span class="header-section-number">2.3</span> Internal Lemma</h2>
+<p><span class="math display">\[\textsc{Lemma} : \frac{\Gamma \vdash P \quad \Gamma, P \vdash Q}{\Gamma \vdash Q}\]</span></p>
 </section>
-<section id="conjunction-introduction-or-adjunction" class="level2">
-<h2><span class="header-section-number">2.4</span> Conjunction Introduction (or Adjunction)</h2>
-<p><span class="math display">\[\land\textsf{I} : \frac{\Gamma \vdash P_1 \quad \Gamma \vdash P_2}{\Gamma \vdash P_1 \land P_2}\]</span></p>
+<section id="conjunction-introduction" class="level2">
+<h2><span class="header-section-number">2.4</span> Conjunction Introduction</h2>
+<p>Also called <em>adjunction</em>.</p>
+<p><span class="math display">\[\land\textsc{I} : \frac{\Gamma \vdash P_1 \quad \Gamma \vdash P_2}{\Gamma \vdash P_1 \land P_2}\]</span></p>
 </section>
-<section id="conjunction-elimination-or-simplification" class="level2">
-<h2><span class="header-section-number">2.5</span> Conjunction Elimination (or Simplification)</h2>
-<p><span class="math display">\[\land\textsf{E}_1 : \frac{\Gamma \vdash P_1 \land P_2}{\Gamma \vdash P_1}\]</span></p>
-<p><span class="math display">\[\land\textsf{E}_2 : \frac{\Gamma \vdash P_1 \land P_2}{\Gamma \vdash P_2}\]</span></p>
+<section id="conjunction-elimination" class="level2">
+<h2><span class="header-section-number">2.5</span> Conjunction Elimination</h2>
+<p>Also called <em>simplification</em>.</p>
+<p><span class="math display">\[\land\textsc{E}_1 : \frac{\Gamma \vdash P_1 \land P_2}{\Gamma \vdash P_1}\]</span></p>
+<p><span class="math display">\[\land\textsc{E}_2 : \frac{\Gamma \vdash P_1 \land P_2}{\Gamma \vdash P_2}\]</span></p>
 </section>
-<section id="disjunction-introduction-or-addition" class="level2">
-<h2><span class="header-section-number">2.6</span> Disjunction Introduction (or Addition)</h2>
-<p><span class="math display">\[\lor\textsf{I}_1 : \frac{\Gamma \vdash P_1}{\Gamma \vdash P_1 \lor P_2}\]</span></p>
-<p><span class="math display">\[\lor\textsf{I}_2 : \frac{\Gamma \vdash P_2}{\Gamma \vdash P_1 \lor P_2}\]</span></p>
+<section id="disjunction-introduction" class="level2">
+<h2><span class="header-section-number">2.6</span> Disjunction Introduction</h2>
+<p>Also called <em>addition</em>.</p>
+<p><span class="math display">\[\lor\textsc{I}_1 : \frac{\Gamma \vdash P_1}{\Gamma \vdash P_1 \lor P_2}\]</span></p>
+<p><span class="math display">\[\lor\textsc{I}_2 : \frac{\Gamma \vdash P_2}{\Gamma \vdash P_1 \lor P_2}\]</span></p>
 </section>
-<section id="disjunction-elimination-or-proof-by-cases" class="level2">
-<h2><span class="header-section-number">2.7</span> Disjunction Elimination (or Proof by Cases)</h2>
-<p><span class="math display">\[\lor\textsf{E} : \frac{\Gamma \vdash P_1 \lor P_2 \quad \Gamma, P_1 \vdash Q \quad \Gamma,P_2 \vdash Q}{\Gamma \vdash Q}
+<section id="disjunction-elimination" class="level2">
+<h2><span class="header-section-number">2.7</span> Disjunction Elimination</h2>
+<p>Also called <em>proof by cases</em>.</p>
+<p><span class="math display">\[\lor\textsc{E} : \frac{\Gamma \vdash P_1 \lor P_2 \quad \Gamma, P_1 \vdash Q \quad \Gamma,P_2 \vdash Q}{\Gamma \vdash Q}
 \]</span></p>
 </section>
-<section id="implication-introduction-or-deduction-theorem" class="level2">
-<h2><span class="header-section-number">2.8</span> Implication Introduction (or Deduction Theorem)</h2>
-<p><span class="math display">\[\Rightarrow\textsf{I} : \frac{\Gamma, P \vdash Q}{\Gamma \vdash P \Rightarrow Q}\]</span></p>
+<section id="implication-introduction" class="level2">
+<h2><span class="header-section-number">2.8</span> Implication Introduction</h2>
+<p>Also called the <em>deduction theorem</em>.</p>
+<p><span class="math display">\[\Rightarrow\textsc{I} : \frac{\Gamma, P \vdash Q}{\Gamma \vdash P \Rightarrow Q}\]</span></p>
 </section>
-<section id="implication-elimination-or-modus-ponens" class="level2">
-<h2><span class="header-section-number">2.9</span> Implication Elimination (or Modus Ponens)</h2>
-<p><span class="math display">\[\Rightarrow\textsf{E} : \frac{\Gamma \vdash P \Rightarrow Q \quad \Gamma \vdash P}{\Gamma \vdash Q}\]</span></p>
+<section id="implication-elimination" class="level2">
+<h2><span class="header-section-number">2.9</span> Implication Elimination</h2>
+<p>Also called <em>modus ponens</em>.</p>
+<p><span class="math display">\[\Rightarrow\textsc{E} : \frac{\Gamma \vdash P \Rightarrow Q \quad \Gamma \vdash P}{\Gamma \vdash Q}\]</span></p>
 </section>
 <section id="truth-introduction" class="level2">
 <h2><span class="header-section-number">2.10</span> Truth Introduction</h2>
-<p><span class="math display">\[\top\textsf{I} : \frac{}{\Gamma \vdash \top}\]</span></p>
+<p><span class="math display">\[\top\textsc{I} : \frac{}{\Gamma \vdash \top}\]</span></p>
 </section>
 <section id="falsehood-elimination" class="level2">
 <h2><span class="header-section-number">2.11</span> Falsehood Elimination</h2>
-<p><span class="math display">\[\bot\textsf{E} : \frac{\Gamma \vdash \bot}{\Gamma \vdash Q}\]</span></p>
+<p>Also called the <em>principle of explosion</em> (<em>ex falso quodlibet</em>). This rule is rejected by minimal logic.</p>
+<p><span class="math display">\[\bot\textsc{E} : \frac{\Gamma \vdash \bot}{\Gamma \vdash Q}\]</span></p>
+<p>An alternative rule of the ex falso axiom is</p>
+<p><span class="math display">\[\Rightarrow\textsc{EFQ} = \frac{\Gamma \vdash \lnot P}{\Gamma \vdash P \Rightarrow Q}\]</span></p>
 </section>
 <section id="negation-introduction" class="level2">
 <h2><span class="header-section-number">2.12</span> Negation Introduction</h2>
-<p><span class="math display">\[\lnot\textsf{I} : \frac{\Gamma, P \vdash \bot}{\Gamma \vdash \lnot P}\]</span></p>
+<p><span class="math display">\[\lnot\textsc{I} : \frac{\Gamma, P \vdash \bot}{\Gamma \vdash \lnot P}\]</span></p>
+<p>A related rule is <em>modus tollens</em>:</p>
+<p><span class="math display">\[\lnot\textsc{MT} : \frac{\Gamma \vdash P \Rightarrow Q, \lnot Q}{\Gamma \vdash \lnot P}\]</span></p>
 </section>
 <section id="negation-elimination" class="level2">
 <h2><span class="header-section-number">2.13</span> Negation Elimination</h2>
-<p><span class="math display">\[\lnot\textsf{E} : \frac{\Gamma \vdash \lnot P \quad \Gamma \vdash P}{\Gamma \vdash \bot}\]</span></p>
+<p><span class="math display">\[\lnot\textsc{E} : \frac{\Gamma \vdash \lnot P \quad \Gamma \vdash P}{\Gamma \vdash \bot}\]</span></p>
 </section>
 <section id="universal-introduction" class="level2">
 <h2><span class="header-section-number">2.14</span> Universal Introduction</h2>
-<p><span class="math display">\[\forall\textsf{I} : \frac{\Gamma \vdash P[x&#39;/x]}{\Gamma \vdash \forall x : S . P}
+<p><span class="math display">\[\forall\textsc{I} : \frac{\Gamma \vdash P[x&#39;/x]}{\Gamma \vdash \forall x : S . P}
 \quad (x&#39; \textrm{ does not occur in } \Gamma \textrm{ or } P.)\]</span></p>
 </section>
 <section id="universal-elimination" class="level2">
 <h2><span class="header-section-number">2.15</span> Universal Elimination</h2>
-<p><span class="math display">\[\forall\textsf{E}_t : \frac{\Gamma \vdash \forall x : S . P}{\Gamma \vdash P[t/x]}
+<p><span class="math display">\[\forall\textsc{E}_t : \frac{\Gamma \vdash \forall x : S . P}{\Gamma \vdash P[t/x]}
 \quad (t \textrm{ is a term of sort } S.)\]</span></p>
 </section>
 <section id="existential-introduction" class="level2">
 <h2><span class="header-section-number">2.16</span> Existential Introduction</h2>
-<p><span class="math display">\[\exists\textsf{I}_t : \frac{\Gamma \vdash P[t/x]}{\Gamma \vdash \exists x : S . P}
+<p><span class="math display">\[\exists\textsc{I}_t : \frac{\Gamma \vdash P[t/x]}{\Gamma \vdash \exists x : S . P}
 \quad (t \textrm{ is a term of sort } S.)\]</span></p>
 </section>
 <section id="existential-elimination" class="level2">
 <h2><span class="header-section-number">2.17</span> Existential Elimination</h2>
-<p><span class="math display">\[\exists\textsf{E} : \frac{\Gamma \vdash \exists x : S . P \quad \Gamma, P[x&#39;/x] \vdash Q}{\Gamma \vdash Q}
+<p><span class="math display">\[\exists\textsc{E} : \frac{\Gamma \vdash \exists x : S . P \quad \Gamma, P[x&#39;/x] \vdash Q}{\Gamma \vdash Q}
 \quad (x&#39; \textrm{ does not occur in } \Gamma, P \textrm{ or } Q.)\]</span></p>
 </section>
+<section id="equality" class="level2">
+<h2><span class="header-section-number">2.18</span> Equality</h2>
+<section id="equality-introduction" class="level3">
+<h3><span class="header-section-number">2.18.1</span> Equality Introduction</h3>
+<p>Also call <em>reflexivity</em>.</p>
+<p><span class="math display">\[=\textsc{I} : \frac{}{\Gamma \vdash t = t}\]</span></p>
 </section>
-<section id="first-order-logic-with-equality" class="level1">
-<h1><span class="header-section-number">3</span> First-Order Logic With Equality</h1>
-<section id="equality-introduction-or-reflexivity" class="level2">
-<h2><span class="header-section-number">3.1</span> Equality Introduction (or Reflexivity)</h2>
-<p><span class="math display">\[=\textsf{I} : \frac{}{\Gamma \vdash t = t}\]</span></p>
-</section>
-<section id="equality-elimination" class="level2">
-<h2><span class="header-section-number">3.2</span> Equality Elimination</h2>
-<p><span class="math display">\[=\textsf{E} : \frac{\Gamma \vdash t_1 = t_2 \quad \Gamma \vdash P[t_1/x]}{\Gamma \vdash P[t_2/x]}\]</span></p>
-</section>
-</section>
-<section id="indirect-proofs" class="level1">
-<h1><span class="header-section-number">4</span> Indirect Proofs</h1>
-<section id="proof-by-contradiction" class="level2">
-<h2><span class="header-section-number">4.1</span> Proof by Contradiction</h2>
-<p><span class="math display">\[\textsf{PBC} : \frac{\Gamma, \lnot P \vdash \bot}{\Gamma \vdash P}\]</span></p>
-</section>
-<section id="double-negation-elimination" class="level2">
-<h2><span class="header-section-number">4.2</span> Double Negation Elimination</h2>
-<p><span class="math display">\[\textsf{DNE} : \frac{\Gamma \vdash \lnot\lnot P}{\Gamma \vdash P}\]</span></p>
-</section>
-<section id="law-of-excluded-middle" class="level2">
-<h2><span class="header-section-number">4.3</span> Law of Excluded Middle</h2>
-<p><span class="math display">\[\textsf{LEM} : \frac{}{\Gamma \vdash P \lor \lnot P}\]</span></p>
+<section id="equality-elimination" class="level3">
+<h3><span class="header-section-number">2.18.2</span> Equality Elimination</h3>
+<p><span class="math display">\[=\textsc{E} : \frac{\Gamma \vdash t_1 = t_2 \quad \Gamma \vdash P[t_1/x]}{\Gamma \vdash P[t_2/x]}\]</span></p>
 </section>
 </section>
-<section id="induction" class="level1">
-<h1><span class="header-section-number">5</span> Induction</h1>
-<section id="mathematical-induction" class="level2">
-<h2><span class="header-section-number">5.1</span> Mathematical Induction</h2>
-<p><span class="math display">\[\textsf{Ind}_\mathbb{N} :
+<section id="indirect-proofs" class="level2">
+<h2><span class="header-section-number">2.19</span> Indirect Proofs</h2>
+<p>These rules are rejected by intuitionistic logic.</p>
+<section id="proof-by-contradiction" class="level3">
+<h3><span class="header-section-number">2.19.1</span> Proof by Contradiction</h3>
+<p><span class="math display">\[\textsc{PBC} : \frac{\Gamma, \lnot P \vdash \bot}{\Gamma \vdash P}\]</span></p>
+</section>
+<section id="double-negation-elimination" class="level3">
+<h3><span class="header-section-number">2.19.2</span> Double Negation Elimination</h3>
+<p><span class="math display">\[\textsc{DNE} : \frac{\Gamma \vdash \lnot\lnot P}{\Gamma \vdash P}\]</span></p>
+</section>
+<section id="law-of-excluded-middle" class="level3">
+<h3><span class="header-section-number">2.19.3</span> Law of Excluded Middle</h3>
+<p><span class="math display">\[\textsc{LEM} : \frac{}{\Gamma \vdash P \lor \lnot P}\]</span></p>
+</section>
+</section>
+<section id="induction" class="level2">
+<h2><span class="header-section-number">2.20</span> Induction</h2>
+<section id="mathematical-induction" class="level3">
+<h3><span class="header-section-number">2.20.1</span> Mathematical Induction</h3>
+<p><span class="math display">\[\textsc{Ind}_\mathbb{N} :
 \frac{\Gamma \vdash P[0/x] \quad \Gamma, P[x&#39;/x] \vdash P[(x&#39; + 1)/x]}{\Gamma \vdash \forall x : \mathbb{N} . P}
 \quad (x&#39; \textrm{ does not occur in } \Gamma \textrm{ or } P.)\]</span></p>
+</section>
 </section>
 </section>
       </div>
@@ -229,7 +242,7 @@
           <i class="fa fa-anchor" aria-hidden="true"></i>
           <code>Permalink</code>
         </a> |
-        Last updated: <span id="update-time">2017-03-14</span>
+        Last updated: <span id="update-time">2017-03-27</span>
       </footer>
     </article></main>
   </body>
