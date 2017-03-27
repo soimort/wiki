@@ -1,6 +1,6 @@
 % The Cornerstone
 %
-% 2016-10-12
+% 2017-03-27
 
 *People who made significant contributions to the upgrowth of modern logic, foundations of mathematics and computation.*
 
@@ -58,8 +58,12 @@ John McCarthy (1927–2011)
 
 Peter Landin (1930-2009)
 
+Dana Scott (1932-)
+
 Robin Milner (1934-2010)
 
 C. A. R. Hoare (1934-)
 
 Per Martin-Löf (1942-)
+
+Gordon Plotkin (1946-)
