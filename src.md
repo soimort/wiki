@@ -1,6 +1,6 @@
 % Mort's small traces
 % Mort Yao
-% 2017-03-26
+% 2017-03-27
 
 ![<small>
 A lifelong project to do my study notes on Math / Computer Science systematically and spirally. \
@@ -18,8 +18,6 @@ It is still woefully incomplete, but it shouldn't always be. I keep learning thi
 </div>
 
 
-
-* [Reading list](/todo/)
 
 * [Common mathematical notation](/rosetta/)
 
@@ -107,8 +105,8 @@ It is still woefully incomplete, but it shouldn't always be. I keep learning thi
 * **[Computer vision and image processing](/cv/)**
 * Natural language processing
 * **[Programming language theory](/plt/)**
-    * Formal semantics
-    * Type theory and Curry-Howard correspondence
+    * [Formal semantics](/plt/semantics/)
+    * [Type theory](/plt/types/)
     * Program analysis and transformation
 
 # Physics and Life Sciences
@@ -147,7 +145,7 @@ It is still woefully incomplete, but it shouldn't always be. I keep learning thi
 
 ---
 
-* [Cornerstone](/cornerstone/)
+* [Reading list](/todo/)
 
 
 
