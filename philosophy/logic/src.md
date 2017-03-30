@@ -1,6 +1,6 @@
 % Logic
 % Mort Yao
-% 2017-02-05
+% 2017-03-30
 
 *Logic* is the study of reasoning and argument.
 
@@ -8,7 +8,7 @@
 
 **Deductive reasoning (deduction).** Inferring a conclusion by deriving a logical consequence from some premises using *rules of inference* in a formal system, e.g., propositional logic or first-order logic.
 
-Applications: Mathematics, formal logic, proof theory.
+Applications: Mathematics, formal proofs, type inference, program verification.
 
 Only deductive reasoning should be used in mathematical proofs and any formal theories of science.
 
