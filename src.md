@@ -1,6 +1,6 @@
 % Mort's small traces
 % Mort Yao
-% 2017-03-27
+% 2017-03-31
 
 ![<small>
 A lifelong project to do my study notes on Math / Computer Science systematically and spirally. \
@@ -77,9 +77,9 @@ It is still woefully incomplete, but it shouldn't always be. I keep learning thi
     * Algorithmic information theory
     * Quantum information theory
 * **[Theory of Computation](/comp/)**
-    * Formal language and automaton
-    * Computability
-    * Complexity
+    * Formal language theory and automata theory
+    * Computability theory
+    * Complexity theory
 * **[Algorithms](/algo/)**
     * Data structures
     * Sorting
@@ -107,7 +107,7 @@ It is still woefully incomplete, but it shouldn't always be. I keep learning thi
 * **[Programming language theory](/plt/)**
     * [Formal semantics](/plt/semantics/)
     * [Type theory](/plt/types/)
-    * Program analysis and transformation
+    * [Program analysis and transformation](/plt/pat/)
 
 # Physics and Life Sciences
 
@@ -135,13 +135,15 @@ It is still woefully incomplete, but it shouldn't always be. I keep learning thi
     * NoSQL
     * Knowledge representation and Semantic Web
 * Programming paradigms
-    * Functional programming
     * Logic programming
-    * Dataflow programming and concurrency
+    * Functional programming
+    * Imperative programming
+    * Dataflow programming and concurrent programming
+    * Object-oriented programming
 * Compilers
 * **Information security**
     * Proof-carrying code
-    * Cryptocurrencies
+    * Cryptocurrencies and blockchains
 
 ---
 
