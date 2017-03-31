@@ -77,7 +77,7 @@ It is still woefully incomplete, but it shouldn't always be. I keep learning thi
     * Algorithmic information theory
     * Quantum information theory
 * **[Theory of Computation](/comp/)**
-    * Formal language theory and automata theory
+    * Formal languages and automata theory
     * Computability theory
     * Complexity theory
 * **[Algorithms](/algo/)**
