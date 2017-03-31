@@ -8,7 +8,7 @@
     <meta name="generator" content="pandoc">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="author" content="Mort Yao">
-    <meta name="dcterms.date" content="2017-03-26">
+    <meta name="dcterms.date" content="2017-03-31">
     <title>Mathematical Logic</title>
     <link rel="canonical" href="https://wiki.soimort.org/math/logic">
     <style type="text/css">code { white-space: pre; }</style>
@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/__/css/style.css">
     <link rel="stylesheet" href="/__/css/pygments.css">
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
     <!--[if lt IE 9]>
       <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
     <![endif]-->
@@ -29,20 +30,23 @@
     <link rel="apple-touch-icon" href="/favicon.png">
   </head>
   <body>
+<p hidden>
+<span class="math display">\[\def\textsc#1{\textsf{#1}}\]</span>
+</p>
     <main><article>
       <header>
         <h1 class="title">Mathematical Logic</h1>
         <address class="author">Mort Yao</address>
-        <!-- h3 class="date">2017-03-26</h3 -->
+        <!-- h3 class="date">2017-03-31</h3 -->
       </header>
       <nav id="TOC">
 <ul>
-<li><a href="#classical-logic"><span class="toc-section-number">1</span> Classical Logic</a></li>
-<li><a href="#axiomatic-set-theory-zfc"><span class="toc-section-number">2</span> Axiomatic Set Theory (ZFC)</a></li>
-<li><a href="#model-theory"><span class="toc-section-number">3</span> Model Theory</a></li>
-<li><a href="#computability-theory"><span class="toc-section-number">4</span> Computability Theory</a></li>
-<li><a href="#structural-proof-theory"><span class="toc-section-number">5</span> Structural Proof Theory</a></li>
-<li><a href="#non-classical-logic"><span class="toc-section-number">6</span> Non-Classical Logic</a></li>
+<li><a href="#classical-logic"><span class="toc-section-number">1</span> Classical logic</a></li>
+<li><a href="#axiomatic-set-theory"><span class="toc-section-number">2</span> Axiomatic set theory</a></li>
+<li><a href="#model-theory"><span class="toc-section-number">3</span> Model theory</a></li>
+<li><a href="#computability-theory"><span class="toc-section-number">4</span> Computability theory</a></li>
+<li><a href="#structural-proof-theory"><span class="toc-section-number">5</span> Structural proof theory</a></li>
+<li><a href="#non-classical-logic"><span class="toc-section-number">6</span> Non-classical logic</a></li>
 </ul>
       </nav>
       <div id="content">
@@ -54,7 +58,7 @@
 <p>The first book also provides a fair introduction to propositional (sentential) logic.</p>
 <hr />
 <section id="classical-logic" class="level1">
-<h1><span class="header-section-number">1</span> Classical Logic</h1>
+<h1><span class="header-section-number">1</span> Classical logic</h1>
 <p>Textbook:</p>
 <ul>
 <li>Herbert B. Enderton. <strong><em>A Mathematical Introduction to Logic, 2nd edition.</em></strong> (<strong>AMIL</strong>)
@@ -81,106 +85,87 @@
 <li>Raymond M. Smullyan. <strong><em>First-Order Logic.</em></strong></li>
 <li>Robert S. Wolf. <strong><em>A Tour Through Mathematical Logic.</em></strong></li>
 </ul>
-<section id="introduction" class="level2">
-<h2><span class="header-section-number">1.1</span> <a href="intro/">Introduction</a></h2>
+<ol>
+<li><a href="intro/">Introduction</a></li>
+<li>Propositional logic (sentential logic)</li>
+<li>First-order logic</li>
+<li>Second-order logic</li>
+<li>Modal logic</li>
+</ol>
 </section>
-<section id="propositional-logic-sentential-logic" class="level2">
-<h2><span class="header-section-number">1.2</span> Propositional Logic (Sentential Logic)</h2>
-</section>
-<section id="first-order-logic" class="level2">
-<h2><span class="header-section-number">1.3</span> First-Order Logic</h2>
-</section>
-<section id="second-order-logic" class="level2">
-<h2><span class="header-section-number">1.4</span> Second-Order Logic</h2>
-</section>
-<section id="modal-logic" class="level2">
-<h2><span class="header-section-number">1.5</span> Modal Logic</h2>
-</section>
-</section>
-<section id="axiomatic-set-theory-zfc" class="level1">
-<h1><span class="header-section-number">2</span> Axiomatic Set Theory (ZFC)</h1>
+<section id="axiomatic-set-theory" class="level1">
+<h1><span class="header-section-number">2</span> Axiomatic set theory</h1>
 <p>Reading:</p>
 <ul>
 <li>Herbert B. Enderton. <strong><em>The Elements of Set Theory.</em></strong></li>
 <li>Raymond M. Smullyan and Melvin Fitting. <strong><em>Set Theory and the Continuum Problem.</em></strong></li>
 <li>Thomas Jech. <strong><em>Set Theory, 3rd millennium edition.</em></strong></li>
 </ul>
-<p>See also Peter Smith’s suggestions for readings on the set theory: <a href="http://www.logicmatters.net/tyl/set_theory/">Serious set theory</a> (also includes alternative set theories like NBG)</p>
+<p>See also Peter Smith’s suggestions for reading on the set theory: <a href="http://www.logicmatters.net/tyl/set_theory/">Serious set theory</a> (also includes set theories other than ZFC, such as NBG)</p>
 </section>
 <section id="model-theory" class="level1">
-<h1><span class="header-section-number">3</span> Model Theory</h1>
+<h1><span class="header-section-number">3</span> Model theory</h1>
 <p>Reading:</p>
 <ul>
 <li>Maria Manzano. <strong><em>Model Theory.</em></strong></li>
 </ul>
-<section id="kripke-semantics" class="level2">
-<h2><span class="header-section-number">3.1</span> Kripke Semantics</h2>
-</section>
-<section id="algebraic-logic" class="level2">
-<h2><span class="header-section-number">3.2</span> Algebraic Logic</h2>
-</section>
+<ol>
+<li>Kripke semantics</li>
+<li>Algebraic logic</li>
+</ol>
 </section>
 <section id="computability-theory" class="level1">
-<h1><span class="header-section-number">4</span> Computability Theory</h1>
+<h1><span class="header-section-number">4</span> Computability theory</h1>
 <p>Reading:</p>
 <ul>
 <li>Peter Smith. <strong><em>An Introduction to Gödel’s Theorems.</em></strong></li>
 <li>Richard Epstein and Walter Carnielli. <strong><em>Computability: Computable Functions, Logic, and the Foundations of Mathematics.</em></strong></li>
 <li>George Boolos, John P. Burgess and Richard Jeffrey. <strong><em>Computability and Logic.</em></strong></li>
 </ul>
-<section id="number-theory" class="level2">
-<h2><span class="header-section-number">4.1</span> Number Theory</h2>
-<section id="presburger-arithmetic" class="level3">
-<h3><span class="header-section-number">4.1.1</span> Presburger Arithmetic</h3>
-</section>
-<section id="peano-arithmetic" class="level3">
-<h3><span class="header-section-number">4.1.2</span> Peano Arithmetic</h3>
-</section>
-</section>
-<section id="undecidability-and-gödels-incompleteness-theorems" class="level2">
-<h2><span class="header-section-number">4.2</span> Undecidability and Gödel’s Incompleteness Theorems</h2>
-</section>
+<ol>
+<li>Number theory
+<ul>
+<li>Presburger arithmetic</li>
+<li>Peano arithmetic</li>
+</ul></li>
+<li>Undecidability and Gödel’s incompleteness theorems</li>
+</ol>
 </section>
 <section id="structural-proof-theory" class="level1">
-<h1><span class="header-section-number">5</span> Structural Proof Theory</h1>
-<section id="deep-inference-and-cirquent-calculi" class="level2">
-<h2><span class="header-section-number">5.1</span> Deep Inference and Cirquent Calculi</h2>
-</section>
+<h1><span class="header-section-number">5</span> Structural proof theory</h1>
+<p>Reading:</p>
+<ul>
+<li>Sara Negri, Jan von Plato and Aarne Ranta. <strong><em>Structural Proof Theory.</em></strong></li>
+</ul>
+<ol>
+<li>Deep inference and cirquent calculi</li>
+</ol>
 </section>
 <section id="non-classical-logic" class="level1">
-<h1><span class="header-section-number">6</span> Non-Classical Logic</h1>
+<h1><span class="header-section-number">6</span> Non-classical logic</h1>
 <p>Reading:</p>
 <ul>
 <li>Graham Priest. <strong><em>An Introduction to Non-Classical Logic: From If to Is, 2nd edition.</em></strong></li>
 <li>John L. Bell, David DeVidi and Graham Solomon. <strong><em>Logical Options: An Introduction to Classical and Alternative Logics.</em></strong></li>
 </ul>
-<section id="intuitionistic-logic" class="level2">
-<h2><span class="header-section-number">6.1</span> Intuitionistic Logic</h2>
-<section id="minimal-logic" class="level3">
-<h3><span class="header-section-number">6.1.1</span> Minimal Logic</h3>
-</section>
-</section>
-<section id="substructural-logic-and-paraconsistent-logic" class="level2">
-<h2><span class="header-section-number">6.2</span> Substructural Logic and Paraconsistent Logic</h2>
-<section id="linear-logic" class="level3">
-<h3><span class="header-section-number">6.2.1</span> Linear Logic</h3>
-</section>
-<section id="relevant-logic" class="level3">
-<h3><span class="header-section-number">6.2.2</span> Relevant Logic</h3>
-</section>
-</section>
-<section id="non-reflexive-logic" class="level2">
-<h2><span class="header-section-number">6.3</span> Non-Reflexive Logic</h2>
-</section>
-<section id="many-valued-logic" class="level2">
-<h2><span class="header-section-number">6.4</span> Many-Valued Logic</h2>
-<section id="fuzzy-logic" class="level3">
-<h3><span class="header-section-number">6.4.1</span> Fuzzy Logic</h3>
-</section>
-<section id="probability-logic" class="level3">
-<h3><span class="header-section-number">6.4.2</span> Probability Logic</h3>
-</section>
-</section>
+<ol>
+<li>Intuitionistic logic
+<ul>
+<li>Intermediate logics</li>
+<li>Minimal logic</li>
+</ul></li>
+<li>Substructural logic and paraconsistent logic
+<ul>
+<li>Linear logic</li>
+<li>Relevant logic</li>
+</ul></li>
+<li>Many-valued logic
+<ul>
+<li>Fuzzy logic</li>
+<li>Probability logic</li>
+</ul></li>
+<li>Non-reflexive logic</li>
+</ol>
 </section>
       </div>
       <footer>
@@ -218,7 +203,7 @@
           <i class="fa fa-anchor" aria-hidden="true"></i>
           <code>Permalink</code>
         </a> |
-        Last updated: <span id="update-time">2017-03-26</span>
+        Last updated: <span id="update-time">2017-03-31</span>
       </footer>
     </article></main>
   </body>

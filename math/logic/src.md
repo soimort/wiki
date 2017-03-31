@@ -1,6 +1,6 @@
 % Mathematical Logic
 % Mort Yao
-% 2017-03-26
+% 2017-03-31
 
 *Prerequisites*: Most content on this topic assumes some mathematical proof techniques (incl. mathematical induction) and basic knowledge of [naive set theory](/math/set). The following books might be a good refresher:
 
@@ -13,7 +13,7 @@ The first book also provides a fair introduction to propositional (sentential) l
 
 ---
 
-# Classical Logic
+# Classical logic
 
 Textbook:
 
@@ -39,19 +39,15 @@ Supplementary reading:
 * Robert S. Wolf.
 ***A Tour Through Mathematical Logic.***
 
-## [Introduction](intro/)
-
-## Propositional Logic (Sentential Logic)
-
-## First-Order Logic
-
-## Second-Order Logic
-
-## Modal Logic
+#. [Introduction](intro/)
+#. Propositional logic (sentential logic)
+#. First-order logic
+#. Second-order logic
+#. Modal logic
 
 
 
-# Axiomatic Set Theory (ZFC)
+# Axiomatic set theory
 
 Reading:
 
@@ -62,24 +58,23 @@ Reading:
 * Thomas Jech.
 ***Set Theory, 3rd millennium edition.***
 
-See also Peter Smith's suggestions for readings on the set theory: [Serious set theory](http://www.logicmatters.net/tyl/set_theory/) (also includes alternative set theories like NBG)
+See also Peter Smith's suggestions for reading on the set theory: [Serious set theory](http://www.logicmatters.net/tyl/set_theory/) (also includes set theories other than ZFC, such as NBG)
 
 
 
-# Model Theory
+# Model theory
 
 Reading:
 
 * Maria Manzano.
 ***Model Theory.***
 
-## Kripke Semantics
-
-## Algebraic Logic
-
+#. Kripke semantics
+#. Algebraic logic
 
 
-# Computability Theory
+
+# Computability theory
 
 Reading:
 
@@ -90,23 +85,25 @@ Reading:
 * George Boolos, John P. Burgess and Richard Jeffrey.
 ***Computability and Logic.***
 
-## Number Theory
-
-### Presburger Arithmetic
-
-### Peano Arithmetic
-
-## Undecidability and Gödel's Incompleteness Theorems
+#. Number theory
+    * Presburger arithmetic
+    * Peano arithmetic
+#. Undecidability and Gödel's incompleteness theorems
 
 
 
-# Structural Proof Theory
+# Structural proof theory
 
-## Deep Inference and Cirquent Calculi
+Reading:
+
+* Sara Negri, Jan von Plato and Aarne Ranta.
+***Structural Proof Theory.***
+
+#. Deep inference and cirquent calculi
 
 
 
-# Non-Classical Logic
+# Non-classical logic
 
 Reading:
 
@@ -115,20 +112,13 @@ Reading:
 * John L. Bell, David DeVidi and Graham Solomon.
 ***Logical Options: An Introduction to Classical and Alternative Logics.***
 
-## Intuitionistic Logic
-
-### Minimal Logic
-
-## Substructural Logic and Paraconsistent Logic
-
-### Linear Logic
-
-### Relevant Logic
-
-## Non-Reflexive Logic
-
-## Many-Valued Logic
-
-### Fuzzy Logic
-
-### Probability Logic
+#. Intuitionistic logic
+    * Intermediate logics
+    * Minimal logic
+#. Substructural logic and paraconsistent logic
+    * Linear logic
+    * Relevant logic
+#. Many-valued logic
+    * Fuzzy logic
+    * Probability logic
+#. Non-reflexive logic
