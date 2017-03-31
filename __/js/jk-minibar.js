@@ -69,6 +69,7 @@ document.addEventListener('JKLoaded', function() {
   });
 
   // help & status
+  /*
   var help = document.createElement('div');
   help.className = 'jk-minibar';
   help.style.display = 'block';
@@ -117,5 +118,6 @@ document.addEventListener('JKLoaded', function() {
       help.style.opacity = '.25';
     }, 250);
   });
+  */
 
 });
