@@ -1,6 +1,6 @@
 /* Academia (pandoc HTML5 template)
  * designer:     soimort
- * last updated: 2016-12-17
+ * last updated: 2017-03-31
  */
 
 /* General */
@@ -86,6 +86,7 @@ header .subtitle {
 
 header address.author {
   font-style: normal;
+  font-variant: normal;
 }
 
 nav#TOC {
