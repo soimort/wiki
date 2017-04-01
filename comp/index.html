@@ -8,7 +8,7 @@
     <meta name="generator" content="pandoc">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="author" content="Mort Yao">
-    <meta name="dcterms.date" content="2016-12-28">
+    <meta name="dcterms.date" content="2017-04-01">
     <title>Theory of Computation</title>
     <link rel="canonical" href="https://wiki.soimort.org/comp">
     <style type="text/css">code { white-space: pre; }</style>
@@ -33,127 +33,118 @@
       <header>
         <h1 class="title">Theory of Computation</h1>
         <address class="author">Mort Yao</address>
-        <!-- h3 class="date">2016-12-28</h3 -->
+        <!-- h3 class="date">2017-04-01</h3 -->
       </header>
       <nav id="TOC">
 <ul>
-<li><a href="#languages-and-automata"><span class="toc-section-number">1</span> Languages and Automata</a></li>
-<li><a href="#computability"><span class="toc-section-number">2</span> Computability</a></li>
-<li><a href="#complexity"><span class="toc-section-number">3</span> <a href="complexity/">Complexity</a></a></li>
+<li><a href="#formal-languages-and-automata-theory"><span class="toc-section-number">1</span> Formal languages and automata theory</a></li>
+<li><a href="#computability-theory"><span class="toc-section-number">2</span> Computability theory</a></li>
+<li><a href="#complexity-theory"><span class="toc-section-number">3</span> Complexity theory</a></li>
 </ul>
       </nav>
       <div id="content">
 <p>Textbook:</p>
 <ul>
-<li>Michael Sipser. <strong><em>Introduction to the Theory of Computation, 3rd edition</em></strong>.</li>
+<li>Michael Sipser. <strong><em>Introduction to the Theory of Computation, 3rd edition.</em></strong></li>
 </ul>
 <p>Supplementary reading:</p>
 <ul>
-<li>Neil Jones. <strong><em>Computability and Complexity: From a Programming Perspective</em></strong>.</li>
+<li>Neil Jones. <strong><em>Computability and Complexity: From a Programming Perspective.</em></strong> [<a href="http://www.diku.dk/~neil/comp2book2007/book-whole.pdf">PDF</a>]</li>
 </ul>
-<hr />
-<section id="languages-and-automata" class="level1">
-<h1><span class="header-section-number">1</span> Languages and Automata</h1>
-<section id="formal-language-and-automaton" class="level2">
-<h2><span class="header-section-number">1.1</span> <a href="language/">Formal Language</a> and Automaton</h2>
-<p>Formal definition of a <em>language</em>.</p>
+<section id="formal-languages-and-automata-theory" class="level1">
+<h1><span class="header-section-number">1</span> Formal languages and automata theory</h1>
+<ol>
+<li>Preliminaries
+<ul>
+<li><a href="language/">Formal language</a></li>
+</ul></li>
+<li>Regular languages</li>
+<li>Context-free languages</li>
+</ol>
 </section>
-<section id="regular-language" class="level2">
-<h2><span class="header-section-number">1.2</span> Regular Language</h2>
+<section id="computability-theory" class="level1">
+<h1><span class="header-section-number">2</span> Computability theory</h1>
+<ol>
+<li>Church-Turing thesis
+<ul>
+<li>Turing machines</li>
+<li>Turing completeness
+<ul>
+<li>Lambda calculus</li>
+<li>Recursive function</li>
+<li>Cellular automaton</li>
+<li>Abstract rewriting system</li>
+</ul></li>
+<li><a href="algorithm/">Algorithm</a></li>
+</ul></li>
+<li><a href="decidability/">Decidability</a>
+<ul>
+<li>Decidable languages</li>
+<li>Undecidability</li>
+<li>Logical theories</li>
+</ul></li>
+<li><a href="reducibility/">Reducibility</a>
+<ul>
+<li>Many-one reductions</li>
+<li>Turing reductions, Turing equivalence and Turing degree</li>
+</ul></li>
+<li>Advanced topics
+<ul>
+<li>The recursion theorem</li>
+<li>Kolmogorov complexity</li>
+</ul></li>
+</ol>
 </section>
-<section id="context-free-language" class="level2">
-<h2><span class="header-section-number">1.3</span> Context-Free Language</h2>
-</section>
-</section>
-<section id="computability" class="level1">
-<h1><span class="header-section-number">2</span> Computability</h1>
-<section id="church-turing-thesis" class="level2">
-<h2><span class="header-section-number">2.1</span> Church-Turing Thesis</h2>
-</section>
-<section id="automata-theory-and-models-of-computation" class="level2">
-<h2><span class="header-section-number">2.2</span> Automata Theory and Models of Computation</h2>
-<section id="turing-machine" class="level3">
-<h3><span class="header-section-number">2.2.1</span> Turing Machine</h3>
-</section>
-<section id="pushdown-automaton-pda" class="level3">
-<h3><span class="header-section-number">2.2.2</span> Pushdown Automaton (PDA)</h3>
-</section>
-<section id="finite-state-machine-fsm" class="level3">
-<h3><span class="header-section-number">2.2.3</span> Finite State Machine (FSM)</h3>
-</section>
-<section id="combinational-logic" class="level3">
-<h3><span class="header-section-number">2.2.4</span> Combinational Logic</h3>
-</section>
-<section id="λ-calculus" class="level3">
-<h3><span class="header-section-number">2.2.5</span> λ-Calculus</h3>
-</section>
-<section id="recursive-function" class="level3">
-<h3><span class="header-section-number">2.2.6</span> Recursive Function</h3>
-</section>
-<section id="combinatory-logic" class="level3">
-<h3><span class="header-section-number">2.2.7</span> Combinatory Logic</h3>
-</section>
-<section id="cellular-automaton" class="level3">
-<h3><span class="header-section-number">2.2.8</span> Cellular Automaton</h3>
-</section>
-<section id="abstract-rewriting-system" class="level3">
-<h3><span class="header-section-number">2.2.9</span> Abstract Rewriting System</h3>
-</section>
-</section>
-<section id="algorithm" class="level2">
-<h2><span class="header-section-number">2.3</span> <a href="algorithm/">Algorithm</a></h2>
-</section>
-<section id="decidability" class="level2">
-<h2><span class="header-section-number">2.4</span> <a href="decidability/">Decidability</a></h2>
-<section id="undecidability" class="level3">
-<h3><span class="header-section-number">2.4.1</span> Undecidability</h3>
-</section>
-</section>
-<section id="reducibility" class="level2">
-<h2><span class="header-section-number">2.5</span> <a href="reducibility/">Reducibility</a></h2>
-<section id="many-one-reduction" class="level3">
-<h3><span class="header-section-number">2.5.1</span> Many-One Reduction</h3>
-</section>
-<section id="turing-reduction-turing-equivalence-and-turing-degree" class="level3">
-<h3><span class="header-section-number">2.5.2</span> Turing Reduction, Turing Equivalence and Turing Degree</h3>
-</section>
-</section>
-</section>
-<section id="complexity" class="level1">
-<h1><span class="header-section-number">3</span> <a href="complexity/">Complexity</a></h1>
-<section id="time-complexity" class="level2">
-<h2><span class="header-section-number">3.1</span> <a href="complexity/time/">Time Complexity</a></h2>
-<section id="np-completeness" class="level3">
-<h3><span class="header-section-number">3.1.1</span> <a href="complexity/time/npc/">NP-Completeness</a></h3>
-</section>
-</section>
-<section id="space-complexity" class="level2">
-<h2><span class="header-section-number">3.2</span> Space Complexity</h2>
-</section>
-<section id="intractability" class="level2">
-<h2><span class="header-section-number">3.3</span> Intractability</h2>
-</section>
-<section id="advanced-topics" class="level2">
-<h2><span class="header-section-number">3.4</span> Advanced Topics</h2>
-<section id="approximation-algorithms" class="level3">
-<h3><span class="header-section-number">3.4.1</span> <a href="/algo/approximation/">Approximation Algorithms</a> <i class="fa fa-link" aria-hidden="true"></i></h3>
-</section>
-<section id="probabilistic-algorithms" class="level3">
-<h3><span class="header-section-number">3.4.2</span> <a href="/algo/randomization/">Probabilistic Algorithms</a> <i class="fa fa-link" aria-hidden="true"></i></h3>
-</section>
-<section id="alternation" class="level3">
-<h3><span class="header-section-number">3.4.3</span> Alternation</h3>
-</section>
-<section id="interactive-proof-systems" class="level3">
-<h3><span class="header-section-number">3.4.4</span> Interactive Proof Systems</h3>
-</section>
-<section id="parallel-computation" class="level3">
-<h3><span class="header-section-number">3.4.5</span> Parallel Computation</h3>
-</section>
-<section id="cryptography" class="level3">
-<h3><span class="header-section-number">3.4.6</span> <a href="/crypto/">Cryptography</a> <i class="fa fa-link" aria-hidden="true"></i></h3>
-</section>
-</section>
+<section id="complexity-theory" class="level1">
+<h1><span class="header-section-number">3</span> Complexity theory</h1>
+<ol>
+<li><a href="complexity/">Overview</a></li>
+<li><a href="complexity/time/">Time complexity</a>
+<ul>
+<li>P and NP
+<ul>
+<li><a href="complexity/time/npc/">NP-completeness</a></li>
+</ul></li>
+</ul></li>
+<li>Space complexity
+<ul>
+<li>Savitch’s theorem</li>
+<li>PSPACE
+<ul>
+<li>PSPACE-completeness</li>
+</ul></li>
+<li>L and NL
+<ul>
+<li>NL-completeness</li>
+<li>NL=coNL</li>
+</ul></li>
+</ul></li>
+<li>Intractability
+<ul>
+<li>Hierarchy theorems</li>
+<li>Relativization</li>
+<li>Circuit complexity</li>
+</ul></li>
+<li>Advanced topics
+<ul>
+<li><a href="/algo/approximation/">Approximation algorithms</a> <i class="fa fa-link" aria-hidden="true"></i></li>
+<li><a href="/algo/randomization/">Probabilistic algorithms</a> <i class="fa fa-link" aria-hidden="true"></i>
+<ul>
+<li>BPP</li>
+</ul></li>
+<li>Alternation</li>
+<li>Interactive proof systems
+<ul>
+<li>IP=PSPACE</li>
+</ul></li>
+<li>Parallel computation
+<ul>
+<li>NC</li>
+<li>P-completeness</li>
+</ul></li>
+<li><a href="/crypto/">Cryptography</a> <i class="fa fa-link" aria-hidden="true"></i></li>
+</ul></li>
+</ol>
 </section>
       </div>
       <footer>
@@ -191,7 +182,7 @@
           <i class="fa fa-anchor" aria-hidden="true"></i>
           <code>Permalink</code>
         </a> |
-        Last updated: <span id="update-time">2016-12-28</span>
+        Last updated: <span id="update-time">2017-04-01</span>
       </footer>
     </article></main>
   </body>

@@ -1,64 +1,77 @@
 % Theory of Computation
 % Mort Yao
-% 2016-12-28
+% 2017-04-01
 
 Textbook:
 
-* Michael Sipser. ***Introduction to the Theory of Computation, 3rd edition***.
+* Michael Sipser.
+***Introduction to the Theory of Computation, 3rd edition.***
 
 Supplementary reading:
 
-* Neil Jones. ***Computability and Complexity: From a Programming Perspective***.
-
----
-
-# Languages and Automata
-
-## [Formal Language](language/) and Automaton
-Formal definition of a *language*.
-
-## Regular Language
-## Context-Free Language
+* Neil Jones.
+***Computability and Complexity: From a Programming Perspective.***
+[[PDF](http://www.diku.dk/~neil/comp2book2007/book-whole.pdf)]
 
 
 
-# Computability
+# Formal languages and automata theory
 
-## Church-Turing Thesis
-## Automata Theory and Models of Computation
-### Turing Machine
-### Pushdown Automaton (PDA)
-### Finite State Machine (FSM)
-### Combinational Logic
-### λ-Calculus
-### Recursive Function
-### Combinatory Logic
-### Cellular Automaton
-### Abstract Rewriting System
-## [Algorithm](algorithm/)
-
-## [Decidability](decidability/)
-### Undecidability
-
-## [Reducibility](reducibility/)
-### Many-One Reduction
-### Turing Reduction, Turing Equivalence and Turing Degree
+#. Preliminaries
+    * [Formal language](language/)
+#. Regular languages
+#. Context-free languages
 
 
 
-# [Complexity](complexity/)
+# Computability theory
 
-## [Time Complexity](complexity/time/)
-### [NP-Completeness](complexity/time/npc/)
+#. Church-Turing thesis
+    * Turing machines
+    * Turing completeness
+        * Lambda calculus
+        * Recursive function
+        * Cellular automaton
+        * Abstract rewriting system
+    * [Algorithm](algorithm/)
+#. [Decidability](decidability/)
+    * Decidable languages
+    * Undecidability
+    * Logical theories
+#. [Reducibility](reducibility/)
+    * Many-one reductions
+    * Turing reductions, Turing equivalence and Turing degree
+#. Advanced topics
+    * The recursion theorem
+    * Kolmogorov complexity
 
-## Space Complexity
 
-## Intractability
 
-## Advanced Topics
-### [Approximation Algorithms](/algo/approximation/) <i class="fa fa-link" aria-hidden="true"></i>
-### [Probabilistic Algorithms](/algo/randomization/) <i class="fa fa-link" aria-hidden="true"></i>
-### Alternation
-### Interactive Proof Systems
-### Parallel Computation
-### [Cryptography](/crypto/) <i class="fa fa-link" aria-hidden="true"></i>
+# Complexity theory
+
+#. [Overview](complexity/)
+#. [Time complexity](complexity/time/)
+    * P and NP
+        * [NP-completeness](complexity/time/npc/)
+#. Space complexity
+    * Savitch's theorem
+    * PSPACE
+        * PSPACE-completeness
+    * L and NL
+        * NL-completeness
+        * NL=coNL
+#. Intractability
+    * Hierarchy theorems
+    * Relativization
+    * Circuit complexity
+#. Advanced topics
+    * [Approximation algorithms](/algo/approximation/) <i class="fa fa-link" aria-hidden="true"></i>
+    * [Probabilistic algorithms](/algo/randomization/) <i class="fa fa-link" aria-hidden="true"></i>
+        * BPP
+    * Alternation
+    * Interactive proof systems
+        * IP=PSPACE
+    * Parallel computation
+        * NC
+        * P-completeness
+    * [Cryptography](/crypto/) <i class="fa fa-link" aria-hidden="true"></i>
