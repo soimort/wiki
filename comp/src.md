@@ -1,6 +1,6 @@
 % Theory of Computation
 % Mort Yao
-% 2017-04-01
+% 2017-04-10
 
 Textbook:
 
@@ -18,7 +18,8 @@ Supplementary reading:
 # Formal languages and automata theory
 
 #. Preliminaries
-    * [Formal language](language/)
+    * [Basic formal language theory](language/)
+#. Finite languages
 #. Regular languages
 #. Context-free languages
 
@@ -37,7 +38,7 @@ Supplementary reading:
 #. [Decidability](decidability/)
     * Decidable languages
     * Undecidability
-    * Logical theories
+    * Logical theories <i class="fa fa-link" aria-hidden="true"></i>
 #. [Reducibility](reducibility/)
     * Many-one reductions
     * Turing reductions, Turing equivalence and Turing degree
@@ -60,7 +61,7 @@ Supplementary reading:
     * L and NL
         * NL-completeness
         * NL=coNL
-#. Intractability
+#. Provable intractability
     * Hierarchy theorems
     * Relativization
     * Circuit complexity
