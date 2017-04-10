@@ -8,7 +8,7 @@
     <meta name="generator" content="pandoc">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="author" content="Mort Yao">
-    <meta name="dcterms.date" content="2016-10-14">
+    <meta name="dcterms.date" content="2017-04-10">
     <title>Basic Formal Language Theory</title>
     <link rel="canonical" href="https://wiki.soimort.org/comp/language">
     <style type="text/css">code { white-space: pre; }</style>
@@ -34,27 +34,27 @@
       <header>
         <h1 class="title">Basic Formal Language Theory</h1>
         <address class="author">Mort Yao</address>
-        <!-- h3 class="date">2016-10-14</h3 -->
+        <!-- h3 class="date">2017-04-10</h3 -->
       </header>
-      <nav id="TOC">
-<ul>
-<li><a href="#concepts"><span class="toc-section-number">1</span> Concepts</a></li>
-</ul>
-      </nav>
       <div id="content">
-<section id="concepts" class="level1">
-<h1><span class="header-section-number">1</span> Concepts</h1>
-<p><strong>Definition 1.1. (Alphabet)</strong> An <em>alphabet</em> <span class="math inline">\(\Sigma\)</span> is a well-defined <a href="/math/set">set</a> of symbols.</p>
-<p><strong>Definition 1.2. (Language)</strong> A <em>language</em> <span class="math inline">\(L\)</span> over <span class="math inline">\(\Sigma\)</span> is any set of strings made up of symbols from <span class="math inline">\(\Sigma\)</span>.</p>
-<p>An <em>empty string</em> is denoted by <span class="math inline">\(\varepsilon\)</span>. An <em>empty language</em> is denoted by <span class="math inline">\(\varnothing\)</span>. <span class="math inline">\(\varepsilon\)</span> is contained in every language but <span class="math inline">\(\varnothing.\)</span></p>
-<p>The <em>language of all strings over <span class="math inline">\(\Sigma\)</span></em> (including the empty string <span class="math inline">\(\varepsilon\)</span>) is denoted by <span class="math inline">\(\Sigma^*\)</span>, e.g., <span class="math inline">\(\{0,1\}^* = \{\varepsilon,0,1,00,01,10,11,000,\dots\}\)</span> is the set of all binary strings.</p>
-<p>Every language <span class="math inline">\(L\)</span> over <span class="math inline">\(\Sigma\)</span> (including the empty language <span class="math inline">\(\varnothing\)</span>) is a subset of <span class="math inline">\(\Sigma^*\)</span>. If a finite language over <span class="math inline">\(\Sigma\)</span> has a fixed length <span class="math inline">\(k\)</span>, we denote it by <span class="math inline">\(\Sigma^k\)</span>, e.g., <span class="math inline">\(\{0,1\}^8\)</span> is the set of all 8-bit binary strings.</p>
-<p><strong>Definition 1.3. (Union and intersection of languages)</strong> The <em>union</em> of <span class="math inline">\(L_1\)</span> and <span class="math inline">\(L_2\)</span> is the language <span class="math inline">\(L_1 \cup L_2 = \{x: x \in L_1 \textrm{ or } x \in L_2\}\)</span>. The <em>intersection</em> of <span class="math inline">\(L_1\)</span> and <span class="math inline">\(L_2\)</span> is the language <span class="math inline">\(L_1 \cap L_2 = \{x: x \in L_1 \textrm{ and } x \in L_2\}\)</span>.</p>
-<p><strong>Definition 1.4. (Complementary language)</strong> The <em>complement</em> of a language <span class="math inline">\(L\)</span> over <span class="math inline">\(\Sigma\)</span> is the language <span class="math inline">\(\overline{L}=\Sigma^* - L\)</span>.</p>
-<p><strong>Definition 1.5. (Concatenation of languages)</strong> The <em>concatenation</em> of two languages <span class="math inline">\(L_1\)</span> and <span class="math inline">\(L_2\)</span> is the language <span class="math inline">\(L_1L_2 = \{x_1x_2: x_1 \in L_1 \textrm{ and } x_2 \in L_2\}\)</span>.</p>
-<p>We use <span class="math inline">\(L^k\)</span> to denote the language obtained by concatenating <span class="math inline">\(L\)</span> to itself <span class="math inline">\(k\)</span> times.</p>
-<p><strong>Definition 1.6. (Closure; Kleene star)</strong> The <em>closure</em> or <em>Kleene star</em> of a language <span class="math inline">\(L\)</span> is the language <span class="math display">\[L^* = \{\varepsilon\} \cup L \cup L^2 \cup L^3 \cup \dots\]</span></p>
-</section>
+<p><strong>Definition 1. (Alphabet)</strong> An <em>alphabet</em> <span class="math inline">\(\Sigma\)</span> is a well-defined <a href="/math/set">set</a> of symbols.</p>
+<p><strong>Example.</strong> <span class="math inline">\(\{\texttt{0},\texttt{1}\}\)</span>, <span class="math inline">\(\{\texttt{0}, \texttt{1}, \dots, \texttt{9}\}\)</span>, <span class="math inline">\(\{\texttt{a}, \texttt{b}, \dots, \texttt{z}\}\)</span>, and <span class="math inline">\(\{\sqcup\}\)</span> are all valid alphabets.</p>
+<p><strong>Definition 2. (String)</strong> A <em>string</em> is a sequence of symbols.</p>
+<p>Specifically, a string consisting of no symbol (i.e., a sequence of zero length) is called an <em>empty string</em>, denoted as <span class="math inline">\(\varepsilon\)</span>.</p>
+<p><strong>Example.</strong> <span class="math inline">\(\texttt{1001}\)</span>, <span class="math inline">\(\texttt{cat}\)</span>, and <span class="math inline">\(\varepsilon\)</span> are all valid strings.</p>
+<p><strong>Definition 3. (Language)</strong> A <em>language</em> <span class="math inline">\(L\)</span> over the alphabet <span class="math inline">\(\Sigma\)</span> is any set of strings made up of symbols from <span class="math inline">\(\Sigma\)</span> (including the empty string <span class="math inline">\(\varepsilon\)</span> vacuously, if <span class="math inline">\(L\)</span> is nonempty).</p>
+<p>Specifically, an empty set of strings is called an <em>empty language</em>, denoted as <span class="math inline">\(\varnothing\)</span>. For every <span class="math inline">\(L \neq \varnothing\)</span>, <span class="math inline">\(\varepsilon \in L\)</span>, by definition.</p>
+<p>The <em>language of all strings over <span class="math inline">\(\Sigma\)</span></em> (including the empty string <span class="math inline">\(\varepsilon\)</span>) is denoted as <span class="math inline">\(\Sigma^*\)</span>, that is, <span class="math display">\[\Sigma^* = \{a^*\ |\ a \in \Sigma\}\]</span></p>
+<p><strong>Example.</strong> <span class="math inline">\(\{\texttt{0},\texttt{1}\}^* = \{b^*\ |\ b \in \{\texttt{0}, \texttt{1}\}\} = \{\varepsilon,\texttt{0},\texttt{1},\texttt{00},\texttt{01},\texttt{10},\texttt{11},\texttt{000},\dots\}\)</span>, <span class="math inline">\(\{\varepsilon, \texttt{0}, \texttt{1}\}\)</span>, <span class="math inline">\(\{\varepsilon\}\)</span>, and <span class="math inline">\(\varnothing\)</span> are all valid languages.</p>
+<p>Note that every language <span class="math inline">\(L\)</span> over <span class="math inline">\(\Sigma\)</span> (including the empty language <span class="math inline">\(\varnothing\)</span>) is a subset of <span class="math inline">\(\Sigma^*\)</span>, that is, for every <span class="math inline">\(L\)</span> over <span class="math inline">\(\Sigma\)</span>, <span class="math inline">\(L \subseteq \Sigma^* = \{a^*\ |\ a \in \Sigma\}\)</span>.</p>
+<p>If every string in a language over <span class="math inline">\(\Sigma\)</span> has a fixed length <span class="math inline">\(k\)</span>, we denote the language as <span class="math inline">\(\Sigma^k\)</span>.</p>
+<p><strong>Example.</strong> <span class="math inline">\(\{\texttt{0}, \texttt{1}\}^8\)</span> is the language of all 8-bit binary strings.</p>
+<p><strong>Definition 4. (Union)</strong> The <em>union</em> of two languages <span class="math inline">\(L_1\)</span> and <span class="math inline">\(L_2\)</span> is the language <span class="math display">\[L_1 \cup L_2 = \{x\ |\ x \in L_1 \lor x \in L_2\}\]</span></p>
+<p><strong>Definition 5. (Intersection)</strong> The <em>intersection</em> of two languages <span class="math inline">\(L_1\)</span> and <span class="math inline">\(L_2\)</span> is the language <span class="math display">\[L_1 \cap L_2 = \{x\ |\ x \in L_1 \land x \in L_2\}\]</span></p>
+<p><strong>Definition 6. (Complement)</strong> The <em>complement</em> of a language <span class="math inline">\(L\)</span> over <span class="math inline">\(\Sigma\)</span> is the language <span class="math display">\[\overline{L} = \Sigma^* \setminus L\]</span></p>
+<p><strong>Definition 7. (Concatenation)</strong> The <em>concatenation</em> of two languages <span class="math inline">\(L_1\)</span> and <span class="math inline">\(L_2\)</span> is the language <span class="math display">\[L_1L_2 = \{x_1x_2\ |\ x_1 \in L_1 \land x_2 \in L_2\}\]</span></p>
+<p>Additionally, we use <span class="math inline">\(L^k\)</span> to denote the language obtained by concatenating <span class="math inline">\(L\)</span> to itself <span class="math inline">\(k\)</span> times.</p>
+<p><strong>Definition 8. (Kleene star / Closure)</strong> The <em>Kleene star</em> or <em>closure</em> of a language <span class="math inline">\(L\)</span> is the language <span class="math display">\[L^* = \{\varepsilon\} \cup L \cup L^2 \cup L^3 \cup \cdots\]</span></p>
       </div>
       <footer>
         <!-- TO BE MODIFIED BY NEED -->
@@ -91,7 +91,7 @@
           <i class="fa fa-anchor" aria-hidden="true"></i>
           <code>Permalink</code>
         </a> |
-        Last updated: <span id="update-time">2016-10-14</span>
+        Last updated: <span id="update-time">2017-04-10</span>
       </footer>
     </article></main>
   </body>
