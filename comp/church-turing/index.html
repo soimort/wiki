@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-07 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Mort Yao">
+    <meta name="dcterms.date" content="2017-04-11">
+    <title>Church-Turing Thesis</title>
+    <link rel="canonical" href="https://wiki.soimort.org/comp/church-turing">
+    <style type="text/css">code { white-space: pre; }</style>
+    <link rel="stylesheet" href="//cdn.soimort.org/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/mathsvg/latest/mathsvg.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/latest/Latin-Modern-Roman.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/latest/Latin-Modern-Mono.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/__/css/style.css">
+    <link rel="stylesheet" href="/__/css/pygments.css">
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.soimort.org/jk/20160504/jk.min.js"></script>
+    <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>
+    <script src="/__/js/jk-minibar.js"></script>
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+  <body>
+    <main><article>
+      <header>
+        <h1 class="title">Church-Turing Thesis</h1>
+        <address class="author">Mort Yao</address>
+        <!-- h3 class="date">2017-04-11</h3 -->
+      </header>
+      <div id="content">
+<p><strong>Turing machine (TM).</strong> A <em>Turing machine</em> <span class="math inline">\(M\)</span> is a 7-tuple <span class="math inline">\((Q, \Sigma, \Gamma, \delta, q_0, q_\text{accept}, q_\text{reject})\)</span>, where</p>
+<ol type="1">
+<li><span class="math inline">\(Q\)</span> is a finite set called the <em>states</em>,</li>
+<li><span class="math inline">\(\Sigma\)</span> is a finite set called the <em>input alphabet</em>, (the blank symbol <span class="math inline">\(\sqcup \notin \Sigma\)</span>)</li>
+<li><span class="math inline">\(\Gamma\)</span> is a finite set called the <em>tape alphabet</em>, (<span class="math inline">\(\sqcup \in \Gamma\)</span> and <span class="math inline">\(\Sigma \subseteq \Gamma\)</span>)</li>
+<li><span class="math inline">\(\delta : Q&#39; \times \Gamma \to Q \times \Gamma \times \{\text{L}, \text{R}\}\)</span> is the <em>transition function</em>, (where <span class="math inline">\(Q&#39; = Q-\{q_\text{accept},q_\text{reject}\}\)</span>)</li>
+<li><span class="math inline">\(q_0 \in Q\)</span> is the <em>start state</em>,</li>
+<li><span class="math inline">\(q_\text{accept}\)</span> is the <em>accept state</em>,</li>
+<li><span class="math inline">\(q_\text{reject}\)</span> is the <em>reject state</em>. (<span class="math inline">\(q_\text{reject} \neq q_\text{accept}\)</span>)</li>
+</ol>
+<p>A Turing machine <em>configuration</em> <span class="math inline">\(C\)</span> is written as <span class="math inline">\(u\ q\ v\)</span>, where</p>
+<ol type="1">
+<li><span class="math inline">\(u \in \Gamma^*\)</span> is the sequence of characters before the tape head,</li>
+<li><span class="math inline">\(q \in Q\)</span> is the current state,</li>
+<li><span class="math inline">\(v \in \Gamma^*\)</span> is the character at the tape head and all following characters up to the last non-blank character.</li>
+</ol>
+<p>Suppose that we have <span class="math inline">\(a, b, c \in \Gamma\)</span>, <span class="math inline">\(u, v \in \Gamma^*\)</span>, and <span class="math inline">\(q_i, q_j \in Q\)</span>, we say that configuration <span class="math inline">\(C_1\)</span> <em>yields</em> configuration <span class="math inline">\(C_2\)</span> if a single transition of the Turing machine converts <span class="math inline">\(C_1\)</span> to <span class="math inline">\(C_2\)</span>. Formally:</p>
+<ol type="1">
+<li>(Leftward move) <span class="math inline">\(u a\ q_i\ b v\)</span> yields <span class="math inline">\(u\ q_j\ a c v\)</span>, if <span class="math inline">\(\delta(q_i, b) = (q_j, c, \text{L})\)</span>;
+<ul>
+<li>Specially, <span class="math inline">\(q_i\ b v\)</span> yields <span class="math inline">\(q_j\ c v\)</span>;</li>
+</ul></li>
+<li>(Rightward move) <span class="math inline">\(u a\ q_i\ b v\)</span> yields <span class="math inline">\(u a c\ q_j\ v\)</span>, if <span class="math inline">\(\delta(q_i, b) = (q_j, c, \text{R})\)</span>.
+<ul>
+<li>Specially, <span class="math inline">\(u a\ q_i\)</span> yields <span class="math inline">\(u a c\ q_j\)</span>, if <span class="math inline">\(\delta(q_i, \sqcup) = (q_j, c, \text{R})\)</span>.</li>
+</ul></li>
+</ol>
+<p>The <em>start configuration</em> of a Turing machine <span class="math inline">\(M\)</span> on input <span class="math inline">\(w\)</span> is the configuration <span class="math inline">\(q_0\ w\)</span>. In an <em>accepting configuration</em>, the state of the configuration is <span class="math inline">\(q_\text{accept}\)</span>. In a <em>rejecting configuration</em>, the state of the configuration is <span class="math inline">\(q_\text{reject}\)</span>. Accepting and rejecting configurations are called <em>halting configurations</em> and cannot yield further configurations.</p>
+<p>We say that the Turing machine <span class="math inline">\(M = (Q, \Sigma, \Gamma, \delta, q_0, q_\text{accept}, q_\text{reject})\)</span> <em>accepts</em> a string <span class="math inline">\(w\)</span> if there exists a sequence of configurations <span class="math inline">\(C_1, \dots, C_k\)</span>, where</p>
+<ol type="1">
+<li><span class="math inline">\(C_1\)</span> is the start configuration of <span class="math inline">\(M\)</span> on input <span class="math inline">\(w\)</span>,</li>
+<li>Each <span class="math inline">\(C_i\)</span> yields <span class="math inline">\(C_{i+1}\)</span>,</li>
+<li><span class="math inline">\(C_k\)</span> is an accepting configuration.</li>
+</ol>
+<p>On the contrary, if <span class="math inline">\(C_k\)</span> is a rejecting configuration, we say that the Turing machine <span class="math inline">\(M\)</span> <em>rejects</em> the string <span class="math inline">\(w\)</span>.</p>
+<p><span class="math inline">\(L\)</span> is the language of Turing machine <span class="math inline">\(M\)</span>, denoted as <span class="math inline">\(\mathcal{L}(M) = L\)</span>, if and only if <span class="math display">\[L = \{ w\ |\ w \text{ is a string accepted by } M \}\]</span> We also say that language <span class="math inline">\(L\)</span> is <em>recognized</em> by Turing machine <span class="math inline">\(M\)</span>.</p>
+<p><strong>Turing recognizability.</strong> A language <span class="math inline">\(L\)</span> is <em>Turing-recognizable</em> if and only if there exists a Turing machine <span class="math inline">\(M\)</span> that recognizes <span class="math inline">\(L\)</span>. A Turing-recognizable language is also called a <em>recursively enumerable language</em>.</p>
+<p><strong>Turing decidability.</strong> A language <span class="math inline">\(L\)</span> is <em>Turing-decidable</em> (or simply <em>decidable</em>) if and only if there exists a Turing machine <span class="math inline">\(M\)</span> that accepts every <span class="math inline">\(w \in L\)</span> and rejects every <span class="math inline">\(w \notin L\)</span>. A decidable language is also called a <em>recursive language</em>.</p>
+<p>Clearly, every decidable language is Turing-recognizable; however, not every Turing-recognizable language is decidable, i.e., for some language <span class="math inline">\(L\)</span>, there exists a string <span class="math inline">\(w\)</span> that can neither be accepted (<span class="math inline">\(w \in L\)</span>) nor rejected (<span class="math inline">\(w \notin L\)</span>) by any Turing machine.</p>
+<p><strong>Theorem 1. (Closure properties)</strong> The class of Turing-recognizable languages is closed under union, intersection, concatenation, Kleene star and homomorphism.</p>
+<p><strong>Theorem 2. (Closure properties)</strong> The class of decidable languages is closed under union, intersection, complementation, concatenation and Kleene star.</p>
+<p><strong>Proof.</strong></p>
+<p><strong>(1)</strong> Closure under union.</p>
+<p>For any two decidable languages <span class="math inline">\(L_1\)</span> and <span class="math inline">\(L_2\)</span>, let <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span> be the TMs that decide them. We construct a TM <span class="math inline">\(M&#39;\)</span> that decides the union of <span class="math inline">\(L_1\)</span> and <span class="math inline">\(L_2\)</span>:</p>
+<p><span class="math inline">\(M&#39; =\)</span> “On input <span class="math inline">\(w\)</span>:</p>
+<blockquote>
+<ol type="1">
+<li>Run <span class="math inline">\(M_1\)</span> on <span class="math inline">\(w\)</span>. If it accepts, <em>accept</em>.</li>
+<li>Run <span class="math inline">\(M_2\)</span> on <span class="math inline">\(w\)</span>. If it accepts, <em>accept</em>. Otherwise, <em>reject</em>.’’</li>
+</ol>
+</blockquote>
+<p><span class="math inline">\(M&#39;\)</span> accepts <span class="math inline">\(w\)</span> if and only if either <span class="math inline">\(M_1\)</span> or <span class="math inline">\(M_2\)</span> accepts it. If both reject, <span class="math inline">\(M&#39;\)</span> rejects.</p>
+<p><strong>(2)</strong> Closure under intersection.</p>
+<p>For any two decidable languages <span class="math inline">\(L_1\)</span> and <span class="math inline">\(L_2\)</span>, let <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span> be the TMs that decide them. We construct a TM <span class="math inline">\(M&#39;\)</span> that decides the intersection of <span class="math inline">\(L_1\)</span> and <span class="math inline">\(L_2\)</span>:</p>
+<p><span class="math inline">\(M&#39; =\)</span> “On input <span class="math inline">\(w\)</span>:</p>
+<blockquote>
+<ol type="1">
+<li>Run <span class="math inline">\(M_1\)</span> on <span class="math inline">\(w\)</span>. If it rejects, <em>reject</em>.</li>
+<li>Run <span class="math inline">\(M_2\)</span> on <span class="math inline">\(w\)</span>. If it accepts, <em>accept</em>. Otherwise, <em>reject</em>.’’</li>
+</ol>
+</blockquote>
+<p><span class="math inline">\(M&#39;\)</span> accepts <span class="math inline">\(w\)</span> if and only if both <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span> accept it. If either rejects, <span class="math inline">\(M&#39;\)</span> rejects.</p>
+<p><strong>(3)</strong> Closure under complementation.</p>
+<p>For any decidable language <span class="math inline">\(L\)</span>, let <span class="math inline">\(M\)</span> be the TM that decides it. We construct a TM <span class="math inline">\(M&#39;\)</span> that decides the complement of <span class="math inline">\(L\)</span>:</p>
+<p><span class="math inline">\(M&#39; =\)</span> “On input <span class="math inline">\(w\)</span>:</p>
+<blockquote>
+<ol type="1">
+<li>Run <span class="math inline">\(M\)</span> on <span class="math inline">\(w\)</span>. If it accepts, <em>reject</em>. Otherwise, <em>accept</em>.’’</li>
+</ol>
+</blockquote>
+<p><span class="math inline">\(M&#39;\)</span> accepts <span class="math inline">\(w\)</span> if and only if it is rejected by some TM <span class="math inline">\(M\)</span>. Otherwise, <span class="math inline">\(M&#39;\)</span> rejects.</p>
+<p><strong>(4)</strong> Closure under concatenation.</p>
+<p>For any two decidable languages <span class="math inline">\(L_1\)</span> and <span class="math inline">\(L_2\)</span>, let <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span> be the TMs that decide them. We construct an NTM <span class="math inline">\(M&#39;\)</span> that decides the concatenation of <span class="math inline">\(L_1\)</span> and <span class="math inline">\(L_2\)</span>:</p>
+<p><span class="math inline">\(M&#39; =\)</span> “On input <span class="math inline">\(w\)</span>:</p>
+<blockquote>
+<ol type="1">
+<li>For each <span class="math inline">\(w_1, w_2\)</span> such that <span class="math inline">\(w = w_1w_2\)</span>:
+<ol type="1">
+<li>Run <span class="math inline">\(M_1\)</span> on <span class="math inline">\(w_1\)</span>.</li>
+<li>Run <span class="math inline">\(M_2\)</span> on <span class="math inline">\(w_2\)</span>. If for some <span class="math inline">\(w_1\)</span> and <span class="math inline">\(w_2\)</span>, both are accepted, <em>accept</em>.</li>
+</ol></li>
+<li>If not accepted, <em>reject</em>.’’</li>
+</ol>
+</blockquote>
+<p><span class="math inline">\(M&#39;\)</span> accepts <span class="math inline">\(w\)</span> if and only if for some <span class="math inline">\(w_1\)</span> and <span class="math inline">\(w_2\)</span> such that <span class="math inline">\(w = w_1w_2\)</span>, both <span class="math inline">\(w_1\)</span> and <span class="math inline">\(w_2\)</span> are accepted by some TMs. Since there are finitely many ways of splitting <span class="math inline">\(w = w_1w_2\)</span>, <span class="math inline">\(M&#39;\)</span> is guaranteed to halt.</p>
+<p><strong>(5)</strong> Closure under Kleene star.</p>
+<p>For any decidable language <span class="math inline">\(L\)</span>, let <span class="math inline">\(M\)</span> be the TM that decides it. We construct an NTM <span class="math inline">\(M&#39;\)</span> that decides the Kleene star of <span class="math inline">\(L\)</span>:</p>
+<p><span class="math inline">\(M&#39; =\)</span> “On input <span class="math inline">\(w\)</span>:</p>
+<blockquote>
+<ol type="1">
+<li>For each <span class="math inline">\(w_1, \dots, w_n\)</span> such that <span class="math inline">\(w = w_1 \dots w_n\)</span>:
+<ol type="1">
+<li>Run <span class="math inline">\(M\)</span> on each <span class="math inline">\(w_i\)</span> (for <span class="math inline">\(i = 1, \dots, n\)</span>). If <span class="math inline">\(M\)</span> accepts every <span class="math inline">\(w_i\)</span>, <em>accept</em>.</li>
+</ol></li>
+<li>If not accepted, <em>reject</em>.’’</li>
+</ol>
+</blockquote>
+<p><span class="math inline">\(M&#39;\)</span> accepts <span class="math inline">\(w\)</span> if and only if for some <span class="math inline">\(w_1, \dots, w_n\)</span> such that <span class="math inline">\(w = w_1 \dots w_n\)</span>, every <span class="math inline">\(w_i\)</span> is accepted by some TM <span class="math inline">\(M\)</span>. Since there are finitely many ways of splitting <span class="math inline">\(w = w_1 \dots w_n\)</span>, <span class="math inline">\(M&#39;\)</span> is guaranteed to halt.</p>
+<p><p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
+<p><strong>Church-Turing thesis.</strong> Everything that can be effectively computed can be computed using a Turing machine (or the lambda calculus).</p>
+<p>Equivalent models of computation:</p>
+<ul>
+<li>(Single-tape, deterministic) Turing machine;</li>
+<li>Multi-tape Turing machine;</li>
+<li>Nondeterministic Turing machine;</li>
+<li>Enumerator;</li>
+<li>Abstract rewriting system;</li>
+<li>Lambda calculus;</li>
+<li>etc.</li>
+</ul>
+      </div>
+      <footer>
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard shortcut: R"
+           href="https://wiki.soimort.org/comp/church-turing/src.md">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
+        <a class="history" accesskey="h"
+           title="Keyboard shortcut: H"
+           href="https://github.com/soimort/wiki/commits/gh-pages/comp/church-turing/src.md">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard shortcut: E"
+           href="https://github.com/soimort/wiki/edit/gh-pages/comp/church-turing/src.md">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
+           href="https://wiki.soimort.org/comp/church-turing">
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
+        Last updated: <span id="update-time">2017-04-11</span>
+      </footer>
+    </article></main>
+  </body>
+</html>
