@@ -19,15 +19,16 @@ Supplementary reading:
 
 #. Preliminaries
     * [Basic formal language theory](language/)
-#. Finite languages
-#. Regular languages
-#. Context-free languages
+#. [Finite languages](language/finite/)
+#. [Regular languages](language/regular/)
+#. [Context-free languages](language/context-free/)
+#. Context-sensitive languages
 
 
 
 # Computability theory
 
-#. Church-Turing thesis
+#. [Church-Turing thesis](church-turing/)
     * Turing machines
     * Turing completeness
         * Lambda calculus
