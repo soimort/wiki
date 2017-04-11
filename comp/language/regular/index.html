@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-07 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Mort Yao">
+    <meta name="dcterms.date" content="2017-04-11">
+    <title>Regular Languages</title>
+    <link rel="canonical" href="https://wiki.soimort.org/comp/language/regular">
+    <style type="text/css">code { white-space: pre; }</style>
+    <link rel="stylesheet" href="//cdn.soimort.org/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/mathsvg/latest/mathsvg.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/latest/Latin-Modern-Roman.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/latest/Latin-Modern-Mono.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/__/css/style.css">
+    <link rel="stylesheet" href="/__/css/pygments.css">
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.soimort.org/jk/20160504/jk.min.js"></script>
+    <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>
+    <script src="/__/js/jk-minibar.js"></script>
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+  <body>
+    <main><article>
+      <header>
+        <h1 class="title">Regular Languages</h1>
+        <address class="author">Mort Yao</address>
+        <!-- h3 class="date">2017-04-11</h3 -->
+      </header>
+      <div id="content">
+<p><strong>Deterministic finite automaton (DFA).</strong> A <em>deterministic finite automation</em> <span class="math inline">\(M\)</span> is a 5-tuple <span class="math inline">\((Q, \Sigma, \delta, q_0, F)\)</span>, where</p>
+<ol type="1">
+<li><span class="math inline">\(Q\)</span> is a finite set called the <em>states</em>,</li>
+<li><span class="math inline">\(\Sigma\)</span> is a finite set called the <em>alphabet</em>,</li>
+<li><span class="math inline">\(\delta: Q \times \Sigma \to Q\)</span> is the <em>transition function</em>,</li>
+<li><span class="math inline">\(q_0 \in Q\)</span> is the <em>start state</em> (also called the <em>initial state</em>),</li>
+<li><span class="math inline">\(F \subseteq Q\)</span> is the set of <em>accept states</em> (also called <em>final states</em>).</li>
+</ol>
+<p>We say that the DFA <span class="math inline">\(M = (Q, \Sigma, \delta, q_0, F)\)</span> <em>accepts</em> a string <span class="math inline">\(w = a_1 \cdots a_n\)</span> (where each <span class="math inline">\(a_i \in \Sigma\)</span>) if and only if there exists a sequence of states <span class="math inline">\(r_0, \dots, r_n\)</span> (where each <span class="math inline">\(r_i \in Q\)</span>) such that:</p>
+<ol type="1">
+<li><span class="math inline">\(r_0 = q_0\)</span>,</li>
+<li>For every <span class="math inline">\(0 \leq i &lt; n\)</span>, <span class="math inline">\(r_{i+1} = \delta(r_i, a_{i+1})\)</span>,</li>
+<li><span class="math inline">\(r_n \in F\)</span>.</li>
+</ol>
+<p>Otherwise, we say that the DFA <span class="math inline">\(M\)</span> <em>rejects</em> the string <span class="math inline">\(w\)</span>.</p>
+<p><span class="math inline">\(L\)</span> is the <em>language</em> of DFA <span class="math inline">\(M\)</span>, denoted as <span class="math inline">\(\mathcal{L}(M) = L\)</span>, if and only if <span class="math inline">\(L = \{w\ |\ w \text{ is a string accepted by } M\}\)</span>. We say that the DFA <span class="math inline">\(M\)</span> <em>recognizes</em> the language <span class="math inline">\(L\)</span>.</p>
+<p><strong>Regular language (RL).</strong> A language <span class="math inline">\(L\)</span> is called a <em>regular language</em> if there exists a DFA <span class="math inline">\(M\)</span> that recognizes <span class="math inline">\(L\)</span>.</p>
+<p><strong>Regular operations.</strong> Given languages <span class="math inline">\(L_1\)</span>, <span class="math inline">\(L_2\)</span> and <span class="math inline">\(L\)</span>, we define the <em>regular operations</em> as follows:</p>
+<ul>
+<li><em>Union</em>: <span class="math inline">\(L_1 \cup L_2 = \{ w\ |\ w \in L_1 \lor w \in L_2 \}\)</span>.</li>
+<li><em>Concatenation</em>: <span class="math inline">\(L_1 \circ L_2 = \{ w_1w_2\ |\ w_1 \in L_1 \land w_2 \in L_2\}\)</span>.</li>
+<li><em>Kleene star</em>: <span class="math inline">\(L^* = \{ w_1w_2 \dots w_k\ |\ k \geq 0 \land \forall i \in \{1, \dots, k\} : w_i \in L \}\)</span>.</li>
+</ul>
+<p><strong>Theorem 1. (Closure properties)</strong> The class of regular languages is closed under regular operations.</p>
+<p><strong>Nondeterministic finite automaton (NFA).</strong> A <em>nondeterministic finite automaton</em> is a 5-tuple <span class="math inline">\((Q, \Sigma, \delta, q_0, F)\)</span>, where</p>
+<ol type="1">
+<li><span class="math inline">\(Q\)</span> is a finite set of states,</li>
+<li><span class="math inline">\(\Sigma\)</span> is a finite alphabet,</li>
+<li><span class="math inline">\(\delta: Q \times \Sigma_\varepsilon \to \mathcal{P}(Q)\)</span> is the transition function, (where <span class="math inline">\(\Sigma_\varepsilon = \Sigma \cup \{\varepsilon\}\)</span>)</li>
+<li><span class="math inline">\(q_0 \in Q\)</span> is the start state,</li>
+<li><span class="math inline">\(F \subseteq Q\)</span> is the set of accept states.</li>
+</ol>
+<p>We say that the NFA <span class="math inline">\(M = (Q, \Sigma, \delta, q_0, F)\)</span> <em>accepts</em> a string <span class="math inline">\(w\)</span> if <span class="math inline">\(w\)</span> may be written as <span class="math inline">\(w = a_1 \cdots a_n\)</span> (where each <span class="math inline">\(a_i \in \Sigma_\varepsilon\)</span>), and there exists a sequence of states <span class="math inline">\(r_0, \dots, r_n\)</span> (where each <span class="math inline">\(r_i \in Q\)</span>) such that:</p>
+<ol type="1">
+<li><span class="math inline">\(r_0 = q_0\)</span>,</li>
+<li>For every <span class="math inline">\(0 \leq i &lt; n\)</span>, <span class="math inline">\(r_{i+1} \in \delta(r_i, a_{i+1})\)</span>,</li>
+<li><span class="math inline">\(r_n \in F\)</span>.</li>
+</ol>
+<p>Otherwise, we say that the NFA <span class="math inline">\(M\)</span> <em>rejects</em> the string <span class="math inline">\(w\)</span>.</p>
+<p><span class="math inline">\(L\)</span> is the language of NFA <span class="math inline">\(M\)</span>, denoted as <span class="math inline">\(\mathcal{L}(M) = L\)</span>, if and only if <span class="math inline">\(L = \{w\ |\ w \text{ is a string accepted by } M\}\)</span>. We say that the NFA <span class="math inline">\(M\)</span> <em>recognizes</em> the language <span class="math inline">\(L\)</span>.</p>
+<p>Clearly, every DFA has an equivalent NFA (that recognizes exactly the same language), by taking <span class="math inline">\(Q \times \Sigma \subset Q \times \Sigma_\varepsilon\)</span> as the domain and <span class="math inline">\(Q \in \mathcal{P}(Q)\)</span> as the range of the transition function.</p>
+<p><strong>Theorem 2. (Rabin-Scott powerset construction)</strong> Every NFA has an equivalent DFA.</p>
+<p><strong>Corollary 3.</strong> A language <span class="math inline">\(L\)</span> is regular if and only if there exists an NFA <span class="math inline">\(M\)</span> that recognizes <span class="math inline">\(L\)</span>.</p>
+<p><strong>Regular expression (RE).</strong> A <em>regular expression</em> <span class="math inline">\(R\)</span> is defined as <span class="math display">\[R ::= a\ |\ \varepsilon\ |\ \emptyset\ |\ (R_1 \cup R_2)\ |\ (R_1 \circ R_2)\ |\ (R_1^*)\]</span> where <span class="math inline">\(a \in \Sigma\)</span>, <span class="math inline">\(R_1\)</span> and <span class="math inline">\(R_2\)</span> are regular expressions.</p>
+<p><span class="math inline">\(L\)</span> is the language of regular expression <span class="math inline">\(R\)</span>, denoted as <span class="math inline">\(\mathcal{L}(R) = L\)</span>, if and only if <span class="math inline">\(L = \{ w\ |\ w \text{ is a string in the form of } R \}\)</span>.</p>
+<p><strong>Theorem 4. (Kleene’s theorem)</strong> A language <span class="math inline">\(L\)</span> is regular if and only if there exists a regular expression <span class="math inline">\(R\)</span> that describes <span class="math inline">\(L\)</span>.</p>
+<p><strong>Theorem 5. (Pumping lemma)</strong> If <span class="math inline">\(L\)</span> is a regular language, then there is a number <span class="math inline">\(p\)</span> (called the <em>pumping length</em>) such that if <span class="math inline">\(w \in L\)</span> and <span class="math inline">\(|w| \geq p\)</span>, then <span class="math inline">\(w\)</span> may be written as <span class="math inline">\(w = xyz\)</span>, under the following conditions:</p>
+<ol type="1">
+<li>For every <span class="math inline">\(i \geq 0\)</span>, <span class="math inline">\(xy^iz \in L\)</span>,</li>
+<li><span class="math inline">\(|y| &gt; 0\)</span>,</li>
+<li><span class="math inline">\(|xy| \leq p\)</span>.</li>
+</ol>
+<p><strong>Theorem 6. (Myhill-Nerode theorem)</strong> Let <span class="math inline">\(L\)</span> be a language over <span class="math inline">\(\Sigma\)</span>. We say that strings <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are <em>indistinguishable</em> by <span class="math inline">\(L\)</span> if and only if for every string <span class="math inline">\(z\)</span>, we have both <span class="math inline">\(xz \in L\)</span> and <span class="math inline">\(yz \in L\)</span>, or both <span class="math inline">\(xz \notin L\)</span> and <span class="math inline">\(yz \notin L\)</span>, denoted as <span class="math inline">\(x \equiv_L y\)</span>. Then,</p>
+<ol type="1">
+<li><span class="math inline">\(L\)</span> is regular if and only if the equivalence relation <span class="math inline">\(\equiv_L\)</span> has a finite number of equivalence classes;</li>
+<li>There exists a DFA <span class="math inline">\(M\)</span> with <span class="math inline">\(\mathcal{L}(M) = L\)</span> having precisely one state for each equivalence class of <span class="math inline">\(\equiv_L\)</span>.</li>
+</ol>
+      </div>
+      <footer>
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard shortcut: R"
+           href="https://wiki.soimort.org/comp/language/regular/src.md">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
+        <a class="history" accesskey="h"
+           title="Keyboard shortcut: H"
+           href="https://github.com/soimort/wiki/commits/gh-pages/comp/language/regular/src.md">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard shortcut: E"
+           href="https://github.com/soimort/wiki/edit/gh-pages/comp/language/regular/src.md">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
+           href="https://wiki.soimort.org/comp/language/regular">
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
+        Last updated: <span id="update-time">2017-04-11</span>
+      </footer>
+    </article></main>
+  </body>
+</html>
