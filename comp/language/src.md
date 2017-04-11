@@ -33,7 +33,7 @@ $$L_1 \cup L_2 = \{ w\ |\ w \in L_1 \lor w \in L_2 \}$$
 **Definition 5. (Intersection)** The *intersection* of two languages $L_1$ and $L_2$ is the language
 $$L_1 \cap L_2 = \{ w\ |\ w \in L_1 \land w \in L_2 \}$$
 
-**Definition 6. (Complement)** The *complement* of a language $L$ over $\Sigma$ is the language
+**Definition 6. (Complementation)** The *complement* of a language $L$ over $\Sigma$ is the language
 $$\overline{L} = \Sigma^* \setminus L$$
 
 **Definition 7. (Concatenation)** The *concatenation* of two languages $L_1$ and $L_2$ is the language
