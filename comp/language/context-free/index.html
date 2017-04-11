@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-07 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Mort Yao">
+    <meta name="dcterms.date" content="2017-04-11">
+    <title>Context-Free Languages</title>
+    <link rel="canonical" href="https://wiki.soimort.org/comp/language/context-free">
+    <style type="text/css">code { white-space: pre; }</style>
+    <link rel="stylesheet" href="//cdn.soimort.org/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/mathsvg/latest/mathsvg.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/latest/Latin-Modern-Roman.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/latest/Latin-Modern-Mono.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/__/css/style.css">
+    <link rel="stylesheet" href="/__/css/pygments.css">
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.soimort.org/jk/20160504/jk.min.js"></script>
+    <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>
+    <script src="/__/js/jk-minibar.js"></script>
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+  <body>
+    <main><article>
+      <header>
+        <h1 class="title">Context-Free Languages</h1>
+        <address class="author">Mort Yao</address>
+        <!-- h3 class="date">2017-04-11</h3 -->
+      </header>
+      <div id="content">
+<p><strong>Context-free grammar (CFG).</strong> A <em>context-free grammar</em> <span class="math inline">\(G\)</span> is a 4-tuple <span class="math inline">\((V, \Sigma, R, S)\)</span>, where</p>
+<ol type="1">
+<li><span class="math inline">\(V\)</span> is a finite set called the <em>variables</em>,</li>
+<li><span class="math inline">\(\Sigma\)</span> is a finite set called the <em>terminals</em>, (<span class="math inline">\(\Sigma \cap V = \emptyset\)</span>)</li>
+<li><span class="math inline">\(R \subseteq V \times (V \cup \Sigma)^*\)</span> is a finite set of <em>substitution rules</em>,</li>
+<li><span class="math inline">\(S \in V\)</span> is the <em>start variable</em>.</li>
+</ol>
+<p>Given <span class="math inline">\(u, v, w \in (V \cup \Sigma)^*\)</span>, and <span class="math inline">\(A \mapsto w\)</span> is a substitution rule, we say that <span class="math inline">\(uAv\)</span> <em>yields</em> <span class="math inline">\(uwv\)</span>, denoted as <span class="math inline">\(uAv \Rightarrow uwv\)</span>.</p>
+<p>Moreover, given <span class="math inline">\(w_0, w \in (V \cup \Sigma)^*\)</span>, if <span class="math inline">\(w_0 = w\)</span> or if there exists a sequence <span class="math inline">\(w_1, \dots, w_k\)</span> (where <span class="math inline">\(k \geq 0\)</span>, and <span class="math inline">\(\forall 1 \leq i \leq k : w_i \in (V \cup \Sigma)^*\)</span>) such that <span class="math inline">\(w_0 \Rightarrow w_1 \Rightarrow \dots \Rightarrow w_k \Rightarrow w\)</span>, we say that <span class="math inline">\(w_0\)</span> <em>derives</em> <span class="math inline">\(w\)</span>, denoted as <span class="math inline">\(w_0 \Rightarrow^* w\)</span>; the sequence is called a <em>derivation</em>. A derivation is a <em>leftmost derivation</em> if at every step the leftmost remaining variable is replaced. The leftmost derivation of a string corresponds to the pre-order traversal of its <em>parse tree</em>.</p>
+<p><span class="math inline">\(L\)</span> is the <em>language of grammar</em> <span class="math inline">\(G\)</span>, denoted as <span class="math inline">\(\mathcal{L}(G) = L\)</span>, if and only if <span class="math inline">\(L = \{ w \in \Sigma^*\ |\ S \Rightarrow^* w \}\)</span>. We say that the grammar <span class="math inline">\(G\)</span> <em>generates</em> the language <span class="math inline">\(L\)</span>.</p>
+<p><strong>Context-free language (CFL).</strong> A language <span class="math inline">\(L\)</span> is called a <em>context-free language</em> if there exists a CFG <span class="math inline">\(G\)</span> that generates <span class="math inline">\(L\)</span>.</p>
+<p>A grammar <span class="math inline">\(G\)</span> is said to be <em>ambiguous</em>, if there exists a string <span class="math inline">\(w \in \mathcal{L}(G)\)</span> with two or more leftmost derivations.</p>
+<p><strong>Chomsky normal form (CNF).</strong> A CFG is in <em>Chomsky normal form</em> if every substitution rule is of the form <span class="math display">\[\begin{aligned}
+A &amp;\mapsto BC \\
+A &amp;\mapsto a \\
+S &amp;\mapsto \varepsilon
+\end{aligned}\]</span> where <span class="math inline">\(A, B, C \in V\)</span>, <span class="math inline">\(B \neq S\)</span>, <span class="math inline">\(C \neq S\)</span>, and <span class="math inline">\(a \in \Sigma\)</span>.</p>
+<p><strong>Theorem 1.</strong> Every context-free language is generated by a CFG in Chomsky normal form. (Alternatively: any CFG can be converted into Chomsky normal form that generates the same language.)</p>
+<p><strong>Theorem 2. (Closure properties)</strong> The class of context-free languages is closed under regular operations (i.e., union, concatenation and Kleene star).</p>
+<p><strong>Nondeterministic pushdown automaton (PDA).</strong> A <em>nondeterministic pushdown automaton</em> <span class="math inline">\(M\)</span> is a 6-tuple <span class="math inline">\((Q, \Sigma, \Gamma, \delta, q_0, F)\)</span>, where</p>
+<ol type="1">
+<li><span class="math inline">\(Q\)</span> is a finite set called the <em>states</em>,</li>
+<li><span class="math inline">\(\Sigma\)</span> is a finite set called the <em>input alphabet</em>,</li>
+<li><span class="math inline">\(\Gamma\)</span> is a finite set called the <em>stack alphabet</em>,</li>
+<li><span class="math inline">\(\delta : Q \times \Sigma_\varepsilon \times \Gamma_\varepsilon \to \mathcal{P}(Q \times \Gamma_\varepsilon)\)</span> is the <em>transition function</em>, (where <span class="math inline">\(\Sigma_\varepsilon = \Sigma \cup \{\varepsilon\}\)</span> and <span class="math inline">\(\Gamma_\varepsilon = \Gamma \cup \{\varepsilon\}\)</span>)</li>
+<li><span class="math inline">\(q_0 \in Q\)</span> is the <em>start state</em>,</li>
+<li><span class="math inline">\(F \subseteq Q\)</span> is the set of <em>accept states</em>.</li>
+</ol>
+<p>We say that the PDA <span class="math inline">\(M = (Q, \Sigma, \Gamma, \delta, q_0, F)\)</span> <em>accepts</em> a string <span class="math inline">\(w\)</span> if <span class="math inline">\(w\)</span> may be written as <span class="math inline">\(w = a_1 \cdots a_n\)</span> (where each <span class="math inline">\(a_i \in \Sigma_\varepsilon\)</span>), and there exists a sequence of states <span class="math inline">\(r_0, \dots, r_n\)</span> (where each <span class="math inline">\(r_i \in Q\)</span>) and a sequence of strings <span class="math inline">\(s_0, \dots, s_n\)</span> (where each <span class="math inline">\(s_i \in \Gamma^*\)</span>), such that</p>
+<ol type="1">
+<li><span class="math inline">\(r_0 = q_0\)</span> and <span class="math inline">\(s_0 = \varepsilon\)</span>,</li>
+<li>For every <span class="math inline">\(0 \leq i &lt; n\)</span>, <span class="math inline">\((r_{i+1}, \beta) \in \delta(r_i, a_{i+1}, \alpha)\)</span>, where <span class="math inline">\(s_i = \alpha t\)</span> and <span class="math inline">\(s_{i+1} = \beta t\)</span> for some <span class="math inline">\(\alpha, \beta \in \Gamma_\varepsilon\)</span> and <span class="math inline">\(t \in \Gamma^*\)</span>.</li>
+<li><span class="math inline">\(r_n \in F\)</span>.</li>
+</ol>
+<p>Otherwise, we say that the PDA <span class="math inline">\(M\)</span> <em>rejects</em> the string <span class="math inline">\(w\)</span>.</p>
+<p><span class="math inline">\(L\)</span> is the language of PDA <span class="math inline">\(M\)</span>, denoted as <span class="math inline">\(\mathcal{L}(M) = L\)</span>, if and only if <span class="math inline">\(L = \{w\ |\ w \text{ is a string accepted by } M\}\)</span>. We say that the PDA <span class="math inline">\(M\)</span> <em>recognizes</em> the language <span class="math inline">\(L\)</span>.</p>
+<p><strong>Theorem 3.</strong> A language <span class="math inline">\(L\)</span> is context free if and only if there exists a PDA <span class="math inline">\(M\)</span> that recognizes <span class="math inline">\(L\)</span>.</p>
+<p><strong>Theorem 4.</strong> Every regular language is context free.</p>
+<p><strong>Theorem 5. (Pumping lemma)</strong> If <span class="math inline">\(L\)</span> is a context-free language, then there is a number <span class="math inline">\(p\)</span> (called the <em>pumping length</em>) such that if <span class="math inline">\(w \in L\)</span> and <span class="math inline">\(|w| \geq p\)</span>, then <span class="math inline">\(w\)</span> may be written as <span class="math inline">\(w = uvxyz\)</span>, under the following conditions:</p>
+<ol type="1">
+<li>For every <span class="math inline">\(i \geq 0\)</span>, <span class="math inline">\(uv^ixy^iz \in L\)</span>,</li>
+<li><span class="math inline">\(|vy| &gt; 0\)</span>,</li>
+<li><span class="math inline">\(|vxy| \leq p\)</span>.</li>
+</ol>
+      </div>
+      <footer>
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard shortcut: R"
+           href="https://wiki.soimort.org/comp/language/context-free/src.md">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
+        <a class="history" accesskey="h"
+           title="Keyboard shortcut: H"
+           href="https://github.com/soimort/wiki/commits/gh-pages/comp/language/context-free/src.md">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard shortcut: E"
+           href="https://github.com/soimort/wiki/edit/gh-pages/comp/language/context-free/src.md">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
+           href="https://wiki.soimort.org/comp/language/context-free">
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
+        Last updated: <span id="update-time">2017-04-11</span>
+      </footer>
+    </article></main>
+  </body>
+</html>
