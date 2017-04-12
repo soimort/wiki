@@ -1,6 +1,6 @@
 % Theory of Computation
 % Mort Yao
-% 2017-04-10
+% 2017-04-12
 
 Textbook:
 
@@ -22,7 +22,7 @@ Supplementary reading:
 #. [Finite languages](language/finite/)
 #. [Regular languages](language/regular/)
 #. [Context-free languages](language/context-free/)
-#. Context-sensitive languages
+#. *Context-sensitive languages
 
 
 
@@ -31,11 +31,11 @@ Supplementary reading:
 #. [Church-Turing thesis](church-turing/)
     * Turing machines
     * Turing completeness
-        * Lambda calculus
+        * Lambda calculus / Combinatory logic
         * Recursive function
         * Cellular automaton
         * Abstract rewriting system
-    * [Algorithm](algorithm/)
+#. [Algorithm](algorithm/)
 #. [Decidability](decidability/)
     * Decidable languages
     * Undecidability
@@ -43,9 +43,8 @@ Supplementary reading:
 #. [Reducibility](reducibility/)
     * Many-one reductions
     * Turing reductions, Turing equivalence and Turing degree
-#. Advanced topics
-    * The recursion theorem
-    * Kolmogorov complexity
+#. Recursion theorem
+#. Algorithmic information theory <i class="fa fa-link" aria-hidden="true"></i>
 
 
 
