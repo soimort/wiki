@@ -15,7 +15,7 @@ Supplementary reading:
 
 
 
-# Formal languages and automata theory
+# Formal Languages and Automata
 
 #. Preliminaries
     * [Basic formal language theory](language/)
@@ -26,12 +26,13 @@ Supplementary reading:
 
 
 
-# Computability theory
+# Computability
 
 #. [Church-Turing thesis](church-turing/)
     * Turing machines
     * Turing completeness
-        * Lambda calculus / Combinatory logic
+        * Lambda calculus
+        * Combinatory logic
         * Recursive function
         * Cellular automaton
         * Abstract rewriting system
@@ -48,7 +49,7 @@ Supplementary reading:
 
 
 
-# Complexity theory
+# Complexity
 
 #. [Overview](complexity/)
 #. [Time complexity](complexity/time/)
