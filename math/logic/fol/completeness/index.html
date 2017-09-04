@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-07 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Mort Yao">
+    <meta name="dcterms.date" content="2017-09-04">
+    <title>Completeness</title>
+    <link rel="canonical" href="https://wiki.soimort.org/math/logic/fol/completeness">
+    <style type="text/css">code { white-space: pre; }</style>
+    <link rel="stylesheet" href="//cdn.soimort.org/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/mathsvg/latest/mathsvg.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/latest/Latin-Modern-Roman.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/latest/Latin-Modern-Mono.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/__/css/style.css">
+    <link rel="stylesheet" href="/__/css/pygments.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.soimort.org/jk/20160504/jk.min.js"></script>
+    <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>
+    <script src="/__/js/jk-minibar.js"></script>
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+  <body>
+<p hidden>
+<span class="math display">\[\def\textsc#1{\textsf{#1}}\]</span>
+</p>
+    <main><article>
+      <header>
+        <h1 class="title">Completeness</h1>
+        <address class="author">Mort Yao</address>
+        <!-- h3 class="date">2017-09-04</h3 -->
+      </header>
+      <div id="content">
+<p><strong>Theorem 1. (Completeness Theorem, 1st form)</strong> Let <span class="math inline">\(\Gamma\)</span> be a set of formulas, <span class="math inline">\(\varphi\)</span> be a formula. Then <span class="math display">\[\Gamma \models \varphi \implies \Gamma \vdash \varphi\]</span></p>
+<p><strong>Consistency.</strong> A set <span class="math inline">\(\Gamma\)</span> of <span class="math inline">\(\mathcal{L}\)</span>-formulas is said to be <em>consistent</em> iff for no formula <span class="math inline">\(\phi\)</span> it is the case that <span class="math inline">\(\Gamma \vdash \phi\)</span> and <span class="math inline">\(\Gamma \vdash \lnot \phi\)</span>.</p>
+<p><strong>Satisfiability.</strong> A set <span class="math inline">\(\Gamma\)</span> of <span class="math inline">\(\mathcal{L}\)</span>-formulas is said to be <em>satisfiable</em> iff there is <span class="math inline">\(\mathcal{L}\)</span>-structure <span class="math inline">\(\mathfrak{A}\)</span> and an assignment of variables <span class="math inline">\(s : V \to |\mathfrak{A}|\)</span> such that <span class="math display">\[\models_\mathfrak{A} \Gamma[s]\]</span></p>
+<p><strong>Theorem 2. (Completeness Theorem, 2nd form)</strong> Any consistent set of formulas is satisfiable.</p>
+<p><strong>Proposition 3.</strong> Theorem 2 holds iff Theorem 1 holds.</p>
+<p><em>Proof.</em> <span class="math inline">\((\Rightarrow)\)</span> Assume that Theorem 2 holds and <span class="math inline">\(\Gamma \models \varphi\)</span>. By definition we have that <span class="math inline">\(\Gamma; \lnot \varphi\)</span> is not satisfiable. By Theorem 2, <span class="math inline">\(\Gamma; \lnot \varphi\)</span> must be inconsistent. By Reductio ad Absurdum, <span class="math inline">\(\Gamma \vdash \varphi\)</span>.</p>
+<p><span class="math inline">\((\Leftarrow)\)</span> Assume that Theorem 1 holds and <span class="math inline">\(\Gamma\)</span> is not satisfiable. By definition we have that <span class="math inline">\(\Gamma \models \varphi\)</span> for all <span class="math inline">\(\varphi\)</span> of <span class="math inline">\(\mathcal{L}\)</span> vacuously. By Theorem 1, <span class="math inline">\(\Gamma \vdash \varphi\)</span> for all <span class="math inline">\(\varphi\)</span> of <span class="math inline">\(\mathcal{L}\)</span>, thus <span class="math inline">\(\Gamma\)</span> must be inconsistent.</p>
+<p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p>
+<p><strong>Countability.</strong> A set <span class="math inline">\(S\)</span> is said to be <em>countable</em> iff there is a bijective map <span class="math inline">\(f : \mathbb{N} \to S\)</span>.</p>
+<p>We now prove a weaker form of Theorem 2, i.e., the Completeness Theorem for countable languages. Later we will see that it generalizes to uncountable languages easily.</p>
+<p><strong>Theorem 4. (Completeness Theorem for countable languages)</strong> Any consistent set of formulas in a countable language is satisfiable.</p>
+<p><em>Proof sketch. (Henkin construction)</em> Let <span class="math inline">\(\mathcal{L}\)</span> be a countable language and <span class="math inline">\(\Gamma\)</span> be a consistent set of formulas.</p>
+<ol type="I">
+<li><em>(Language extension)</em> Let <span class="math inline">\(\mathcal{L}_{\bar C}\)</span> be the language <span class="math inline">\(\mathcal{L}\)</span> extended with countably many new constant symbols <span class="math inline">\(\bar C = \{ \bar c_i : i \in \mathbb{N} \}\)</span>.</li>
+<li><em>(Maximal consistent, Henkinized theory)</em> Given the set <span class="math inline">\(\Gamma\)</span> of <span class="math inline">\(\mathcal{L}\)</span>-formulas, we show that there is a set <span class="math inline">\(\bar\Gamma\)</span> of <span class="math inline">\(\mathcal{L}_{\bar C}\)</span>-formulas such that
+<ol type="1">
+<li><span class="math inline">\(\bar\Gamma\)</span> is consistent, i.e., for no <span class="math inline">\(\theta\)</span> of <span class="math inline">\(\mathcal{L}_{\bar C}\)</span>, both <span class="math inline">\(\bar\Gamma \vdash \theta\)</span> and <span class="math inline">\(\bar\Gamma \vdash \lnot\theta\)</span>.</li>
+<li><span class="math inline">\(\bar\Gamma\)</span> is complete, i.e., for every <span class="math inline">\(\theta\)</span> of <span class="math inline">\(\mathcal{L}_{\bar C}\)</span>, either <span class="math inline">\(\theta \in \bar\Gamma\)</span> or <span class="math inline">\(\lnot\theta \in \bar\Gamma\)</span>.</li>
+<li><span class="math inline">\(\bar\Gamma\)</span> is deductively closed, i.e., if <span class="math inline">\(\bar\Gamma \vdash \theta\)</span> then <span class="math inline">\(\theta \in \bar\Gamma\)</span>.</li>
+<li><span class="math inline">\(\bar\Gamma\)</span> has the Henkin property, i.e., if <span class="math inline">\(\exists x \varphi \in \Gamma\)</span>, then there is a constant <span class="math inline">\(\bar c \in \bar C\)</span> such that <span class="math display">\[\varphi^x_{\bar c} \in \bar\Gamma\]</span></li>
+</ol></li>
+<li><em>(First structure)</em> Build an intermediate structure <span class="math inline">\(\mathfrak{A}_0\)</span> from <span class="math inline">\(\bar\Gamma\)</span>, where <span class="math inline">\(|\mathfrak{A}_0|\)</span> is the set of terms of <span class="math inline">\(\mathcal{L}_{\bar C}\)</span>. The assignment <span class="math inline">\(s\)</span> maps every variable to itself. Note that <span class="math inline">\(\mathfrak{A}_0\)</span> is not yet a model of <span class="math inline">\(\bar\Gamma\)</span>, since for distinct terms <span class="math inline">\(t\)</span> and <span class="math inline">\(t&#39;\)</span> we have <span class="math inline">\(\models_{\mathfrak{A}_0} t \neq t&#39;\)</span> but it may be the case that <span class="math inline">\(t = t&#39; \in \bar\Gamma\)</span>.</li>
+<li><em>(Satisfiability)</em> Define an equivalence relation <span class="math inline">\(E\)</span> on <span class="math inline">\(|\mathfrak{A}_0|\)</span> <span class="math display">\[t E t&#39; \iff t = t&#39; \in \bar\Gamma\]</span> We show by induction, that for any <span class="math inline">\(\mathcal{L}_{\bar C}\)</span>-formula <span class="math inline">\(\varphi\)</span>, <span class="math display">\[\models_{\mathfrak{A}_0} \varphi^* [s] \iff \varphi \in \bar\Gamma\]</span> where <span class="math inline">\(\varphi^*\)</span> is <span class="math inline">\(\varphi\)</span> with <span class="math inline">\(=\)</span> replaced by <span class="math inline">\(E\)</span> everywhere.</li>
+<li><em>(Final structure)</em> We take the quotient <span class="math inline">\(\mathfrak{A} = \mathfrak{A}_0 / E\)</span>, and show by the Homomorphism Theorem, that for any <span class="math inline">\(\mathcal{L}_{\bar C}\)</span>-formula <span class="math inline">\(\varphi\)</span>, <span class="math display">\[\models_\mathfrak{A} \varphi[s] \iff \varphi \in \bar\Gamma\]</span></li>
+<li><em>(Model restriction)</em> Restrict the model <span class="math inline">\(\mathfrak{A}\)</span> of language <span class="math inline">\(\mathcal{L}_{\bar C}\)</span> to the original language <span class="math inline">\(\mathcal{L}\)</span>, i.e., ignore the interpretation of new constants <span class="math inline">\(\bar C\)</span>. As <span class="math inline">\(\Gamma \subseteq \bar\Gamma\)</span>, we know that <span class="math inline">\(\Gamma\)</span> is satisfiable with the <span class="math inline">\(\mathcal{L}_{\bar C}\)</span>-structure <span class="math inline">\(\mathfrak{A}\)</span> and the assignment <span class="math inline">\(s\)</span>, thus also satisfiable with the structure <span class="math inline">\(\mathfrak{A}\)</span> and the assignment <span class="math inline">\(s\)</span> restricted to the language <span class="math inline">\(\mathcal{L}\)</span>.</li>
+</ol>
+<p><strong>Lemma 5.</strong> Given that the set <span class="math inline">\(\Gamma\)</span> formulas is consistent in the original language <span class="math inline">\(\mathcal{L}\)</span>, it is also consistent as a set of formulas in the new language <span class="math inline">\(\mathcal{L}_{\bar C}\)</span>.</p>
+<p><em>Proof.</em> (Use Generalization on Constants.)</p>
+<p>As <span class="math inline">\(\mathcal{L}_{\bar C}\)</span> is countable, we enumerate all <span class="math inline">\(\mathcal{L}_{\bar C}\)</span> formulas as <span class="math inline">\(\{ \theta_i : i \in \mathbb{N} \}\)</span>. Let <span class="math inline">\(T\)</span> be the set of finite sequences <span class="math inline">\(s\)</span> of pairs of <span class="math inline">\(\mathcal{L}_{\bar C}\)</span>-formulas <span class="math display">\[s = \langle (\alpha_0, \beta_0), (\alpha_1, \beta_1), \dots, (\alpha_n, \beta_n) \rangle\]</span> such that</p>
+<ol type="1">
+<li><span class="math inline">\(\{ \alpha_i : 0 \leq i \leq n\} \cup \{ \beta_i : 0 \leq i \leq n\} \cup \Gamma\)</span> is consistent.</li>
+<li>For each <span class="math inline">\(0 \leq i \leq n\)</span>, <span class="math inline">\(\alpha_i\)</span> is either <span class="math inline">\(\theta_i\)</span> or <span class="math inline">\(\lnot\theta_i\)</span>.</li>
+<li>If <span class="math inline">\(\alpha_i\)</span> is <span class="math inline">\(\exists x \varphi\)</span>, then <span class="math inline">\(\beta_i\)</span> is the formula <span class="math display">\[\varphi^x_{\bar c_k}\]</span> where <span class="math inline">\(k\)</span> is minimal such that <span class="math inline">\(\bar c_k\)</span> does not appear in <span class="math inline">\(\varphi\)</span> or any of <span class="math inline">\(\alpha_j, \beta_j\)</span> for <span class="math inline">\(0 \leq j &lt; i\)</span>.<br />
+Otherwise, <span class="math inline">\(\beta_i\)</span> is <span class="math inline">\(v_0 = v_0\)</span>.</li>
+</ol>
+<p>Given two sequences <span class="math inline">\(t = \langle (\alpha_i, \beta_i) : i &lt; n \rangle\)</span> and <span class="math inline">\(t&#39; = \langle (\alpha_i, \beta_i) : i &lt; m \rangle\)</span>, we say that <span class="math inline">\(t&#39;\)</span> <em>extends</em> <span class="math inline">\(t\)</span> iff <span class="math inline">\(n \leq m\)</span> and for each <span class="math inline">\(i &lt; n\)</span>, <span class="math inline">\(\alpha_i = \alpha_i&#39;\)</span>. Moreover, if <span class="math inline">\(t&#39; \neq t\)</span>, we say that <span class="math inline">\(t&#39;\)</span> <em>properly extends</em> <span class="math inline">\(t\)</span>.</p>
+<p><strong>Claim 6.</strong> For every sequence <span class="math inline">\(t \in T\)</span>, there is a <span class="math inline">\(t&#39; \in T\)</span> such that <span class="math inline">\(t&#39;\)</span> properly extends <span class="math inline">\(t\)</span>.</p>
+<p><strong>Claim 7.</strong> There is an infinite sequence <span class="math inline">\(\langle (\alpha_i, \beta_i) : i \in \mathbb{N} \rangle\)</span> such that for every <span class="math inline">\(n \in \mathbb{N}\)</span> we have <span class="math inline">\(\langle (\alpha_i, \beta_i) : i \leq n \rangle \in T\)</span>.</p>
+<p>Let <span class="math inline">\(\bar\Gamma = \{ \alpha_i : i \in \mathbb{N} \} \cup \{ \beta_i : i \in \mathbb{N} \}\)</span>.</p>
+<p><strong>Claim 8.</strong> All the properties in II) hold for <span class="math inline">\(\bar\Gamma\)</span>.</p>
+<p>We define the first structure <span class="math inline">\(\mathfrak{A}_0\)</span>:</p>
+<ol type="1">
+<li>Let its domain <span class="math inline">\(|\mathfrak{A}_0|\)</span> be the set of all terms of <span class="math inline">\(\mathcal{L}_{\bar C}\)</span>.</li>
+<li>For any constant <span class="math inline">\(c\)</span> in <span class="math inline">\(\mathcal{L}_{\bar C}\)</span>, <span class="math display">\[c^{\mathfrak{A}_0} = c\]</span></li>
+<li>For each <span class="math inline">\(n\)</span>-ary relation symbol <span class="math inline">\(R\)</span>, define <span class="math inline">\(R^{\mathfrak{A}_0} \subseteq |\mathfrak{A}_0|^n\)</span> as <span class="math display">\[(t_1, \dots, t_n) \in R^{\mathfrak{A}_0} \iff R t_1 \cdots t_n \in \bar\Gamma\]</span></li>
+<li>For each <span class="math inline">\(n\)</span>-ary function symbol <span class="math inline">\(f\)</span>, define <span class="math inline">\(f^{\mathfrak{A}_0} : |\mathfrak{A}_0|^n \to |\mathfrak{A}_0|\)</span> as <span class="math display">\[f^{\mathfrak{A}_0}(t_1, \dots, t_n) = f t_1 \cdots t_n\]</span></li>
+</ol>
+<p>And we define the assignment of variables <span class="math inline">\(s : V \to |\mathfrak{A}_0|\)</span> as <span class="math display">\[s(x) = x\]</span> for any variable <span class="math inline">\(x\)</span>, that is, a term of <span class="math inline">\(\mathcal{L}_{\bar C}\)</span>.</p>
+<p>Furthermore, we define a binary relation <span class="math inline">\(E\)</span> on <span class="math inline">\(|\mathfrak{A}_0|\)</span> by <span class="math display">\[t E t&#39; \iff t = t&#39; \in \bar\Gamma\]</span></p>
+<p>For any formula <span class="math inline">\(\varphi\)</span> of <span class="math inline">\(\mathcal{L}_{\bar C}\)</span>, let <span class="math inline">\(\varphi^*\)</span> denote the result of replacing every occurrence of <span class="math inline">\(=\)</span> by <span class="math inline">\(E\)</span>.</p>
+<p><strong>Claim 9.</strong> For any formula <span class="math inline">\(\varphi\)</span> of <span class="math inline">\(\mathcal{L}_{\bar C}\)</span>, <span class="math display">\[\models_{\mathfrak{A}_0} \varphi^*[s] \iff \varphi \in \bar\Gamma\]</span></p>
+<p><strong>Claim 10.</strong> The relation <span class="math inline">\(E\)</span> is an equivalence relation (i.e., <span class="math inline">\(E\)</span> is reflexive, symmetric and transitive).</p>
+<p>Since <span class="math inline">\(E\)</span> is an equivalence relation, we can denote the equivalence class of any term <span class="math inline">\(t\)</span> by <span class="math inline">\([t]_E\)</span>: <span class="math display">\[[t]_E = \{ t&#39; : t&#39; \in \text{Term}_{\mathcal{L}_{\bar C}} \land t E t&#39;\}\]</span></p>
+<p>We define the quotient structure <span class="math inline">\(\mathfrak{A} = \mathfrak{A}_0 / E\)</span> as follows:</p>
+<ol type="1">
+<li>Let its domain <span class="math inline">\(|\mathfrak{A}|\)</span> be <span class="math inline">\(\{ [t]_E : t \in \text{Term}_{\bar C} \}\)</span>.</li>
+<li>For any constant <span class="math inline">\(c\)</span> in <span class="math inline">\(\mathcal{L}_{\bar C}\)</span>, <span class="math display">\[c^\mathfrak{A} = [c]_E\]</span></li>
+<li>For each <span class="math inline">\(n\)</span>-ary relation symbol <span class="math inline">\(R\)</span>, define <span class="math inline">\(R^{\mathfrak{A}_0} \subseteq |\mathfrak{A}_0|^n\)</span> as <span class="math display">\[([t_1]_E, \dots, [t_n]_E) \in R^\mathfrak{A}
+\iff (t_1, \dots, t_n) \in R^{\mathfrak{A}_0}\]</span></li>
+<li>For each <span class="math inline">\(n\)</span>-ary function symbol <span class="math inline">\(f\)</span>, define <span class="math inline">\(f^{\mathfrak{A}_0} : |\mathfrak{A}_0|^n \to |\mathfrak{A}_0|\)</span> as <span class="math display">\[f^\mathfrak{A}([t_1]_E, \dots, [t_n]_E) = [f^{\mathfrak{A}_0}(t_1, \dots\, t_n)]_E\]</span></li>
+</ol>
+<p>And we define the assignment of variables <span class="math inline">\(s : V \to |\mathfrak{A}|\)</span> as <span class="math display">\[s(x) = [x]_E\]</span></p>
+<p><strong>Claim 11.</strong> The above relations <span class="math inline">\(R^{\mathfrak{A}_0}\)</span> and functions <span class="math inline">\(f^{\mathfrak{A}_0}\)</span> are well-defined.</p>
+<p>Define the homomorphism <span class="math inline">\(h\)</span> of <span class="math inline">\(\mathfrak{A}_0\)</span> onto <span class="math inline">\(\mathfrak{A}=\mathfrak{A}_0/E\)</span>: <span class="math display">\[h(t) = [t]_E\]</span></p>
+<p><strong>Claim 12.</strong> The <span class="math inline">\(\mathcal{L}_{\bar C}\)</span>-structure <span class="math inline">\(\mathfrak{A}\)</span> satisfies every member of <span class="math inline">\(\bar\Gamma\)</span> with <span class="math inline">\(h \circ s\)</span>.</p>
+<p><em>Proof.</em> (Use the Homomorphism Theorem.)</p>
+<p>Finally, we restrict the structure <span class="math inline">\(\mathfrak{A}\)</span> to the original language <span class="math inline">\(\mathcal{L}\)</span>.</p>
+<p><strong>Claim 13.</strong> The <span class="math inline">\(\mathcal{L}\)</span>-structure <span class="math inline">\(\mathfrak{A}\)</span> satisfies every member of <span class="math inline">\(\Gamma\)</span> with <span class="math inline">\(h \circ s\)</span>.</p>
+      </div>
+      <footer>
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard shortcut: R"
+           href="https://wiki.soimort.org/math/logic/fol/completeness/src.md">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
+        <a class="history" accesskey="h"
+           title="Keyboard shortcut: H"
+           href="https://github.com/soimort/wiki/commits/gh-pages/math/logic/fol/completeness/src.md">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard shortcut: E"
+           href="https://github.com/soimort/wiki/edit/gh-pages/math/logic/fol/completeness/src.md">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
+           href="https://wiki.soimort.org/math/logic/fol/completeness">
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
+        Last updated: <span id="update-time">2017-09-04</span>
+      </footer>
+    </article></main>
+  </body>
+</html>

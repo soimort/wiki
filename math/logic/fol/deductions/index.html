@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-07 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Mort Yao">
+    <meta name="dcterms.date" content="2017-09-04">
+    <title>Formal Deductions</title>
+    <link rel="canonical" href="https://wiki.soimort.org/math/logic/fol/deductions">
+    <style type="text/css">code { white-space: pre; }</style>
+    <link rel="stylesheet" href="//cdn.soimort.org/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/mathsvg/latest/mathsvg.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/latest/Latin-Modern-Roman.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/latest/Latin-Modern-Mono.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/__/css/style.css">
+    <link rel="stylesheet" href="/__/css/pygments.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.soimort.org/jk/20160504/jk.min.js"></script>
+    <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>
+    <script src="/__/js/jk-minibar.js"></script>
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+  <body>
+<p hidden>
+<span class="math display">\[\def\textsc#1{\textsf{#1}}\]</span>
+</p>
+    <main><article>
+      <header>
+        <h1 class="title">Formal Deductions</h1>
+        <address class="author">Mort Yao</address>
+        <!-- h3 class="date">2017-09-04</h3 -->
+      </header>
+      <div id="content">
+<p>To give a proof of the logical implication <span class="math inline">\(\Sigma \models \tau\)</span>:</p>
+<ol type="1">
+<li>There is a finite set <span class="math inline">\(\Sigma_0 = \{\sigma_0, \dots, \sigma_n\} \subseteq \Sigma\)</span> that logically implies <span class="math inline">\(\tau\)</span>. (guaranteed by the <em>compactness theorem</em>)</li>
+<li><span class="math inline">\(\sigma_0 \to \cdots \to \sigma_n \to \tau\)</span> can be generated from a finite number of steps in the enumeration of the validities (where each <span class="math inline">\(\sigma_i \in \Sigma\)</span>). (guaranteed by the <em>enumerability theorem</em>)</li>
+</ol>
+<p>A formal proof is also called a <em>deduction</em>. In our Hilbert-style deductive system, we choose:</p>
+<ul>
+<li>Logical axioms <span class="math inline">\(\Lambda\)</span>: an infinite set of formulas.</li>
+<li>Rule of inference: <em>modus ponens</em> <span class="math display">\[\frac{\alpha, \alpha \to \beta}{\beta}\]</span></li>
+</ul>
+<p>Thus, the theorems of a set <span class="math inline">\(\Gamma\)</span> of formulas are the formulas obtainable from <span class="math inline">\(\Gamma \cup \Lambda\)</span> by use of modus ponens a finite number of times.</p>
+<p><strong>Deduction.</strong> A <em>deduction of <span class="math inline">\(\varphi\)</span> from <span class="math inline">\(\Gamma\)</span></em> is a finite sequence <span class="math inline">\(\langle \alpha_0, \dots, \alpha_n \rangle\)</span> of formulas such that <span class="math inline">\(\alpha_n\)</span> is <span class="math inline">\(\varphi\)</span> and for each <span class="math inline">\(k \leq n\)</span>, either</p>
+<ol type="a">
+<li><span class="math inline">\(\alpha_k\)</span> is in <span class="math inline">\(\Gamma \cup \Lambda\)</span>, or</li>
+<li><span class="math inline">\(\alpha_k\)</span> is obtained by modus ponens from two earlier formulas in the sequence; that is, for some <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> less than <span class="math inline">\(k\)</span>, <span class="math inline">\(\alpha_j\)</span> is <span class="math inline">\(\alpha_j \to \alpha_k\)</span>.</li>
+</ol>
+<p>We say that <span class="math inline">\(\varphi\)</span> is <em>deducible</em> from <span class="math inline">\(\Gamma\)</span>, or that <span class="math inline">\(\varphi\)</span> is a <em>theorem</em> of <span class="math inline">\(\Gamma\)</span>, written as <span class="math inline">\(\Gamma \vdash \varphi\)</span>.</p>
+<p>For a set <span class="math inline">\(S\)</span> of formulas, we say that it is <em>closed</em> under modus ponens iff whenever <span class="math inline">\(\alpha \in S\)</span> and <span class="math inline">\((\alpha \to \beta) \in S\)</span>, then <span class="math inline">\(\beta \in S\)</span>.</p>
+<p><strong>Induction principle for deductions.</strong> Suppose that <span class="math inline">\(S\)</span> is a set of wffs that includes <span class="math inline">\(\Gamma \cup \Lambda\)</span> and is closed under modus ponens. Then <span class="math inline">\(S\)</span> contains every theorem of <span class="math inline">\(\Gamma\)</span>.</p>
+<p><strong>Generalization.</strong> A wff <span class="math inline">\(\varphi\)</span> is a <em>generalization</em> of <span class="math inline">\(\psi\)</span> iff for some <span class="math inline">\(n \geq 0\)</span> and some variables <span class="math inline">\(x_1, \dots, x_n\)</span>, <span class="math display">\[\varphi = \forall x_1 \cdots \forall x_n \psi\]</span> in the case that <span class="math inline">\(n = 0\)</span>, any wff is just a generalization of itself.</p>
+<p><strong>Logical axioms.</strong> The set <span class="math inline">\(\Lambda\)</span> of logical axioms is generalizations of wffs of the following forms:</p>
+<ol type="1">
+<li>Tautologies;</li>
+<li>(Substitution) <span class="math inline">\(\forall x \alpha \to \alpha^x_t\)</span>, where <span class="math inline">\(t\)</span> is substitutable for <span class="math inline">\(x\)</span> in <span class="math inline">\(\alpha\)</span>;</li>
+<li><span class="math inline">\(\forall x (\alpha \to \beta) \to (\forall x \alpha \to \forall x \beta)\)</span>;</li>
+<li><span class="math inline">\(\alpha \to \forall x \alpha\)</span>, where <span class="math inline">\(x\)</span> does not occur free in <span class="math inline">\(\alpha\)</span>;</li>
+<li><span class="math inline">\(x = x\)</span>;</li>
+<li><span class="math inline">\(x = y \to (\alpha \to \alpha&#39;)\)</span>, where <span class="math inline">\(\alpha\)</span> is atomic and <span class="math inline">\(\alpha&#39;\)</span> is obtained from <span class="math inline">\(\alpha\)</span> by replacing <span class="math inline">\(x\)</span> in zero or more (but not necessarily all) places by <span class="math inline">\(y\)</span>.</li>
+</ol>
+<p><strong>Substitution.</strong> Consider Axiom Group 2: <span class="math inline">\(\forall x \alpha \to \alpha^x_t\)</span>, where <span class="math inline">\(t\)</span> is substitutable for <span class="math inline">\(x\)</span> in <span class="math inline">\(\alpha\)</span>. <span class="math inline">\(\alpha^x_t\)</span> is defined as</p>
+<ol type="1">
+<li>For atomic <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\alpha^x_t\)</span> is the expression obtained from <span class="math inline">\(\alpha\)</span> by replacing the variable <span class="math inline">\(x\)</span> by <span class="math inline">\(t\)</span>.</li>
+<li><span class="math inline">\((\lnot \alpha)^x_t = (\alpha^x_t \to \beta^x_t)\)</span>.</li>
+<li><span class="math inline">\((\alpha \to \beta)^x_t = (\alpha^x_t \to \beta^x_t)\)</span>.</li>
+<li><span class="math inline">\((\forall y \alpha)^x_t = \begin{cases} \forall y \alpha &amp; \quad \text{if } x = y\\ \forall y (\alpha^x_t) &amp; \quad \text{if } x \neq y\\ \end{cases}\)</span></li>
+</ol>
+<p>Let <span class="math inline">\(x\)</span> be a variable, <span class="math inline">\(t\)</span> be a term. We say that <span class="math inline">\(t\)</span> is <em>substitutable</em> for <span class="math inline">\(x\)</span> in <span class="math inline">\(\alpha\)</span> iff:</p>
+<ol type="1">
+<li>For atomic <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(t\)</span> is always substitutable for <span class="math inline">\(x\)</span> in <span class="math inline">\(\alpha\)</span>.</li>
+<li><span class="math inline">\(t\)</span> is substitutable for <span class="math inline">\(x\)</span> in <span class="math inline">\((\lnot \alpha)\)</span> iff it is substitutable for <span class="math inline">\(x\)</span> in <span class="math inline">\(\alpha\)</span>.</li>
+<li><span class="math inline">\(t\)</span> is substitutable for <span class="math inline">\(x\)</span> in <span class="math inline">\((\alpha \to \beta)\)</span> iff it is substitutable for <span class="math inline">\(x\)</span> in both <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>.</li>
+<li><span class="math inline">\(t\)</span> is substitutable for <span class="math inline">\(x\)</span> in <span class="math inline">\(\forall y \alpha\)</span> iff either
+<ol type="a">
+<li><span class="math inline">\(x\)</span> does not occur free in <span class="math inline">\(\forall y \alpha\)</span>, or</li>
+<li><span class="math inline">\(y\)</span> does not occur in <span class="math inline">\(t\)</span> and <span class="math inline">\(t\)</span> is substitutable for <span class="math inline">\(x\)</span> in <span class="math inline">\(\alpha\)</span>.</li>
+</ol></li>
+</ol>
+<p><strong>Tautologies.</strong> The <em>prime formulas</em> are the atomic formulas and those of the form <span class="math inline">\(\forall x \alpha\)</span>. Any formula is built up from prime formulas by the operations <span class="math inline">\(\mathcal{E}_\lnot\)</span> and <span class="math inline">\(\mathcal{E}_\to\)</span>. Take the sentence symbols in sentential logic to be the prime formulas of our first-order language. Then any tautology of sentential logic is in Axiom Group 1.</p>
+<p><strong>Theorem 1.</strong> If <span class="math inline">\(\Gamma \models_t \varphi\)</span>, then <span class="math inline">\(\Gamma \models \varphi\)</span>. (NB. The converse does not hold.)</p>
+<p><strong>Theorem 2.</strong> <span class="math inline">\(\Gamma \vdash \varphi \iff \Gamma \cup \Lambda \models_t \varphi\)</span>.</p>
+      </div>
+      <footer>
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard shortcut: R"
+           href="https://wiki.soimort.org/math/logic/fol/deductions/src.md">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
+        <a class="history" accesskey="h"
+           title="Keyboard shortcut: H"
+           href="https://github.com/soimort/wiki/commits/gh-pages/math/logic/fol/deductions/src.md">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard shortcut: E"
+           href="https://github.com/soimort/wiki/edit/gh-pages/math/logic/fol/deductions/src.md">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
+           href="https://wiki.soimort.org/math/logic/fol/deductions">
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
+        Last updated: <span id="update-time">2017-09-04</span>
+      </footer>
+    </article></main>
+  </body>
+</html>

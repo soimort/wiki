@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-07 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Mort Yao">
+    <meta name="dcterms.date" content="2017-09-04">
+    <title>First-Order Languages</title>
+    <link rel="canonical" href="https://wiki.soimort.org/math/logic/fol/languages">
+    <style type="text/css">code { white-space: pre; }</style>
+    <link rel="stylesheet" href="//cdn.soimort.org/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/mathsvg/latest/mathsvg.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/latest/Latin-Modern-Roman.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/latest/Latin-Modern-Mono.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/__/css/style.css">
+    <link rel="stylesheet" href="/__/css/pygments.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.soimort.org/jk/20160504/jk.min.js"></script>
+    <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>
+    <script src="/__/js/jk-minibar.js"></script>
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+  <body>
+<p hidden>
+<span class="math display">\[\def\textsc#1{\textsf{#1}}\]</span>
+</p>
+    <main><article>
+      <header>
+        <h1 class="title">First-Order Languages</h1>
+        <address class="author">Mort Yao</address>
+        <!-- h3 class="date">2017-09-04</h3 -->
+      </header>
+      <div id="content">
+<p><strong>Symbols.</strong> We take these following symbols to construct our first-order language <span class="math inline">\(\mathcal{L}\)</span>:</p>
+<ol>
+<li>Logical symbols.
+<ol>
+<li>Parentheses: <span class="math inline">\((\)</span>, <span class="math inline">\()\)</span>.</li>
+<li>Sentential connective symbols: <span class="math inline">\(\to\)</span>, <span class="math inline">\(\lnot\)</span>.</li>
+<li>Variables: <span class="math inline">\(x, y, z, v_1, v_2,\)</span> …</li>
+<li>Equality symbol (special 2-place predicate symbol; optional): <span class="math inline">\(=\)</span>.</li>
+</ol></li>
+<li>Parameters.
+<ol>
+<li>Universal quantifier symbol: <span class="math inline">\(\forall\)</span>.</li>
+<li>(<span class="math inline">\(n\)</span>-place) Predicate symbols (a.k.a. relation symbols): <span class="math inline">\(P_1, P_2,\)</span> …</li>
+<li>Constant symbols (0-place function symbols): <span class="math inline">\(c_1, c_2,\)</span> …</li>
+<li>(<span class="math inline">\(n\)</span>-place) Function symbols: <span class="math inline">\(f_1, f_2,\)</span> …</li>
+</ol></li>
+</ol>
+<p><strong><em>Example 1.</em></strong> The Language of Set Theory (LOST) contains: (1) the equality symbol <span class="math inline">\(=\)</span>; (2) <span class="math inline">\(\in\)</span> as a 2-place predicate symbol.</p>
+<p><strong><em>Example 2.</em></strong> The Language of Elementary Number Theory contains: (1) the equality symbol <span class="math inline">\(=\)</span>; (2) <span class="math inline">\(&lt;\)</span> as a 2-place predicate symbol; (3) <span class="math inline">\(\mathbf{0}\)</span> (zero) as a constant symbol; (4) <span class="math inline">\(\mathbf{S}\)</span> (successor) as a 1-place function symbol; (5) <span class="math inline">\(+\)</span> (addition), <span class="math inline">\(\cdot\)</span> (multiplication) and <span class="math inline">\(\mathbf{E}\)</span> (exponentiation) as 2-place function symbols.</p>
+<p><em>Remark 3.</em> For sentential connective symbols, we choose <span class="math inline">\(\to\)</span> and <span class="math inline">\(\lnot\)</span> as a complete set. Other common connectives are seen as abbreviations of them: <span class="math display">\[\begin{align*}
+(\alpha \land \beta) &amp;\quad\text{ is equivalent to }\quad
+(\lnot (\alpha \to (\lnot \beta))) \\
+(\alpha \lor \beta) &amp;\quad\text{ is equivalent to }\quad
+((\lnot \alpha) \to \beta) \\
+(\alpha \leftrightarrow \beta) &amp;\quad\text{ is equivalent to }\quad
+(\lnot((\alpha \to \beta) \to (\lnot (\beta \to \alpha))))
+\end{align*}\]</span> The existential quantifier <span class="math inline">\(\exists\)</span> is also seen as an abbreviation: <span class="math display">\[\exists x \alpha \quad\text{ is equivalent to }\quad
+(\lnot (\forall x (\lnot \alpha)))\]</span> For 2-place predicate and function symbols, it is conventional to use infix notations instead, e.g., <span class="math inline">\(u = t\)</span> abbreviates <span class="math inline">\(= u\ t\)</span>, <span class="math inline">\(u \in t\)</span> abbreviates <span class="math inline">\(\in u\ t\)</span>. Moreover, <span class="math inline">\(u \neq t\)</span> abbreviates <span class="math inline">\((\lnot = u\ t)\)</span>; similarly, <span class="math inline">\(u \notin t\)</span> abbreviates <span class="math inline">\((\lnot \in u\ t)\)</span>.</p>
+<p>An <em>expression</em> is any finite sequence of symbols. Among all possible expressions, terms and formulas are of our interest.</p>
+<p><strong>Terms.</strong> Let <span class="math inline">\(\mathcal{L}\)</span> be a first-order language. We define <span class="math display">\[\text{Term}^\mathcal{L}_0 = \{ \langle a \rangle : a \text{ is a variable or constant symbol} \}\]</span> <span class="math display">\[\text{Term}^\mathcal{L}_{n+1} = \{ f t_1 \cdots t_m :
+f \text{ is a }m\text{-place function symbol},
+t_1,\dots,t_m \in \bigcup_{0 \leq i \leq n}\text{Term}^\mathcal{L}_i \}\]</span> Furthermore, we define <span class="math display">\[\text{Term}(\mathcal{L}) = \bigcup_{n \in \mathbb{N}} \text{Term}^\mathcal{L}_n\]</span> thus, <span class="math inline">\(t\)</span> is a <em>term</em> in <span class="math inline">\(\mathcal{L}\)</span> if and only if <span class="math inline">\(t \in \text{Term}(\mathcal{L})\)</span>.</p>
+<p>The <em>complexity of a term</em> <span class="math inline">\(t\)</span> is an integer <span class="math inline">\(n\)</span> such that <span class="math inline">\(t \in \text{Term}^\mathcal{L}_n\)</span>, and for every <span class="math inline">\(k &lt; n\)</span>, <span class="math inline">\(t \notin \text{Term}^\mathcal{L}_k\)</span>.</p>
+<p><strong>Proposition 4. (Induction principle for terms)</strong> If <span class="math inline">\(\Pi\)</span> is a set of terms such that</p>
+<ol type="1">
+<li><span class="math inline">\(\text{Term}^\mathcal{L}_0 \subseteq \Pi\)</span>;</li>
+<li>If <span class="math inline">\(f\)</span> is an <span class="math inline">\(m\)</span>-place function symbol and <span class="math inline">\(t_1,\dots,t_m \in \Pi\)</span> then <span class="math inline">\(f t_1 \cdots t_m \in \Pi\)</span>;</li>
+</ol>
+<p>then <span class="math inline">\(\Pi = \text{Term}(\mathcal{L})\)</span>.</p>
+<p><strong>Formulas.</strong> Let <span class="math inline">\(\mathcal{L}\)</span> be a first-order language. We define the set of <em>atomic formulas</em> as <span class="math display">\[\text{Formula}^\mathcal{L}_0 = \{ P t_1 \cdots t_k : P \text{ is a }k\text{-place predicate symbol or }=, t_1,\dots,t_k \in \text{Term}(\mathcal{L}) \}\]</span> We say that <span class="math inline">\(\varphi \in \text{Formula}^\mathcal{L}_{n+1}\)</span> if and only if one of the following holds:</p>
+<ol>
+<li><span class="math inline">\(\varphi = (\lnot \psi)\)</span> for some <span class="math inline">\(\psi \in \bigcup_{m \leq n} \text{Formula}^\mathcal{L}_m\)</span>;</li>
+<li><span class="math inline">\(\varphi = (\psi \to \theta)\)</span> for some <span class="math inline">\(\psi, \theta \in \bigcup_{m \leq n} \text{Formula}^\mathcal{L}_m\)</span>;</li>
+<li><span class="math inline">\(\varphi = \forall v_i \psi\)</span> for some <span class="math inline">\(v_i \in V\)</span> and <span class="math inline">\(\psi \in \bigcup_{m \leq n} \text{Formula}^\mathcal{L}_m\)</span>.</li>
+</ol>
+<p>Furthermore, we define <span class="math display">\[\text{Formula}(\mathcal{L}) = \bigcup_{n \in \mathbb{N}} \text{Formula}^\mathcal{L}_n\]</span> thus, <span class="math inline">\(\varphi\)</span> is a <em>formula</em> (or <em>well-formed formula</em>, <em>wff</em>) in <span class="math inline">\(\mathcal{L}\)</span> if and only if <span class="math inline">\(\varphi \in \text{Formula}(\mathcal{L})\)</span>.</p>
+<p>The <em>complexity of a formula</em> <span class="math inline">\(\varphi\)</span> is an integer <span class="math inline">\(n\)</span> such that <span class="math inline">\(\varphi \in \text{Formula}^\mathcal{L}_n\)</span>, and for every <span class="math inline">\(k &lt; n\)</span>, <span class="math inline">\(\varphi \notin \text{Formula}^\mathcal{L}_k\)</span>.</p>
+<p><strong>Proposition 5. (Induction principle for formulas)</strong> If <span class="math inline">\(\Phi \subseteq \text{Formula}(\mathcal{L})\)</span> is a set of formulas such that</p>
+<ol type="1">
+<li><span class="math inline">\(\text{Formula}^\mathcal{L}_0 \subseteq \Phi\)</span>;</li>
+<li>If <span class="math inline">\(\varphi \in \Phi\)</span> then <span class="math inline">\((\lnot \varphi) \in \Phi\)</span>;</li>
+<li>If <span class="math inline">\(\varphi, \psi \in \Phi\)</span> then <span class="math inline">\((\varphi \to \psi) \in \Phi\)</span>;</li>
+<li>If <span class="math inline">\(\varphi \in \Phi\)</span> then for any <span class="math inline">\(v_i \in V\)</span>, <span class="math inline">\(\forall v_i \varphi \in \Phi\)</span>;</li>
+</ol>
+<p>then <span class="math inline">\(\Phi = \text{Formula}(\mathcal{L})\)</span>.</p>
+<p><strong>Free variables.</strong> For any wff <span class="math inline">\(\varphi\)</span>, we define that a variable <span class="math inline">\(x\)</span> <em>occurs free</em> in <span class="math inline">\(\varphi\)</span> (or <span class="math inline">\(x\)</span> is a <em>free variable</em> of <span class="math inline">\(\varphi\)</span>) by recursion:</p>
+<ol type="1">
+<li>For atomic <span class="math inline">\(\psi\)</span>, <span class="math inline">\(x\)</span> occurs free in <span class="math inline">\(\psi\)</span> iff <span class="math inline">\(x\)</span> is a symbol in <span class="math inline">\(\psi\)</span>;</li>
+<li><span class="math inline">\(x\)</span> occurs free in <span class="math inline">\((\lnot \psi)\)</span> iff <span class="math inline">\(x\)</span> occurs free in <span class="math inline">\(\psi\)</span>;</li>
+<li><span class="math inline">\(x\)</span> occurs free in <span class="math inline">\((\psi \to \theta)\)</span> iff <span class="math inline">\(x\)</span> occurs free in <span class="math inline">\(\psi\)</span> or in <span class="math inline">\(\theta\)</span>;</li>
+<li><span class="math inline">\(x\)</span> occurs free in <span class="math inline">\(\forall v_i \psi\)</span> iff <span class="math inline">\(x\)</span> occurs free in <span class="math inline">\(\psi\)</span> and <span class="math inline">\(x \neq v_i\)</span>.</li>
+</ol>
+<p>Alternatively, we can define <span class="math inline">\(h(\alpha)\)</span> as the set of all variables in the atomic formula <span class="math inline">\(\alpha\)</span>. And we extend <span class="math inline">\(h\)</span> to a function <span class="math inline">\(\bar{h}\)</span> on all wffs such that <span class="math display">\[\begin{align*}
+\bar{h}((\lnot \psi)) &amp;= \bar{h}(\psi) \\
+\bar{h}((\psi \to \theta)) &amp;= \bar{h}(\psi) \cup \bar{h}(\theta) \\
+\bar{h}(\forall v_i \psi) &amp;= \bar{h}(\psi) \text{ after removing }v_i\text{ if present}
+\end{align*}\]</span> then we say that a variable <span class="math inline">\(x\)</span> occurs free in <span class="math inline">\(\varphi\)</span> iff <span class="math inline">\(x \in \bar{h}(\varphi)\)</span>. The existence of a unique such <span class="math inline">\(\bar{h}\)</span> follows from the recursion theorem and the fact that each wff has a unique decomposition.</p>
+<p>If no variable occurs free in the wff <span class="math inline">\(\varphi\)</span>, i.e., <span class="math inline">\(\bar{h}(\varphi) = \emptyset\)</span>, then <span class="math inline">\(\varphi\)</span> is called a <em>sentence</em>.</p>
+      </div>
+      <footer>
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard shortcut: R"
+           href="https://wiki.soimort.org/math/logic/fol/languages/src.md">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
+        <a class="history" accesskey="h"
+           title="Keyboard shortcut: H"
+           href="https://github.com/soimort/wiki/commits/gh-pages/math/logic/fol/languages/src.md">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard shortcut: E"
+           href="https://github.com/soimort/wiki/edit/gh-pages/math/logic/fol/languages/src.md">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
+           href="https://wiki.soimort.org/math/logic/fol/languages">
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
+        Last updated: <span id="update-time">2017-09-04</span>
+      </footer>
+    </article></main>
+  </body>
+</html>

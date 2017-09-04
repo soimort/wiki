@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-07 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Mort Yao">
+    <meta name="dcterms.date" content="2017-09-04">
+    <title>Structures</title>
+    <link rel="canonical" href="https://wiki.soimort.org/math/logic/fol/structures">
+    <style type="text/css">code { white-space: pre; }</style>
+    <link rel="stylesheet" href="//cdn.soimort.org/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/mathsvg/latest/mathsvg.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/latest/Latin-Modern-Roman.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/latest/Latin-Modern-Mono.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/__/css/style.css">
+    <link rel="stylesheet" href="/__/css/pygments.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.soimort.org/jk/20160504/jk.min.js"></script>
+    <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>
+    <script src="/__/js/jk-minibar.js"></script>
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+  <body>
+<p hidden>
+<span class="math display">\[\def\textsc#1{\textsf{#1}}\]</span>
+</p>
+    <main><article>
+      <header>
+        <h1 class="title">Structures</h1>
+        <address class="author">Mort Yao</address>
+        <!-- h3 class="date">2017-09-04</h3 -->
+      </header>
+      <div id="content">
+<p><strong>Structure.</strong> A <em>structure</em> (or <em>interpretation</em>) <span class="math inline">\(\mathfrak{A}\)</span> for a first-order language <span class="math inline">\(\mathcal{L}\)</span> is a function whose domain is the set of parameters and such that</p>
+<ol type="1">
+<li><span class="math inline">\(\mathfrak{A}\)</span> assigns to the quantifier symbol <span class="math inline">\(\forall\)</span> a nonempty set <span class="math inline">\(|\mathfrak{A}|\)</span> called the <em>universe</em> (or <em>domain</em>) of <span class="math inline">\(\mathfrak{A}\)</span>.</li>
+<li><span class="math inline">\(\mathfrak{A}\)</span> assigns to each <span class="math inline">\(n\)</span>-place predicate symbol <span class="math inline">\(P\)</span> an <span class="math inline">\(n\)</span>-ary relation <span class="math inline">\(P^\mathfrak{A} \subseteq |\mathfrak{A}|^n\)</span>, i.e., <span class="math inline">\(P^\mathfrak{A}\)</span> is a set of <span class="math inline">\(n\)</span>-tuples of members of the universe.</li>
+<li><span class="math inline">\(\mathfrak{A}\)</span> assigns to each constant symbol <span class="math inline">\(c\)</span> a member <span class="math inline">\(c^\mathfrak{A}\)</span> of the universe <span class="math inline">\(|\mathfrak{A}|\)</span>.</li>
+<li><span class="math inline">\(\mathfrak{A}\)</span> assigns to each <span class="math inline">\(n\)</span>-place function symbol <span class="math inline">\(f\)</span> an <span class="math inline">\(n\)</span>-ary operation <span class="math inline">\(f^\mathfrak{A}\)</span> on <span class="math inline">\(|\mathfrak{A}|\)</span>, i.e., <span class="math inline">\(f^\mathfrak{A} : |\mathfrak{A}|^n \to |\mathfrak{A}|\)</span>.</li>
+</ol>
+<p>Let <span class="math inline">\(\varphi\)</span> be a wff of the language <span class="math inline">\(\mathcal{L}\)</span>, <span class="math inline">\(\mathfrak{A}\)</span> be a structure for the language <span class="math inline">\(\mathcal{L}\)</span>, <span class="math inline">\(s : V \to |\mathfrak{A}|\)</span> be a function from the set <span class="math inline">\(V\)</span> of all variables into the universe <span class="math inline">\(|\mathfrak{A}|\)</span>. We say that <span class="math inline">\(\mathfrak{A}\)</span> <em>satisfies <span class="math inline">\(\varphi\)</span> with <span class="math inline">\(s\)</span></em>, if and only if the translation of <span class="math inline">\(\varphi\)</span> determined by <span class="math inline">\(\mathfrak{A}\)</span>, where the variable <span class="math inline">\(x\)</span> is translated as <span class="math inline">\(s(x)\)</span> wherever it occurs free, is true, written as <span class="math display">\[\models_\mathfrak{A} \varphi[s]\]</span> Formally, we define the extension function from the set <span class="math inline">\(T\)</span> of all terms into the universe of <span class="math inline">\(\mathfrak{A}\)</span>: <span class="math display">\[\bar{s} : T \to |\mathfrak{A}|\]</span> such that</p>
+<ol type="1">
+<li>For each variable <span class="math inline">\(x\)</span>, <span class="math inline">\(\bar{s}(x) = s(x)\)</span>.</li>
+<li>For each constant symbol <span class="math inline">\(c\)</span>, <span class="math inline">\(\bar{s}(c) = c^\mathfrak{A}\)</span>.</li>
+<li>If <span class="math inline">\(t_1, \dots, t_n\)</span> are terms and <span class="math inline">\(f\)</span> is a <span class="math inline">\(n\)</span>-place function symbol, then <span class="math display">\[\bar{s}(f t_1 \cdots t_n) = f^\mathfrak{A}(\bar{s}(t_1), \dots, \bar{s}(t_n))\]</span></li>
+</ol>
+<p>For atomic formulas,</p>
+<ol type="1">
+<li><span class="math inline">\(\models_\mathfrak{A} = t_1 t_2 [s]\)</span> iff <span class="math inline">\(\bar{s}(t_1) = \bar{s}(t_2)\)</span>.</li>
+<li><span class="math inline">\(\models_\mathfrak{A} P t_1 \cdots t_n [s]\)</span> iff <span class="math inline">\(\langle \bar{s}(t_1), \dots, \bar{s}(t_n) \rangle \in P^\mathfrak{A}\)</span>.</li>
+</ol>
+<p>For other wffs,</p>
+<ol type="1">
+<li><span class="math inline">\(\models_\mathfrak{A} (\lnot \varphi) [s]\)</span> iff <span class="math inline">\(\not\models_\mathfrak{A} \varphi[s]\)</span>.</li>
+<li><span class="math inline">\(\models_\mathfrak{A} (\varphi \to \psi) [s]\)</span> iff either <span class="math inline">\(\not\models_\mathfrak{A} \varphi[s]\)</span> or <span class="math inline">\(\models_\mathfrak{A} \psi[s]\)</span> or both.</li>
+<li><span class="math inline">\(\models_\mathfrak{A} \forall x \varphi[s]\)</span> iff for every <span class="math inline">\(d \in |\mathfrak{A}|\)</span>, we have <span class="math inline">\(\models_\mathfrak{A} \varphi[s(x|d)]\)</span>, where <span class="math inline">\(s(x|d)\)</span> is defined as <span class="math display">\[s(x|d)(y) =
+\begin{cases}
+s(y) &amp; \text{if } y \neq x \\
+d    &amp; \text{if } y = x
+\end{cases}\]</span></li>
+</ol>
+<p><strong><em>Example 1.</em></strong> <span class="math inline">\(\mathfrak{A} = (\mathbb{N}; \leq, S, 0)\)</span> is a structure for a first-order language:</p>
+<ul>
+<li><span class="math inline">\(|\mathfrak{A}| = \mathbb{N}\)</span>, the set of all natural numbers,</li>
+<li><span class="math inline">\(P^\mathfrak{A} =\)</span> the set of pairs <span class="math inline">\(\langle m, n \rangle\)</span> such that <span class="math inline">\(m \leq n\)</span>,</li>
+<li><span class="math inline">\(f^\mathfrak{A} =\)</span> the successor function <span class="math inline">\(S\)</span>: <span class="math inline">\(f^\mathfrak{A}(n) = n + 1\)</span>,</li>
+<li><span class="math inline">\(c^\mathfrak{A} = 0\)</span>.</li>
+</ul>
+<p><strong>Theorem 2.</strong> Assume that <span class="math inline">\(s_1\)</span> and <span class="math inline">\(s_2\)</span> are functions from <span class="math inline">\(V\)</span> into <span class="math inline">\(|\mathfrak{A}|\)</span> which agree at all variables that occur free in the wff <span class="math inline">\(\varphi\)</span>. Then <span class="math display">\[\models_\mathfrak{A} \varphi[s_1] \iff \models_\mathfrak{A} \varphi[s_2]\]</span></p>
+<p><em>Proof.</em> (By induction on <span class="math inline">\(\varphi\)</span>.)</p>
+<p><strong>Theorem 3.</strong> If two structures <span class="math inline">\(\mathfrak{A}\)</span> and <span class="math inline">\(\mathfrak{B}\)</span> agree at all parameters that occur in <span class="math inline">\(\varphi\)</span>, then <span class="math display">\[\models_\mathfrak{A} \varphi[s] \iff \models_\mathfrak{B} \varphi[s]\]</span></p>
+<p><strong>Corollary 4.</strong> For a sentence <span class="math inline">\(\sigma\)</span>, either</p>
+<ol type="1">
+<li><span class="math inline">\(\mathfrak{A}\)</span> satisfies <span class="math inline">\(\sigma\)</span> with every function <span class="math inline">\(s : V \to |\mathfrak{A}|\)</span>, or</li>
+<li><span class="math inline">\(\mathfrak{A}\)</span> does not satisfy <span class="math inline">\(\sigma\)</span> with any such function.</li>
+</ol>
+<p><strong>Model and truth.</strong> If a structure <span class="math inline">\(\mathfrak{A}\)</span> satisfies the sentence <span class="math inline">\(\sigma\)</span> with every function <span class="math inline">\(s : V \to |\mathfrak{A}|\)</span>, we say that <span class="math inline">\(\sigma\)</span> is <em>true</em> in <span class="math inline">\(\mathfrak{A}\)</span> or that <span class="math inline">\(\mathfrak{A}\)</span> is a <em>model</em> of <span class="math inline">\(\sigma\)</span>, written as <span class="math inline">\(\models_\mathfrak{A} \sigma\)</span>. Otherwise <span class="math inline">\(\sigma\)</span> is <em>false</em> in <span class="math inline">\(\mathfrak{A}\)</span>. For a set <span class="math inline">\(\Sigma\)</span> of sentences, <span class="math inline">\(\mathfrak{A}\)</span> is a model of <span class="math inline">\(\Sigma\)</span> iff it is a model of every <span class="math inline">\(\sigma \in \Sigma\)</span>.</p>
+<p><strong>Logical implication and validity.</strong> Let <span class="math inline">\(\Gamma\)</span> be a set of wffs, <span class="math inline">\(\varphi\)</span> be a wff. <span class="math inline">\(\Gamma\)</span> <em>logically implies</em> <span class="math inline">\(\varphi\)</span>, written as <span class="math inline">\(\Gamma \models \varphi\)</span>, iff for every structure <span class="math inline">\(\mathfrak{A}\)</span> for the language and every function <span class="math inline">\(s : V \to |\mathfrak{A}|\)</span> such that <span class="math inline">\(\mathfrak{A}\)</span> satisfies every member of <span class="math inline">\(\Gamma\)</span> with <span class="math inline">\(s\)</span>, <span class="math inline">\(\mathfrak{A}\)</span> also satisfies <span class="math inline">\(\varphi\)</span> with <span class="math inline">\(s\)</span>.</p>
+<p>We say that <span class="math inline">\(\varphi\)</span> and <span class="math inline">\(\psi\)</span> are <em>logically equivalent</em> iff <span class="math inline">\(\varphi \models \psi\)</span> and <span class="math inline">\(\psi \models \varphi\)</span>.</p>
+<p>A wff <span class="math inline">\(\varphi\)</span> is <em>valid</em> iff <span class="math inline">\(\emptyset \models \varphi\)</span>, written simply as <span class="math inline">\(\models \varphi\)</span>. That is, <span class="math inline">\(\varphi\)</span> is valid iff for every <span class="math inline">\(\mathfrak{A}\)</span> and every <span class="math inline">\(s : V \to |\mathfrak{A}|\)</span>, <span class="math inline">\(\mathfrak{A}\)</span> satisfies <span class="math inline">\(\varphi\)</span> with <span class="math inline">\(s\)</span>.</p>
+<p>The concept of validity is the first-order analogue of the concept of tautology in sentential logic.</p>
+<p><strong>Corollary 5.</strong> For a set <span class="math inline">\(\Sigma; \tau\)</span> of sentences, <span class="math inline">\(\Sigma \models \tau\)</span> iff every model of <span class="math inline">\(\Sigma\)</span> is also a model of <span class="math inline">\(\tau\)</span>. A sentence <span class="math inline">\(\tau\)</span> is valid iff it is true in every structure.</p>
+      </div>
+      <footer>
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard shortcut: R"
+           href="https://wiki.soimort.org/math/logic/fol/structures/src.md">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
+        <a class="history" accesskey="h"
+           title="Keyboard shortcut: H"
+           href="https://github.com/soimort/wiki/commits/gh-pages/math/logic/fol/structures/src.md">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard shortcut: E"
+           href="https://github.com/soimort/wiki/edit/gh-pages/math/logic/fol/structures/src.md">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
+           href="https://wiki.soimort.org/math/logic/fol/structures">
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
+        Last updated: <span id="update-time">2017-09-04</span>
+      </footer>
+    </article></main>
+  </body>
+</html>

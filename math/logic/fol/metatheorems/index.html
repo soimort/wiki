@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-07 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Mort Yao">
+    <meta name="dcterms.date" content="2017-09-04">
+    <title>Some Metatheorems of Deduction</title>
+    <link rel="canonical" href="https://wiki.soimort.org/math/logic/fol/metatheorems">
+    <style type="text/css">code { white-space: pre; }</style>
+    <link rel="stylesheet" href="//cdn.soimort.org/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/mathsvg/latest/mathsvg.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/latest/Latin-Modern-Roman.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/latest/Latin-Modern-Mono.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/__/css/style.css">
+    <link rel="stylesheet" href="/__/css/pygments.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.soimort.org/jk/20160504/jk.min.js"></script>
+    <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>
+    <script src="/__/js/jk-minibar.js"></script>
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+  <body>
+<p hidden>
+<span class="math display">\[\def\textsc#1{\textsf{#1}}\]</span>
+</p>
+    <main><article>
+      <header>
+        <h1 class="title">Some Metatheorems of Deduction</h1>
+        <address class="author">Mort Yao</address>
+        <!-- h3 class="date">2017-09-04</h3 -->
+      </header>
+      <div id="content">
+<p><strong>Generalization Theorem.</strong> If <span class="math inline">\(\Gamma \vdash \varphi\)</span> and <span class="math inline">\(x\)</span> does not occur free in any formula in <span class="math inline">\(\Gamma\)</span>, then <span class="math inline">\(\Gamma \vdash \forall x \varphi\)</span>.</p>
+<p><em>Proof.</em> (By induction on <span class="math inline">\(\varphi\)</span>.)</p>
+<p><strong>Rule T.</strong> If <span class="math inline">\(\Gamma \vdash \alpha_1, \dots, \Gamma \vdash \alpha_n\)</span> and <span class="math inline">\(\{\alpha_1, \dots, \alpha_n\} \models_t \beta\)</span>, then <span class="math inline">\(\Gamma \vdash \beta\)</span>.</p>
+<p><strong>Deduction Theorem.</strong> <span class="math inline">\(\Gamma; \gamma \vdash \varphi \iff \Gamma \vdash (\gamma \to \varphi)\)</span>.</p>
+<p><em>Proof.</em> (By induction on <span class="math inline">\(\varphi\)</span>.)</p>
+<p><strong>Contraposition.</strong> <span class="math inline">\(\Gamma; \varphi \vdash \lnot \psi \iff \Gamma; \psi \vdash \lnot \varphi\)</span>.</p>
+<p>If for some <span class="math inline">\(\beta\)</span>, both <span class="math inline">\(\beta\)</span> and <span class="math inline">\(\lnot \beta\)</span> are theorems of the set <span class="math inline">\(\Gamma\)</span>, we say that <span class="math inline">\(\Gamma\)</span> is <em>inconsistent</em>. In this case, any arbitrary formula <span class="math inline">\(\alpha\)</span> is a theorem since <span class="math inline">\(\beta \to \lnot \beta \to \alpha\)</span> is a tautology.</p>
+<p><strong>Reductio ad Absurdum.</strong> If <span class="math inline">\(\Gamma; \varphi\)</span> is inconsistent, then <span class="math inline">\(\Gamma \vdash \lnot \varphi\)</span>.</p>
+<p><strong>Generalization on Constants.</strong> Assume that <span class="math inline">\(\Gamma \vdash \varphi\)</span> and that <span class="math inline">\(c\)</span> is a constant symbol that does not occur in <span class="math inline">\(\Gamma\)</span>. Then there is a variable <span class="math inline">\(y\)</span> (which does not occur on <span class="math inline">\(\varphi\)</span>) such that <span class="math inline">\(\Gamma \vdash \forall y \varphi^c_y\)</span>. Furthermore, there is a deduction of <span class="math inline">\(\forall y \varphi^c_y\)</span> from <span class="math inline">\(\Gamma\)</span> in which <span class="math inline">\(c\)</span> does not occur.</p>
+<p><strong>Corollary 1.</strong> Assume that <span class="math inline">\(\Gamma \vdash \varphi^x_c\)</span>, where the constant symbol <span class="math inline">\(c\)</span> does not occur in <span class="math inline">\(\Gamma\)</span> or in <span class="math inline">\(\varphi\)</span>. Then <span class="math inline">\(\Gamma \vdash \forall x \varphi\)</span>, and there is deduction of <span class="math inline">\(\forall x \varphi\)</span> from <span class="math inline">\(\Gamma\)</span> in which <span class="math inline">\(c\)</span> does not occur.</p>
+<p><strong>Existence of Alphabetic Variants.</strong> Let <span class="math inline">\(\varphi\)</span> be a formula, <span class="math inline">\(t\)</span> be a term, and <span class="math inline">\(x\)</span> be a variable. Then we can find a formula <span class="math inline">\(\varphi&#39;\)</span> (called an <em>alphabetic variant</em> of <span class="math inline">\(\varphi\)</span>), which differs from <span class="math inline">\(\varphi\)</span> only in the choice of quantified variables such that</p>
+<ol type="a">
+<li><span class="math inline">\(\varphi \vdash \varphi&#39;\)</span> and <span class="math inline">\(\varphi&#39; \vdash \varphi\)</span>.</li>
+<li><span class="math inline">\(t\)</span> is substitutable for <span class="math inline">\(x\)</span> in <span class="math inline">\(\varphi&#39;\)</span>.</li>
+</ol>
+      </div>
+      <footer>
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard shortcut: R"
+           href="https://wiki.soimort.org/math/logic/fol/metatheorems/src.md">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
+        <a class="history" accesskey="h"
+           title="Keyboard shortcut: H"
+           href="https://github.com/soimort/wiki/commits/gh-pages/math/logic/fol/metatheorems/src.md">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard shortcut: E"
+           href="https://github.com/soimort/wiki/edit/gh-pages/math/logic/fol/metatheorems/src.md">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
+           href="https://wiki.soimort.org/math/logic/fol/metatheorems">
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
+        Last updated: <span id="update-time">2017-09-04</span>
+      </footer>
+    </article></main>
+  </body>
+</html>

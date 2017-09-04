@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-07 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Mort Yao">
+    <meta name="dcterms.date" content="2017-09-04">
+    <title>Definability and Homomorphisms</title>
+    <link rel="canonical" href="https://wiki.soimort.org/math/logic/fol/definability">
+    <style type="text/css">code { white-space: pre; }</style>
+    <link rel="stylesheet" href="//cdn.soimort.org/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/mathsvg/latest/mathsvg.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/latest/Latin-Modern-Roman.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/latest/Latin-Modern-Mono.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/__/css/style.css">
+    <link rel="stylesheet" href="/__/css/pygments.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.soimort.org/jk/20160504/jk.min.js"></script>
+    <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>
+    <script src="/__/js/jk-minibar.js"></script>
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+  <body>
+<p hidden>
+<span class="math display">\[\def\textsc#1{\textsf{#1}}\]</span>
+</p>
+    <main><article>
+      <header>
+        <h1 class="title">Definability and Homomorphisms</h1>
+        <address class="author">Mort Yao</address>
+        <!-- h3 class="date">2017-09-04</h3 -->
+      </header>
+      <div id="content">
+<p><strong>Definability in a structure.</strong> Consider a structure <span class="math inline">\(\mathfrak{A}\)</span> and a formula <span class="math inline">\(\varphi\)</span> whose free variables are among <span class="math inline">\(v_1, \dots, v_k\)</span>. Then we can construct the <span class="math inline">\(k\)</span>-ary relation on <span class="math inline">\(|\mathfrak{A}|\)</span> <span class="math display">\[\{ \langle a_1, \dots, a_k \rangle | \models \varphi[\![ a_1, \dots, a_k]\!] \}\]</span> The <span class="math inline">\(k\)</span>-ary relation <span class="math inline">\(\varphi\)</span> on <span class="math inline">\(|\mathfrak{A}|\)</span> is said to be <em>definable</em> in <span class="math inline">\(\mathfrak{A}\)</span> iff there is a formula (whose free variables are <span class="math inline">\(v_1, \dots, v_k\)</span>) that defines it.</p>
+<p><strong><em>Example 1.</em></strong> Consider the real field as a structure <span class="math display">\[\mathfrak{R} = (\mathbb{R}; 0, 1, +, \cdot)\]</span></p>
+<ol type="1">
+<li>Since <span class="math display">\[\models_\mathfrak{R} \exists v_2 v_1 = v_2 \cdot v_2 \,[\![ a ]\!] \iff
+a \geq 0\]</span> we say that the formula <span class="math inline">\(\exists v_2 x = v_2 \cdot v_2\)</span> defines the relation <span class="math inline">\(x \geq 0\)</span>.</li>
+<li>The ordering relation <span class="math inline">\(\{ \langle a, b \rangle \in \mathbb{R} \times \mathbb{R} \,|\, a \leq b \}\)</span> is defined in the structure <span class="math inline">\(\mathfrak{R}\)</span> by the formula expressing <span class="math inline">\(v_1 \leq v_2\)</span>: <span class="math display">\[\exists v_3 v_2 = v_1 + v_3 \cdot v_3\]</span></li>
+</ol>
+<p><strong><em>Example 2.</em></strong> Consider the intended structure for the language of number theory: <span class="math display">\[\mathfrak{N} = (\mathbb{N}; 0, S, +, \cdot)\]</span></p>
+<ol type="1">
+<li>The ordering relation <span class="math inline">\(\{ \langle m, n \rangle \,|\, m &lt; n \}\)</span> is defined in <span class="math inline">\(\mathfrak{N}\)</span> by <span class="math display">\[\exists v_3 v_1 + \mathbf{S} v_3 = v_2\]</span></li>
+<li>For any natural number <span class="math inline">\(n\)</span>, <span class="math inline">\(\{ n \}\)</span> is definable by <span class="math display">\[v_1 = \mathbf{S} \cdots \mathbf{S} \mathbf{0}\]</span></li>
+<li>The set of primes is definable in <span class="math inline">\(\mathfrak{N}\)</span> via <span class="math display">\[\mathbf{1} &lt; v_1 \land \forall v_2 \forall v_3 (v_1 = v_2 \cdot v_3 \to v_2 = \mathbf{1} \lor v_3 = \mathbf{1})\]</span></li>
+<li>Exponentiation <span class="math inline">\(\{ \langle m,n,p \rangle \,|\, p = m^n \}\)</span> is definable in <span class="math inline">\(\mathfrak{N}\)</span>.</li>
+</ol>
+<p><strong>Definability of a class of structures.</strong> For a set <span class="math inline">\(\Sigma\)</span> of sentences, let <span class="math inline">\(\operatorname{Mod} \Sigma\)</span> be the class of all models of <span class="math inline">\(\Sigma\)</span>, i.e., the class of all structures for the language in which every member of <span class="math inline">\(\Sigma\)</span> is true. For a single sentence <span class="math inline">\(\tau\)</span>, we write simply <span class="math inline">\(\operatorname{Mod} \tau\)</span> instead of <span class="math inline">\(\operatorname{Mod} \{\tau\}\)</span>.</p>
+<p>A class <span class="math inline">\(\mathcal{K}\)</span> of structures for our first-order language is an <em>elementary class</em> (<span class="math inline">\(\text{EC}\)</span>) iff <span class="math inline">\(\mathcal{K} = \operatorname{Mod} \tau\)</span> for some sentence <span class="math inline">\(\tau\)</span>. <span class="math inline">\(\mathcal{K}\)</span> is an <em>elementary class in the wider sense</em> (<span class="math inline">\(\text{EC}_\Delta\)</span>) iff <span class="math inline">\(\mathcal{K} = \operatorname{Mod} \Sigma\)</span> for some set <span class="math inline">\(\Sigma\)</span> of sentences.</p>
+<p><strong><em>Example 3.</em></strong> The class of nonempty ordered set is an <span class="math inline">\(\text{EC}\)</span> defined by <span class="math inline">\(\operatorname{Mod} \tau\)</span>, where <span class="math inline">\(\tau\)</span> is the conjunction of the three sentences <span class="math display">\[\forall x \forall y \forall z (x P y \to y P z \to x P z)\]</span> <span class="math display">\[\forall x \forall y (x P y \lor x = y \lor y P x)\]</span> <span class="math display">\[\forall x \forall y (x P y \to \lnot y P x)\]</span></p>
+<p><strong>Homomorphism.</strong> Let <span class="math inline">\(\mathfrak{A}\)</span>, <span class="math inline">\(\mathfrak{B}\)</span> be structures for the language <span class="math inline">\(\mathcal{L}\)</span>. A <em>homomorphism</em> <span class="math inline">\(h\)</span> of <span class="math inline">\(\mathfrak{A}\)</span> into <span class="math inline">\(\mathfrak{B}\)</span> is a function <span class="math inline">\(h : |\mathfrak{A}| \to |\mathfrak{B}|\)</span> with the properties:</p>
+<ol type="a">
+<li>For each <span class="math inline">\(n\)</span>-place predicate parameter <span class="math inline">\(P\)</span> and each <span class="math inline">\(n\)</span>-tuple <span class="math inline">\(\langle a_1, \dots, a_n \rangle\)</span> of elements of <span class="math inline">\(|\mathfrak{A}|\)</span>, <span class="math display">\[\langle a_1, \dots, a_n \rangle \in P^\mathfrak{A} \iff
+\langle h(a_1), \dotsm h(a_n) \rangle \in P^\mathfrak{B}\]</span></li>
+<li>For each <span class="math inline">\(n\)</span>-place function symbol <span class="math inline">\(f\)</span> and each such <span class="math inline">\(n\)</span>-tuple, <span class="math display">\[h(f^\mathfrak{A}(a_1, \dots, a_n)) = f^\mathfrak{B}(h(a_1), \dots, h(a_n))\]</span> In the case of a constant symbol <span class="math inline">\(c\)</span>, <span class="math display">\[h(c^\mathfrak{A}) = c^\mathfrak{B}\]</span></li>
+</ol>
+<p>that is, the homomorphism <span class="math inline">\(h\)</span> preserves the relations and functions.</p>
+<p>If <span class="math inline">\(h\)</span> is one-to-one, it is called an <em>isomorphism</em> (or an <em>isomorphic embedding</em>) of <span class="math inline">\(\mathfrak{A}\)</span> into <span class="math inline">\(\mathfrak{B}\)</span>. If <span class="math inline">\(\operatorname{ran} h = |\mathfrak{B}|\)</span>, <span class="math inline">\(\mathfrak{A}\)</span> and <span class="math inline">\(\mathfrak{B}\)</span> are said to be <em>isomorphic</em>, written as <span class="math inline">\(\mathfrak{A} \cong \mathfrak{B}\)</span>.</p>
+<p><strong><em>Example 4.</em></strong> Let <span class="math inline">\(\mathbb{P}\)</span> be the set of positive integers, let <span class="math inline">\(&lt;_P\)</span> be the usual ordering relation on <span class="math inline">\(\mathbb{P}\)</span>, and let <span class="math inline">\(&lt;_N\)</span> be the usual ordering relation on <span class="math inline">\(\mathbb{N}\)</span>. Then <span class="math inline">\(h(n) = n - 1\)</span> is an isomorphism from the structure <span class="math inline">\((\mathbb{P}; &lt;_P)\)</span> onto <span class="math inline">\((\mathbb{N}; &lt;_N)\)</span>.</p>
+<p><strong>Substructure.</strong> Consider two structures <span class="math inline">\(\mathfrak{A}\)</span> and <span class="math inline">\(\mathfrak{B}\)</span> for the language such that <span class="math inline">\(|\mathfrak{A}| \subseteq |\mathfrak{B}|\)</span>. The identity map from <span class="math inline">\(|\mathfrak{A}|\)</span> into <span class="math inline">\(|\mathfrak{B}|\)</span> is an isomorphism of <span class="math inline">\(\mathfrak{A}\)</span> into <span class="math inline">\(\mathfrak{B}\)</span> iff</p>
+<ol type="a">
+<li><span class="math inline">\(P^\mathfrak{A}\)</span> is the restriction of <span class="math inline">\(P^\mathfrak{B}\)</span> to <span class="math inline">\(|\mathfrak{A}|\)</span>, for each predicate parameter <span class="math inline">\(P\)</span>.</li>
+<li><span class="math inline">\(f^\mathfrak{A}\)</span> is the restriction of <span class="math inline">\(f^\mathfrak{B}\)</span> to <span class="math inline">\(|\mathfrak{A}|\)</span>, for each function symbol <span class="math inline">\(f\)</span>, and <span class="math inline">\(c^\mathfrak{A} = c^\mathfrak{B}\)</span> for each constant symbol <span class="math inline">\(c\)</span>.</li>
+</ol>
+<p><span class="math inline">\(\mathfrak{A}\)</span> is said to be a <em>substructure</em> of <span class="math inline">\(\mathfrak{B}\)</span>, and <span class="math inline">\(\mathfrak{B}\)</span> is said to be an <em>extension</em> of <span class="math inline">\(\mathfrak{A}\)</span>.</p>
+<p>In the above Example 4, the identity map <span class="math inline">\(Id : \mathbb{P} \to \mathbb{N}\)</span> is an isomorphism of <span class="math inline">\((\mathbb{P}; &lt;_P)\)</span> into <span class="math inline">\((\mathbb{N}; &lt;_N)\)</span>; thus <span class="math inline">\((\mathbb{P}; &lt;_P)\)</span> is a substructure of <span class="math inline">\((\mathbb{N}; &lt;_N)\)</span>.</p>
+<p><strong>Homomorphism Theorem.</strong> Let <span class="math inline">\(h\)</span> be a homomorphism of <span class="math inline">\(\mathfrak{A}\)</span> into <span class="math inline">\(\mathfrak{B}\)</span>, and let <span class="math inline">\(s : V \to |\mathfrak{A}|\)</span>.</p>
+<ol type="a">
+<li>For any term <span class="math inline">\(t\)</span>, we have <span class="math inline">\(h(\bar s(t)) = \overline{h \circ s}(t)\)</span>, where <span class="math inline">\(\bar s(t)\)</span> is computed in <span class="math inline">\(\mathfrak{A}\)</span> and <span class="math inline">\(\overline{h \circ s}(t)\)</span> is computed in <span class="math inline">\(\mathfrak{B}\)</span>.</li>
+<li>For any quantifier-free formula <span class="math inline">\(\alpha\)</span> not containing the equality symbol, <span class="math display">\[\models_\mathfrak{A} \alpha[s] \iff
+\models_\mathfrak{B} \alpha[h \circ s]\]</span></li>
+<li>If <span class="math inline">\(h\)</span> is injective, then for any quantifier-free formula <span class="math inline">\(\alpha\)</span>, <span class="math display">\[\models_\mathfrak{A} \alpha[s] \iff
+\models_\mathfrak{B} \alpha[h \circ s]\]</span></li>
+<li>If <span class="math inline">\(h\)</span> is homomorphism of <span class="math inline">\(\mathfrak{A}\)</span> onto <span class="math inline">\(\mathfrak{B}\)</span>, then for any formula <span class="math inline">\(\alpha\)</span>, <span class="math display">\[\models_\mathfrak{A} \alpha[s] \iff
+\models_\mathfrak{B} \alpha[h \circ s]\]</span></li>
+</ol>
+<p><strong>Elementary equivalence.</strong> Two structures <span class="math inline">\(\mathfrak{A}\)</span> and <span class="math inline">\(\mathfrak{B}\)</span> are said to be <em>elementarily equivalent</em>, written as <span class="math inline">\(\mathfrak{A} \equiv \mathfrak{B}\)</span>, iff for any sentence <span class="math inline">\(\sigma\)</span>, <span class="math display">\[\models_\mathfrak{A} \sigma \iff \models_\mathfrak{B} \sigma\]</span></p>
+<p><strong>Corollary 5.</strong> Isomorphic structures are elementarily equivalent: <span class="math display">\[\mathfrak{A} \cong \mathfrak{B} \iff
+\mathfrak{A} \equiv \mathfrak{B}\]</span></p>
+<p>There are, however, elementarily equivalent structures that are not isomorphic. For example, the structure <span class="math inline">\((\mathbb{R}; &lt;_R)\)</span> is elementarily equivalent to the structure <span class="math inline">\((\mathbb{Q}; &lt;_Q)\)</span>; but <span class="math inline">\(\mathbb{Q}\)</span> is a countable set whereas <span class="math inline">\(\mathbb{R}\)</span> is not, so they cannot be isomorphic. (Isomorphism is a bijective homomorphism therefore two isomorphic structures must have the same cardinality.)</p>
+<p><strong>Automorphism.</strong> An <em>automorphism</em> of the structure <span class="math inline">\(\mathfrak{A}\)</span> is an isomorphism of <span class="math inline">\(\mathfrak{A}\)</span> onto itself. The identity function <span class="math inline">\(Id\)</span> on <span class="math inline">\(|\mathfrak{A}|\)</span> is a trivial automorphism of <span class="math inline">\(\mathfrak{A}\)</span>. <span class="math inline">\(\mathfrak{A}\)</span> is said to be <em>rigid</em> if <span class="math inline">\(Id\)</span> is its only automorphism.</p>
+<p><strong>Corollary 6.</strong> Let <span class="math inline">\(h\)</span> be an automorphism of the structure <span class="math inline">\(\mathfrak{A}\)</span>, and let <span class="math inline">\(R\)</span> be an <span class="math inline">\(n\)</span>-ary relation on <span class="math inline">\(|\mathfrak{A}|\)</span> definable in <span class="math inline">\(\mathfrak{A}\)</span>. Then for any <span class="math inline">\(a_1, \dots, a_n\)</span> in <span class="math inline">\(|\mathfrak{A}|\)</span>, <span class="math display">\[\langle a_1, \dots, a_n \rangle \in R \iff
+\langle h(a_1), \dots, h(a_n) \rangle \in R\]</span> that is, an automorphism preserves the definable relations.</p>
+<p><em>Proof.</em> Let <span class="math inline">\(\varphi\)</span> be a formula that defines <span class="math inline">\(R\)</span> in <span class="math inline">\(\mathfrak{A}\)</span>. Then it follows from the homomorphism theorem that <span class="math display">\[\models_\mathfrak{A} \varphi [\![ a_1, \dots, a_n ]\!] \iff
+\models_\mathfrak{A} \varphi [\![ h(a_1, \dots, a_n ]\!]\]</span> <p style='text-align:right !important;text-indent:0 !important;position:relative;top:-1em'>&#9632;</p></p>
+<p><strong><em>Example 7.</em></strong> The set <span class="math inline">\(\mathbb{N}\)</span> is not definable in the structure <span class="math inline">\((\mathbb{R}; &lt;)\)</span>.</p>
+      </div>
+      <footer>
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard shortcut: R"
+           href="https://wiki.soimort.org/math/logic/fol/definability/src.md">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
+        <a class="history" accesskey="h"
+           title="Keyboard shortcut: H"
+           href="https://github.com/soimort/wiki/commits/gh-pages/math/logic/fol/definability/src.md">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard shortcut: E"
+           href="https://github.com/soimort/wiki/edit/gh-pages/math/logic/fol/definability/src.md">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
+           href="https://wiki.soimort.org/math/logic/fol/definability">
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
+        Last updated: <span id="update-time">2017-09-04</span>
+      </footer>
+    </article></main>
+  </body>
+</html>
