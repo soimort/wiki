@@ -8,7 +8,7 @@
     <meta name="generator" content="pandoc">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="author" content="Mort Yao">
-    <meta name="dcterms.date" content="2017-03-31">
+    <meta name="dcterms.date" content="2017-09-06">
     <title>Mathematical Logic</title>
     <link rel="canonical" href="https://wiki.soimort.org/math/logic">
     <style type="text/css">code { white-space: pre; }</style>
@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/__/css/style.css">
     <link rel="stylesheet" href="/__/css/pygments.css">
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
     <!--[if lt IE 9]>
       <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
     <![endif]-->
@@ -37,31 +37,30 @@
       <header>
         <h1 class="title">Mathematical Logic</h1>
         <address class="author">Mort Yao</address>
-        <!-- h3 class="date">2017-03-31</h3 -->
+        <!-- h3 class="date">2017-09-06</h3 -->
       </header>
       <nav id="TOC">
 <ul>
-<li><a href="#classical-logic"><span class="toc-section-number">1</span> Classical logic</a></li>
-<li><a href="#axiomatic-set-theory"><span class="toc-section-number">2</span> Axiomatic set theory</a></li>
-<li><a href="#model-theory"><span class="toc-section-number">3</span> Model theory</a></li>
-<li><a href="#computability-theory"><span class="toc-section-number">4</span> Computability theory</a></li>
-<li><a href="#structural-proof-theory"><span class="toc-section-number">5</span> Structural proof theory</a></li>
-<li><a href="#non-classical-logic"><span class="toc-section-number">6</span> Non-classical logic</a></li>
+<li><a href="#classical-logic"><span class="toc-section-number">1</span> Classical Logic</a></li>
+<li><a href="#axiomatic-set-theory"><span class="toc-section-number">2</span> Axiomatic Set Theory</a></li>
+<li><a href="#model-theory"><span class="toc-section-number">3</span> Model Theory</a></li>
+<li><a href="#computability-and-recursion-theory"><span class="toc-section-number">4</span> Computability and Recursion Theory</a></li>
+<li><a href="#proof-theory"><span class="toc-section-number">5</span> Proof Theory</a></li>
+<li><a href="#non-classical-logic"><span class="toc-section-number">6</span> Non-Classical Logic</a></li>
 </ul>
       </nav>
       <div id="content">
-<p><em>Prerequisites</em>: Most content on this topic assumes some mathematical proof techniques (incl. mathematical induction) and basic knowledge of <a href="/math/set">naive set theory</a>. The following books might be a good refresher:</p>
+<p><em>Prerequisites.</em> Most content on this topic assumes some mathematical proof techniques (incl. mathematical induction) and basic knowledge of naive set theory. The following books might be a good refresher: (The first book also provides a basic introduction to sentential (propositional) logic; The second book, as a treatment of naive set theory, actually utilizes axioms.)</p>
 <ul>
 <li>Daniel J. Velleman. <strong><em>How to Prove It: A Structured Approach.</em></strong></li>
 <li>Paul Halmos. <strong><em>Naive Set Theory.</em></strong></li>
 </ul>
-<p>The first book also provides a fair introduction to propositional (sentential) logic.</p>
-<hr />
+<p>At a later point, our informal approaches to reasoning such as the induction principle, and the unrestricted use of “naive” sets will be properly justified and formalized by proof theory and axiomatic set theory. So these prerequisites are really just a minimal to bootstrap our study on logic.</p>
 <section id="classical-logic" class="level1">
-<h1><span class="header-section-number">1</span> Classical logic</h1>
+<h1><span class="header-section-number">1</span> Classical Logic</h1>
 <p>Textbook:</p>
 <ul>
-<li>Herbert B. Enderton. <strong><em>A Mathematical Introduction to Logic, 2nd edition.</em></strong> (<strong>AMIL</strong>)
+<li>Herbert B. Enderton. <strong><em>A Mathematical Introduction to Logic, 2nd edition.</em></strong>
 <ul>
 <li><a href="http://web.archive.org/web/20150712180839/http://www.math.ucla.edu/~hbe/amil/">Author’s commentary</a> (Internet Archive)</li>
 <li><a href="http://dbfin.com/logic/enderton/">Solutions</a></li>
@@ -86,15 +85,24 @@
 <li>Robert S. Wolf. <strong><em>A Tour Through Mathematical Logic.</em></strong></li>
 </ul>
 <ol>
-<li><a href="intro/">Introduction</a></li>
-<li>Propositional logic (sentential logic)</li>
-<li>First-order logic</li>
+<li>Propositional logic</li>
+<li>First-order logic
+<ul>
+<li><a href="fol/languages/">First-order languages</a></li>
+<li><a href="fol/structures/">Structures</a></li>
+<li><a href="fol/definability/">Definability and homomorphisms</a></li>
+<li><a href="fol/deductions/">Formal deductions</a></li>
+<li><a href="fol/metatheorems/">Some metatheorems of deduction</a></li>
+<li><a href="fol/soundness/">Soundness</a></li>
+<li><a href="fol/completeness/">Completeness</a></li>
+<li><a href="fol/compactness/">Compactness</a></li>
+</ul></li>
 <li>Second-order logic</li>
 <li>Modal logic</li>
 </ol>
 </section>
 <section id="axiomatic-set-theory" class="level1">
-<h1><span class="header-section-number">2</span> Axiomatic set theory</h1>
+<h1><span class="header-section-number">2</span> Axiomatic Set Theory</h1>
 <p>Reading:</p>
 <ul>
 <li>Herbert B. Enderton. <strong><em>The Elements of Set Theory.</em></strong></li>
@@ -104,7 +112,7 @@
 <p>See also Peter Smith’s suggestions for reading on the set theory: <a href="http://www.logicmatters.net/tyl/set_theory/">Serious set theory</a> (also includes set theories other than ZFC, such as NBG)</p>
 </section>
 <section id="model-theory" class="level1">
-<h1><span class="header-section-number">3</span> Model theory</h1>
+<h1><span class="header-section-number">3</span> Model Theory</h1>
 <p>Reading:</p>
 <ul>
 <li>Maria Manzano. <strong><em>Model Theory.</em></strong></li>
@@ -114,8 +122,8 @@
 <li>Algebraic logic</li>
 </ol>
 </section>
-<section id="computability-theory" class="level1">
-<h1><span class="header-section-number">4</span> Computability theory</h1>
+<section id="computability-and-recursion-theory" class="level1">
+<h1><span class="header-section-number">4</span> Computability and Recursion Theory</h1>
 <p>Reading:</p>
 <ul>
 <li>Peter Smith. <strong><em>An Introduction to Gödel’s Theorems.</em></strong></li>
@@ -131,18 +139,24 @@
 <li>Undecidability and Gödel’s incompleteness theorems</li>
 </ol>
 </section>
-<section id="structural-proof-theory" class="level1">
-<h1><span class="header-section-number">5</span> Structural proof theory</h1>
+<section id="proof-theory" class="level1">
+<h1><span class="header-section-number">5</span> Proof Theory</h1>
 <p>Reading:</p>
 <ul>
 <li>Sara Negri, Jan von Plato and Aarne Ranta. <strong><em>Structural Proof Theory.</em></strong></li>
 </ul>
 <ol>
+<li>Structural proof theory
+<ul>
 <li>Deep inference and cirquent calculi</li>
+</ul></li>
+<li>Ordinal analysis</li>
+<li>Provability logic</li>
+<li>Reverse mathematics</li>
 </ol>
 </section>
 <section id="non-classical-logic" class="level1">
-<h1><span class="header-section-number">6</span> Non-classical logic</h1>
+<h1><span class="header-section-number">6</span> Non-Classical Logic</h1>
 <p>Reading:</p>
 <ul>
 <li>Graham Priest. <strong><em>An Introduction to Non-Classical Logic: From If to Is, 2nd edition.</em></strong></li>
@@ -203,7 +217,7 @@
           <i class="fa fa-anchor" aria-hidden="true"></i>
           <code>Permalink</code>
         </a> |
-        Last updated: <span id="update-time">2017-03-31</span>
+        Last updated: <span id="update-time">2017-09-06</span>
       </footer>
     </article></main>
   </body>

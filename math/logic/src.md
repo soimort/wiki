@@ -1,24 +1,25 @@
 % Mathematical Logic
 % Mort Yao
-% 2017-03-31
+% 2017-09-06
 
-*Prerequisites*: Most content on this topic assumes some mathematical proof techniques (incl. mathematical induction) and basic knowledge of [naive set theory](/math/set). The following books might be a good refresher:
+*Prerequisites.* Most content on this topic assumes some mathematical proof techniques (incl. mathematical induction) and basic knowledge of naive set theory. The following books might be a good refresher:
+(The first book also provides a basic introduction to sentential (propositional) logic; The second book, as a treatment of naive set theory, actually utilizes axioms.)
 
 * Daniel J. Velleman.
 ***How to Prove It: A Structured Approach.***
 * Paul Halmos.
 ***Naive Set Theory.***
 
-The first book also provides a fair introduction to propositional (sentential) logic.
+At a later point, our informal approaches to reasoning such as the induction principle, and the unrestricted use of "naive" sets will be properly justified and formalized by proof theory and axiomatic set theory. So these prerequisites are really just a minimal to bootstrap our study on logic.
 
----
 
-# Classical logic
+
+# Classical Logic
 
 Textbook:
 
 * Herbert B. Enderton.
-***A Mathematical Introduction to Logic, 2nd edition.*** (**AMIL**)
+***A Mathematical Introduction to Logic, 2nd edition.***
     * [Author's commentary](http://web.archive.org/web/20150712180839/http://www.math.ucla.edu/~hbe/amil/) (Internet Archive)
     * [Solutions](http://dbfin.com/logic/enderton/)
     * [Book notes by Peter Smith](http://www.logicmatters.net/tyl/booknotes/enderton/)
@@ -39,15 +40,22 @@ Supplementary reading:
 * Robert S. Wolf.
 ***A Tour Through Mathematical Logic.***
 
-#. [Introduction](intro/)
-#. Propositional logic (sentential logic)
+#. Propositional logic
 #. First-order logic
+   * [First-order languages](fol/languages/)
+   * [Structures](fol/structures/)
+   * [Definability and homomorphisms](fol/definability/)
+   * [Formal deductions](fol/deductions/)
+   * [Some metatheorems of deduction](fol/metatheorems/)
+   * [Soundness](fol/soundness/)
+   * [Completeness](fol/completeness/)
+   * [Compactness](fol/compactness/)
 #. Second-order logic
 #. Modal logic
 
 
 
-# Axiomatic set theory
+# Axiomatic Set Theory
 
 Reading:
 
@@ -62,7 +70,7 @@ See also Peter Smith's suggestions for reading on the set theory: [Serious set t
 
 
 
-# Model theory
+# Model Theory
 
 Reading:
 
@@ -74,7 +82,7 @@ Reading:
 
 
 
-# Computability theory
+# Computability and Recursion Theory
 
 Reading:
 
@@ -92,18 +100,22 @@ Reading:
 
 
 
-# Structural proof theory
+# Proof Theory
 
 Reading:
 
 * Sara Negri, Jan von Plato and Aarne Ranta.
 ***Structural Proof Theory.***
 
-#. Deep inference and cirquent calculi
+#. Structural proof theory
+   * Deep inference and cirquent calculi
+#. Ordinal analysis
+#. Provability logic
+#. Reverse mathematics
 
 
 
-# Non-classical logic
+# Non-Classical Logic
 
 Reading:
 
