@@ -8,7 +8,7 @@
     <meta name="generator" content="pandoc">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta name="author" content="Mort Yao">
-    <meta name="dcterms.date" content="2017-09-04">
+    <meta name="dcterms.date" content="2017-09-06">
     <title>First-Order Languages</title>
     <link rel="canonical" href="https://wiki.soimort.org/math/logic/fol/languages">
     <style type="text/css">code { white-space: pre; }</style>
@@ -37,7 +37,7 @@
       <header>
         <h1 class="title">First-Order Languages</h1>
         <address class="author">Mort Yao</address>
-        <!-- h3 class="date">2017-09-04</h3 -->
+        <!-- h3 class="date">2017-09-06</h3 -->
       </header>
       <div id="content">
 <p><strong>Symbols.</strong> We take these following symbols to construct our first-order language <span class="math inline">\(\mathcal{L}\)</span>:</p>
@@ -67,7 +67,7 @@
 (\alpha \leftrightarrow \beta) &amp;\quad\text{ is equivalent to }\quad
 (\lnot((\alpha \to \beta) \to (\lnot (\beta \to \alpha))))
 \end{align*}\]</span> The existential quantifier <span class="math inline">\(\exists\)</span> is also seen as an abbreviation: <span class="math display">\[\exists x \alpha \quad\text{ is equivalent to }\quad
-(\lnot (\forall x (\lnot \alpha)))\]</span> For 2-place predicate and function symbols, it is conventional to use infix notations instead, e.g., <span class="math inline">\(u = t\)</span> abbreviates <span class="math inline">\(= u\ t\)</span>, <span class="math inline">\(u \in t\)</span> abbreviates <span class="math inline">\(\in u\ t\)</span>. Moreover, <span class="math inline">\(u \neq t\)</span> abbreviates <span class="math inline">\((\lnot = u\ t)\)</span>; similarly, <span class="math inline">\(u \notin t\)</span> abbreviates <span class="math inline">\((\lnot \in u\ t)\)</span>.</p>
+(\lnot \forall x (\lnot \alpha))\]</span> For 2-place predicate and function symbols, it is conventional to use infix notations instead, e.g., <span class="math inline">\(u = t\)</span> abbreviates <span class="math inline">\(= u\ t\)</span>, <span class="math inline">\(u \in t\)</span> abbreviates <span class="math inline">\(\in u\ t\)</span>. Moreover, <span class="math inline">\(u \neq t\)</span> abbreviates <span class="math inline">\((\lnot = u\ t)\)</span>; similarly, <span class="math inline">\(u \notin t\)</span> abbreviates <span class="math inline">\((\lnot \in u\ t)\)</span>.</p>
 <p>An <em>expression</em> is any finite sequence of symbols. Among all possible expressions, terms and formulas are of our interest.</p>
 <p><strong>Terms.</strong> Let <span class="math inline">\(\mathcal{L}\)</span> be a first-order language. We define <span class="math display">\[\text{Term}^\mathcal{L}_0 = \{ \langle a \rangle : a \text{ is a variable or constant symbol} \}\]</span> <span class="math display">\[\text{Term}^\mathcal{L}_{n+1} = \{ f t_1 \cdots t_m :
 f \text{ is a }m\text{-place function symbol},
@@ -144,7 +144,7 @@ t_1,\dots,t_m \in \bigcup_{0 \leq i \leq n}\text{Term}^\mathcal{L}_i \}\]</span>
           <i class="fa fa-anchor" aria-hidden="true"></i>
           <code>Permalink</code>
         </a> |
-        Last updated: <span id="update-time">2017-09-04</span>
+        Last updated: <span id="update-time">2017-09-06</span>
       </footer>
     </article></main>
   </body>

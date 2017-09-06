@@ -1,6 +1,6 @@
 % First-Order Languages
 % Mort Yao
-% 2017-09-04
+% 2017-09-06
 
 **Symbols.** We take these following symbols to construct our first-order language $\mathcal{L}$:
 
@@ -37,7 +37,7 @@
 \end{align*}
 The existential quantifier $\exists$ is also seen as an abbreviation:
 $$\exists x \alpha \quad\text{ is equivalent to }\quad
-(\lnot (\forall x (\lnot \alpha)))$$
+(\lnot \forall x (\lnot \alpha))$$
 For 2-place predicate and function symbols, it is conventional to use infix notations instead, e.g., $u = t$ abbreviates $= u\ t$, $u \in t$ abbreviates $\in u\ t$. Moreover, $u \neq t$ abbreviates $(\lnot = u\ t)$; similarly, $u \notin t$ abbreviates $(\lnot \in u\ t)$.
 
 An *expression* is any finite sequence of symbols. Among all possible expressions, terms and formulas are of our interest.
