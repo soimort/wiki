@@ -60,7 +60,7 @@ Supplementary reading:
 Reading:
 
 * Herbert B. Enderton.
-***The Elements of Set Theory.***
+***Elements of Set Theory.***
 * Raymond M. Smullyan and Melvin Fitting.
 ***Set Theory and the Continuum Problem.***
 * Thomas Jech.
