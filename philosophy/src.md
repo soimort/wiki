@@ -1,6 +1,6 @@
 % Philosophy
 % Mort Yao
-% 2017-09-13
+% 2017-09-14
 
 > "*Philosophy* is the study of general and fundamental problems concerning matters such as existence, knowledge, values, reason, mind, and language."
 > -- Wikipedia
@@ -11,11 +11,12 @@ Topics studied in philosophy:
     * **Ontology**: Study of the basic categories of being of entities and their relations.
 * [**Epistemology**](epistemology/): Study of knowledge.
 * [**Logic**](logic/): Study of reasoning and argument.
-    * Mathematical logic
+    * Philosophy of logic
 * Philosophy of mathematics and philosophy of science
     * Foundations of mathematics
     * Foundations of statistics
     * Philosophy of quantum theory
+* Philosophy of space and time
 * Philosophy of mind and philosophy of language
     * Psychology and cognitive science
     * Linguistics
