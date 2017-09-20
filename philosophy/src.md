@@ -1,6 +1,6 @@
 % Philosophy
 % Mort Yao
-% 2017-09-18
+% 2017-09-20
 
 > "*Philosophy* is the study of general and fundamental problems concerning matters such as existence, knowledge, values, reason, mind, and language."
 > -- Wikipedia
@@ -58,11 +58,15 @@ The tradition of philosophy is diverse on both emphasis and methodology.
     * *Principia Mathematica* (coauthored with Alfred Whitehead)
 * L. E. J. Brouwer
 * Alfred Tarski
-* W.V.O. Quine
+* W. V. O. Quine
+    * ***From a Logical Point of View***
 * Michael Dummett
+    * ***Truth and Other Enigmas***
     * ***Elements of Intuitionism***
 * Hilary Putnam
 * Noam Chomsky
+* Saul Kripke
+    * ***Naming and Necessity***
 
 
 
@@ -73,7 +77,7 @@ The tradition of philosophy is diverse on both emphasis and methodology.
 ## Idealism
 
 * Immanuel Kant
-* G.W.F. Hegel
+* G. W. F. Hegel
 * Arthur Schopenhauer
 
 ## Materialism and Marxism
