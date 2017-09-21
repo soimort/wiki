@@ -1,6 +1,6 @@
 % Philosophy
 % Mort Yao
-% 2017-09-20
+% 2017-09-21
 
 > "*Philosophy* is the study of general and fundamental problems concerning matters such as existence, knowledge, values, reason, mind, and language."
 > -- Wikipedia
@@ -17,11 +17,11 @@ Topics studied in philosophy:
     * Philosophy of logic
     * Philosophy of mathematics
     * Philosophy of quantum theory
+* Philosophy of religion
+    * Natural theology
 * Philosophy of mind and philosophy of language
     * Psychology and cognitive science
     * Linguistics
-* Philosophy of religion
-    * Natural theology
 * **Axiology** (value theory): Study of human values with regard to the society.
     * Ethics
     * Aesthetics
@@ -60,6 +60,7 @@ The tradition of philosophy is diverse on both emphasis and methodology.
 * Alfred Tarski
 * W. V. O. Quine
     * ***From a Logical Point of View***
+    * ***Philosophy of Logic***
 * Michael Dummett
     * ***Truth and Other Enigmas***
     * ***Elements of Intuitionism***
@@ -74,13 +75,32 @@ The tradition of philosophy is diverse on both emphasis and methodology.
 
 ## Realism (Platonism)
 
+* Plato
+
 ## Idealism
 
 * Immanuel Kant
 * G. W. F. Hegel
 * Arthur Schopenhauer
 
-## Materialism and Marxism
+## Rationalism
+
+* René Descartes
+* Baruch Spinoza
+* Gottfried Leibniz
+
+## Empiricism
+
+* Francis Bacon
+* Thomas Hobbes
+* John Locke
+* George Berkeley
+* David Hume
+
+## Historical materialism and Marxism
+
+* Karl Marx
+* The Frankfurt School
 
 ## Existentialism
 
@@ -89,3 +109,19 @@ The tradition of philosophy is diverse on both emphasis and methodology.
 * Friedrich Nietzsche
 * Paul Sartre
 * Lev Shestov
+
+## Semiotics / semiology
+
+* Ferdinand de Saussure
+* Roland Barthes
+
+## Psychoanalysis
+
+* Sigmund Freud
+* Carl Jung
+* Jacques Lacan
+
+## Post-structuralism
+
+* Jacques Derrida
+* Michel Foucault
