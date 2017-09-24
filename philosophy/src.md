@@ -1,6 +1,6 @@
 % Philosophy
 % Mort Yao
-% 2017-09-23
+% 2017-09-24
 
 > "*Philosophy* is the study of general and fundamental problems concerning matters such as existence, knowledge, values, reason, mind, and language."
 > -- Wikipedia
@@ -82,6 +82,7 @@ The tradition of philosophy is diverse on both emphasis and methodology.
 ## Idealism
 
 * Immanuel Kant
+    * *Critique of Pure Reason*
 * G. W. F. Hegel
 * Arthur Schopenhauer
 
@@ -98,6 +99,12 @@ The tradition of philosophy is diverse on both emphasis and methodology.
 * John Locke
 * George Berkeley
 * David Hume
+
+## Pragmatism
+
+* William James
+* John Dewey
+* Charles Sanders Peirce
 
 ## Historical materialism and Marxism
 
