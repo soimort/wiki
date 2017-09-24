@@ -62,6 +62,7 @@ The tradition of philosophy is diverse on both emphasis and methodology.
 * W. V. O. Quine
     * ***From a Logical Point of View***
     * ***Philosophy of Logic***
+* Donald Davidson
 * Michael Dummett
     * ***Truth and Other Enigmas***
     * ***Elements of Intuitionism***
