@@ -1,6 +1,6 @@
 % Philosophy
 % Mort Yao
-% 2017-09-24
+% 2017-09-25
 
 > "*Philosophy* is the study of general and fundamental problems concerning matters such as existence, knowledge, values, reason, mind, and language."
 > -- Wikipedia
@@ -44,6 +44,7 @@ The tradition of philosophy is diverse on both emphasis and methodology.
       * [*Posterior Analytics*](http://ebooks.adelaide.edu.au/a/aristotle/a8poa/)
       * [*Topics*](http://ebooks.adelaide.edu.au/a/aristotle/a8t/)
       * [*Sophistical Refutations*](http://ebooks.adelaide.edu.au/a/aristotle/sophistical/)
+    * [***Metaphysics***](https://ebooks.adelaide.edu.au/a/aristotle/metaphysics/)
 * George Boole
     * ***An Investigation of the Laws of Thought on Which are Founded the Mathematical Theories of Logic and Probabilities***
 * Gottlob Frege
