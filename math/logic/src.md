@@ -1,6 +1,6 @@
 % Mathematical Logic
 % Mort Yao
-% 2017-09-06
+% 2017-10-20
 
 *Prerequisites.* Most content on this topic assumes some mathematical proof techniques (incl. mathematical induction) and basic knowledge of naive set theory. The following books might be a good refresher:
 (The first book also provides a basic introduction to sentential (propositional) logic; The second book, as a treatment of naive set theory, actually utilizes axioms.)
@@ -76,6 +76,8 @@ Reading:
 
 * Maria Manzano.
 ***Model Theory.***
+* C.C. Chang, H.J. Keisler.
+***Model Theory, 3rd edition.***
 
 #. Kripke semantics
 #. Algebraic logic
