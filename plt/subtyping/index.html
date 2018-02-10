@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-07
+     last adapted: 2017-09-25 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Mort Yao">
+    <meta name="dcterms.date" content="2018-02-08">
+    <title>Subtyping</title>
+    <link rel="canonical" href="https://wiki.soimort.org/plt/subtyping">
+    <style type="text/css">code { white-space: pre; }</style>
+    <link rel="stylesheet" href="//cdn.soimort.org/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/mathsvg/latest/mathsvg.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/latest/Latin-Modern-Roman.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/latest/Latin-Modern-Mono.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/__/css/style.css">
+    <link rel="stylesheet" href="/__/css/pygments.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.soimort.org/jk/20160504/jk.min.js"></script>
+    <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>
+    <script src="/__/js/jk-minibar.js"></script>
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+  <body>
+<p hidden>
+<span class="math display">\[\def\textsc#1{\textsf{#1}}\]</span>
+</p>
+    <main><article>
+      <header>
+        <h1 class="title">Subtyping</h1>
+        <!-- h3 class="date">2018-02-08</h3 -->
+      </header>
+      <div id="content">
+<p><em>Subtyping</em> is a form of type polymorphism, represented as a preorder on types: <span class="math display">\[\tau&#39; \preceq \tau\]</span> we say that <span class="math inline">\(\tau&#39;\)</span> is a <em>subtype</em> of <span class="math inline">\(\tau\)</span>, and that <span class="math inline">\(\tau\)</span> is a <em>supertype</em> of <span class="math inline">\(\tau&#39;\)</span>. (Note that <span class="math inline">\(\preceq\)</span> need not be a partial order, as no antisymmetry is assumed, i.e., it may be the case that both <span class="math inline">\(\tau&#39; \preceq \tau\)</span> and <span class="math inline">\(\tau \preceq \tau&#39;\)</span> but not <span class="math inline">\(\tau&#39; = \tau\)</span>.)</p>
+<p>As a preorder, the subtyping relation satisfies reflexivity: <span class="math display">\[\frac{}{
+\tau \preceq \tau
+}\qquad\textsc{ST-Refl}\]</span> and transitivity: <span class="math display">\[\frac{
+\tau&#39; \preceq \tau&#39;&#39; \qquad
+\tau&#39;&#39; \preceq \tau
+}{
+\tau&#39; \preceq \tau
+}\qquad\textsc{ST-Trans}\]</span></p>
+<p>On function types, the following rule applies: <span class="math display">\[\frac{
+\tau_1 \preceq \tau_1&#39; \qquad
+\tau_2&#39; \preceq \tau_2
+}{
+\tau_1&#39; \to \tau_2&#39; \preceq \tau_1 \to \tau_2
+}\qquad\textsc{ST-Fun}\]</span> The <span class="math inline">\(\to\)</span> type constructor is said to be <em>contravariant</em> in the argument type and <em>covariant</em> in the return type.</p>
+<p>The typing rule of <em>subsumption</em> applies: <span class="math display">\[\frac{
+\Gamma \vdash t : \tau&#39;
+\qquad \tau&#39; \preceq \tau
+}{
+\Gamma \vdash t : \tau
+}\qquad\textsc{T-Sub}\]</span></p>
+<p><strong>Nominal vs. structural subtyping.</strong> <em>Nominal subtyping</em> requires an explicit declaration of the subtype/supertype relation. In contrast, in <em>structural subtyping</em>, the structure of two types determines the subtype/supertype relation.</p>
+<p><strong>Inclusive vs. coercive subtyping.</strong> Given <span class="math inline">\(\tau&#39; \preceq \tau\)</span>. In an <em>inclusive</em> implementation of subtyping, a term <span class="math inline">\(t&#39; : \tau&#39;\)</span> is just the same value (of type <span class="math inline">\(\tau\)</span>) <span class="math inline">\(t&#39; : \tau\)</span>. In a <em>coercive</em> implementation of subtyping, a term <span class="math inline">\(t&#39; : \tau&#39;\)</span> must be converted to another value (of type <span class="math inline">\(\tau\)</span>) <span class="math inline">\(t : \tau\)</span>, using an implicit type conversion function <span class="math inline">\(coerce: \tau&#39; \to \tau\)</span> from subtype to supertype (e.g., from an integer to a floating-point number).</p>
+<p><strong>Mutable references.</strong> Write-only references (i.e., <em>sinks</em>) are contravariant, and read-only references (i.e., <em>sources</em>) are covariant. Mutable references which act as both sources and sinks are invariant.</p>
+<p><strong>Behavioral subtyping in OOP.</strong> In the scope of object-oriented programming where side effects are allowed, the notion of <em>behavioral subtyping</em> and the <em>Liskov substitution principle</em> apply, which are stronger than the above (sub)typing rules. Behavioral subtyping requires that subtypes preserve all invariants guaranteed by the supertypes in some contract; this problem is generally undecidable thus cannot be guaranteed by a type checker.</p>
+<p><strong>Subtyping and FP.</strong></p>
+<p>Conventionally, functional languages like ML and Haskell provide no direct support for subtype polymorphism. Subtyping raises difficulty for type inference; moreover, it is problematic in the presence of mutability. See:</p>
+<ul>
+<li><a href="https://redd.it/423o0c" class="uri">https://redd.it/423o0c</a></li>
+</ul>
+<p>Standard ML’s parametric polymorphism may be used to encode the subtyping hierarchy. See:</p>
+<ul>
+<li><a href="http://mlton.org/ObjectOrientedProgramming" class="uri">http://mlton.org/ObjectOrientedProgramming</a></li>
+<li>Matthew Fluet and Riccardo Pucella, “Phantom Types and Subtyping.” [<a href="https://www.cs.rit.edu/~mtf/research/phantom-subtyping/jfp06/jfp06.pdf">PDF</a>]</li>
+</ul>
+<p>Type inference has been implemented on MLsub, a superset of the core ML language. See:</p>
+<ul>
+<li>Stephen Dolan and Alan Mycroft, “Polymorphism, Subtyping, and Type Inference in MLsub.” [<a href="https://www.cl.cam.ac.uk/~sd601/papers/mlsub-preprint.pdf">PDF</a>] [<a href="https://github.com/stedolan/mlsub">Code</a>]</li>
+</ul>
+      </div>
+      <footer>
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard shortcut: R"
+           href="https://wiki.soimort.org/plt/subtyping/src.md">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
+        <a class="history" accesskey="h"
+           title="Keyboard shortcut: H"
+           href="https://github.com/soimort/wiki/commits/gh-pages/plt/subtyping/src.md">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard shortcut: E"
+           href="https://github.com/soimort/wiki/edit/gh-pages/plt/subtyping/src.md">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
+           href="https://wiki.soimort.org/plt/subtyping">
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
+        Last updated: <span id="update-time">2018-02-08</span>
+        <address class="author">Mort Yao</address>
+      </footer>
+    </article></main>
+  </body>
+</html>
