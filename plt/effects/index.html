@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!-- Academia (pandoc HTML5 template)
+     designer:     soimort
+     last updated: 2016-05-07
+     last adapted: 2017-09-25 -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Mort Yao">
+    <meta name="dcterms.date" content="2018-02-11">
+    <title>Effects</title>
+    <link rel="canonical" href="https://wiki.soimort.org/plt/effects">
+    <style type="text/css">code { white-space: pre; }</style>
+    <link rel="stylesheet" href="//cdn.soimort.org/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/mathsvg/latest/mathsvg.min.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/latest/Latin-Modern-Roman.css">
+    <link rel="stylesheet" href="//cdn.soimort.org/fonts/latest/Latin-Modern-Mono.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/__/css/style.css">
+    <link rel="stylesheet" href="/__/css/pygments.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+    <script src="//cdn.soimort.org/jk/20160504/jk.min.js"></script>
+    <script src="//cdn.soimort.org/mathsvg/latest/mathsvg.min.js"></script>
+    <script src="/__/js/jk-minibar.js"></script>
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+  </head>
+  <body>
+<p hidden>
+<span class="math display">\[\def\textsc#1{\textsf{#1}}\]</span>
+</p>
+    <main><article>
+      <header>
+        <h1 class="title">Effects</h1>
+        <!-- h3 class="date">2018-02-11</h3 -->
+      </header>
+      <div id="content">
+<p><em>Computational effects</em> (sometimes called <em>side-effects</em>, or simply <em>effects</em>) are anything “impure” about a computation: I/O, states, exceptions, non-determinism and partiality / non-termination. In contrast, a genuinely pure computation would compute a total computable function deterministically without causing any effect.</p>
+<p>A <em>monad</em> is the denotational semantics of an effect. On how monads can be used to model effects, see:</p>
+<ul>
+<li><a href="https://stackoverflow.com/a/2488852" class="uri">https://stackoverflow.com/a/2488852</a></li>
+<li>Philip Wadler, “Monads for Functional Programming.” [<a href="http://homepages.inf.ed.ac.uk/wadler/papers/marktoberdorf/baastad.pdf">PDF</a>]</li>
+</ul>
+<p>There are alternative programming techniques other than monadic effects that may be used to model effects. On <em>algebraic effects</em> and handlers, see:</p>
+<ul>
+<li>Gabriel Scherer, “Algebraic Effects and Handlers – New Language Ideas for User-Defined Side-Effects.” [<a href="http://gallium.inria.fr/~scherer/doc/effect-handlers-talk.html#/">Slides</a>]</li>
+<li>Matija Pretnar, “An Introduction to Algebraic Effects and Handlers.” [<a href="http://www.eff-lang.org/handlers-tutorial.pdf">PDF</a>]</li>
+<li>Andrej Bauer and Matija Pretnar, “Programming with Algebraic Effects and Handlers.” [<a href="http://math.andrej.com/wp-content/uploads/2012/03/eff.pdf">PDF</a>]</li>
+<li>Edwin Brady, “Programming and Reasoning with Algebraic Effects and Dependent Types.” [<a href="https://eb.host.cs.st-andrews.ac.uk/drafts/effects.pdf">PDF</a>]</li>
+<li>Gordon Plotkin and John Power, “Computational Effects and Operations: An Overview.” [<a href="http://homepages.inf.ed.ac.uk/gdp/publications/Overview.pdf">PDF</a>]</li>
+<li>Gordon Plotkin and Matija Pretnar, “Handling Algebraic Effects.” [<a href="https://arxiv.org/pdf/1312.1399.pdf">PDF</a>]</li>
+</ul>
+<p>On <em>uniqueness types</em>, see:</p>
+<ul>
+<li>Edsko de Vries, Rinus Plasmeijer, and David Abrahamson, “Uniqueness Typing Simplified.” [<a href="http://www.edsko.net/pubs/ifl07-paper.pdf">PDF</a>]</li>
+</ul>
+      </div>
+      <footer>
+        <!-- TO BE MODIFIED BY NEED -->
+        <a title="Keyboard shortcut: q"
+           href="..">
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+          <code>Parent</code>
+        </a> |
+        <a class="raw" accesskey="r"
+           title="Keyboard shortcut: R"
+           href="https://wiki.soimort.org/plt/effects/src.md">
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <code>Raw</code>
+        </a> |
+        <a class="history" accesskey="h"
+           title="Keyboard shortcut: H"
+           href="https://github.com/soimort/wiki/commits/gh-pages/plt/effects/src.md">
+          <i class="fa fa-history" aria-hidden="true"></i>
+          <code>History</code>
+        </a> |
+        <a class="edit" accesskey="e"
+           title="Keyboard shortcut: E"
+           href="https://github.com/soimort/wiki/edit/gh-pages/plt/effects/src.md">
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <code>Edit</code>
+        </a> |
+        <a title="Keyboard shortcut: p"
+           href="javascript:window.print();">
+          <i class="fa fa-print" aria-hidden="true"></i>
+          <code>Print</code>
+        </a> |
+        <a title="Keyboard shortcut: ."
+           href="https://wiki.soimort.org/plt/effects">
+          <i class="fa fa-anchor" aria-hidden="true"></i>
+          <code>Permalink</code>
+        </a> |
+        Last updated: <span id="update-time">2018-02-11</span>
+        <address class="author">Mort Yao</address>
+      </footer>
+    </article></main>
+  </body>
+</html>
